@@ -9,7 +9,7 @@
     export let median: number;
 
     let width = 450;
-    let height = 100;
+    let height = 150;
     
     let margin = { top: 40, right: 30, bottom: 5, left: 30 };
     
@@ -235,57 +235,9 @@
 </article>
 
 <style lang="scss">
-.chartInfos {
-    position: relative;
-    max-width: 250px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: -32px;
-    padding: 6px;
-    border-radius: 120px;
-    background-color: #f5f5f5;
-    border: 1px solid #eee;
-    z-index: 2;
-
-    img {
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-
-        &.tisza {
-            background-color: #00359c66;
-        }
-        &.fidesz {
-            background-color: #fd810066;
-        }
-    }
-
-    .textContainer {
-        align-items: center;
-        padding: 0 8px;
-        
-        h2#leaderText {
-            font-size: 0.9rem;
-            font-weight: 600;
-            padding: 2px 3px;
-            padding-bottom: 0;
-        }
-        .standing {
-            font-size: 0.75rem;
-            text-align: center;
-
-            span {
-                background: none;
-                padding: 0;
-            }
-        }
-    }
-
-}
-svg {
-    background-color: #f9f9f9;
-    border: 2px solid #f5f5f5;
+#mandate-visualization {
+    width: 100%;
+    aspect-ratio: 4 / 2;
+    max-height: 150px;
 }
 </style>
