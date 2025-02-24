@@ -1,23 +1,51 @@
 <script lang="ts">
-    import type { Party, PollData } from "$lib/types";
+    import type { PollData } from "$lib/types";
     import { onMount } from "svelte";
     import { pollData, fetchPollData } from "../../stores/dataStore";
-    import MiniMandateProjection from "../../components/MiniMandateProjection.svelte";
     import PartyMandateProjection from "../../components/PartyMandateProjection.svelte";
+    import MandateProjectionAside from "../../components/MandateProjectionAside.svelte";
+    import OevkMap from "../../components/OEVKMap.svelte";
 
     let data: Record<'sure_voters' | 'all_voters', PollData> = {
         sure_voters: [],
         all_voters: [],
     };
 
-    onMount(fetchPollData);
+    let aside: HTMLElement;
+
+    function keepAsidePosition() {
+        const headerHeight = 160 + 55;
+
+        if (window.scrollY > headerHeight + 16 && window.innerWidth > 600) {
+            aside.style.position = "fixed";
+            aside.style.top = "16px";
+            aside.style.width = "250px";
+        } else {
+            aside.style.position = "static";
+            aside.style.width = "auto";
+        }
+    }
+
+    onMount(() => {
+        fetchPollData();
+        window.addEventListener("scroll", keepAsidePosition);
+    });
 
     $: data = $pollData;
 </script>
 
-<MiniMandateProjection />
-<div id="all-parties">
-    <div style="display: flex; flex-direction: column; gap: 0rem">
+<aside bind:this={aside}>
+    <MandateProjectionAside />
+</aside>
+<main>
+    <section class="partyProjections">
+        <div class="textBlock">
+            <h2>Várható mandátumok pártonként</h2>
+        </div>
+        <article>
+            <h3>Tisza</h3>
+            <p>x százalék a közvélemény-kutatásokban</p>
+        </article>
         <PartyMandateProjection
             party="tisza"
             data={[
@@ -25,6 +53,11 @@
             ]} 
             median={101}
         />
+        <div class="divider"></div>
+        <article>
+            <h3>Fidesz</h3>
+            <p>x százalék a közvélemény-kutatásokban</p>
+        </article>
         <PartyMandateProjection
             party="fidesz"
             data={[
@@ -32,6 +65,11 @@
             ]} 
             median={83}
         />
+        <div class="divider"></div>
+        <article>
+            <h3>DK-MSZP-P</h3>
+            <p>x százalék a közvélemény-kutatásokban</p>
+        </article>
         <PartyMandateProjection
             party="dk_mszp_p"
             data={[
@@ -39,6 +77,11 @@
             ]} 
             median={9}
         />
+        <div class="divider"></div>
+        <article>
+            <h3>Mi Hazánk</h3>
+            <p>x százalék a közvélemény-kutatásokban</p>
+        </article>
         <PartyMandateProjection
             party="mihazank"
             data={[
@@ -46,6 +89,11 @@
             ]} 
             median={6}
         />
+        <div class="divider"></div>
+        <article>
+            <h3>MKKP</h3>
+            <p>x százalék a közvélemény-kutatásokban</p>
+        </article>
         <PartyMandateProjection
             party="mkkp"
             data={[
@@ -53,54 +101,68 @@
             ]} 
             median={0}
         />
-    </div>
-</div>
+    </section>
+    <section class="map">
+        <h2>Választókerületek legvalószínűbb eredménye</h2>
+        <p>Országos mandátumok várható eloszlása a közvélemény-kutatások alapján.</p>
+        <OevkMap />
+    </section>
+</main>
 
 
 <style lang="scss">
-    .bodyContainer {
-        display: flex;
-        flex-direction: column;
+    main {
+        display: grid;
+        grid-template-columns: 1fr;
         gap: 1rem;
-        max-width: 700px;
-        line-height: 1.4;
-        border: 1px dashed blue;
-        border-top: none;
+    }
+    section {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 8px 1rem;
+        background-color: #fcfcfc;
+        border: 1px solid #eee;
+        
+        &.partyProjections {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+        }
+
+        h2 {
+            font-size: 26px;
+            font-weight: 500;
+        }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 400;
+        }
+
+        .textBlock {
+            grid-column: 1 / 3;
+        }
+
+        .divider {
+            grid-column: 1 / 3;
+            border-top: 2px solid #eee;
+            margin: 1rem 0;
+        }
     }
 
-    article {
-        width: 100%;
-        max-width: 1000px;
-        margin: 0 auto;
-        padding: 8px 16px;
-    }
-
-    h1 {
-        font-size: 1.8rem;
-        font-weight: 500;
-    }
-
-    h2 {
-        font-size: 22px;
-        font-weight: 500;
-        text-align: center;
-    }
-
-    p {
-        font-size: 16px;
-        margin-top: 12px;
-    }
-
-    
     @media (min-width: 600px) {
-        #all-parties {
+        main {
             grid-column: 2 / 3;
         }
     }
     
     @media (min-width: 800px) {
-        #all-parties {
-            grid-column: 3 / 5;
+        aside {
+            grid-column: 1 / 2;
+        }
+        
+        main {
+            grid-column: 2 / 5;
         }
     }
 </style>
