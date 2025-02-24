@@ -90,7 +90,7 @@
         {renderOptions}
     />
     <div class="bottomMenu">
-        <div class="item"><a href="/modszertan">Részletes módszertan</a></div>
+        <div class="item"><a href="/modszertan">Módszertan</a></div>
         {#if chartId}
         <div class="item"><a href="/megosztas/{chartId}">Megosztás</a></div>
         {/if}
@@ -158,7 +158,7 @@
         }
     }
 
-    @media (min-width: 900px) {
+    @media (min-width: 800px) {
         .pollGraph {
             grid-column: span 2;
             grid-row: span 1;

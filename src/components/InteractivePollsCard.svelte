@@ -71,7 +71,7 @@
 <style lang="scss">
     .interactiveContainer {
         display: grid;
-        grid-template-columns: 250px 1fr;
+        grid-template-columns: 1fr;
         gap: 1rem;
 
         padding: 8px;
@@ -122,6 +122,18 @@
                     text-decoration: none;
                 }
             }
+        }
+    }
+
+    @media (min-width: 600px) {
+        .interactiveContainer {
+            grid-template-columns: 200px 1fr;
+        }
+    }
+
+    @media (min-width: 800px) {
+        .interactiveContainer {
+            grid-template-columns: 250px 1fr;
         }
     }
 </style>

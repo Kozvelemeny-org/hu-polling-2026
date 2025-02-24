@@ -54,11 +54,16 @@
         margin-top: 12px;
     }
 
-    #interactive-polls {
-        grid-column: 1 / 5;
+    
+    @media (min-width: 600px) {
+        #all-parties {
+            grid-column: 2 / 3;
+        }
     }
-
-    #all-parties {
-        grid-column: 2 / 5;
+    
+    @media (min-width: 800px) {
+        #all-parties {
+            grid-column: 3 / 5;
+        }
     }
 </style>

@@ -35,9 +35,15 @@
     }
 }
 
-@media (min-width: 900px) {
+@media (min-width: 600px) {
     #mainGrid {
-        grid-template-columns: 250px minmax(150px, 1fr) minmax(150px, 1fr) 250px;
+        grid-template-columns: 250px minmax(150px, 1fr);
+    }
+}
+
+@media (min-width: 800px) {
+    #mainGrid {
+        grid-template-columns: 250px minmax(110px, 1fr) minmax(110px, 1fr) 250px;
     }
 }
 </style>

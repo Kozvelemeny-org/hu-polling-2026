@@ -47,15 +47,16 @@
         </select>
         közvélemény-kutató{!mandateProjectionOptions.pollsterGroupIndex
             ? ""
-            : "k"} adatai alapján:</p>
+            : "k"} adatai alapján:
+    </p>
     <div class="mandatesContainer">
         <article class="visualization">
-            <MiniMandateProjection  />
+            <MiniMandateProjection />
         </article>
     </div>
     <p>
-        Részletes adatok és alakulásuk a <a
-            href="/mandatumbecsles">mandátumbecslés</a
+        Részletes adatok és alakulásuk a <a href="/mandatumbecsles"
+            >mandátumbecslés</a
         > oldalon.
     </p>
     <div class="bottomMenu">
@@ -73,17 +74,11 @@
 <div id="all-parties">
     <PollsCardFromData {data} chart_id="all-parties" />
 </div>
-<PollsCardFromData
-    {data}
-    chart_id="kiabrandult-fideszesek"
-/>
+<PollsCardFromData {data} chart_id="kiabrandult-fideszesek" />
 <section id="polls-description" class="bodyContainer">
     <h2>Nem tudom, hogy mi lehet itten</h2>
 </section>
-<PollsCardFromData
-    {data}
-    chart_id="ellenzek-2022-ota"
-/>
+<PollsCardFromData {data} chart_id="ellenzek-2022-ota" />
 <aside></aside>
 
 <style lang="scss">
@@ -129,13 +124,7 @@
         }
     }
 
-    #fidesz-tisza,
-    #all-parties {
-        grid-column: 2 / 5;
-    }
-
     .sectionTitle {
-        grid-column: 1 / 5;
         display: flex;
         justify-content: center;
         margin-top: 2rem;
@@ -148,8 +137,6 @@
     }
 
     #polls-description {
-        grid-column: 3 / 5;
-        grid-row: span 2;
         padding: 8px 1rem;
         border: 1px dashed #ddd;
 
@@ -196,9 +183,40 @@
         margin-top: 12px;
     }
 
-    @media (min-width: 900px) {
-        #mainGrid {
-            grid-template-columns: 300px minmax(150px, 1fr) minmax(150px, 1fr) 300px;
+    @media (min-width: 600px) {
+        .sectionTitle {
+            grid-column: 1 / 3;
+        }
+
+        #fidesz-tisza,
+        #all-parties {
+            grid-column: 2 / 3;
+        }
+
+        #polls-description {
+            grid-column: 2 / 3;
+            grid-row: span 2;
+        }
+
+        .poll-graph {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+    }
+
+    @media (min-width: 800px) {
+        .sectionTitle {
+            grid-column: 1 / 5;
+        }
+
+        #fidesz-tisza,
+        #all-parties {
+            grid-column: 2 / 5;
+        }
+
+        #polls-description {
+            grid-column: 3 / 5;
+            grid-row: span 2;
         }
 
         .poll-graph {

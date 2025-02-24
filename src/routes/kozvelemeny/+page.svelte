@@ -150,11 +150,51 @@
         margin-top: 12px;
     }
 
-    #interactive-polls {
-        grid-column: 1 / 5;
+    @media (min-width: 600px) {
+        .sectionTitle {
+            grid-column: 1 / 3;
+        }
+
+        #interactive-polls {
+            grid-column: 1 / 3;
+        }
+
+        #all-parties {
+            grid-column: 2 / 3;
+        }
+
+        #polls-description {
+            grid-column: 2 / 3;
+            grid-row: span 2;
+        }
+
+        .poll-graph {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
     }
 
-    #all-parties {
-        grid-column: 2 / 5;
+    @media (min-width: 800px) {
+        .sectionTitle {
+            grid-column: 1 / 5;
+        }
+
+        #interactive-polls {
+            grid-column: 1 / 5;
+        }
+
+        #all-parties {
+            grid-column: 2 / 5;
+        }
+
+        #polls-description {
+            grid-column: 3 / 5;
+            grid-row: span 2;
+        }
+
+        .poll-graph {
+            grid-column: span 2;
+            grid-row: span 1;
+        }
     }
 </style>

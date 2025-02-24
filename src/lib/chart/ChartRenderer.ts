@@ -10,13 +10,13 @@ interface ChartContext {
 }
 
 let containerSizes = {
-    small: 500,
-    medium: 700,
+    small: 250,
+    medium: 400,
     large: Infinity,
 };
 
 let paddingSizes = {
-    small: 70,
+    small: 120,
     medium: 120,
     large: 120,
 };
@@ -28,26 +28,38 @@ let paddingLeftSizes = {
 }
 
 let partyLabelSizes = {
-    small: 12,
-    medium: 13,
+    small: 9,
+    medium: 11,
     large: 14,
 }
 
 let dotSizes = {
-    month: 3.5,
-    quarter: 3,
-    year: 2,
+    month: {
+        small: 2.5,
+        medium: 3,
+        large: 3.5,
+    },
+    quarter: {
+        small: 1.5,
+        medium: 1.5,
+        large: 3,
+    },
+    year: {
+        small: 1,
+        medium: 1.5,
+        large: 2,
+    }
 }
 
 let lineWidths = {
-    small: 1,
-    medium: 2,
+    small: 1.5,
+    medium: 1.8,
     large: 2.5,
 }
 
 let gridLabelSizes = {
-    small: 8,
-    medium: 10,
+    small: 7,
+    medium: 12,
     large: 13,
 }
 
@@ -131,7 +143,8 @@ export class ChartRenderer {
     }
 
     private getContainerSizeCategory() {
-        const width = parseInt(this.containerElement.style.width);
+        const width = this.containerElement.offsetWidth;
+        
         for (const [category, size] of Object.entries(containerSizes)) {
             if (width <= size) {
                 return category as keyof typeof containerSizes;
@@ -313,7 +326,7 @@ export class ChartRenderer {
 
         const leftGridWidth = this.renderOptions.isInteractive
             ? width - this.margin.right
-            : width - paddingLeftSizes[containerSizeCategory];
+            : width - paddingLeftSizes[this.containerSizeCategory];
             
         //axisParams.ticks.push(y.invert(height - this.margin.bottom));
 
@@ -378,10 +391,10 @@ export class ChartRenderer {
         this.gridGroup
             .selectAll(".y-grid")
             .selectAll("text")
-            .attr("dx", "6px")
-            .attr("dy", "-6px")
+            .attr("dx", this.containerSizeCategory == "small" ? "2px" : "6px")
+            .attr("dy", this.containerSizeCategory == "small" ? "-2px" : "-6px")
 
-        d3.selectAll(".grid text").attr("font-size", `${gridLabelSizes[this.containerSizeCategory]}px`).attr("fill", "#666");
+        d3.selectAll(".grid text").style("font-size", gridLabelSizes[this.containerSizeCategory]).attr("fill", "#666");
     }
 
     private drawAnnotations() {
@@ -497,7 +510,7 @@ export class ChartRenderer {
                     .attr("class", party + "-dot")
                     .attr("cx", (d) => x(d.date))
                     .attr("cy", (d) => y(d[party] as number))
-                    .attr("r", dotSizes[this.axisParams.xTickLevel])
+                    .attr("r", dotSizes[this.axisParams.xTickLevel][this.containerSizeCategory])
                     .attr("opacity", 0)
                     .attr("fill", ChartRenderer.colors[party])
                     .call(enter => enter.transition().duration(500).attr("opacity", 0.15)),
@@ -505,7 +518,7 @@ export class ChartRenderer {
                 update => update
                     .transition().duration(500)
                     .attr("opacity", 0.12) // Necessary
-                    .attr("r", dotSizes[this.axisParams.xTickLevel]) // Necessary
+                    .attr("r", dotSizes[this.axisParams.xTickLevel][this.containerSizeCategory]) // Necessary
                     .attr("cx", (d) => x(d.date))
                     .attr("cy", (d) => y(d[party] as number)),
 
@@ -639,7 +652,7 @@ export class ChartRenderer {
         tooltipPositions.sort((a, b) => b.y - a.y);
 
         const adjustedPositions: { x: number; y: number; text: string, color: string }[] = [];
-        const minDistance = 13;
+        const minDistance = partyLabelSizes[this.containerSizeCategory] + 1;
 
         tooltipPositions.forEach((tooltip, i) => {
             let newY = tooltip.y;
@@ -670,7 +683,7 @@ export class ChartRenderer {
             this.tooltipGroup.append("circle")
                 .attr("cx", tooltip.x + 8)
                 .attr("cy", tooltip.y)
-                .attr("r", 5.5)
+                .attr("r", Math.max(dotSizes[this.axisParams.xTickLevel][this.containerSizeCategory] * 1.8, 4))
                 .attr("fill", tooltip.color)
                 .attr("stroke", "#f9f9f9")
                 .attr("stroke-width", 1);
@@ -682,8 +695,8 @@ export class ChartRenderer {
                 .attr("alignment-baseline", "middle")
                 .attr("stroke", "#f9f9f9")
                 .attr("stroke-width", 2)
-                .attr("font-size", partyLabelSizes[this.containerSizeCategory] + "px")
-                .style("font-weight", 500)
+                .style("font-size", partyLabelSizes[this.containerSizeCategory])
+                .style("font-weight", 400)
                 .text(tooltip.text);
 
             this.tooltipGroup.append("text")
@@ -692,8 +705,8 @@ export class ChartRenderer {
                 .attr("text-anchor", "start")
                 .attr("alignment-baseline", "middle")
                 .attr("fill", tooltip.color)
-                .attr("font-size", partyLabelSizes[this.containerSizeCategory] + "px")
-                .style("font-weight", 500)
+                .style("font-size", partyLabelSizes[this.containerSizeCategory])
+                .style("font-weight", 400)
                 .text(tooltip.text);
         });
     }
