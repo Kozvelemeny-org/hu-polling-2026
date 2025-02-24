@@ -1,6 +1,5 @@
 <script lang="ts">
     import type { PollData } from "$lib/types";
-    import { flip } from "svelte/animate";
     import RecentPollCard from "./RecentPollCard.svelte";
 
     export let data: Record<'sure_voters' | 'all_voters', PollData> = { sure_voters: [], all_voters: [] };
