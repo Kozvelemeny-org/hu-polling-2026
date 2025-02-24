@@ -1,6 +1,6 @@
 import { get, writable } from 'svelte/store';
 import { getPollData } from '../lib/dataUtils';
-import type { Party, Poll, PollData, Pollster, PollsterGroup } from '../lib/types';
+import type { Party, PollData, PollsterData, PollsterGroup } from '../lib/types';
 
 export const partyColors = {
     fidesz: "#fd8100",
@@ -36,38 +36,74 @@ export const partyDisplayNames = {
     unsure: "Bizonytalan",
 } as Record<Party, string>;
 
-export const govtPollsters = ['Nézőpont', 'Századvég', 'Társadalomkutató', 'TK'];
-export const indPollsters = ['IDEA', 'ZRI', 'Medián', 'Real-PR 93', '21 Kutató',
-                            'Iránytű', 'e-benchmark', 'Psyma', 'Civitas', 'Tárki'];
-export const oppPollsters = ['Publicus', 'Republikon'];
-
-export const pollsterNameMap = {
-    'IDEA': 'IDEA',
-    'ZRI': 'Závecz',
-    'Medián': 'Medián',
-    'Nézőpont': 'Nézőpont',
-    'Publicus': 'Publicus',
-    'Republikon': 'Republikon',
-    'Századvég': 'Századvég',
-    'Iránytű': 'Iránytű',
-    'Real-PR 93': 'Real-PR',
-    'Társadalomkutató': 'Társadalomkutató',
-    'TK': 'Társadalomkutató',
-    '21 Kutató': '21 Kutató',
-    'Civitas': 'Civitas',
-    'Alapjogokért Központ': 'Alapjogokért Központ',
-    'Psyma': 'Psyma',
-    'Ipsos': 'Ipsos',
-    'e-benchmark': 'e-benchmark',
-    'Tárki': 'Tárki',
-}
-
 export const pollsterGroups = [
     "összes",
     "kormányközeli",
     "független",
-    "ellenzéki",
 ] as PollsterGroup[];
+
+export const pollsterData = {
+    'Nézőpont': {
+        name: 'Nézőpont',
+        group: 'kormányközeli',
+        color: '#eedc82',
+    },
+    'Századvég': {
+        name: 'Századvég',
+        group: 'kormányközeli',
+        color: '#f4a460',
+    },
+    'TK': {
+        name: 'Társadalomkutató',
+        group: 'kormányközeli',
+        color: '#eee8aa',
+    },
+    'Real-PR 93': {
+        name: 'Real-PR',
+        group: 'kormányközeli',
+        color: '#ffa500',
+    },
+    'IDEA': {
+        name: 'IDEA',
+        group: 'független',
+        color: '#4f94cd',
+    },
+    'ZRI': {
+        name: 'Závecz',
+        group: 'független',
+        color: '#473c8b',
+    },
+    'Medián': {
+        name: 'Medián',
+        group: 'független',
+        color: '#aa0099',
+    },
+    '21 Kutató': {
+        name: '21 Kutató',
+        group: 'független',
+        color: '#663366',
+    },
+    'Iránytű': {
+        name: 'Iránytű',
+        group: 'független',
+        color: '#116633',
+    },
+    'Tárki': {
+        name: 'Tárki',
+        group: 'független',
+        color: '#ffcc00',
+    },
+    'Publicus': {
+        name: 'Publicus',
+        group: 'független',
+        color: '#ee0000',
+    },
+    'Republikon': {
+        name: 'Republikon',
+        group: 'független',
+        color: '#00cdaa',
+    },
+} as PollsterData;
 
 export const pollData = writable<Record<'sure_voters' | 'all_voters', PollData>>({
     sure_voters: [],

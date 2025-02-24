@@ -32,7 +32,7 @@
 
     let chartOptions = {
         data: [] as Poll[],
-        pollsterGroupIndex: (pollsterGroups.findIndex((group) => group === pollsterGroup) || 0) as 0 | 1 | 2 | 3,
+        pollsterGroupIndex: (pollsterGroups.findIndex((group) => group === pollsterGroup) || 0) as 0 | 1 | 2,
     };
 
     let articleMap = {

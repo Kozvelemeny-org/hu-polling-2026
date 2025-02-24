@@ -1,6 +1,6 @@
 import * as d3 from "d3";
-import type { PollData, DateRange, Party, AxisParams, DayData, PollsterGroup } from "../types";
-import { govtPollsters, indPollsters, oppPollsters } from "../../stores/dataStore";
+import type { PollData, DateRange, Party, AxisParams, DayData, PollsterGroup, PollsterData } from "../types";
+import { pollsterData } from "../../stores/dataStore";
 
 export class ChartDataProcessor {
     private pollData: PollData;
@@ -73,9 +73,7 @@ export class ChartDataProcessor {
             return pollData;
         }
     
-        const pollsters = this.selectedPollsterGroup === "független"
-            ? indPollsters : this.selectedPollsterGroup === "kormányközeli"
-            ? govtPollsters : oppPollsters;
+        const pollsters = Object.values(pollsterData).filter((d) => d.group === this.selectedPollsterGroup).map((d) => d.name);
     
         return pollData.filter((d) => pollsters.includes(d.pollster));
     }

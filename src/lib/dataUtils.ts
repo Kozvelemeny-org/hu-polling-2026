@@ -1,6 +1,5 @@
 import * as d3 from "d3";
-import type { PollData, Pollster } from "./types";
-import { pollsterNameMap } from "../stores/dataStore";
+import type { PollData } from "./types";
 
 /* const aggregatorNameMap: { [key in keyof Omit<CandidateData, 'candidate' | 'date' | 'avg'>]: {abv: string, full: string, link: string} } = {
     fivethirtyeight: {abv: "538", full: "538 (ABC News)", link: "https://projects.fivethirtyeight.com/polls/president-general/2024/national/"},

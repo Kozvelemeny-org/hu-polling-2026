@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { Poll } from "$lib/types";
-    import { pollsterNameMap } from "../stores/dataStore";
+    import { pollsterData } from "../stores/dataStore";
     
     export let poll: Poll;
 
@@ -36,7 +36,7 @@
 <a href={poll.url} target="_blank"><article>
     <header>
         <div class="pollster">
-            {pollsterNameMap[poll.pollster]}
+            {pollsterData[poll.pollster].name}
         </div>
         <div class="date">
             {pollData.dateDisplay} 

@@ -25,14 +25,17 @@ export type PollDataByPollster = Record<Pollster, Poll[]>;
 
 export type Pollster = 'IDEA' | 'ZRI' | 'Medián' | 'Nézőpont' | 'Publicus' |
                         'Republikon' | 'Századvég' | 'Iránytű' | 'Real-PR 93' |
-                        'Társadalomkutató' | '21 Kutató' | 'Civitas' | 'Alapjogokért Központ' |
+                        'TK' | '21 Kutató' | 'Civitas' | 'Alapjogokért Központ' |
                         'Psyma' | 'Ipsos' | 'e-benchmark' | 'Tárki';
 
 export type PollsterGroup = 'összes' | 'független' | 'kormányközeli' | 'ellenzéki';
 
+export type PollsterData = Record<Pollster, { name: string, group: PollsterGroup, color: string }>;
+
 export type Poll = {
     date: Date;
     pollster: Pollster;
+    url: string;
 } & {
     [party in Party]?: number;
 }
@@ -77,8 +80,3 @@ export type Annotation = {
 }
 
 export type DataSelect = 'voter_type' | 'pollster_group';
-
-/* export interface CandidateData {
-    candidate: string;
-    [aggregator: Aggregator]: number;
-} */

@@ -16,7 +16,7 @@
     };
 
     let mandateProjectionOptions = {
-        pollsterGroupIndex: 0 as 0 | 1 | 2 | 3,
+        pollsterGroupIndex: 0 as 0 | 1 | 2,
     };
 
     let articleMap = {

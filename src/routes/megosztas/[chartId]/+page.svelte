@@ -5,7 +5,6 @@
     import {
         pollData,
         fetchPollData,
-        pollsterGroups,
     } from "../../../stores/dataStore";
     import type { PollData } from "$lib/types";
     import PollsCardFromData from "../../../components/PollsCardFromData.svelte";
@@ -55,15 +54,6 @@
         } catch (err) {
             console.error("Error copying link:", err);
         }
-    }
-
-    // Opens a Facebook share dialog with the current page URL
-    function shareFacebook() {
-        const url = encodeURIComponent(window.location.href);
-        window.open(
-            `https://www.facebook.com/sharer/sharer.php?u=${url}`,
-            "_blank",
-        );
     }
 </script>
 
