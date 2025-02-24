@@ -5,6 +5,7 @@
     import PartyMandateProjection from "../../components/PartyMandateProjection.svelte";
     import MandateProjectionAside from "../../components/MandateProjectionAside.svelte";
     import OevkMap from "../../components/OEVKMap.svelte";
+    import ParliamentChart from "../../components/ParliamentChart.svelte";
 
     let data: Record<'sure_voters' | 'all_voters', PollData> = {
         sure_voters: [],
@@ -38,6 +39,12 @@
     <MandateProjectionAside />
 </aside>
 <main>
+    <section class="parliamentChart">
+        <div class="textBlock">
+            <h2>A legvalószínűbb parlament</h2>
+        </div>
+        <ParliamentChart />
+    </section>
     <section class="partyProjections">
         <div class="textBlock">
             <h2>Várható mandátumok pártonként</h2>
