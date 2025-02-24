@@ -11,7 +11,7 @@
 
 <nav class="menuStrip">
     <ul>
-        <a href="/"><li class:activePage={page.url.pathname === "/"}>
+        <a href="/" class="desktopOnly"><li class:activePage={page.url.pathname === "/"}>
             <span>Áttekintés</span>
         </li></a>
         <a href="/kozvelemeny"><li class:activePage={page.url.pathname === "/kozvelemeny"}>
@@ -34,19 +34,24 @@
         border-top: none;
         background-color: #fff;
         z-index: 3;
+
+        .desktopOnly {
+            display: none;
+        }
     }
 
     ul {
         width: 100%;
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
         list-style: none;
         padding: 0;
     }
 
     li {
         width: 100%;
-        padding: 1rem 0;
+        padding: 1rem 6px;
         text-align: center;
         font-weight: 300;
 
@@ -70,5 +75,14 @@
 
     a:hover span {
         text-decoration: underline;
+    }
+
+    @media (min-width: 600px) {
+        .menuStrip ul {
+            grid-template-columns: repeat(3, 1fr);
+            .desktopOnly {
+                display: block;
+            }
+        }
     }
 </style>

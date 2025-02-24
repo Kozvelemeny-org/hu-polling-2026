@@ -1,9 +1,9 @@
 <header id="mainHeader">
     <img class="headerImage" src="/images/bg.png" alt="header" />
-    <h1>
-        <span><a href="https://kozvelemeny.org" target="_blank">Vox Populi:</a></span>
+    <a href="/"><h1>
+        <span>Vox Populi:</span>
         <span>Választás 2026</span>
-    </h1>
+    </h1></a>
 </header>
 
 <style lang="scss">
@@ -17,6 +17,10 @@ header {
     height: 160px;
     background-color: #fff;
     z-index: 4;
+
+    a {
+        text-decoration: none;
+    }
 }
 header img {
     width: 100%;
@@ -41,10 +45,6 @@ header h1 span {
 
     &:first-child {
         font-weight: 400;
-    }
-
-    a {
-        text-decoration: none;
     }
 }
 
