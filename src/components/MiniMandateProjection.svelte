@@ -201,7 +201,7 @@
             .style("stroke", "#f9f9f9")
             .style("stroke-width", 3)
             .style("paint-order", "stroke")
-            .text("többség");
+            .text("Többség");
 
         svgSelection
             .append("line")
@@ -226,7 +226,7 @@
             .style("stroke", "#f9f9f9")
             .style("stroke-width", 3)
             .style("paint-order", "stroke")
-            .text("kétharmad");
+            .text("Kétharmad");
 
         // 12) Add min and max values
 
