@@ -34,6 +34,8 @@
         L = await import("leaflet");
         import("leaflet/dist/leaflet.css");
 
+        if (!L) return;
+
         map = L.map("map").setView([47.1625, 19.5033], 7); // Centered on Hungary
 
         L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
