@@ -36,7 +36,7 @@
 <a href={poll.url} target="_blank"><article>
     <header>
         <div class="pollster">
-            {pollsterData[poll.pollster].name}
+            {pollsterData[poll.pollster]?.name ?? poll.pollster}
         </div>
         <div class="date">
             {pollData.dateDisplay} 
