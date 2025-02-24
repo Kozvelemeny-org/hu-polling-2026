@@ -56,7 +56,7 @@ export const charts: Record<string, ChartData> = {
                 lineType: "dotted",
             },
         ],
-        renderOptions: { aspectRatio: 3 / 2, yLims: [0, 0.69] },
+        renderOptions: { aspectRatio: 3 / 2, yLims: [0, 0.59] },
     },
     'kiabrandult-fideszesek': {
         title: "Kiábrándult fideszesek nyomában",
