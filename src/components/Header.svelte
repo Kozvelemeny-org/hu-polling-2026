@@ -1,4 +1,4 @@
-<header>
+<header id="mainHeader">
     <img class="headerImage" src="/images/bg.png" alt="header" />
     <h1>
         <span><a href="https://kozvelemeny.org" target="_blank">Vox Populi:</a></span>
