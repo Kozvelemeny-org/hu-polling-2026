@@ -20,9 +20,6 @@
         <a href="/mandatumbecsles"><li class:activePage={page.url.pathname === "/mandatumbecsles"}>
             <span>Mandátumbecslés</span>
         </li></a>
-        <a href="/terkepek"><li class:activePage={page.url.pathname === "/terkepek"}>
-            <span>Térképek</span>
-        </li></a>
     </ul>
 </nav>
 
@@ -42,7 +39,7 @@
     ul {
         width: 100%;
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         list-style: none;
         padding: 0;
     }
