@@ -33,7 +33,7 @@ export const charts: Record<string, ChartData> = {
     'all-parties': {
         title: "Összes párt támogatottsága",
         dataSelects: ["pollster_group", "voter_type"],
-        dateRange: { start: new Date(2023, 11, 1), end: new Date(2026, 3, 4) },
+        dateRange: { start: new Date(2018, 0, 1), end: new Date(2026, 3, 4) },
         annotations: [
             {
                 id: "ogy-18",
