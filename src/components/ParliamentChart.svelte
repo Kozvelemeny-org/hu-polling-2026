@@ -1,7 +1,7 @@
 <script>
     import ParliamentChart from "$lib/parliament-chart/ParliamentChart";
     import { onMount } from "svelte";
-    import { partyColors } from "../stores/dataStore";
+    import { partyData } from "../stores/dataStore";
 
     let chart;
 
@@ -15,10 +15,10 @@
             margin: { top: 20, right: 20, bottom: 20, left: 20 },
         });
         chart.update([
-            { name: "Tisza", color: partyColors["tisza"], seats: 101 },
-            { name: "Fidesz", color: partyColors["fidesz"], seats: 83 },
-            { name: "dk_mszp_p", color: partyColors["dk_mszp_p"], seats: 9 },
-            { name: "mihazank", color: partyColors["mihazank"], seats: 6 },
+            { name: "Tisza", color: partyData["tisza"].color, seats: 101 },
+            { name: "Fidesz", color: partyData["fidesz"].color, seats: 83 },
+            { name: "dk_mszp_p", color: partyData["dk_mszp_p"].color, seats: 9 },
+            { name: "mihazank", color: partyData["mihazank"].color, seats: 6 },
         ]);
     });
 </script>
