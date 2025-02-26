@@ -26,7 +26,7 @@
 <article>
     <div id="chart"></div>
     <div class="chartInfos">
-        <img src="images/magyar.png" alt="Tisza" class="tisza" />
+        <img src="/images/candidate/tisza.png" alt="Tisza" class="tisza" />
         <div class="results">
             <h3>51%</h3>
         </div>
@@ -34,7 +34,7 @@
         <div class="results">
             <h3>42%</h3>
         </div>
-        <img src="images/orban.png" alt="Fidesz" class="fidesz" />
+        <img src="/images/candidate/fidesz.png" alt="Fidesz" class="fidesz" />
     </div>
 </article>
 
