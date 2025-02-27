@@ -43,7 +43,7 @@
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, nemo voluptate dolor aut corporis eveniet facere unde, quia sit, fugiat optio odit enim fuga obcaecati laboriosam accusantium repudiandae soluta. Quo?</p>
         </div>
         <ParliamentChart {data}/>
-        <PartyMandateTable data={data['main']?.medians} />
+        <PartyMandateTable data={data['main']?.seats} />
         <div class="textBlock">
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, nemo voluptate dolor aut corporis eveniet facere unde, quia sit, fugiat optio odit enim fuga obcaecati laboriosam accusantium repudiandae soluta. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut nesciunt expedita magnam deserunt, itaque nobis reiciendis sequi voluptas distinctio veniam cumque temporibus dolorem asperiores ipsum rem quaerat est. Laboriosam, suscipit!</p>
         </div>
@@ -121,7 +121,8 @@
         display: grid;
         grid-template-columns: 1fr;
         gap: 1rem;
-        padding: 8px 1rem;
+        padding: 2rem 1rem;
+        padding-top: 8px;
         background-color: #fcfcfc;
         border: 1px solid #eee;
         

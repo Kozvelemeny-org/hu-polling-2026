@@ -42,6 +42,13 @@ export type Poll = {
 
 export type Simulation = {
     medians: Record<Party, number>;
+    modes: Record<Party, number>;
+    seats: Record<Party, number>;
+    metadata: {
+        name: string;
+        polls?: Poll[];
+        description?: string;
+    }
 } & {
     [party in Party]?: number[];
 }

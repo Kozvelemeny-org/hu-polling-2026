@@ -33,7 +33,7 @@
                 id: party,
                 name: partyData[party].name,
                 color: partyData[party].color,
-                seats: data.main.medians[party],
+                seats: data.main.seats[party],
             });
         }
 
