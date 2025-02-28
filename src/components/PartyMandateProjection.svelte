@@ -8,10 +8,10 @@
     export let data: number[] = [];
     export let median: number = 0;
 
-    let width = 450;
-    let height = 140;
+    let width = 600;
+    let height = 220;
 
-    let margin = { top: 40, right: 30, bottom: 5, left: 30 };
+    let margin = { top: 50, right: 30, bottom: 5, left: 30 };
 
     let svg;
 
@@ -61,13 +61,12 @@
         //      (the domain’s 0 is mapped to height/2, max is mapped near the top)
         //    - Fidesz (below center line) from 0..maxFidesz => [height/2 .. height - margin.bottom]
         //      (the domain’s 0 is mapped to height/2, max is mapped near the bottom)
-        const yMidPoint =
-            margin.top + (height - margin.bottom - margin.top) / 2;
+        const yMidPoint = height / 2 + (height - margin.top - margin.bottom) / 3;
 
         const yScale = d3
             .scaleLinear()
             .domain([0, max])
-            .range([yMidPoint, margin.top]);
+            .range([yMidPoint, margin.top + (height - margin.top - margin.bottom) / 3]);
 
         // 5) Line generator:
         const area = d3
@@ -127,8 +126,8 @@
             .append("line")
             .attr("y1", 0)
             .attr("y2", height)
-            .attr("x1", xScale(10))
-            .attr("x2", xScale(10))
+            .attr("x1", xScale(4))
+            .attr("x2", xScale(4))
             .attr("stroke", "#aaa")
             .attr("stroke-width", 1)
             .attr("stroke-dasharray", "2,2")
@@ -136,21 +135,32 @@
 
         svgSelection
             .append("text")
-            .attr("x", xScale(10))
+            .attr("x", xScale(4))
             .attr("y", yMidPoint + 6)
             .attr("text-anchor", "middle")
             .attr("alignment-baseline", "text-before-edge")
-            .style("font-size", "10px")
+            .style("font-size", "12px")
             .style("font-weight", 400)
             .style("fill", "#333")
             .style("stroke", "#f9f9f9")
             .style("stroke-width", 5)
             .style("paint-order", "stroke")
-            .text("10")
+            .text("4");
+
+        svgSelection
+            .append("text")
+            .attr("x", xScale(4) + 4)
+            .attr("y", 6)
+            .attr("text-anchor", "start")
+            .attr("alignment-baseline", "text-before-edge")
+            .attr("font-size", "12px")
+            .attr("fill", "#333")
+            .text("Bejutás")
             .append("tspan")
-            .attr("x", xScale(10))
-            .attr("dy", 21)
-            .text("Bejutás");
+            .attr("x", xScale(4) + 4)
+            .attr("dy", 26)
+            .attr("fill", partyData[party].color)
+            .text((d3.sum(selectedData.slice(1)) * 100).toFixed(0) + "%")
 
         svgSelection
             .append("line")
@@ -169,17 +179,28 @@
             .attr("y", yMidPoint + 6)
             .attr("text-anchor", "middle")
             .attr("alignment-baseline", "text-before-edge")
-            .style("font-size", "10px")
+            .style("font-size", "12px")
             .style("font-weight", 400)
             .style("fill", "#333")
             .style("stroke", "#f9f9f9")
             .style("stroke-width", 5)
             .style("paint-order", "stroke")
-            .text("100")
+            .text("100");
+
+        svgSelection
+            .append("text")
+            .attr("x", xScale(100) + 4)
+            .attr("y", 6)
+            .attr("text-anchor", "start")
+            .attr("alignment-baseline", "text-before-edge")
+            .attr("font-size", "12px")
+            .attr("fill", "#333")
+            .text("Többség")
             .append("tspan")
-            .attr("x", xScale(100))
-            .attr("dy", 21)
-            .text("Többség");
+            .attr("x", xScale(100) + 4)
+            .attr("dy", 26)
+            .attr("fill", partyData[party].color)
+            .text((d3.sum(selectedData.slice(100)) * 100).toFixed(0) + "%")
 
         svgSelection
             .append("line")
@@ -198,17 +219,28 @@
             .attr("y", yMidPoint + 6)
             .attr("text-anchor", "middle")
             .attr("alignment-baseline", "text-before-edge")
-            .style("font-size", "10px")
+            .style("font-size", "12px")
             .style("font-weight", 400)
             .style("fill", "#333")
             .style("stroke", "#f9f9f9")
             .style("stroke-width", 5)
             .style("paint-order", "stroke")
-            .text("133")
+            .text("133");
+
+        svgSelection
+            .append("text")
+            .attr("x", xScale(133) + 4)
+            .attr("y", 6)
+            .attr("text-anchor", "start")
+            .attr("alignment-baseline", "text-before-edge")
+            .attr("font-size", "12px")
+            .attr("fill", "#333")
+            .text("Kétharmad")
             .append("tspan")
-            .attr("x", xScale(133))
-            .attr("dy", 21)
-            .text("Kétharmad");
+            .attr("x", xScale(133) + 4)
+            .attr("dy", 26)
+            .attr("fill", partyData[party].color)
+            .text((d3.sum(selectedData.slice(133)) * 100).toFixed(0) + "%")
 
         // 12) Add min and max values
 
@@ -218,7 +250,7 @@
             .attr("y", yScale(0))
             .attr("text-anchor", "end")
             .attr("alignment-baseline", "middle")
-            .style("font-size", "10px")
+            .style("font-size", "12px")
             .style("font-weight", 400)
             .style("fill", "#333")
             .text("0");
@@ -229,7 +261,7 @@
             .attr("y", yScale(0))
             .attr("text-anchor", "start")
             .attr("alignment-baseline", "middle")
-            .style("font-size", "10px")
+            .style("font-size", "12px")
             .style("font-weight", 400)
             .style("fill", "#333")
             .text("199");
@@ -243,7 +275,10 @@
 <style lang="scss">
     #mandate-visualization {
         width: 100%;
-        aspect-ratio: 4 / 2;
-        max-height: 150px;
+        
+        svg {
+            background-color: #f9f9f9;
+            border: 2px solid #f5f5f5;
+        }
     }
 </style>
