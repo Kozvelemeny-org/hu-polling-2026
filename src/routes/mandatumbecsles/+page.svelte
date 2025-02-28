@@ -55,7 +55,16 @@
     <section class="partyProjections">
         <div class="textBlock">
             <h2>Várható mandátumok pártonként</h2>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta accusantium impedit repellat dolorem ullam totam veritatis nemo nam, et reprehenderit nostrum sed labore repudiandae quis tenetur illum necessitatibus provident sit. Provident delectus, sunt perspiciatis sed alias, exercitationem dolorum modi quo animi repudiandae qui unde. Dolorem incidunt debitis fugit esse! In, magnam! Debitis!</p>
+            <div class="explainer">
+                <div class="example median">
+                    <img src="/images/hungary-shape.webp" alt="Választási földrajz">
+                </div>
+                <p>
+                    A szimuláció azt feltételezi, hogy az EP-választás óta nem változott a választási
+                    földrajz, de az ellenzéki szavazók nagyobb része szavaz majd a Tiszára.
+                    <a href="#">Módszertan</a>
+                </p>
+            </div>
             <div class="explainer">
                 <div class="example median">
                     <img src="/images/median-example.webp" alt="Medián jelzés példa">
