@@ -128,7 +128,7 @@
             országos átlaga és az EP-választás választási földrajza alapján szimulált
             országgyűlési választás alapján.
         </p>
-        <OevkMap />
+        <OevkMap data={data[selectedSimulation]?.oevkDiffs} />
     </section>
 </main>
 
