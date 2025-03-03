@@ -99,23 +99,6 @@
         if (!geojsonData) {
             const response = await fetch("/geo/oevks.geojson");
             geojsonData = await response.json();
-
-            map.addLayer(
-                {
-                    id: "oevk-lines",
-                    type: "line",
-                    source: {
-                        type: "geojson",
-                        data: geojsonData,
-                    },
-                    paint: {
-                        "line-width": 2,
-                        "line-color": "#000",
-                        "line-opacity": 0.21,
-                    },
-                },
-                firstSymbolId,
-            );
         }
 
         // Add the diff property to each feature
@@ -124,7 +107,32 @@
             feature.properties.diff = data[feature.properties?.OEVK] ?? 0;
         }
 
-        console.log(geojsonData);
+        // Add the OEVK lines layer
+        map.addLayer(
+                {
+                id: "oevk-lines",
+                type: "line",
+                source: {
+                    type: "geojson",
+                    data: geojsonData,
+                },
+                paint: {
+                    "line-width": 0.5,
+                    "line-opacity": 0.2,
+                },
+            },
+            firstSymbolId,
+        );
+
+        // Set the line color based on the diff value
+        map.setPaintProperty("oevk-lines", "line-color", [
+            "case",
+            [">=", ["get", "diff"], 0.05],
+            partyData["tisza"].color,
+            ["<=", ["get", "diff"], -0.05],
+            partyData["fidesz"].color,
+            "#000",
+        ]);
         
 
         // Remove previous OEVK layer if it exists
@@ -164,15 +172,15 @@
                     "fill-opacity": [
                         "step",
                         ["get", "diff"],
-                        0.7,
+                        0.3,
                         -0.15,
-                        0.2,
+                        0.1,
                         -0.05,
                         0,
                         0.05,
-                        0.2,
+                        0.1,
                         0.15,
-                        0.7,
+                        0.3,
                     ]
                 },
             },
@@ -186,7 +194,7 @@
 
         map = new mapboxgl.Map({
             container: "map",
-            style: "mapbox://styles/hidegmisi/cm7r3f0tk007j01sd6g6hbjr1",
+            style: "mapbox://styles/hidegmisi/cm7tlvdsq00bz01sc7hred6j6",
             center: [
                 (hungaryBounds[0][0] + hungaryBounds[1][0]) / 2,
                 (hungaryBounds[0][1] + hungaryBounds[1][1]) / 2,
@@ -200,7 +208,7 @@
 
         map.on("load", () => {
             mapLoaded = true;
-            map.addControl(new mapboxgl.NavigationControl(), "top-right");
+            map.addControl(new mapboxgl.NavigationControl(), "top-right");            
 
             // When hovering over a feature, update the colorbar arrow
             map.on("mousemove", (event) => {
@@ -217,7 +225,7 @@
                     if (arrow) arrow.style.left = "50%";
                     if (label && text) {
                         label.style.left = "50%";
-                        text.innerHTML = "Szoros";
+                        text.innerHTML = "Ki vezet?";
                         text.style.fill = "#333";
                     }
                 }
@@ -233,30 +241,30 @@
             <!-- Five segments, each representing one discrete category -->
             <div
                 class="legend-segment"
-                style="background: {partyData.fidesz.color}CC;"
+                style="background: {partyData.fidesz.color}; opacity: 0.3;"
                 data-label="Fidesz +15%"
             ></div>
             <div
                 class="legend-segment"
-                style="background: {partyData.fidesz.color}33;"
+                style="background: {partyData.fidesz.color}; opacity: 0.1;"
                 data-label="Fidesz +5%"
             ></div>
-            <div class="legend-segment" style="background: #0000;" data-label="Szoros"></div>
+            <div class="legend-segment" style="background: #0000;" data-label="Ki vezet?"></div>
             <div
                 class="legend-segment"
-                style="background: {partyData.tisza.color}33;"
+                style="background: {partyData.tisza.color}; opacity: 0.1;"
                 data-label="Tisza +5%"
             ></div>
             <div
                 class="legend-segment"
-                style="background: {partyData.tisza.color}CC;"
+                style="background: {partyData.tisza.color}; opacity: 0.3;"
                 data-label="Tisza +15%"
             ></div>
         </div>
         <div id="colorbar-arrow"></div>
         <div id="colorbar-label">
             <svg>
-                <text x="50%" y="50%">Szoros</text>
+                <text x="50%" y="50%">Ki vezet?</text>
             </svg>
         </div>
     </div>
@@ -282,8 +290,8 @@
         z-index: 2;
         pointer-events: none; /* so the legend doesn't block map interactions */
         background-color: #fff;
-        padding: 4px;
-        border: 1px solid #ccc;
+        /* border: 1px solid #eee; */
+        outline: 2px solid #fff;
         pointer-events: all;
     }
     #colorbar {
@@ -315,15 +323,19 @@
         height: 24px;
         transform: translateX(-50%);
         text-align: center;
+        overflow: visible;
+        
         svg {
             width: 100%;
             height: 100%;
+            overflow: visible;
+
             text {
                 font-size: 14px;
                 fill: #333;
                 text-anchor: middle;
                 stroke: #fff;
-                stroke-width: 3;
+                stroke-width: 4;
                 paint-order: stroke;
             }
         }
