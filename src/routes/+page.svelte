@@ -71,8 +71,8 @@
     <SectionCard id="parliament-chart">
         <SectionTitle>A legvalószínűbb parlament</SectionTitle>
         <p>
-            Az alábbi ábrán a <span class="simulation">{data.simulationData["main"]?.metadata.name}</span>
-            országos átlaga és az EP-választás választási földrajza alapján szimulált országgyűlési
+            Az alábbi ábrán a <SimulationNameSpan>{data.simulationData["main"]?.metadata.name}</SimulationNameSpan>
+            szimuláció országos átlaga és az EP-választás választási földrajza alapján szimulált országgyűlési
             választás eredménye látható.
         </p>
         <ParliamentChart data={data.simulationData} />
@@ -85,7 +85,7 @@
         <p>
             Az alábbi térképen a 106 egyéni választókerület látható, és a 
             <SimulationNameSpan>{data.simulationData["main"]?.metadata.name}</SimulationNameSpan>
-            által becsült várható különbség a két esélyes párt között.
+            szimuláció által becsült várható különbség a két esélyes párt között.
         </p>
         <OevkMap data={data.simulationData["main"]?.oevkDiffs} />
     </SectionCard>
