@@ -60,6 +60,9 @@
     </SectionCard>
 </GridItem>
 <GridSectionTitle>A többi párt</GridSectionTitle>
+<GridItem variant="full">
+    <PollsCardFromData {data} chart_id="all-parties-wide" />
+</GridItem>
 <GridItem variant="left-half">
     <PollsCardFromData {data} chart_id="ellenzek-2022-ota" />
 </GridItem>
