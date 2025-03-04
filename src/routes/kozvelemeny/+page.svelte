@@ -86,7 +86,6 @@
 
 <style lang="scss">
     p {
-        font-size: 16px;
         margin-top: 12px;
     }
 </style>
