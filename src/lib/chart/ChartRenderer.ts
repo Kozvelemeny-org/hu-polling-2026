@@ -588,9 +588,6 @@ export class ChartRenderer {
         const [mouseX] = d3.pointer(event, event.currentTarget);
         const hoveredDate = x.invert(mouseX);
 
-        console.log("Pointer X:", mouseX);
-
-
         // Find the closest data point for each party
         const closestData = this.dailyData.map((day) => ({
             date: day.date,
