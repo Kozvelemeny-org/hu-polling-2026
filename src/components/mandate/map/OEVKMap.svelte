@@ -1,7 +1,7 @@
 <script lang="ts">
     import { onMount } from "svelte";
     import mapboxgl, { type LngLatBoundsLike } from "mapbox-gl";
-    import { partyData } from "../stores/dataStore";
+    import { partyData } from "../../../stores/dataStore";
     import type { Simulation } from "$lib/types";
 
     export let data = {} as Simulation["oevkDiffs"];
@@ -14,10 +14,10 @@
 
     const MAPBOX_ACCESS_TOKEN =
         "pk.eyJ1IjoiaGlkZWdtaXNpIiwiYSI6ImNrNmx5YzlwODBpbjEzbnA3d216cTRjcXAifQ.0Fvgxohx9xZmb-14mcC71g";
-    const hungaryBounds = [
+    const hungaryBounds: [[number, number], [number, number]] = [
         [15.113, 45.737 - 0.1],
         [23.896, 48.585 + 0.3],
-    ] as LngLatBoundsLike;
+    ];
 
     const colors = [
         partyData["fidesz"].color,

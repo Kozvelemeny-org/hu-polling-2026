@@ -1,10 +1,10 @@
 <script lang="ts">
     import type { Party, Simulation } from "$lib/types";
-    import SectionCard from "../section/SectionCard.svelte";
-    import SectionTitle from "../section/SectionTitle.svelte";
-    import SimulationNameSpan from "./SimulationNameSpan.svelte";
+    import SectionCard from "../../section/SectionCard.svelte";
+    import SectionTitle from "../../section/SectionTitle.svelte";
+    import SimulationNameSpan from "../SimulationNameSpan.svelte";
     import PartyProjectionItem from "./PartyProjectionItem.svelte";
-    import ProjectionExplainers from "./ProjectionExplainers.svelte";
+    import ProjectionExplainers from "../ProjectionExplainers.svelte";
 
     export let data: Record<string, Simulation> = {};
     export let selectedSimulation = "main";

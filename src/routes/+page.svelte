@@ -5,21 +5,19 @@
         pollData,
         simulationData,
         fetchData,
-        pollsterGroups,
-        partyData,
-    } from "../stores/dataStore";
-    import RecentPollsAside from "../components/RecentPollsAside.svelte";
-    import MiniMandateProjection from "../components/mandateProjection/MiniMandateProjection.svelte";
-    import PollsCardFromData from "../components/PollsCardFromData.svelte";
-    import ParliamentChart from "../components/ParliamentChart.svelte";
-    import PartyMandateTable from "../components/mandateProjection/PartyMandateTable.svelte";
-    import OevkMap from "../components/OEVKMap.svelte";
-    import SectionCard from "../components/section/SectionCard.svelte";
-    import SectionTitle from "../components/section/SectionTitle.svelte";
-    import GridItem from "../components/grid/GridItem.svelte";
-    import GridSectionTitle from "../components/grid/GridSectionTitle.svelte";
-    import SimulationNameSpan from "../components/mandateProjection/SimulationNameSpan.svelte";
-    import ExplainerCard from "../components/section/ExplainerCard.svelte";
+    } from "$stores/dataStore";
+    import RecentPollsAside from "$components/poll/RecentPollsAside.svelte";
+    import MiniMandateProjection from "$components/mandate/MiniMandateProjection.svelte";
+    import PollsCardFromData from "$components/poll/PollsCardFromData.svelte";
+    import ParliamentChart from "$components/mandate/parliament/ParliamentChart.svelte";
+    import PartyMandateTable from "$components/mandate/party/PartyMandateTable.svelte";
+    import OevkMap from "$components/mandate/map/OEVKMap.svelte";
+    import SectionCard from "$components/section/SectionCard.svelte";
+    import SectionTitle from "$components/section/SectionTitle.svelte";
+    import GridItem from "$components/grid/GridItem.svelte";
+    import GridSectionTitle from "$components/grid/GridSectionTitle.svelte";
+    import SimulationNameSpan from "$components/mandate/SimulationNameSpan.svelte";
+    import ExplainerCard from "$components/section/ExplainerCard.svelte";
 
     let data = {
         sure_voters: [] as PollData,

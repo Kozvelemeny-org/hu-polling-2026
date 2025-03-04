@@ -2,22 +2,20 @@
     import { onMount } from "svelte";
     import {
         fetchData,
-        partyData,
         simulationData,
-    } from "../../stores/dataStore";
-    import PartyMandateProjection from "../../components/mandateProjection/PartyMandateProjection.svelte";
-    import MandateProjectionAside from "../../components/mandateProjection/MandateProjectionAside.svelte";
-    import OevkMap from "../../components/OEVKMap.svelte";
-    import ParliamentChart from "../../components/ParliamentChart.svelte";
-    import PartyMandateTable from "../../components/mandateProjection/PartyMandateTable.svelte";
+    } from "$stores/dataStore";
     import type { Party, Simulation } from "$lib/types";
+    import MandateProjectionAside from "../../components/mandate/MandateProjectionAside.svelte";
+    import OevkMap from "../../components/mandate/map/OEVKMap.svelte";
+    import ParliamentChart from "../../components/mandate/parliament/ParliamentChart.svelte";
+    import PartyMandateTable from "../../components/mandate/party/PartyMandateTable.svelte";
     import SectionCard from "../../components/section/SectionCard.svelte";
     import SectionTitle from "../../components/section/SectionTitle.svelte";
     import StickyAside from "../../components/grid/StickyAside.svelte";
     import GridItem from "../../components/grid/GridItem.svelte";
     import ExplainerCard from "../../components/section/ExplainerCard.svelte";
-    import SimulationNameSpan from "../../components/mandateProjection/SimulationNameSpan.svelte";
-    import PartyProjectionsSection from "../../components/mandateProjection/PartyProjectionsSection.svelte";
+    import SimulationNameSpan from "../../components/mandate/SimulationNameSpan.svelte";
+    import PartyProjectionsSection from "$components/mandate/party/PartyProjectionsSection.svelte";
 
     let data: Record<string, Simulation> = {};
     let selectedSimulation = "main";
