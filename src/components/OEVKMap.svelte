@@ -222,7 +222,7 @@
                     if (arrow) arrow.style.left = "50%";
                     if (label && text) {
                         label.style.left = "50%";
-                        text.innerHTML = "Ki vezet?";
+                        text.innerHTML = "Ki esélyes?";
                         text.style.fill = "#333";
                     }
                 }
@@ -249,7 +249,7 @@
             <div
                 class="legend-segment"
                 style="background: {colors[2]}; opacity: 0.6"
-                data-label="Ki vezet?"
+                data-label="Ki esélyes?"
             ></div>
             <div
                 class="legend-segment"
@@ -265,7 +265,7 @@
         <div id="colorbar-arrow"></div>
         <div id="colorbar-label">
             <svg>
-                <text x="50%" y="50%">Ki vezet?</text>
+                <text x="50%" y="50%">Ki esélyes?</text>
             </svg>
         </div>
     </div>
