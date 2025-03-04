@@ -56,14 +56,6 @@
         </ExplainerCard>
         <ParliamentChart {data} {selectedSimulation} />
         <PartyMandateTable data={data[selectedSimulation]?.seats} />
-        <!-- <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, nemo voluptate
-            dolor aut corporis eveniet facere unde, quia sit, fugiat optio odit enim fuga obcaecati
-            laboriosam accusantium repudiandae soluta. Lorem, ipsum dolor sit amet consectetur
-            adipisicing elit. Aut nesciunt expedita magnam deserunt, itaque nobis reiciendis sequi
-            voluptas distinctio veniam cumque temporibus dolorem asperiores ipsum rem quaerat est.
-            Laboriosam, suscipit!
-        </p> -->
     </SectionCard>
 </GridItem>
 <GridItem variant="main">
@@ -74,9 +66,9 @@
         <SectionTitle>Egyéni választókerületek térképe</SectionTitle>
         <p>
             Az alábbi térképen a 106 egyéni választókerület látható, és a
-            <SimulationNameSpan
-                >{data[selectedSimulation]?.metadata.name}</SimulationNameSpan
-            >
+            <SimulationNameSpan>
+                {data[selectedSimulation]?.metadata.name}
+            </SimulationNameSpan>
             által becsült várható különbség a két esélyes párt között.
         </p>
         <ExplainerCard

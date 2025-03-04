@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { Party, PollData, Simulation } from "$lib/types";
+    import type { PollData, Simulation } from "$lib/types";
     import { onMount } from "svelte";
     import {
         pollData,
@@ -18,6 +18,8 @@
     import GridSectionTitle from "$components/grid/GridSectionTitle.svelte";
     import SimulationNameSpan from "$components/mandate/SimulationNameSpan.svelte";
     import ExplainerCard from "$components/section/ExplainerCard.svelte";
+    import BottomMenu from "$components/ui/bottomMenu/BottomMenu.svelte";
+    import BottomMenuItem from "$components/ui/bottomMenu/BottomMenuItem.svelte";
 
     let data = {
         sure_voters: [] as PollData,
@@ -51,10 +53,9 @@
                 >mandátumbecslés</a
             > oldalon.
         </p>
-        <div class="bottomMenu">
-            <div class="item">Módszertan</div>
-            <div class="item">Megosztás</div>
-        </div>
+        <BottomMenu>
+            <BottomMenuItem>Módszertan</BottomMenuItem>
+        </BottomMenu>
     </aside>
 </GridItem>
 <GridItem variant="main">
@@ -193,23 +194,6 @@
             width: 100%;
             margin: 0 auto;
             padding: 1rem 0;
-        }
-        .bottomMenu {
-            margin-top: 1rem;
-            display: flex;
-            gap: 6px;
-
-            .item {
-                font-size: 14px;
-                padding: 3px 6px;
-                border: 1px solid #eee;
-                border-radius: 2px;
-                cursor: pointer;
-
-                a {
-                    text-decoration: none;
-                }
-            }
         }
     }
 

@@ -31,13 +31,6 @@
         pollsterGroupIndex: (pollsterGroups.findIndex((group) => group === pollsterGroup) || 0) as 0 | 1 | 2,
     };
 
-    let articleMap = {
-        0: "az",
-        1: "a\xa0",
-        2: "a\xa0",
-        3: "az",
-    };
-
     onMount(() => {
         const loadingInterval = setInterval(() => {
             if (!chartOptions.data.length && data[voterType]?.length) {
@@ -104,23 +97,6 @@
                 padding: 2px;
                 width: fit-content;
                 min-width: unset;
-            }
-        }
-
-        .bottomMenu {
-            display: flex;
-            gap: 6px;
-
-            .item {
-                font-size: 14px;
-                padding: 3px 6px;
-                border: 1px solid #eee;
-                border-radius: 2px;
-                cursor: pointer;
-
-                a {
-                    text-decoration: none;
-                }
             }
         }
     }
