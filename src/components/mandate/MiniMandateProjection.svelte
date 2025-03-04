@@ -14,7 +14,7 @@
     let chart: MiniMandateChart | null = null;
     let simulationData = {} as Simulation;
     let deviceType = DeviceType.Desktop;
-
+    let leaderText = '';
     function updateDimensions() {
         if (!container) return;
         
@@ -92,7 +92,21 @@
             // The data changed, redraw with current dimensions
             chart.draw(simulationData);
         }
-    }    
+        leaderText = getLeaderText();
+    }
+
+    function getLeaderText() {
+        if (simulationData.medians.tisza > 133) {
+            return 'Tisza kétharmad';
+        } else if (simulationData.medians.tisza > 100) {
+            return 'Tisza többség';
+        } else if (simulationData.medians.fidesz > 133) {
+            return 'Fidesz kétharmad';
+        } else if (simulationData.medians.fidesz > 100) {
+            return 'Fidesz többség';
+        }
+        return 'Nincs többség';
+    }
 </script>
 
 <article id="mandate-visualization" bind:this={container}>
@@ -102,7 +116,7 @@
         <div class="textContainer">
             <h2 id="leaderText">Prognózis:</h2>
             <div class="standing">
-                Tisza többség
+                {leaderText}
             </div>
         </div>
         <img src="/images/candidate/tisza.png" alt="Tisza" class="tisza" />
