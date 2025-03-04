@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { onMount } from "svelte";
+    import { createEventDispatcher, onMount } from "svelte";
     import maplibregl from "maplibre-gl";
     import * as pmtiles from "pmtiles";
 
@@ -7,15 +7,20 @@
     import type { Simulation } from "$lib/types";
 
     export let data = {} as Simulation["oevkDiffs"];
+    export let highlightedOevk = null as string | null;
+
+    const dispatch = createEventDispatcher();
 
     const protocol = new pmtiles.Protocol();
     maplibregl.addProtocol("pmtiles", protocol.tile);
 
     let map: maplibregl.Map;
     let mapLoaded = false;
+    let geoJsonLoaded = false;
     let geojsonData: GeoJSON.FeatureCollection;
     let oevkLayerId = "oevks";
     let oevkLayerIncrement = 0;
+    let showHighlight = false;
 
     const hungaryBounds: [[number, number], [number, number]] = [
         [15.113, 45.737 - 0.1],
@@ -53,7 +58,6 @@
             position = 90;
             category = "Tisza +15%";
         }
-
         const arrow = document.getElementById("colorbar-arrow");
         const label = document.getElementById("colorbar-label");
         const text = label?.querySelector("text");
@@ -132,7 +136,20 @@
             partyData["fidesz"].color,
             "#000",
         ]);
-        
+
+        // Add a highlight layer with no filter initially.
+        map.addLayer({
+            id: "oevk-highlight",
+            type: "line",
+            source: {
+                type: "geojson",
+                data: geojsonData,
+            },
+            filter: ["==", "OEVK", ""],
+            paint: {
+                "line-color": "#000",
+            },
+        });
 
         // Remove previous OEVK layer if it exists
         if (map.getLayer(oevkLayerId + oevkLayerIncrement)) {
@@ -186,6 +203,8 @@
             },
             firstSymbolId,
         );
+
+        geoJsonLoaded = true;
     }
 
     async function loadMap() {
@@ -229,6 +248,9 @@
                 if (features.length > 0 && features[0].properties) {
                     const diff = features[0].properties.diff;
                     updateLegendArrow(diff);
+                    const oevkId = features[0].properties.OEVK;
+                    dispatch("oevkHover", oevkId);
+                    showHighlight = false;
                 } else {
                     const arrow = document.getElementById("colorbar-arrow");
                     const label = document.getElementById("colorbar-label");
@@ -239,7 +261,13 @@
                         text.innerHTML = "Ki esélyes?";
                         text.style.fill = "#333";
                     }
+                    dispatch("oevkHover", null);
+                    showHighlight = false;
                 }
+            });
+            map.on("mouseleave", () => {
+                dispatch("oevkHover", null);
+                showHighlight = false;
             });
         });
     }
