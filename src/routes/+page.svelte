@@ -68,8 +68,29 @@
 </GridItem>
 
 <GridItem variant="left-half" --grid-row="span 2">
+    <SectionCard>
+        <SectionTitle>Rövid magyarázat</SectionTitle>
+        <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt voluptate expedita similique, eaque magni mollitia dicta aperiam pariatur et accusamus iste quidem eius delectus vitae modi fuga error voluptas nisi. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem sunt, eos, eveniet necessitatibus aut doloremque perspiciatis totam adipisci repellat explicabo iusto, consequuntur ullam pariatur officiis nihil minima id natus enim!
+        </p>
+        <ExplainerCard image="/images/hungary-shape.webp" alt="Választási földrajz">
+            A szimuláció azt feltételezi, hogy az EP-választás óta nem változott a választási
+            földrajz, de az ellenzéki szavazók nagyobb része szavaz majd a Tiszára.
+            <a href="#">Módszertan</a>
+        </ExplainerCard>
+        <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt voluptate expedita similique, eaque magni mollitia dicta aperiam pariatur et accusamus iste quidem eius delectus vitae modi fuga error voluptas nisi. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem sunt, eos, eveniet necessitatibus aut doloremque perspiciatis totam adipisci repellat explicabo iusto, consequuntur ullam pariatur officiis nihil minima id natus enim!
+        </p>
+        <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt voluptate expedita similique, eaque magni mollitia dicta aperiam pariatur et accusamus iste quidem eius delectus vitae modi fuga error voluptas nisi. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem sunt, eos, eveniet necessitatibus aut doloremque perspiciatis totam adipisci repellat explicabo iusto, consequuntur ullam pariatur officiis nihil minima id natus enim!
+        </p>
+
+        <p>Több szimuláció és ábra, részletesebb adatok, valamint módszertan a <a href="/mandatumbecsles">mandátumbecslés</a> oldalon.</p>
+    </SectionCard>
+</GridItem>
+<GridItem variant="right-half">
     <SectionCard id="parliament-chart">
-        <SectionTitle>A legvalószínűbb parlament</SectionTitle>
+        <SectionTitle variant="medium">A legvalószínűbb parlament</SectionTitle>
         <p>
             Az alábbi ábrán a <SimulationNameSpan>{data.simulationData["main"]?.metadata.name}</SimulationNameSpan>
             szimuláció országos átlaga és az EP-választás választási földrajza alapján szimulált országgyűlési
@@ -81,23 +102,13 @@
 </GridItem>
 <GridItem variant="right-half">
     <SectionCard>
-        <SectionTitle>Egyéni választókerületek térképe</SectionTitle>
+        <SectionTitle variant="medium">Egyéni választókerületek térképe</SectionTitle>
         <p>
             Az alábbi térképen a 106 egyéni választókerület látható, és a 
             <SimulationNameSpan>{data.simulationData["main"]?.metadata.name}</SimulationNameSpan>
             szimuláció által becsült várható különbség a két esélyes párt között.
         </p>
         <OevkMap data={data.simulationData["main"]?.oevkDiffs} />
-    </SectionCard>
-</GridItem>
-<GridItem variant="right-half">
-    <ExplainerCard image="/images/hungary-shape.webp" alt="Választási földrajz" --margin="0 0 1rem 0">
-        A szimuláció azt feltételezi, hogy az EP-választás óta nem változott a választási
-        földrajz, de az ellenzéki szavazók nagyobb része szavaz majd a Tiszára.
-        <a href="#">Módszertan</a>
-    </ExplainerCard>
-    <SectionCard>
-        <p>Több szimuláció és ábra, részletesebb adatok, valamint módszertan a <a href="/mandatumbecsles">mandátumbecslés</a> oldalon.</p>
     </SectionCard>
 </GridItem>
 
