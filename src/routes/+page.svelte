@@ -127,11 +127,20 @@
 </GridItem>
 <GridItem variant="aside">
     <SectionCard>
-        <h2>Linkek</h2>
+        <SectionTitle variant="small">Linkek</SectionTitle>
         <ul>
-            <li><a href="https://kozvelemeny.org">- Közvélemény.org</a></li>
-            <li><a href="https://voxpopuli.444.hu">- Vox Populi a 444-en</a></li>
-            <li><a href="https://www.facebook.com/valasztasi.kalauz">- Választási Kalauz Facebook</a></li>
+            <li>
+                <a href="https://www.facebook.com/valasztasi.kalauz">Választási Kalauz Facebook</a><br>
+                A legfrissebb rövidebb posztok a Facebookon.
+            </li>
+            <li>
+                <a href="https://kozvelemeny.org">Közvélemény.org</a><br>
+                Hosszabb elemzések a weboldalukon.
+            </li>
+            <li>
+                <a href="https://voxpopuli.444.hu">Vox Populi a 444-en</a><br>
+                Válogatott posztok a 444-es blogunkon.
+            </li>
         </ul>
     </SectionCard>
 </GridItem>
@@ -212,6 +221,7 @@
 
         li {
             margin-bottom: 6px;
+            font-size: 1rem;
 
             a {
                 color: #3396ff;
