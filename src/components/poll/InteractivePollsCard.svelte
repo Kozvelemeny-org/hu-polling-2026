@@ -9,7 +9,7 @@
         PollsterGroup,
     } from "$lib/types";
     import { onMount } from "svelte";
-    import { pollsterGroups } from "../stores/dataStore";
+    import { pollsterGroups } from "$stores/dataStore";
     import PollsCard from "./PollsCard.svelte";
 
     export let data = {

@@ -1,6 +1,6 @@
 import * as d3 from "d3";
 import type { DayData, AxisParams, Party, PollData, Annotation } from "../types";
-import { partyData } from "../../stores/dataStore";
+import { partyData } from "$stores/dataStore";
 
 interface ChartContext {
     x: d3.ScaleTime<number, number>;

@@ -1,7 +1,7 @@
 <script lang="ts">
     import { onMount } from "svelte";
     import mapboxgl, { type LngLatBoundsLike } from "mapbox-gl";
-    import { partyData } from "../../../stores/dataStore";
+    import { partyData } from "$stores/dataStore";
     import type { Simulation } from "$lib/types";
 
     export let data = {} as Simulation["oevkDiffs"];
