@@ -19,40 +19,36 @@
         [23.896, 48.585 + 0.3],
     ] as LngLatBoundsLike;
 
+    const colors = [
+        partyData["fidesz"].color,
+        "#ffb985",
+        "#f1f1f1",
+        "#908dc7",
+        partyData["tisza"].color,
+    ];
+
     // Updates the arrow on the legend based on diff value,
     // snapping to the center of the corresponding discrete category.
     function updateLegendArrow(diff: any) {
         const diffValue = parseFloat(diff);
         let position: number;
         let category: string;
-        let textColor: string;
-        let opacity: number;
 
         if (diffValue < -0.15) {
             position = 10;
             category = "Fidesz +15%";
-            textColor = partyData["fidesz"].color;
-            opacity = 1;
         } else if (diffValue < -0.05) {
             position = 30;
             category = "Fidesz +5%";
-            textColor = partyData["fidesz"].color;
-            opacity = 0.2;
         } else if (diffValue < 0.05) {
             position = 50;
             category = "Szoros";
-            textColor = "#fff";
-            opacity = 0.2;
         } else if (diffValue < 0.15) {
             position = 70;
             category = "Tisza +5%";
-            textColor = partyData["tisza"].color;
-            opacity = 0.2;
         } else {
             position = 90;
             category = "Tisza +15%";
-            textColor = partyData["tisza"].color;
-            opacity = 1;
         }
 
         const arrow = document.getElementById("colorbar-arrow");
@@ -67,7 +63,7 @@
             label.style.left = position + "%";
             label.style.display = "block";
             text.innerHTML = category;
-            text.style.fill = '#333';
+            text.style.fill = "#333";
         }
     }
 
@@ -109,7 +105,7 @@
 
         // Add the OEVK lines layer
         map.addLayer(
-                {
+            {
                 id: "oevk-lines",
                 type: "line",
                 source: {
@@ -159,17 +155,17 @@
                     "fill-color": [
                         "step",
                         ["get", "diff"],
-                        partyData["fidesz"].color,
+                        colors[0],
                         -0.15,
-                        partyData["fidesz"].color,
+                        colors[1],
                         -0.05,
-                        "#ffffff",
+                        colors[2],
                         0.05,
-                        partyData["tisza"].color,
+                        colors[3],
                         0.15,
-                        partyData["tisza"].color,
+                        colors[4],
                     ],
-                    "fill-opacity": [
+                    /* "fill-opacity": [
                         "step",
                         ["get", "diff"],
                         0.3,
@@ -181,7 +177,8 @@
                         0.1,
                         0.15,
                         0.3,
-                    ]
+                    ] */
+                    "fill-opacity": 0.6,
                 },
             },
             firstSymbolId,
@@ -208,7 +205,7 @@
 
         map.on("load", () => {
             mapLoaded = true;
-            map.addControl(new mapboxgl.NavigationControl(), "top-right");            
+            map.addControl(new mapboxgl.NavigationControl(), "top-right");
 
             // When hovering over a feature, update the colorbar arrow
             map.on("mousemove", (event) => {
@@ -241,23 +238,27 @@
             <!-- Five segments, each representing one discrete category -->
             <div
                 class="legend-segment"
-                style="background: {partyData.fidesz.color}; opacity: 0.3;"
+                style="background: {colors[0]}; opacity: 0.6;"
                 data-label="Fidesz +15%"
             ></div>
             <div
                 class="legend-segment"
-                style="background: {partyData.fidesz.color}; opacity: 0.1;"
+                style="background: {colors[1]}; opacity: 0.6;"
                 data-label="Fidesz +5%"
             ></div>
-            <div class="legend-segment" style="background: #0000;" data-label="Ki vezet?"></div>
             <div
                 class="legend-segment"
-                style="background: {partyData.tisza.color}; opacity: 0.1;"
+                style="background: {colors[2]}; opacity: 0.6"
+                data-label="Ki vezet?"
+            ></div>
+            <div
+                class="legend-segment"
+                style="background: {colors[3]}; opacity: 0.6;"
                 data-label="Tisza +5%"
             ></div>
             <div
                 class="legend-segment"
-                style="background: {partyData.tisza.color}; opacity: 0.3;"
+                style="background: {colors[4]}; opacity: 0.6;"
                 data-label="Tisza +15%"
             ></div>
         </div>
@@ -324,7 +325,7 @@
         transform: translateX(-50%);
         text-align: center;
         overflow: visible;
-        
+
         svg {
             width: 100%;
             height: 100%;
