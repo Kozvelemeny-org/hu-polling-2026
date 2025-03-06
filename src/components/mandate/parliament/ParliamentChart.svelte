@@ -198,7 +198,7 @@
     @media (min-width: 360px) {
         .chartInfos {
             .textContainer {
-                display: block;
+                display: flex;
             }
             hr {
                 border-width: 1px;
