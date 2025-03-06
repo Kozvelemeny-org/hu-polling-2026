@@ -1,5 +1,26 @@
+<script lang="ts">
+    import { onMount } from "svelte";
+
+    export let link = null as string | null;
+
+    let absoluteUrl = null as string | null;
+    let mounted = false;
+
+    onMount(() => mounted = true);
+
+    $: if (link && mounted) {
+        absoluteUrl = new URL(link, document.location.origin).toString();
+    }
+</script>
+
 <div class="item">
-    <slot />
+    {#if link}
+        <a href={absoluteUrl}>
+            <slot />
+        </a>
+    {:else}
+        <slot />
+    {/if}
 </div>
 
 <style lang="scss">
