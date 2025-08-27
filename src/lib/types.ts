@@ -23,9 +23,9 @@ export type PollData = Poll[];
 
 export type PollDataByPollster = Record<Pollster, Poll[]>;
 
-export type Pollster = 'IDEA' | 'ZRI' | 'Medián' | 'Nézőpont' | 'Publicus' |
+export type Pollster = 'IDEA' | 'Závecz RI' | 'Medián' | 'Nézőpont' | 'Publicus' |
                         'Republikon' | 'Századvég' | 'Iránytű' | 'Real-PR 93' |
-                        'TK' | '21 Kutató' | 'Civitas' | 'Alapjogokért Központ' |
+                        'Társadalomkutató' | '21 Kutató' | 'Civitas' | 'Alapjogokért Központ' |
                         'Psyma' | 'Ipsos' | 'e-benchmark' | 'Tárki';
 
 export type PollsterGroup = 'összes' | 'független' | 'kormányközeli' | 'ellenzéki';
@@ -71,7 +71,7 @@ export type ChartData = {
 
 export type DateRange = { start: Date, end: Date };
 
-export type Party = 'fidesz' | 'tisza' | 'dk_mszp_p' | 'mihazank' | 'mkkp' | 'momentum' | 'minority' | 'unsure';
+export type Party = 'fidesz' | 'tisza' | 'dk' | 'dk_mszp_p' | 'mihazank' | 'mkkp' | 'momentum' | 'minority' | 'unsure';
 
 export type PartyData = Record<Party, { name: string; color: string; }>;
 

@@ -11,6 +11,10 @@ export const partyData = {
         name: 'Tisza',
         color: '#00359c',
     },
+    'dk': {
+        name: 'DK',
+        color: '#007fff',
+    },
     'dk_mszp_p': {
         name: 'DK-MSZP-P',
         color: '#007fff',
@@ -54,7 +58,7 @@ export const pollsterData = {
         group: 'kormányközeli',
         color: '#f4a460',
     },
-    'TK': {
+    'Társadalomkutató': {
         name: 'Társadalomkutató',
         group: 'kormányközeli',
         color: '#eee8aa',
@@ -69,7 +73,7 @@ export const pollsterData = {
         group: 'független',
         color: '#4f94cd',
     },
-    'ZRI': {
+    'Závecz RI': {
         name: 'Závecz',
         group: 'független',
         color: '#473c8b',

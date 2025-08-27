@@ -100,7 +100,7 @@ export const charts: Record<string, ChartData> = {
     'ellenzek-2022-ota': {
         title: "Az ellenzéki térfél a választások óta",
         dataSelects: ["pollster_group"],
-        selectedParties: ["momentum", "mkkp", "mihazank", "dk_mszp_p", "tisza", "unsure"],
+        selectedParties: ["momentum", "mkkp", "mihazank", "dk", "dk_mszp_p", "tisza", "unsure"],
         dateRange: { start: new Date(2022, 0, 1), end: new Date() },
         annotations: [{
             id: "ogy-22",

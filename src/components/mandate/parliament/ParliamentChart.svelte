@@ -59,14 +59,14 @@
                       "fidesz",
                       "minority",
                       "mihazank",
-                      "dk_mszp_p",
+                      "dk",
                       "mkkp",
                       "tisza",
                   ]
                 : [
                       "tisza",
                       "mkkp",
-                      "dk_mszp_p",
+                      "dk",
                       "mihazank",
                       "minority",
                       "fidesz",
