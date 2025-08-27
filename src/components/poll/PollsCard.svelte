@@ -64,11 +64,11 @@
     <div class="description">
         <p>
             {#if dataSelects.includes("voter_type")}
-                a
-                <select bind:value={chartOptions.data}>
+                a biztos szavazók
+                <!-- <select bind:value={chartOptions.data}>
                     <option value={data.sure_voters}>biztos szavazók</option>
                     <option value={data.all_voters}>választókorúak</option>
-                </select>
+                </select> -->
                 körében {#if dataSelects.includes("pollster_group")}
                     ,
                 {:else}

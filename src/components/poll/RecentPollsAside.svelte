@@ -14,10 +14,10 @@
             >oldalunkon</a
         >.
     </p>
-    <div class="categSwitch">
+    <!-- <div class="categSwitch">
         <button class:active={selectedIndex == 'sure_voters'} on:click={() => selectedIndex = 'sure_voters'} >Biztos szavazók</button>
         <button class:active={selectedIndex == 'all_voters'} on:click={() => selectedIndex = 'all_voters'} >Választókorúak</button>
-    </div>
+    </div> -->
     <section class="pollsContainer">
         {#each data[selectedIndex]?.slice(0, 5) as poll}
             <RecentPollCard {poll} />
