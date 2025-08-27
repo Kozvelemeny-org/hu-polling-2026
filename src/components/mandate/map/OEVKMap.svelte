@@ -231,7 +231,7 @@
     }
 
     onMount(async () => {
-        
+        loadMap();
     });
 </script>
 
@@ -274,9 +274,9 @@
         </div>
     </div>
     <div id="map"></div>
-    <div id="loading-container">
+    <!-- <div id="loading-container">
         <button onclick={loadMap}>Load Map</button>
-    </div>
+    </div> -->
 </article>
 
 <style lang="scss">
