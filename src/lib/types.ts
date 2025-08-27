@@ -96,3 +96,17 @@ export type Annotation = {
 }
 
 export type DataSelect = 'voter_type' | 'pollster_group';
+
+// Generic series abstractions for charts
+export type SeriesId = string;
+export type SeriesKind = 'party' | 'pollster';
+
+export type SeriesDescriptor = {
+    id: SeriesId;
+    label: string;
+    color: string;
+    kind: SeriesKind;
+};
+
+export type SeriesPoint = { date: Date; value?: number };
+export type SeriesDaily = { date: Date; value?: number };
