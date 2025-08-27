@@ -7,6 +7,7 @@
 
 <section class="mandateTable">
     {#each Object.keys(data).sort((a, b) => data[b] - data[a]) as party, i}
+        {console.log(data)}
         <article>
             <header>
                 <div

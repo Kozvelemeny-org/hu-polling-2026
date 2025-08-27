@@ -185,7 +185,7 @@
         );
     }
 
-    onMount(async () => {
+    async function loadMap() {
         mapboxgl.accessToken = MAPBOX_ACCESS_TOKEN;
         await import("mapbox-gl/dist/mapbox-gl.css");
 
@@ -228,6 +228,10 @@
                 }
             });
         });
+    }
+
+    onMount(async () => {
+        
     });
 </script>
 
@@ -270,6 +274,9 @@
         </div>
     </div>
     <div id="map"></div>
+    <div id="loading-container">
+        <button onclick={loadMap}>Load Map</button>
+    </div>
 </article>
 
 <style lang="scss">

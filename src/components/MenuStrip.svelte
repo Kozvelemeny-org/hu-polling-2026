@@ -2,6 +2,8 @@
     import { onMount } from "svelte";
     import { page } from "$app/state";
 
+    import TiArrowForward from 'svelte-icons/ti/TiArrowForward.svelte'
+
     let currentPage = "";
 
     $: {
@@ -12,13 +14,13 @@
 <nav class="menuStrip">
     <ul>
         <a href="/" class="desktopOnly"><li class:activePage={page.url.pathname === "/"}>
-            <span>Áttekintés</span>
-        </li></a>
-        <a href="/kozvelemeny"><li class:activePage={page.url.pathname === "/kozvelemeny"}>
             <span>Közvélemény-kutatások</span>
         </li></a>
         <a href="/mandatumbecsles"><li class:activePage={page.url.pathname === "/mandatumbecsles"}>
             <span>Mandátumbecslés</span>
+        </li></a>
+        <a href="//kozvelemeny.org" target="_blank"><li class="externalLink">
+            <span>Vox Populi blog</span>
         </li></a>
     </ul>
 </nav>

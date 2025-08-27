@@ -32,6 +32,7 @@ export const charts: Record<string, ChartData> = {
     },
     'all-parties': {
         title: "Parlamentbe jutásra esélyes pártok támogatottsága",
+        selectedParties: ["tisza", "fidesz", "dk", "mihazank", "mkkp", "momentum"],
         dataSelects: ["pollster_group", "voter_type"],
         dateRange: { start: new Date(2018, 0, 1), end: new Date(2026, 3, 4) },
         annotations: [
@@ -58,6 +59,7 @@ export const charts: Record<string, ChartData> = {
     },
     'all-parties-wide': {
         title: "Parlamentbe jutásra esélyes pártok támogatottsága",
+        selectedParties: ["tisza", "fidesz", "dk", "mihazank", "mkkp", "momentum"],
         dataSelects: ["pollster_group", "voter_type"],
         dateRange: { start: new Date(2018, 0, 1), end: new Date(2026, 3, 4) },
         annotations: [
@@ -100,7 +102,7 @@ export const charts: Record<string, ChartData> = {
     'ellenzek-2022-ota': {
         title: "Az ellenzéki térfél a választások óta",
         dataSelects: ["pollster_group"],
-        selectedParties: ["momentum", "mkkp", "mihazank", "dk", "dk_mszp_p", "tisza", "unsure"],
+        selectedParties: ["momentum", "mkkp", "mihazank", "dk", "tisza", "unsure"],
         dateRange: { start: new Date(2022, 0, 1), end: new Date() },
         annotations: [{
             id: "ogy-22",

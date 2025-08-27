@@ -20,7 +20,7 @@
     $: data = $pollData;
 </script>
 
-<GridItem variant="full">
+<!-- <GridItem variant="full">
     <InteractivePollsCard
         {data}
         description="A közvélemény-kutatások eredményei alapján a következő mandátumokat kapnák a pártok az Országgyűlésben."
@@ -31,16 +31,13 @@
         pollsterGroup="összes"
         featured
     />
-</GridItem>
-<GridSectionTitle>A két esélyes</GridSectionTitle>
-<GridItem variant="aside">
-    <RecentPollsAside {data} />
-</GridItem>
-<GridItem variant="main">
-    <PollsCardFromData {data} chart_id="fidesz-tisza" />
+</GridItem> -->
+<!-- <GridSectionTitle>A többi párt</GridSectionTitle> -->
+<GridItem variant="full">
+    <PollsCardFromData {data} chart_id="all-parties-wide" />
 </GridItem>
 <GridItem variant="left-half">
-    <PollsCardFromData {data} chart_id="kiabrandult-fideszesek" />
+    <PollsCardFromData {data} chart_id="ellenzek-2022-ota" />
 </GridItem>
 <GridItem variant="right-half">
     <SectionCard>
@@ -59,12 +56,15 @@
         </p>
     </SectionCard>
 </GridItem>
-<GridSectionTitle>A többi párt</GridSectionTitle>
-<GridItem variant="full">
-    <PollsCardFromData {data} chart_id="all-parties-wide" />
+<GridSectionTitle>A két esélyes</GridSectionTitle>
+<GridItem variant="aside">
+    <RecentPollsAside {data} />
+</GridItem>
+<GridItem variant="main">
+    <PollsCardFromData {data} chart_id="fidesz-tisza" />
 </GridItem>
 <GridItem variant="left-half">
-    <PollsCardFromData {data} chart_id="ellenzek-2022-ota" />
+    <PollsCardFromData {data} chart_id="kiabrandult-fideszesek" />
 </GridItem>
 <GridItem variant="right-half">
     <SectionCard>
