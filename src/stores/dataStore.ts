@@ -61,7 +61,7 @@ export const pollsterData = {
     'Társadalomkutató': {
         name: 'Társadalomkutató',
         group: 'kormányközeli',
-        color: '#eee8aa',
+        color: '#1e73be',
     },
     'Real-PR 93': {
         name: 'Real-PR',
