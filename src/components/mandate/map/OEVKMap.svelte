@@ -8,6 +8,8 @@
 
     export let data = {} as Simulation["oevkDiffs"];
     export let highlightedOevk = null as string | null;
+    export let showInfoBar = true;
+    export let disableZoomPan = false;
 
     const dispatch = createEventDispatcher();
 
@@ -212,6 +214,7 @@
 
         map = new maplibregl.Map({
             container: "map",
+            attributionControl: false,
             style: {
                 version: 8,
                 sources: {
@@ -233,12 +236,15 @@
             minZoom: 4.5,
             maxZoom: 10,
             maxBounds: hungaryBounds,
-            bounds: hungaryBounds,
+            //bounds: hungaryBounds,
+            ...(disableZoomPan ? { scrollZoom: false, dragPan: false } : {}),
         });
 
         map.on("load", () => {
             mapLoaded = true;
-            map.addControl(new maplibregl.NavigationControl(), "top-right");
+            if (!disableZoomPan) {
+                map.addControl(new maplibregl.NavigationControl(), "top-right");
+            }
 
             // When hovering over a feature, update the colorbar arrow
             map.on("mousemove", (event) => {
@@ -270,6 +276,12 @@
                 showHighlight = false;
             });
         });
+
+        if (disableZoomPan) {
+            map.on("mouseover", () => {
+                map.getCanvas().style.cursor = "default";
+            });
+        }
     }
 
     onMount(async () => {
@@ -279,6 +291,7 @@
 
 <article id="mapContainer">
     <!-- Discrete Colorbar Legend -->
+    {#if showInfoBar}
     <div id="colorbar-container">
         <div id="colorbar">
             <!-- Five segments, each representing one discrete category -->
@@ -315,6 +328,7 @@
             </svg>
         </div>
     </div>
+    {/if}
     <div id="map"></div>
     <!-- <div id="loading-container">
         <button onclick={loadMap}>Load Map</button>
@@ -324,7 +338,6 @@
 <style lang="scss">
     #mapContainer {
         position: relative;
-        margin: 1rem 0;
     }
     #map {
         width: 100%;

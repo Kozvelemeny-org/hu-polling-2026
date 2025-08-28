@@ -20,6 +20,7 @@
     import ExplainerCard from "$components/section/ExplainerCard.svelte";
     import BottomMenu from "$components/ui/bottom-menu/BottomMenu.svelte";
     import BottomMenuItem from "$components/ui/bottom-menu/BottomMenuItem.svelte";
+    import OevkSectionCard from "$components/mandateProjection/OEVKSectionCard.svelte";
 
     let data = {
         sure_voters: [] as PollData,
@@ -88,6 +89,12 @@
     </SectionCard>
 </GridItem>
 <GridItem variant="right-half">
+    <OevkSectionCard
+        data={data.simulationData["main"]?.oevkDiffs}
+        simulationName={data.simulationData["main"]?.metadata.name}
+    />
+</GridItem>
+<GridItem variant="right-half">
     <SectionCard id="parliament-chart">
         <SectionTitle variant="medium">A legvalószínűbb parlament</SectionTitle>
         <p>
@@ -99,17 +106,7 @@
         <PartyMandateTable data={data.simulationData["main"]?.seats} />
     </SectionCard>
 </GridItem>
-<GridItem variant="right-half">
-    <SectionCard>
-        <SectionTitle variant="medium">Egyéni választókerületek térképe</SectionTitle>
-        <p>
-            Az alábbi térképen a 106 egyéni választókerület látható, és a 
-            <SimulationNameSpan>{data.simulationData["main"]?.metadata.name}</SimulationNameSpan>
-            szimuláció által becsült várható különbség a két esélyes párt között.
-        </p>
-        <OevkMap data={data.simulationData["main"]?.oevkDiffs} />
-    </SectionCard>
-</GridItem>
+
 
 <GridItem variant="full">
     <GridSectionTitle>Közvélemény-kutatások</GridSectionTitle>

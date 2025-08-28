@@ -6,7 +6,6 @@
     } from "$stores/dataStore";
     import type { Party, Simulation } from "$lib/types";
     import MandateProjectionAside from "../../components/mandate/MandateProjectionAside.svelte";
-    import OevkMap from "../../components/mandate/map/OEVKMap.svelte";
     import ParliamentChart from "../../components/mandate/parliament/ParliamentChart.svelte";
     import PartyMandateTable from "../../components/mandate/party/PartyMandateTable.svelte";
     import SectionCard from "../../components/section/SectionCard.svelte";
@@ -16,6 +15,7 @@
     import ExplainerCard from "../../components/section/ExplainerCard.svelte";
     import SimulationNameSpan from "../../components/mandate/SimulationNameSpan.svelte";
     import PartyProjectionsSection from "$components/mandate/party/PartyProjectionsSection.svelte";
+    import OevkSectionCard from "$components/mandateProjection/OEVKSectionCard.svelte";
 
     let data: Record<string, Simulation> = {};
     let selectedSimulation = "main";
@@ -62,24 +62,8 @@
     <PartyProjectionsSection {data} {selectedSimulation} />
 </GridItem>
 <GridItem variant="main">
-    <SectionCard>
-        <SectionTitle>Egyéni választókerületek térképe</SectionTitle>
-        <p>
-            Az alábbi térképen a 106 egyéni választókerület látható, és a
-            <SimulationNameSpan>
-                {data[selectedSimulation]?.metadata.name}
-            </SimulationNameSpan>
-            által becsült várható különbség a két esélyes párt között.
-        </p>
-        <ExplainerCard
-            image="/images/hungary-shape.webp"
-            alt="Választási földrajz"
-        >
-            A szimuláció azt feltételezi, hogy az EP-választás óta nem
-            változott a választási földrajz, de az ellenzéki szavazók
-            nagyobb része szavaz majd a Tiszára.
-            <a href="#">Módszertan</a>
-        </ExplainerCard>
-        <OevkMap data={data[selectedSimulation]?.oevkDiffs} />
-    </SectionCard>
+    <OevkSectionCard
+        data={data[selectedSimulation]?.oevkDiffs}
+        simulationName={data[selectedSimulation]?.metadata.name}
+    />
 </GridItem>

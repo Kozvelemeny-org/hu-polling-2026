@@ -1,9 +1,10 @@
 <script lang="ts">
     export let id = null as string | null;
     export let columns = null as string | null;
+    export let smallPadding = false;
 </script>
 
-<section {id}>
+<section {id} class:smallPadding>
     <slot />
 </section>
 
@@ -16,5 +17,9 @@
         padding-top: 8px;
         background-color: #fcfcfc;
         border: 1px solid #eee;
+
+        &.smallPadding {
+            padding-bottom: 8px;
+        }
     }
 </style>

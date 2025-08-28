@@ -11,11 +11,14 @@
 <nav class="menuStrip">
     <ul>
         <a href="/" class="desktopOnly"><li class:activePage={page.url.pathname === "/"}>
-            <span>Közvélemény-kutatások</span>
+            <span>Áttekintés</span>
         </li></a>
         <a href="/mandatumbecsles"><li class:activePage={page.url.pathname === "/mandatumbecsles"}>
             <span>Mandátumbecslés</span>
         </li></a>
+        <!-- <a href="/terkepek"><li class:activePage={page.url.pathname === "/terkepek"}>
+            <span>Térképek</span>
+        </li></a> -->
         <a href="//kozvelemeny.org" target="_blank"><li class="externalLink">
             <span>Vox Populi blog</span>
         </li></a>
