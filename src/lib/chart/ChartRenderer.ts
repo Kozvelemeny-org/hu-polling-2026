@@ -1,5 +1,5 @@
 import * as d3 from "d3";
-import type { DayData, AxisParams, Party, PollData, Annotation } from "../types";
+import type { DayData, AxisParams, Party, PollData, Annotation, SeriesDescriptor, SeriesDaily, SeriesPoint } from "../types";
 import { partyData } from "$stores/dataStore";
 
 interface ChartContext {
@@ -102,13 +102,18 @@ export class ChartRenderer {
     private annotations: Annotation[];
     private axisParams: AxisParams;
 
+    private seriesDescriptors: SeriesDescriptor[] = [];
+    private seriesPoints: Record<string, SeriesPoint[]> = {};
+    private seriesDaily: Record<string, SeriesDaily[]> = {};
+    private alignedDates: Date[] = [];
+
     constructor(containerElement: HTMLElement) {
         this.containerSizeCategory = "large";
         this.containerElement = containerElement;
 
         d3.select(containerElement).selectAll("*").remove();
 
-        this.clipPathId = `future-clip-${ChartRenderer.instanceCounter++}`;
+        this.clipPathId = `series-clip-${ChartRenderer.instanceCounter++}`;
 
         this.svg = d3.select(containerElement).append("svg");
         this.chartGroup = this.svg.append("g").attr("class", "chart-group");
@@ -175,35 +180,37 @@ export class ChartRenderer {
         this.setupChart();
         this.drawGridlines();
         this.drawAnnotations();
-        if (this.dailyData.length > 0) {
-            this.updateData(this.pollData, this.dailyData, this.selectedParties);
-            if (this.renderOptions.isInteractive) {
-                this.setupInteractivity();
-            }
-        }
     }
 
-    public updateData(pollData: PollData, dailyData: DayData[], selectedParties: Party[]) {
-        this.pollData = pollData;
-        this.dailyData = dailyData;
-        this.selectedParties = selectedParties;
+    public updateSeries(pointsBySeries: Record<string, SeriesPoint[]>, dailyBySeries: Record<string, SeriesDaily[]>, series: SeriesDescriptor[], pollData?: PollData, dates?: Date[]) {
+        if (pollData) this.pollData = pollData;
+        this.seriesDescriptors = series;
+        this.seriesPoints = pointsBySeries;
+        this.seriesDaily = dailyBySeries;
+        if (dates) this.alignedDates = dates;
 
+        // compute right margin based on furthest last x among series
         const availableWidth = this.context.width - this.margin.right;
-        const lastDataPointX = this.context.x(this.dailyData[this.dailyData.length - 1].date);
-
-        if (lastDataPointX + this.margin.right < availableWidth) {
-            this.margin.right = paddingLeftSizes[this.containerSizeCategory];
-        } else {
-            this.margin.right = lastDataPointX + this.margin.right - availableWidth;
+        const lastXs = Object.values(this.seriesDaily)
+            .map(arr => {
+                const a = Array.isArray(arr) ? arr : [];
+                const last = a[a.length - 1];
+                return last ? this.context.x(last.date) : null;
+            })
+            .filter((v): v is number => typeof v === 'number');
+        if (lastXs.length) {
+            const lastX = Math.max(...lastXs);
+            if (lastX + this.margin.right < availableWidth) {
+                this.margin.right = paddingLeftSizes[this.containerSizeCategory];
+            } else {
+                this.margin.right = lastX + this.margin.right - availableWidth;
+            }
         }
-
         this.context.x.range([this.margin.left, this.context.width - this.margin.right]);
         this.drawGridlines();
-
-        this.drawData();
-
+        this.drawGenericSeries();
         if (this.renderOptions.isInteractive) {
-            this.setupInteractivity();
+            this.setupInteractivityForSeries(this.alignedDates);
         }
     }
 
@@ -219,7 +226,12 @@ export class ChartRenderer {
         this.context.y.domain(newAxisParams.yLims);
 
         this.drawGridlines();
-        this.updateData(this.pollData, this.dailyData, this.selectedParties);
+        if (this.seriesDescriptors && this.seriesDescriptors.length > 0) {
+            this.drawGenericSeries();
+            if (this.renderOptions.isInteractive) {
+                this.setupInteractivityForSeries();
+            }
+        }
         this.updateAnnotations(this.annotations);
     }
 
@@ -267,23 +279,25 @@ export class ChartRenderer {
                 const g = enter.append("g")
                     .attr("class", "grid x-grid")
                     .attr("transform", `translate(0,${height - this.margin.bottom})`);
+                const axisBottom = d3.axisBottom(x) as any;
                 g.call(
-                    d3.axisBottom(x)
-                        .ticks(xTicks)
+                    axisBottom
+                        .ticks(xTicks as any)
                         .tickSizeInner(6)
                         .tickPadding(8)
-                        .tickFormat((d) => {
-                            if (axisParams.xTickLevel === 'quarter' && new Date(d).getMonth() === 0) {
-                                return new Date(d).toLocaleDateString("hu-HU", { year: "numeric" }).replace(".", "");
+                        .tickFormat((d: any) => {
+                            const dd: Date = new Date(d as any);
+                            if (axisParams.xTickLevel === 'quarter' && dd.getMonth() === 0) {
+                                return dd.toLocaleDateString("hu-HU", { year: "numeric" }).replace(".", "");
                             } else {
-                                return new Date(d).toLocaleDateString("hu-HU", dateFormatOptions).replace(".", "");
+                                return dd.toLocaleDateString("hu-HU", dateFormatOptions).replace(".", "");
                             }
                         })
                 );
 
                 // transform the labels by half the tick size if the xTickLevel is year
                 if (axisParams.xTickLevel === "year") {
-                    const tickSpacing = (width - this.margin.left - this.margin.right) / (this.context.x.ticks(xTicks).length - 1);
+                    const tickSpacing = (width - this.margin.left - this.margin.right) / ((this.context.x.ticks(xTicks as any) as any[]).length - 1);
                     g.selectAll("text")
                         .attr("transform", `translate(${tickSpacing / 2}, 0)`)
                         .attr("dy", "6px")
@@ -301,15 +315,16 @@ export class ChartRenderer {
             update => {
                 update.attr("transform", `translate(${this.margin.top},${height - this.margin.bottom})`)
                     .call(
-                        d3.axisBottom(x)
-                            .ticks(xTicks)
+                        (d3.axisBottom(x) as any)
+                            .ticks(xTicks as any)
                             .tickSizeInner(6)
                             .tickPadding(8)
-                            .tickFormat((d) => {
-                                if (axisParams.xTickLevel === 'quarter' && new Date(d).getMonth() === 0) {
-                                    return new Date(d).toLocaleDateString("hu-HU", { year: "numeric" }).replace(".", "");
+                            .tickFormat((d: any) => {
+                                const dd: Date = new Date(d as any);
+                                if (axisParams.xTickLevel === 'quarter' && dd.getMonth() === 0) {
+                                    return dd.toLocaleDateString("hu-HU", { year: "numeric" }).replace(".", "");
                                 } else {
-                                    return new Date(d).toLocaleDateString("hu-HU", dateFormatOptions).replace(".", "");
+                                    return dd.toLocaleDateString("hu-HU", dateFormatOptions).replace(".", "");
                                 }
                             })
                     );
@@ -332,11 +347,12 @@ export class ChartRenderer {
             enter => {
                 const g = enter.append("g")
                     .attr("class", "grid y-grid y-grid-left");
-                g.call(
-                    d3.axisLeft(y)
+                const axisLeft = d3.axisLeft(y) as any;
+                (g as any).call(
+                    axisLeft
                         .tickValues(axisParams.ticks)
-                        .tickSize(-leftGridWidth)
-                        .tickFormat((d) => `${Math.round(d * 100)}`)
+                        .tickSize(-(leftGridWidth as number))
+                        .tickFormat((d: any) => `${Math.round((d as number) * 100)}`)
                         .tickPadding(-15)
                 );
                 g.select(".domain").remove();
@@ -347,11 +363,11 @@ export class ChartRenderer {
                 return g;
             },
             update => {
-                update.call(
-                    d3.axisLeft(y)
+                (update as any).call(
+                    (d3.axisLeft(y) as any)
                         .tickValues(axisParams.ticks)
-                        .tickSize(-leftGridWidth)
-                        .tickFormat((d) => `${Math.round(d * 100)}`)
+                        .tickSize(-(leftGridWidth as number))
+                        .tickFormat((d: any) => `${Math.round((d as number) * 100)}`)
                         .tickPadding(-15)
                 );
                 update.select(".domain").remove();
@@ -367,8 +383,8 @@ export class ChartRenderer {
                 .append("g")
                 .attr("class", "grid y-grid-right")
                 .call(
-                    d3
-                        .axisRight(y)
+                    (d3
+                        .axisRight(y) as any)
                         .tickValues(this.axisParams.ticks)
                         .tickSize(-this.margin.right)
                         .tickFormat(null)
@@ -431,97 +447,250 @@ export class ChartRenderer {
         });
     }
 
-    private drawData() {
-        for (const party of this.selectedParties) {
-            this.drawPollDots(party);
-            this.drawTrendLine(party);
-            this.dataGroup.selectAll('.foreground').attr("clip-path", `url(#${this.clipPathId})`);
+    private drawGenericSeries() {
+        // dots
+        const { x, y } = this.context;
+        const flatPoints: any[] = [];
+        for (const [seriesId, pts] of Object.entries(this.seriesPoints)) {
+            for (const p of pts) flatPoints.push({ seriesId, p });
+        }
+        const dotSel = this.dataGroup.selectAll('.series-dot').data(
+            flatPoints.filter((d: any) => d.p.value !== undefined && d.p.value !== null && d.p.value > 0.01) as any,
+            (d: any) => (d.p.date.getTime() + '|' + d.seriesId)
+        );
+        dotSel
+            .join(
+                enter => enter.append('circle')
+                    .attr('class', (d: any) => `series-dot series-${d.seriesId}`)
+                    .attr('clip-path', 'unset')
+                    .attr('cx', (d: any) => x(d.p.date))
+                    .attr('cy', (d: any) => y(d.p.value))
+                    .attr('r', dotSizes[this.axisParams.xTickLevel][this.containerSizeCategory])
+                    .attr('opacity', 0)
+                    .attr('fill', (d: any) => this.findSeriesColor(d.seriesId))
+                    .call(enter => enter.transition().duration(500).attr('opacity', 0.18)),
+                update => update
+                    .transition().duration(500)
+                    .attr('opacity', 0.16)
+                    .attr('r', dotSizes[this.axisParams.xTickLevel][this.containerSizeCategory])
+                    .attr('cx', (d: any) => x(d.p.date))
+                    .attr('cy', (d: any) => y(d.p.value)),
+                exit => exit.transition().duration(500).attr('opacity', 0).remove()
+            );
+
+        // lines
+        for (const s of this.seriesDescriptors) {
+            const line = d3.line<SeriesDaily>()
+                .x(d => x(d.date))
+                .y(d => y(d.value as number))
+                .curve(d3.curveMonotoneX);
+            const lineData = (this.seriesDaily[s.id] || []).filter(d => d.value !== undefined);
+
+            this.dataGroup
+                .selectAll(`.series-${s.id}-line`)
+                .data([lineData])
+                .join(
+                    enter => enter.append('path')
+                        .attr('class', `series-${s.id}-line`)
+                        .attr('clip-path', 'unset')
+                        .attr('fill', 'none')
+                        .attr('stroke', s.color)
+                        .attr('stroke-width', lineWidths[this.containerSizeCategory] * 6)
+                        .attr('stroke-linecap', 'round')
+                        .attr('opacity', 0.07)
+                        .attr('d', line),
+                    update => update
+                        .attr('clip-path', 'unset')
+                        .transition().duration(500)
+                        .attr('d', line),
+                    exit => exit.remove()
+                );
+
+            this.dataGroup
+                .selectAll(`.series-${s.id}-foreground-line`)
+                .data([lineData])
+                .join(
+                    enter => enter.append('path')
+                        .attr('class', `series-${s.id}-foreground-line foreground`)
+                        .attr('clip-path', `url(#${this.clipPathId})`)
+                        .attr('fill', 'none')
+                        .attr('stroke', s.color)
+                        .attr('stroke-width', lineWidths[this.containerSizeCategory])
+                        .attr('opacity', 1)
+                        .attr('d', line),
+                    update => update
+                        .attr('clip-path', `url(#${this.clipPathId})`)
+                        .transition().duration(500).attr('d', line),
+                    exit => exit.remove()
+                );
         }
     }
 
-    private drawTrendLine(party: Party) {
-        const { x, y } = this.context;
-
-        const line = d3.line<DayData>()
-            .x((d) => x(d.date))
-            .y((d) => y(d[party] as number))
-            .curve(d3.curveMonotoneX);
-
-        const lineData = this.dailyData.filter(d => d[party] !== undefined);
-
-        this.dataGroup
-            .selectAll(`.${party}-trend-line`)
-            .data([lineData])
-            .join(
-                enter => enter.append("path")
-                    .attr("class", `${party}-trend-line`)
-                    .attr("clip-path", `url(#${this.clipPathId})`)
-                    .attr("fill", "none")
-                    .attr("stroke", partyData[party].color)
-                    .attr("stroke-width", lineWidths[this.containerSizeCategory])
-                    .attr("opacity", 1)
-                    .attr("d", line),
-
-                update => update
-                    .attr("clip-path", `url(#${this.clipPathId})`)
-                    .transition().duration(500)
-                    .attr("d", line),
-
-                exit => exit.remove()
-            );
-
-        this.dataGroup
-            .selectAll(`.${party}-foreground-line`)
-            .data([lineData])
-            .join(
-                enter => enter.append("path")
-                    .attr("class", `${party}-foreground-line`)
-                    .attr("fill", "none")
-                    .attr("stroke", partyData[party].color)
-                    .attr("stroke-width", lineWidths[this.containerSizeCategory] * 6)
-                    .attr("stroke-linecap", "round")
-                    .attr("opacity", 0.07)
-                    .attr("d", line),
-
-                update => update.transition().duration(500).attr("d", line),
-
-                exit => exit.remove()
-            );
+    private findSeriesColor(seriesId: string): string {
+        const s = this.seriesDescriptors.find(sd => sd.id === seriesId);
+        return s?.color ?? '#777';
     }
 
-    private drawPollDots(party: Party) {
-        const { x, y } = this.context;
+    private setupInteractivityForSeries(dates?: Date[]) {
+        const { x, y, width, height } = this.context;
 
-        const pollDots = this.dataGroup
-            .selectAll(`.${party}-dot`)
-            .data(
-                this.pollData
-                    .filter(d => d[party] !== undefined && d[party] !== null && d[party] > 0.01),
-                (d) => d.date.getTime() // Use date as a unique key for better data binding
+        this.hoverLine
+            .attr("stroke", "#000")
+            .attr("stroke-width", 0.75)
+            .attr("y1", this.margin.top)
+            .attr("y2", height - this.margin.bottom)
+            .attr("opacity", 0);
+
+        this.mouseEventRect
+            .attr("width", width)
+            .attr("height", height)
+            .style("fill", "none")
+            .style("pointer-events", "all")
+            .style("touch-action", "none")
+            .on("pointerdown", (event) => {
+                event.target.setPointerCapture(event.pointerId);
+                this.handleMouseMoveSeries(event, dates ?? this.alignedDates);
+            })
+            .on("pointermove", (event) => {
+                this.handleMouseMoveSeries(event, dates ?? this.alignedDates);
+            })
+            .on("pointerup pointercancel", (event) => {
+                event.target.releasePointerCapture(event.pointerId);
+                this.updateSeriesTooltipsToLast(dates ?? this.alignedDates);
+            })
+            .on("mouseleave", () => {
+                this.updateSeriesTooltipsToLast(dates ?? this.alignedDates);
+            });
+
+        this.mouseEventRect.node()?.addEventListener("touchmove", (event) => event.preventDefault());
+
+        // ensure clipPath exists and is initialized to "now"
+        let clipPathSelection = this.svgDefs.selectAll(`#${this.clipPathId}`).data([null]);
+        clipPathSelection.join(
+            enter => {
+                const clipPath = enter.append("clipPath")
+                    .attr("id", this.clipPathId)
+                    .append("rect")
+                    .attr("x", 0)
+                    .attr("y", 0)
+                    .attr("width", x(new Date()))
+                    .attr("height", height);
+                return clipPath;
+            },
+            update => {
+                update.select("rect")
+                    .attr("x", 0)
+                    .attr("y", 0)
+                    .attr("width", x(new Date()))
+                    .attr("height", height);
+                return update;
+            }
+        );
+
+        this.updateSeriesTooltipsToLast(dates ?? this.alignedDates);
+    }
+
+    private handleMouseMoveSeries(event: MouseEvent | TouchEvent, dates?: Date[]) {
+        const { x } = this.context;
+        const [mouseX] = d3.pointer(event, event.currentTarget as any);
+        const hoveredDate = x.invert(mouseX);
+        if (!dates || dates.length === 0) return;
+        const nearestDate = dates.reduce((prev, curr) => Math.abs(curr.getTime() - hoveredDate.getTime()) < Math.abs(prev.getTime() - hoveredDate.getTime()) ? curr : prev);
+        this.updateSeriesTooltips(nearestDate);
+    }
+
+    private updateSeriesTooltipsToLast(dates?: Date[]) {
+        if (!dates || dates.length === 0) return;
+        this.updateSeriesTooltips(dates[dates.length - 1]);
+    }
+
+    private updateSeriesTooltips(date: Date) {
+        const { x, y, height } = this.context;
+        this.tooltipGroup.selectAll("*").remove();
+
+        this.hoverLine
+            .attr("x1", x(date))
+            .attr("x2", x(date))
+            .attr("opacity", 1);
+
+        const dateLabel = this.tooltipGroup.append("text")
+            .attr("x", x(date))
+            .attr("y", -6 + this.margin.top)
+            .attr("text-anchor", "middle")
+            .attr("fill", "#222")
+            .attr("font-size", `${gridLabelSizes[this.containerSizeCategory]}px`)
+            .style("font-weight", "400")
+            .text(
+                date.toLocaleDateString("hu-HU", {
+                    year: new Date().getFullYear() === date.getFullYear() ? undefined : "numeric",
+                    month: new Date().getFullYear() === date.getFullYear() ? "long" : "short",
+                    day: "numeric",
+                }),
             );
 
-        pollDots
-            .join(
-                enter => enter.append("circle")
-                    .attr("class", party + "-dot")
-                    .attr("cx", (d) => x(d.date))
-                    .attr("cy", (d) => y(d[party] as number))
-                    .attr("r", dotSizes[this.axisParams.xTickLevel][this.containerSizeCategory])
-                    .attr("opacity", 0)
-                    .attr("fill", partyData[party].color)
-                    .call(enter => enter.transition().duration(500).attr("opacity", 0.15)),
+        const positions: { seriesId: string; x: number; y: number; value: number; color: string; label: string }[] = [];
+        for (const s of this.seriesDescriptors) {
+            const seriesArr = this.seriesDaily[s.id] || [];
+            const point = seriesArr.find(d => +d.date === +date);
+            if (!point || point.value === undefined) continue;
+            positions.push({ seriesId: s.id, x: x(date), y: y(point.value), value: point.value, color: s.color, label: s.label });
+        }
+        // robust, bounded collision resolution
+        const minDistance = partyLabelSizes[this.containerSizeCategory] + 1;
+        const sorted = positions.slice().sort((a, b) => a.y - b.y);
+        const targetYs = sorted.map(p => p.y);
+        const resolvedYs = this.resolveVerticalOverlaps(targetYs, minDistance);
+        const adjusted: { x: number; y: number; oldY: number; text: string; color: string }[] = sorted.map((p, i) => ({
+            x: p.x,
+            y: resolvedYs[i],
+            oldY: p.y,
+            text: `${p.label} ${(p.value * 100).toFixed(0)}`,
+            color: p.color,
+        }));
 
-                update => update
-                    .transition().duration(500)
-                    .attr("opacity", 0.12) // Necessary
-                    .attr("r", dotSizes[this.axisParams.xTickLevel][this.containerSizeCategory]) // Necessary
-                    .attr("cx", (d) => x(d.date))
-                    .attr("cy", (d) => y(d[party] as number)),
+        adjusted.forEach((t) => {
+            this.tooltipGroup.append("circle")
+                .attr("cx", t.x + 8)
+                .attr("cy", t.y)
+                .attr("r", Math.max(dotSizes[this.axisParams.xTickLevel][this.containerSizeCategory] * 1.8, 4))
+                .attr("fill", t.color)
+                .attr("stroke", "#f9f9f9")
+                .attr("stroke-width", 1);
 
-                exit => exit
-                    .transition().duration(500).attr("opacity", 0)
-                    .remove()
-            );
+            this.tooltipGroup.append("text")
+                .attr("x", t.x + 16)
+                .attr("y", t.y + 1)
+                .attr("text-anchor", "start")
+                .attr("alignment-baseline", "middle")
+                .attr("stroke", "#f9f9f9")
+                .attr("stroke-width", 2)
+                .style("font-size", partyLabelSizes[this.containerSizeCategory])
+                .style("font-weight", 400)
+                .attr("paint-order", "stroke")
+                .attr("fill", t.color)
+                .text(t.text);
+        });
+
+        adjusted.forEach((t) => {
+            if (Math.abs(t.oldY - t.y) > 0) {
+                this.tooltipGroup.append("line")
+                    .attr("x1", t.x)
+                    .attr("x2", t.x + 8)
+                    .attr("y1", t.oldY)
+                    .attr("y2", t.y)
+                    .attr("stroke", t.color)
+                    .attr("stroke-width", 1)
+                    .attr("linecap", "round")
+                    .lower();
+            }
+        });
+
+        // update clip to current date
+        const clipRect = this.svg.select("#" + this.clipPathId + " rect");
+        clipRect
+            .attr("x", 0)
+            .attr("width", Math.max(0, x(date)))
+            .attr("height", height);
     }
 
     private setupInteractivity() {
@@ -579,7 +748,9 @@ export class ChartRenderer {
             }
         );
 
-        this.updateTooltips(this.dailyData[this.dailyData.length - 1]);
+        if (this.dailyData && this.dailyData.length > 0) {
+            this.updateTooltips(this.dailyData[this.dailyData.length - 1]);
+        }
     }
 
     private handleMouseMove(event: MouseEvent | TouchEvent) {
@@ -659,29 +830,18 @@ export class ChartRenderer {
             }
         });
 
-        tooltipPositions.sort((a, b) => b.y - a.y);
-
-        const adjustedPositions: { x: number; y: number; oldY: number; text: string, color: string }[] = [];
+        // robust, bounded collision resolution for legacy party tooltips
         const minDistance = partyLabelSizes[this.containerSizeCategory] + 1;
-
-        tooltipPositions.forEach((tooltip, i) => {
-            let newY = tooltip.y;
-
-            if (i > 0) {
-                const prev = adjustedPositions[i - 1];
-                if (Math.abs(prev.y - newY) < minDistance) {
-                    newY = prev.y - minDistance;
-                }
-            }
-
-            adjustedPositions.push({
-                x: tooltip.x,
-                y: newY,
-                oldY: tooltip.y,
-                text: `${partyData[tooltip.party].name} ${(tooltip.value * 100).toFixed(0)}`,
-                color: partyData[tooltip.party].color,
-            });
-        });
+        const sorted = tooltipPositions.slice().sort((a, b) => a.y - b.y);
+        const targetYs = sorted.map(p => p.y);
+        const resolvedYs = this.resolveVerticalOverlaps(targetYs, minDistance);
+        const adjustedPositions: { x: number; y: number; oldY: number; text: string, color: string }[] = sorted.map((tooltip, i) => ({
+            x: tooltip.x,
+            y: resolvedYs[i],
+            oldY: tooltip.y,
+            text: `${partyData[tooltip.party].name} ${(tooltip.value * 100).toFixed(0)}`,
+            color: partyData[tooltip.party].color,
+        }));
 
         // Render adjusted tooltips
         adjustedPositions.forEach((tooltip) => {
@@ -721,5 +881,47 @@ export class ChartRenderer {
                     .lower();
             }
         });
+    }
+
+    // Ensure labels are within bounds and separated by at least minDistance.
+    // Uses two-pass constraint solving with dynamic spacing when space is insufficient.
+    private resolveVerticalOverlaps(targetYs: number[], minDistance: number): number[] {
+        if (targetYs.length === 0) return [];
+
+        const topBound = this.margin.top;
+        const bottomBound = this.context.height - this.margin.bottom;
+        const count = targetYs.length;
+
+        // If there isn't enough vertical space for the requested spacing, relax spacing uniformly
+        const available = Math.max(0, bottomBound - topBound);
+        let spacing = minDistance;
+        if (count > 1 && (count - 1) * spacing > available) {
+            spacing = available / (count - 1);
+        }
+
+        // Work on a copy and sort ascending by Y while tracking original order via indices
+        const indices = targetYs.map((_, i) => i).sort((a, b) => targetYs[a] - targetYs[b]);
+        const ys = indices.map(i => Math.min(Math.max(targetYs[i], topBound), bottomBound));
+
+        // Forward pass: enforce minimum spacing from top to bottom and progressive lower bounds
+        ys[0] = Math.max(ys[0], topBound);
+        for (let i = 1; i < ys.length; i++) {
+            const minAllowed = topBound + i * spacing;
+            ys[i] = Math.max(ys[i], ys[i - 1] + spacing, minAllowed);
+        }
+
+        // Backward pass: enforce minimum spacing from bottom to top and progressive upper bounds
+        ys[ys.length - 1] = Math.min(ys[ys.length - 1], bottomBound);
+        for (let i = ys.length - 2; i >= 0; i--) {
+            const maxAllowed = bottomBound - (ys.length - 1 - i) * spacing;
+            ys[i] = Math.min(ys[i], ys[i + 1] - spacing, maxAllowed);
+        }
+
+        // Map back to original order
+        const resolved: number[] = new Array(count);
+        for (let i = 0; i < indices.length; i++) {
+            resolved[indices[i]] = ys[i];
+        }
+        return resolved;
     }
 }

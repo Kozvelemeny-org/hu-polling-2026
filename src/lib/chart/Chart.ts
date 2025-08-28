@@ -1,7 +1,8 @@
 import { ChartRenderer } from "./ChartRenderer";
 import { ChartDataProcessor } from "./ChartDataProcessor";
-import type { Annotation, AxisParams, DateRange, DayData, Party, PollData, PollsterGroup } from "../types";
-import { partyData } from "$stores/dataStore";
+import { axisFrom } from "./core/AxisCalculator";
+import type { Annotation, DateRange, Party, PollData, PollsterGroup, Pollster, SeriesDaily, SeriesPoint, SeriesDescriptor } from "../types";
+import { partyData, pollsterData } from "$stores/dataStore";
 
 export class Chart {
     private containerElement: HTMLElement;
@@ -14,7 +15,14 @@ export class Chart {
     private renderOptions: Record<string, unknown> | undefined;
     private renderer: ChartRenderer;
     private dataProcessor: ChartDataProcessor;
-    private processedData: [PollData, DayData[], number] | null = null;
+    private latestSeries: {
+        data: PollData;
+        pointsBySeries: Record<string, SeriesPoint[]>;
+        dailyBySeries: Record<string, SeriesDaily[]>;
+        series: SeriesDescriptor[];
+        dates: Date[];
+        windowDays: number;
+    } | null = null;
     private resizeDebounce: number | null = null;
 
     public windowDays = 0;
@@ -116,16 +124,27 @@ export class Chart {
             this.renderOptions
         );
 
-        this.processedData = this.dataProcessor.processData();
-        this.windowDays = this.processedData[2];
-        this.renderer.updateData(this.processedData[0], this.processedData[1], this.selectedParties);
+        const mode = (this.renderOptions && (this.renderOptions as any)['seriesMode']) || 'party';
+        let payload: any;
+        if (mode === 'pollster') {
+            const selectedParty = ((this.renderOptions as any)['selectedParty'] as Party) ?? this.selectedParties[0];
+            const selectedPollsters = ((this.renderOptions as any)['selectedPollsters'] as Pollster[]) ?? (Object.keys(pollsterData) as unknown as Pollster[]);
+            payload = this.dataProcessor.processPollsterSeries(selectedParty, selectedPollsters);
+        } else {
+            payload = this.dataProcessor.processPartySeries();
+        }
+        this.latestSeries = payload;
+        this.windowDays = payload.windowDays;
+        this.renderer.updateSeries(payload.pointsBySeries, payload.dailyBySeries, payload.series, payload.data, payload.dates);
     }
     
     private updateAxis() {
-        if (!this.processedData) {
-            this.processedData = this.dataProcessor.processData();
-            this.windowDays = this.processedData[2];
+        if (!this.latestSeries) {
+            this.updateChartData();
+            if (!this.latestSeries) return;
         }
-        this.renderer.updateAxisLimits(this.dataProcessor.getAxisParams(this.processedData[1], !!this.annotations.length));
+        const { dailyBySeries } = this.latestSeries;
+        const axisParams = axisFrom(dailyBySeries, this.dateRange, (this.renderOptions as any)?.yLims, !!this.annotations.length);
+        this.renderer.updateAxisLimits(axisParams);
     }
 }

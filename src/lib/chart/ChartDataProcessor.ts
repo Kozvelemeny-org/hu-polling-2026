@@ -1,7 +1,10 @@
 import * as d3 from "d3";
-import type { PollData, DateRange, Party, AxisParams, DayData, PollsterGroup, PollsterData } from "../types";
-import { pollsterData } from "$stores/dataStore";
-
+import type { PollData, DateRange, Party, AxisParams, DayData, PollsterGroup, Pollster, SeriesDescriptor, SeriesDaily, SeriesPoint } from "../types";
+import { buildSeriesData } from "./core/SeriesDataBuilder";
+import { axisFrom } from "./core/AxisCalculator";
+import { pollsterData, partyData } from "$stores/dataStore";
+import { filterByDateRange, filterByPollsterGroup, applyPartyIntervalsFilter } from "./core/PollDataFilter";
+import { smoothSeries, type SmoothingMethod } from "./core/Smoother";
 export class ChartDataProcessor {
     private pollData: PollData;
     private dateRange: DateRange;
@@ -56,14 +59,15 @@ export class ChartDataProcessor {
     }
 
     public processData(): [PollData, DayData[], number] {
-        let data = this.applyPollsterGroupFilter(this.pollData);
-        
-        data = this.applyDateRangeFilter(data);
-        data = this.applyPartyIntervalsFilter(data);
+        const method: SmoothingMethod = (this.renderOptions?.smoothing === "lowess") ? 'lowess' : 'ma';
 
-        const dateExtent = d3.extent(data, (d) => d.date) as [Date, Date];
-        
-        const windowDays = dateExtent[1].getTime() - dateExtent[0].getTime() < 2 * 365 * 24 * 60 * 60 * 1000 ? 30 : 90;
+        let data = filterByPollsterGroup(this.pollData, this.selectedPollsterGroup);
+        data = filterByDateRange(data, this.dateRange);
+        data = applyPartyIntervalsFilter(data, this.partyIntervals);
+
+        const dateExtent = d3.extent(data, (d) => d.date) as [Date | undefined, Date | undefined];
+        const windowDays = (dateExtent[0] && dateExtent[1] && (dateExtent[1].getTime() - dateExtent[0].getTime()) < 2 * 365 * 24 * 60 * 60 * 1000) ? 30 : 90;
+        const dates = (dateExtent[0] && dateExtent[1]) ? d3.timeDay.range(dateExtent[0], dateExtent[1]) : [];
 
         const dayData = this.renderOptions?.smoothing === "lowess" ?
             this.calculateLOWESS(data, windowDays) :
@@ -142,7 +146,7 @@ export class ChartDataProcessor {
     
         for (const date of dates) {
             const weights: number[] = [];
-            const localPoints: { date: Date; values: Record<Party, number> }[] = [];
+            const localPoints: { date: Date; values: Partial<Record<Party, number>> }[] = [];
     
             for (const poll of pollData) {
                 const distance = Math.abs(poll.date.getTime() - date.getTime()) / (windowDays * 24 * 60 * 60 * 1000);
@@ -155,7 +159,7 @@ export class ChartDataProcessor {
     
             for (const party of this.selectedParties) {
                 const weightedValues = localPoints
-                    .map((point, i) => (point.values[party] ? point.values[party] * weights[i] : 0))
+                    .map((point, i) => (point.values[party] !== undefined ? (point.values[party] as number) * weights[i] : 0))
                     .filter(v => v > 0);
                 
                 const weightSum = weights.reduce((a, b) => a + b, 0);
@@ -168,5 +172,111 @@ export class ChartDataProcessor {
         }
     
         return smoothedData;
+    }
+
+    public processPollsterSeries(selectedParty: Party, pollsters: Pollster[]): {
+        data: PollData;
+        pointsBySeries: Record<string, SeriesPoint[]>;
+        dailyBySeries: Record<string, SeriesDaily[]>;
+        axisParams: AxisParams;
+        series: SeriesDescriptor[];
+        dates: Date[];
+        windowDays: number;
+    } {
+        const method: SmoothingMethod = (this.renderOptions?.smoothing === "lowess") ? 'lowess' : 'ma';
+
+        let data = filterByPollsterGroup(this.pollData, this.selectedPollsterGroup);
+        data = filterByDateRange(data, this.dateRange);
+        data = applyPartyIntervalsFilter(data, this.partyIntervals);
+
+        const dateExtent = d3.extent(data, (d) => d.date) as [Date | undefined, Date | undefined];
+        const windowDays = (dateExtent[0] && dateExtent[1] && (dateExtent[1].getTime() - dateExtent[0].getTime()) < 2 * 365 * 24 * 60 * 60 * 1000) ? 30 : 90;
+
+        // sanitize IDs for CSS usage
+        const toId = (name: string) => name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+        const allowed = new Set(pollsters);
+        const series: SeriesDescriptor[] = Array.from(new Set(data.map(d => d.pollster)))
+            .filter(p => allowed.has(p as Pollster))
+            .map((p) => ({
+                id: toId(p),
+                label: p,
+                color: pollsterData[p as Pollster]?.color ?? '#777',
+                kind: 'pollster',
+            }));
+        
+        // Optionally add overall average series for the selected party (uses all pollsters in the current group)
+        const showAvg: boolean = !!(this.renderOptions as any)?.showPartyAverageInPollster;
+        const averageSeriesId = `avg-${selectedParty}`;
+        if (showAvg) {
+            series.push({
+                id: averageSeriesId,
+                label: `${partyData[selectedParty].name} – átlag`,
+                color: '#aaa',
+                kind: 'party',
+            });
+        }
+
+        const getValueForSeries = (s: SeriesDescriptor, poll: any) => poll[selectedParty] as number | undefined;
+        const filterForSeries = (s: SeriesDescriptor, poll: any) => {
+            // For the average series, include all polls within the current pollster group and date range
+            if (showAvg && s.id === averageSeriesId) return true;
+            // For pollster series, include only that pollster
+            return toId(poll.pollster) === s.id;
+        };
+
+        const { pointsBySeries, dailyBySeries, dates } = buildSeriesData(
+            data,
+            series,
+            getValueForSeries,
+            filterForSeries,
+            method,
+            windowDays
+        );
+
+        const axisParams = axisFrom(dailyBySeries, this.dateRange, this.renderOptions?.yLims as [number, number] | undefined, false);
+
+        return { data, pointsBySeries, dailyBySeries, axisParams, series, dates, windowDays };
+    }
+
+    public processPartySeries(): {
+        data: PollData;
+        pointsBySeries: Record<string, SeriesPoint[]>;
+        dailyBySeries: Record<string, SeriesDaily[]>;
+        axisParams: AxisParams;
+        series: SeriesDescriptor[];
+        dates: Date[];
+        windowDays: number;
+    } {
+        const method: SmoothingMethod = (this.renderOptions?.smoothing === "lowess") ? 'lowess' : 'ma';
+
+        let data = filterByPollsterGroup(this.pollData, this.selectedPollsterGroup);
+        data = filterByDateRange(data, this.dateRange);
+        data = applyPartyIntervalsFilter(data, this.partyIntervals);
+
+        const dateExtent = d3.extent(data, (d) => d.date) as [Date, Date];
+        const windowDays = dateExtent[1].getTime() - dateExtent[0].getTime() < 2 * 365 * 24 * 60 * 60 * 1000 ? 30 : 90;
+
+        const series: SeriesDescriptor[] = this.selectedParties.map(p => ({
+            id: p,
+            label: partyData[p].name,
+            color: partyData[p].color,
+            kind: 'party',
+        }));
+
+        const getValueForSeries = (s: SeriesDescriptor, poll: any) => poll[s.id as Party] as number | undefined;
+        const filterForSeries = (_s: SeriesDescriptor, _poll: any) => true;
+
+        const { pointsBySeries, dailyBySeries, dates } = buildSeriesData(
+            data,
+            series,
+            getValueForSeries,
+            filterForSeries,
+            method,
+            windowDays
+        );
+
+        const axisParams = axisFrom(dailyBySeries, this.dateRange, this.renderOptions?.yLims as [number, number] | undefined, false);
+
+        return { data, pointsBySeries, dailyBySeries, axisParams, series, dates, windowDays };
     }
 }

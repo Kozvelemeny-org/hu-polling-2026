@@ -63,18 +63,17 @@
     <h1>{title}</h1>
     <div class="description">
         <p>
-            {#if dataSelects.includes("voter_type")}
-                a biztos szavazók
-                <!-- <select bind:value={chartOptions.data}>
+            a biztos szavazók körében{#if dataSelects.includes("pollster_group")}
+                ,
+            {:else}
+                .
+            {/if}
+            <!-- {#if dataSelects.includes("voter_type")}
+                <select bind:value={chartOptions.data}>
                     <option value={data.sure_voters}>biztos szavazók</option>
                     <option value={data.all_voters}>választókorúak</option>
-                </select> -->
-                körében {#if dataSelects.includes("pollster_group")}
-                    ,
-                {:else}
-                    .
-                {/if}
-            {/if}
+                </select>
+            {/if} -->
             {#if dataSelects.includes("pollster_group")}
                 {articleMap[chartOptions.pollsterGroupIndex]}
                 <select bind:value={chartOptions.pollsterGroupIndex}>
