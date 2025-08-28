@@ -1,19 +1,22 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    import mapboxgl, { type LngLatBoundsLike } from "mapbox-gl";
+    import maplibregl from "maplibre-gl";
+    import * as pmtiles from "pmtiles";
+
     import { partyData } from "$stores/dataStore";
     import type { Simulation } from "$lib/types";
 
     export let data = {} as Simulation["oevkDiffs"];
 
-    let map: mapboxgl.Map;
+    const protocol = new pmtiles.Protocol();
+    maplibregl.addProtocol("pmtiles", protocol.tile);
+
+    let map: maplibregl.Map;
     let mapLoaded = false;
     let geojsonData: GeoJSON.FeatureCollection;
     let oevkLayerId = "oevks";
     let oevkLayerIncrement = 0;
 
-    const MAPBOX_ACCESS_TOKEN =
-        "pk.eyJ1IjoiaGlkZWdtaXNpIiwiYSI6ImNrNmx5YzlwODBpbjEzbnA3d216cTRjcXAifQ.0Fvgxohx9xZmb-14mcC71g";
     const hungaryBounds: [[number, number], [number, number]] = [
         [15.113, 45.737 - 0.1],
         [23.896, 48.585 + 0.3],
@@ -186,12 +189,23 @@
     }
 
     async function loadMap() {
-        mapboxgl.accessToken = MAPBOX_ACCESS_TOKEN;
-        await import("mapbox-gl/dist/mapbox-gl.css");
+        await import("maplibre-gl/dist/maplibre-gl.css");
 
-        map = new mapboxgl.Map({
+        map = new maplibregl.Map({
             container: "map",
-            style: "mapbox://styles/hidegmisi/cm7tlvdsq00bz01sc7hred6j6",
+            style: {
+                version: 8,
+                sources: {
+                    basemap: {
+                        type: "vector",
+                        url: "pmtiles://https://tiles.tiborcz.club/basemap.pmtiles",
+                    }
+                },
+                layers: [
+                    { id:"water", type:"fill", source:"basemap", "source-layer":"water", paint:{ "fill-color":"#e8f1fb" } },
+                    { id:"land", type:"fill", source:"basemap", "source-layer":"land", paint:{ "fill-color":"#f5f5f5" } },
+                ],
+            },
             center: [
                 (hungaryBounds[0][0] + hungaryBounds[1][0]) / 2,
                 (hungaryBounds[0][1] + hungaryBounds[1][1]) / 2,
@@ -205,7 +219,7 @@
 
         map.on("load", () => {
             mapLoaded = true;
-            map.addControl(new mapboxgl.NavigationControl(), "top-right");
+            map.addControl(new maplibregl.NavigationControl(), "top-right");
 
             // When hovering over a feature, update the colorbar arrow
             map.on("mousemove", (event) => {
