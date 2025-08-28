@@ -44,7 +44,7 @@ export const partyData = {
 export const pollsterGroups = [
     "összes",
     "kormányközeli",
-    "független",
+    "kormányfüggetlen",
 ] as PollsterGroup[];
 
 export const pollsterData = {
@@ -70,42 +70,42 @@ export const pollsterData = {
     },
     'IDEA': {
         name: 'IDEA',
-        group: 'független',
+        group: 'kormányfüggetlen',
         color: '#4f94cd',
     },
     'Závecz RI': {
         name: 'Závecz',
-        group: 'független',
+        group: 'kormányfüggetlen',
         color: '#473c8b',
     },
     'Medián': {
         name: 'Medián',
-        group: 'független',
+        group: 'kormányfüggetlen',
         color: '#aa0099',
     },
     '21 Kutató': {
         name: '21 Kutató',
-        group: 'független',
+        group: 'kormányfüggetlen',
         color: '#663366',
     },
     'Iránytű': {
         name: 'Iránytű',
-        group: 'független',
+        group: 'kormányfüggetlen',
         color: '#116633',
     },
     'Tárki': {
         name: 'Tárki',
-        group: 'független',
+        group: 'kormányfüggetlen',
         color: '#ffcc00',
     },
     'Publicus': {
         name: 'Publicus',
-        group: 'független',
+        group: 'kormányfüggetlen',
         color: '#ee0000',
     },
     'Republikon': {
         name: 'Republikon',
-        group: 'független',
+        group: 'kormányfüggetlen',
         color: '#00cdaa',
     },
 } as PollsterData;
