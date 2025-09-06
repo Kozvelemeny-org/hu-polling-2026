@@ -4,6 +4,7 @@ on:
     types: [ mirror-upstream ]
 jobs:
   mirror:
+    if: github.repository == 'hidegmisi/hu-polling-copy-vercel'
     runs-on: ubuntu-latest
     concurrency:
       group: fork-mirror
