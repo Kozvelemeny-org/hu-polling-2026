@@ -174,7 +174,7 @@
 </script>
 
 <section>
-    <img src="/images/candidate/fidesz.png" alt="Fidesz" class="fidesz" />
+    <img src="/images/party-logo/fidesz.png" alt="Fidesz" class="fidesz" />
     <article bind:this={container} on:mouseleave={resetCursor}>
         {#if orderedData && sectionSize}
             {#if segments && segments.length}
@@ -208,7 +208,7 @@
             </div>
         </div>
     </article>
-    <img src="/images/candidate/tisza.png" alt="Tisza" class="tisza" />
+    <img src="/images/party-logo/tisza.png" alt="Tisza" class="tisza" />
 </section>
 
 <style lang="scss">
@@ -224,13 +224,14 @@
             width: 100%;
             aspect-ratio: 1/1;
             border-radius: 50%;
+            object-fit: contain;
 
-            &.tisza {
+            /* &.tisza {
                 background-color: #00359c66;
             }
             &.fidesz {
                 background-color: #fd810066;
-            }
+            } */
         }
     }
     article {
