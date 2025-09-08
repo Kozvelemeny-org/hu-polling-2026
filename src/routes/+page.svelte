@@ -21,6 +21,7 @@
     import BottomMenu from "$components/ui/bottom-menu/BottomMenu.svelte";
     import BottomMenuItem from "$components/ui/bottom-menu/BottomMenuItem.svelte";
     import OevkSectionCard from "$components/mandateProjection/OEVKSectionCard.svelte";
+    import Paragraph from "$components/grid/Paragraph.svelte";
 
     let data = {
         sure_voters: [] as PollData,
@@ -70,22 +71,22 @@
 <GridItem variant="left-half" --grid-row="span 2">
     <SectionCard>
         <SectionTitle>Rövid magyarázat</SectionTitle>
-        <p>
+        <Paragraph>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt voluptate expedita similique, eaque magni mollitia dicta aperiam pariatur et accusamus iste quidem eius delectus vitae modi fuga error voluptas nisi. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem sunt, eos, eveniet necessitatibus aut doloremque perspiciatis totam adipisci repellat explicabo iusto, consequuntur ullam pariatur officiis nihil minima id natus enim!
-        </p>
+        </Paragraph>
         <ExplainerCard image="/images/hungary-shape.webp" alt="Választási földrajz">
             A szimuláció azt feltételezi, hogy az EP-választás óta nem változott a választási
             földrajz, de az ellenzéki szavazók nagyobb része szavaz majd a Tiszára.
             <a href="#">Módszertan</a>
         </ExplainerCard>
-        <p>
+        <Paragraph>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt voluptate expedita similique, eaque magni mollitia dicta aperiam pariatur et accusamus iste quidem eius delectus vitae modi fuga error voluptas nisi. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem sunt, eos, eveniet necessitatibus aut doloremque perspiciatis totam adipisci repellat explicabo iusto, consequuntur ullam pariatur officiis nihil minima id natus enim!
-        </p>
-        <p>
+        </Paragraph>
+        <Paragraph>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt voluptate expedita similique, eaque magni mollitia dicta aperiam pariatur et accusamus iste quidem eius delectus vitae modi fuga error voluptas nisi. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem sunt, eos, eveniet necessitatibus aut doloremque perspiciatis totam adipisci repellat explicabo iusto, consequuntur ullam pariatur officiis nihil minima id natus enim!
-        </p>
+        </Paragraph>
 
-        <p>Több szimuláció és ábra, részletesebb adatok, valamint módszertan a <a href="/mandatumbecsles">mandátumbecslés</a> oldalon.</p>
+        <Paragraph>Több szimuláció és ábra, részletesebb adatok, valamint módszertan a <a href="/mandatumbecsles">mandátumbecslés</a> oldalon.</Paragraph>
     </SectionCard>
 </GridItem>
 <GridItem variant="right-half">

@@ -2,24 +2,31 @@
     // get the chartId from the slug parameter
     import { page } from "$app/state";
     import { onMount } from "svelte";
-    import { pollData, fetchData } from "$stores/dataStore";
-    import type { PollData } from "$lib/types";
+    import { pollData, simulationData, fetchData } from "$stores/dataStore";
+    import type { PollData, Simulation } from "$lib/types";
     import PollsCardFromData from "$components/poll/PollsCardFromData.svelte";
     import html2canvas from "html2canvas";
     import GridItem from "$components/grid/GridItem.svelte";
     import SectionCard from "$components/section/SectionCard.svelte";
     import SectionTitle from "$components/section/SectionTitle.svelte";
+    import OevkSectionCard from "$components/mandateProjection/OEVKSectionCard.svelte";
 
     const chartId = page.params.chartId;
+    const simulationName = chartId?.slice(0, 6) === 'terkep' ? chartId.slice(7) : null;
 
     let data = {
         sure_voters: [] as PollData,
         all_voters: [] as PollData,
+        simulationData: {} as Record<string, Simulation>,
     };
 
     onMount(fetchData);
 
-    $: data = $pollData;
+    $: data = {
+        sure_voters: $pollData.sure_voters,
+        all_voters: $pollData.all_voters,
+        simulationData: $simulationData,
+    }
 
     function saveImage() {
         const element = document.querySelector(".pollGraph");
@@ -81,12 +88,19 @@
 </script>
 
 <GridItem variant="left-main" --grid-row="1 / 3">
-    <PollsCardFromData
-        {data}
-        chart_id={page.params.chartId}
-        showSource={true}
-        featured={true}
-    />
+    {#if simulationName}
+        <OevkSectionCard
+            data={data.simulationData[simulationName || 'main']?.oevkDiffs}
+            simulationName={data.simulationData[simulationName || 'main']?.metadata.name}
+        />
+    {:else}
+        <PollsCardFromData
+            {data}
+            chart_id={page.params.chartId || ''}
+            showSource={true}
+            featured={true}
+        />
+    {/if}
 </GridItem>
 
 <GridItem variant="right-aside">

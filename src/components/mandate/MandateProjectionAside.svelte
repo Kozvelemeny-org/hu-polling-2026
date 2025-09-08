@@ -3,10 +3,11 @@
     import BottomMenuItem from "$components/ui/bottom-menu/BottomMenuItem.svelte";
     import type { Simulation } from "$lib/types";
     import { createEventDispatcher, onMount } from "svelte";
+    import SimulationNameSpan from "./SimulationNameSpan.svelte";
 
     export let data = {} as Record<string, Simulation>;
-
-    let selectedSimulation = "main";
+    export let sticky = false;
+    export let selectedSimulation = "main";
 
     const dispatch = createEventDispatcher();
 
@@ -16,32 +17,72 @@
     }
 </script>
 
-<aside id="mandate-projection">
-    <h2>Mandátumbecslés</h2>
-    <p>
-        Az EP-választás választási földrajzából kiindulva,
-        az alábbi szimuláció alapján:
-    </p>
-    <div class="simulations">
-        {#each Object.keys(data) as key}
-            <button
-                type="button"
-                on:click={() => selectSimulation(key)}
-                class:selected={selectedSimulation === key}
-            >
-                <h3>{data[key].metadata.name}</h3>
-                <p>
-                    {data[key].metadata.description}
-                </p>
-            </button>
-        {/each}
+{#if sticky}
+    <div id="sticky-mandate-projection-header">
+        <h2>Mandátumbecslés</h2>
+        <div class="simulations">
+            {#each Object.keys(data) as key}
+                <button
+                    type="button"
+                    on:click={() => selectSimulation(key)}
+                    class:selected={selectedSimulation === key}
+                >
+                    <SimulationNameSpan inactive={selectedSimulation !== key}>{data[key].metadata.name}</SimulationNameSpan>
+                </button>
+            {/each}
+        </div>
     </div>
-    <BottomMenu>
-       <BottomMenuItem>Módszertan</BottomMenuItem>
-    </BottomMenu>
-</aside>
+{:else}
+    <aside id="mandate-projection">
+        <h2>Mandátumbecslés</h2>
+        <p>
+            Az EP-választás választási földrajzából kiindulva,
+            az alábbi szimuláció alapján:
+        </p>
+        <div class="simulations">
+            {#each Object.keys(data) as key}
+                <button
+                    type="button"
+                    on:click={() => selectSimulation(key)}
+                    class:selected={selectedSimulation === key}
+                >
+                    <h3>{data[key].metadata.name}</h3>
+                    <p>
+                        {data[key].metadata.description}
+                    </p>
+                </button>
+            {/each}
+        </div>
+        <BottomMenu>
+        <BottomMenuItem>Módszertan</BottomMenuItem>
+        </BottomMenu>
+    </aside>
+{/if}
 
 <style lang="scss">
+    #sticky-mandate-projection-header {
+        display: flex;
+        padding: 8px 12px;
+        background-color: #f2f2f2;
+        gap: 1rem;
+
+        h2 {
+            font-size: 16px;
+            font-weight: 400;
+            margin-right: auto;
+        }
+
+        .simulations {
+            display: flex;
+            gap: 1rem;
+        }
+
+        button {
+            all: unset;
+            cursor: pointer;
+        }
+    }
+
     #mandate-projection {
         display: flex;
         flex-direction: column;

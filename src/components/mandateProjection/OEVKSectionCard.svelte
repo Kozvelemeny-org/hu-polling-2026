@@ -31,6 +31,6 @@
 
 <style lang="scss">
     .mapContainer {
-        margin-top: -20px;
+        //margin-top: -20px;
     }
 </style>

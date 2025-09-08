@@ -209,6 +209,34 @@
         geoJsonLoaded = true;
     }
 
+    // Function to update map data when data prop changes
+    function updateMapData() {
+        if (!data || !map || !geojsonData) return;
+
+        // Update the diff property for each feature
+        for (let feature of geojsonData.features) {
+            if (!feature.properties) continue;
+            feature.properties.diff = data[feature.properties?.OEVK] ?? 0;
+        }
+
+        // Update the source data for both layers to trigger a redraw
+        const linesSource = map.getSource("oevk-lines");
+        const fillSource = map.getSource(oevkLayerId + oevkLayerIncrement);
+        
+        if (linesSource && linesSource.type === "geojson") {
+            (linesSource as any).setData(geojsonData);
+        }
+        
+        if (fillSource && fillSource.type === "geojson") {
+            (fillSource as any).setData(geojsonData);
+        }
+    }
+
+    // Reactive statement to update map data when data prop changes
+    $: if (mapLoaded && geoJsonLoaded && data) {
+        updateMapData();
+    }
+
     async function loadMap() {
         await import("maplibre-gl/dist/maplibre-gl.css");
 
@@ -291,7 +319,7 @@
 
 <article id="mapContainer">
     <!-- Discrete Colorbar Legend -->
-    {#if showInfoBar}
+    {#if !showInfoBar}
     <div id="colorbar-container">
         <div id="colorbar">
             <!-- Five segments, each representing one discrete category -->
@@ -346,21 +374,21 @@
     /* Container for the colorbar legend */
     #colorbar-container {
         position: absolute;
-        top: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: min(300px, 80%);
+        top: 20px;
+        left: 40px;
+        //transform: translateX(-50%);
+        width: min(200px, 80%);
         z-index: 2;
         pointer-events: none; /* so the legend doesn't block map interactions */
         background-color: #fff;
         /* border: 1px solid #eee; */
-        outline: 2px solid #fff;
+        outline: 1px solid #fff;
         pointer-events: all;
     }
     #colorbar {
         display: flex;
         width: 100%;
-        height: 16px;
+        height: 8px;
     }
     .legend-segment {
         flex: 1;
@@ -368,23 +396,23 @@
     /* Arrow that moves along the colorbar */
     #colorbar-arrow {
         position: absolute;
-        top: 20px;
+        top: 10px;
         left: 50%;
         width: 0;
         height: 0;
-        border-left: 5px solid transparent;
-        border-right: 5px solid transparent;
-        border-bottom: 10px solid #333;
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        border-bottom: 7px solid #333;
         transform: translateX(-50%);
     }
     /* Label showing the category */
     #colorbar-label {
         position: absolute;
-        top: 32px;
+        top: 10px;
         left: 50%;
         width: 80px;
         height: 24px;
-        transform: translateX(-50%);
+        transform: translateX(-50%) translateY(+50%);
         text-align: center;
         overflow: visible;
 
