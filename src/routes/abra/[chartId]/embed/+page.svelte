@@ -1,21 +1,24 @@
 <script lang="ts">
     import { page } from "$app/stores";
     import { onMount } from "svelte";
-    import { pollData, fetchData } from "$stores/dataStore";
-    import type { PollData, PollsterGroup } from "$lib/types";
+    import { pollData, simulationData, fetchData } from "$stores/dataStore";
+    import type { PollData, PollsterGroup, Simulation } from "$lib/types";
     import PollsCardFromData from "$components/poll/PollsCardFromData.svelte";
     import PollsCard from "$components/poll/PollsCard.svelte";
     import GridItem from "$components/grid/GridItem.svelte";
     import PollsChartFromData from "$components/poll/PollsChartFromData.svelte";
+    import OevkSectionCard from "$components/mandateProjection/OEVKSectionCard.svelte";
 
     let chartId: string;
     let showOnlyChart: boolean;
     let voterType: "sure_voters" | "all_voters" | undefined;
     let pollsterGroup: PollsterGroup | undefined;
+    let simulationName: string | null = null;
 
     let data = {
         sure_voters: [] as PollData,
         all_voters: [] as PollData,
+        simulationData: {} as Record<string, Simulation>,
     };
 
     onMount(() => {
@@ -26,36 +29,47 @@
         document.body.style.background = "transparent";
     });
 
-    $: chartId = $page.params.chartId;
+    $: chartId = $page.params.chartId || '';
     $: showOnlyChart = $page.url.searchParams.get("chart_only") === "true";
     $: voterType = $page.url.searchParams.get("voter_type") as "sure_voters" | "all_voters" | undefined;
     $: pollsterGroup = $page.url.searchParams.get("pollster_group") as PollsterGroup | undefined;
+    $: simulationName = chartId?.slice(0, 6) === 'terkep' ? chartId.slice(7) : null;
 
-    $: data = $pollData;
+    $: data = {
+        sure_voters: $pollData.sure_voters,
+        all_voters: $pollData.all_voters,
+        simulationData: $simulationData,
+    }
 </script>
 
 <GridItem variant="full">
     <div class="embed-container">
-        {#if !showOnlyChart}
+        {#if simulationName}
+            <OevkSectionCard
+                data={data.simulationData[simulationName || 'main']?.oevkDiffs}
+                simulationName={data.simulationData[simulationName || 'main']?.metadata.name}
+            />
+        {:else if !showOnlyChart}
             <PollsCardFromData
                 {data}
                 chart_id={chartId}
                 showSource={!showOnlyChart}
                 featured={false}
             />
-        {/if}
-        <div class="embed-chart">
-            <PollsChartFromData
-                {data}
-                chart_id={chartId}
-                voterType={voterType}
-                pollsterGroup={pollsterGroup}
-            />
-            <div class="attribution">
-                <p>Ábra: Vox Populi</p>
-                <p><a target="_blank" href="https://valasztas-2026.kozvelemeny.org">valasztas-2026.kozvelemeny.org</a></p>
+        {:else}
+            <div class="embed-chart">
+                <PollsChartFromData
+                    {data}
+                    chart_id={chartId}
+                    voterType={voterType}
+                    pollsterGroup={pollsterGroup}
+                />
+                <div class="attribution">
+                    <p>Ábra: Vox Populi</p>
+                    <p><a target="_blank" href="https://valasztas-2026.kozvelemeny.org">valasztas-2026.kozvelemeny.org</a></p>
+                </div>
             </div>
-        </div>
+        {/if}
     </div>
 </GridItem>
 

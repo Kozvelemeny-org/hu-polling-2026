@@ -2,19 +2,25 @@
     import { onMount, onDestroy } from "svelte";
 
     let aside: HTMLElement;
+    let sticky = false;
+    const headerHeight = 160 + 55;
 
     function keepAsidePosition() {
-        const headerHeight = 160 + 55;
-        if (!aside) return;
+        if (!aside || typeof window == 'undefined') return;
 
-        if (window.scrollY > headerHeight + 16 && window.innerWidth > 600) {
+        const asideHeight = aside.offsetHeight;
+        const shouldBeSticky = window.scrollY > headerHeight + 16 + asideHeight && window.innerWidth > 600;
+                
+        if (shouldBeSticky) {
             aside.style.position = "fixed";
-            aside.style.top = "16px";
-            aside.style.width = "250px";
+            aside.style.top = "0";
+            aside.style.width = "968px";
         } else {
             aside.style.position = "static";
             aside.style.width = "auto";
         }
+        
+        sticky = shouldBeSticky;
     }
 
     onMount(() => {
@@ -23,19 +29,24 @@
         window.addEventListener("resize", keepAsidePosition);
 
         return () => {
-        window.removeEventListener("scroll", keepAsidePosition);
-        window.removeEventListener("resize", keepAsidePosition);
+            window.removeEventListener("scroll", keepAsidePosition);
+            window.removeEventListener("resize", keepAsidePosition);
         };
     });
 </script>
 
-<aside bind:this={aside} class="grid-item aside">
-    <slot />
+<aside bind:this={aside} class="grid-item aside" class:sticky>
+    <slot {sticky} />
 </aside>
 
 <style lang="scss">
     .grid-item.aside {
         grid-column: 1 / -1;
+        height: min-content;
+
+        &.sticky {
+            z-index: 3;
+        }
     }
 
     @media (min-width: 600px) {

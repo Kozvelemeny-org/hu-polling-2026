@@ -5,6 +5,7 @@
     import { DeviceType, getLayoutConfiguration } from "$lib/mini-mandate-chart/MiniMandateChartTypes";
 
     export let data: Record<string, Simulation> = {};
+    export let selectedSimulation = 'main';
 
     let width = 0;
     let height = 0;
@@ -15,9 +16,9 @@
     let simulationData = {} as Simulation;
     let deviceType = DeviceType.Desktop;
     let leaderText = '';
+
     function updateDimensions() {
         if (!container) return;
-        
         const containerWidth = container.clientWidth;
         const windowWidth = window.innerWidth;
         const layoutConfig = getLayoutConfiguration(containerWidth, windowWidth);
@@ -35,14 +36,6 @@
     }
 
     onMount(() => {
-        // Load simulation data
-        const loadingInterval = setInterval(() => {
-            if (data['main']) {
-                simulationData = data['main'];
-                clearInterval(loadingInterval);
-            }
-        }, 10);
-
         // Initial update
         if (container) {
             updateDimensions();
@@ -83,6 +76,11 @@
             };
         }
     });
+    
+    // Reactive statement to update simulation data when selectedSimulation changes
+    $: if (data && selectedSimulation && data[selectedSimulation]) {
+        simulationData = data[selectedSimulation];
+    }
     
     $: if (simulationData['fidesz']?.length && simulationData['tisza']?.length && svg && width > 0) {
         if (!chart) {

@@ -26,7 +26,7 @@
             grid-column: 1 / -1
         }
         .grid-item.middle {
-            grid-column: 1 / -1;
+            grid-column: 2 / -2;
         }
         .grid-item.main, .grid-item.left-main {
             grid-column: 2 / 3;
