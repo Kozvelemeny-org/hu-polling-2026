@@ -65,9 +65,7 @@ export class ChartDataProcessor {
         data = filterByDateRange(data, this.dateRange);
         data = applyPartyIntervalsFilter(data, this.partyIntervals);
 
-        const dateExtent = d3.extent(data, (d) => d.date) as [Date | undefined, Date | undefined];
-        const windowDays = (dateExtent[0] && dateExtent[1] && (dateExtent[1].getTime() - dateExtent[0].getTime()) < 2 * 365 * 24 * 60 * 60 * 1000) ? 30 : 90;
-        const dates = (dateExtent[0] && dateExtent[1]) ? d3.timeDay.range(dateExtent[0], dateExtent[1]) : [];
+        const windowDays = this.getWindowDays(data);
 
         const dayData = this.renderOptions?.smoothing === "lowess" ?
             this.calculateLOWESS(data, windowDays) :
@@ -189,8 +187,7 @@ export class ChartDataProcessor {
         data = filterByDateRange(data, this.dateRange);
         data = applyPartyIntervalsFilter(data, this.partyIntervals);
 
-        const dateExtent = d3.extent(data, (d) => d.date) as [Date | undefined, Date | undefined];
-        const windowDays = (dateExtent[0] && dateExtent[1] && (dateExtent[1].getTime() - dateExtent[0].getTime()) < 2 * 365 * 24 * 60 * 60 * 1000) ? 30 : 90;
+        const windowDays = this.getWindowDays(data);
 
         // sanitize IDs for CSS usage
         const toId = (name: string) => name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
@@ -253,8 +250,7 @@ export class ChartDataProcessor {
         data = filterByDateRange(data, this.dateRange);
         data = applyPartyIntervalsFilter(data, this.partyIntervals);
 
-        const dateExtent = d3.extent(data, (d) => d.date) as [Date, Date];
-        const windowDays = dateExtent[1].getTime() - dateExtent[0].getTime() < 2 * 365 * 24 * 60 * 60 * 1000 ? 30 : 90;
+        const windowDays = this.getWindowDays(data);
 
         const series: SeriesDescriptor[] = this.selectedParties.map(p => ({
             id: p,
@@ -278,5 +274,12 @@ export class ChartDataProcessor {
         const axisParams = axisFrom(dailyBySeries, this.dateRange, this.renderOptions?.yLims as [number, number] | undefined, false);
 
         return { data, pointsBySeries, dailyBySeries, axisParams, series, dates, windowDays };
+    }
+
+    private getWindowDays(data: PollData): number {
+        const oneYear = 365 * 24 * 60 * 60 * 1000;
+        const dateExtent = d3.extent(data, (d) => d.date) as [Date | undefined, Date | undefined];
+        const windowDays = (dateExtent[0] && dateExtent[1] && (dateExtent[1].getTime() - dateExtent[0].getTime()) < 2 * oneYear) ? 30 : 90;
+        return windowDays;
     }
 }
