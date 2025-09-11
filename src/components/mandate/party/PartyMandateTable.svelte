@@ -7,7 +7,7 @@
 
 <section class="mandateTable">
     {#each Object.keys(data).sort((a, b) => data[b] - data[a]) as party, i}
-        {console.log(data)}
+        {#if data[party as Party] > 0}
         <article>
             <header>
                 <div
@@ -27,6 +27,7 @@
             </header>
             <p>{data[party as Party]} mandátum</p>
         </article>
+        {/if}
         <!-- {#if i < Object.keys(data).length - 1}
             <div class="divider"></div>
         {/if} -->
@@ -36,7 +37,7 @@
 <style lang="scss">
     .mandateTable {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
         gap: 6px;
         margin: 1rem 0;
 
