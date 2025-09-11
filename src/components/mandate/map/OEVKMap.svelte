@@ -8,7 +8,7 @@
 
     export let data = {} as Simulation["oevkDiffs"];
     export let highlightedOevk = null as string | null;
-    export let showInfoBar = true;
+    export let showInfoBar = false;
     export let disableZoomPan = false;
 
     const dispatch = createEventDispatcher();
@@ -319,7 +319,7 @@
 
 <article id="mapContainer">
     <!-- Discrete Colorbar Legend -->
-    {#if !showInfoBar}
+    {#if showInfoBar}
     <div id="colorbar-container">
         <div id="colorbar">
             <!-- Five segments, each representing one discrete category -->
