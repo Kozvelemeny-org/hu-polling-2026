@@ -1,8 +1,8 @@
 <header id="mainHeader">
     <img class="headerImage" src="/images/bg.png" alt="header" />
     <a href="/"><h1>
-        <span>Vox Populi:</span>
-        <span>Választás 2026</span>
+        <span style="color: #f93f44;">Vox Populi:</span>
+        <span style="color: #4f9929;">Választás 2026</span>
     </h1></a>
 </header>
 
