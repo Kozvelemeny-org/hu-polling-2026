@@ -26,10 +26,15 @@
 <style lang="scss">
     .item {
         font-size: 14px;
-        padding: 3px 6px;
-        border: 1px solid #eee;
-        border-radius: 2px;
+        padding: 5px 10px;
+        border: 2px solid #f5f5f5;
+        background-color: #f9f9f9;
+        border-radius: 20px;
         cursor: pointer;
+
+        &:hover {
+            background-color: #f5f5f5;
+        }
 
         a {
             text-decoration: none;
