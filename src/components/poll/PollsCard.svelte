@@ -71,11 +71,6 @@
     <h1>{title}</h1>
     <div class="description">
         <p>
-            a biztos szavazók körében{#if dataSelects.includes("pollster_group")}
-                ,
-            {:else}
-                .
-            {/if}
             <!-- {#if dataSelects.includes("voter_type")}
                 <select bind:value={chartOptions.data}>
                     <option value={data.sure_voters}>biztos szavazók</option>
@@ -90,17 +85,14 @@
                     {/each}
                 </select>
                 közvélemény-kutató{!chartOptions.pollsterGroupIndex ? "" : "k"} adatai
-                alapján.
+                alapján,
             {/if}
-        </p>
-        <p>
             {windowDays} napos
             <select bind:value={chartOptions.smoothing}>
                 <option value="movingAverage">mozgóátlag</option>
                 <option value="lowess">LOWESS-regresszió</option>
             </select>
         </p>
-        <p>{description}</p>
     </div>
     <PollsChart
         id={"chart" + (Math.random() * 10000).toFixed(0)}
@@ -112,6 +104,9 @@
         renderOptions={{ ...renderOptions, smoothing: chartOptions.smoothing }}
         on:updateWindowDays={(e) => (windowDays = e.detail)}
     />
+    <div class="htmlContent">
+        {@html description}
+    </div>
     {#if showSource}
         <div class="source">
             <p>
@@ -154,14 +149,14 @@
             margin-bottom: 1rem;
         }
 
-        p {
-            margin-top: 6px;
+        p select {
+            padding: 2px;
+            width: fit-content;
+            min-width: unset;
+        }
 
-            select {
-                padding: 2px;
-                width: fit-content;
-                min-width: unset;
-            }
+        :global(.htmlContent p) {
+            margin-top: 12px;
         }
     }
 
