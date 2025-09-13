@@ -1,78 +1,53 @@
 <script lang="ts">
-    import type { PollData } from "$lib/types";
+    import Paragraph from "$components/grid/Paragraph.svelte";
+    import SectionCard from "$components/section/SectionCard.svelte";
+import SectionTitle from "$components/section/SectionTitle.svelte";
+    import BottomMenu from "$components/ui/bottom-menu/BottomMenu.svelte";
+    import BottomMenuItem from "$components/ui/bottom-menu/BottomMenuItem.svelte";
+    import type { Party, PollData } from "$lib/types";
     import RecentPollCard from "./RecentPollCard.svelte";
 
-    export let data: Record<'sure_voters' | 'all_voters', PollData> = { sure_voters: [], all_voters: [] };
-    let selectedIndex = 'sure_voters' as 'sure_voters' | 'all_voters';
+    export let pollData = [] as PollData;
+    export let selectedGroup = 'big_parties' as 'big_parties' | 'small_parties';
+    export let nItems = 5;
+
+    let selectedPartiesMap = {
+        'big_parties': ['fidesz', 'tisza'],
+        'small_parties': ['dk', 'mihazank', 'mkkp'],
+    } as Record<'big_parties' | 'small_parties', Party[]>;
+
+    $: selectedParties = selectedPartiesMap[selectedGroup];
 </script>
 
-<aside id="recent-polls">
-    <h2>A legfrissebb adatok</h2>
-    <p>
-        Az összes 2018-óta végzett országos közvélemény-kutatás eredménye
-        megtalálható az <a href="//kozvelemeny.org" target="_blank"
-            >oldalunkon</a
-        >.
-    </p>
-    <!-- <div class="categSwitch">
-        <button class:active={selectedIndex == 'sure_voters'} on:click={() => selectedIndex = 'sure_voters'} >Biztos szavazók</button>
-        <button class:active={selectedIndex == 'all_voters'} on:click={() => selectedIndex = 'all_voters'} >Választókorúak</button>
-    </div> -->
+<SectionCard id="recent-polls">
+    <SectionTitle variant="tiny" centered>A legfrissebb adatok</SectionTitle>
     <section class="pollsContainer">
-        {#each data[selectedIndex]?.slice(0, 5) as poll}
-            <RecentPollCard {poll} />
+        {#each pollData.slice(0, nItems) as poll}
+            <RecentPollCard {poll} {selectedParties} />
         {/each}
     </section>
-</aside>
+    <!-- <Paragraph>
+        A <a href="//kozvelemeny.org" target="_blank"
+            >blogunkon</a
+        > megtalálható az összes 2018-óta végzett közvélemény-kutatás eredménye.
+    </Paragraph> -->
+    <BottomMenu noMargin>
+        <BottomMenuItem link="/polls">Az összes kutatás</BottomMenuItem>
+    </BottomMenu>
+</SectionCard>
 
 <style lang="scss">
-#recent-polls {
-    padding: 0 8px;
-    border: 1px solid #eee;
-    background-color: #fcfcfc;
+.pollsContainer {
     display: flex;
     flex-direction: column;
-    align-items: center;
-
-    h2 {
-        text-align: center;
-        margin-top: 12px;
-        font-weight: 400;
-        font-size: 20px;
-    }
-
-    p {
-        margin-top: 12px;
-        text-align: center;
-    }
-
-    .categSwitch {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(100px, 1fr));
-        gap: 6px;
-        margin-top: 1rem;
-        
-        button {
-            padding: 2px 4px;
-            border: 1px solid #eee;
-            background-color: #fff;
-            border-radius: 4px;
-            color: #666;
-
-            &.active {
-                border-color: #ccc;
-                color: #333;
-            }
-        }
-    }
-
-    .pollsContainer {
-        width: 100%;
-        padding: 12px 0;
-
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-    }
+    gap: 1rem;
+    margin-top: 6px;
+    margin-bottom: 12px;
+    border-top: 2px solid #f5f5f5;
+    border-bottom: 2px solid #f5f5f5;
+    padding: 1rem 0;
+}
+button {
+    width: fit-content;
 }
 </style>
