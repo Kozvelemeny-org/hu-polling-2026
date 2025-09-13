@@ -1,6 +1,5 @@
 <script lang="ts">
     export let id = null as string | null;
-    export let columns = null as string | null;
     export let smallPadding = false;
 </script>
 
