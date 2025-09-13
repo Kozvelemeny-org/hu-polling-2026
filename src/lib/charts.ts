@@ -83,7 +83,7 @@ export const charts: Record<string, ChartData> = {
     'kis-partok': {
         title: "A kis pártok támogatottsága",
         dataSelects: ["pollster_group"],
-        selectedParties: ["momentum", "mkkp", "mihazank", "dk"],
+        selectedParties: ["mkkp", "mihazank", "dk"],
         dateRange: { start: new Date(2023, 11, 1), end: new Date() },
         annotations: [{
             id: "marc-15",
