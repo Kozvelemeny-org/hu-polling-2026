@@ -10,9 +10,6 @@
     import RecentPollsAside from "$components/poll/RecentPollsAside.svelte";
     import MiniMandateProjection from "$components/mandate/MiniMandateProjection.svelte";
     import PollsCardFromData from "$components/poll/PollsCardFromData.svelte";
-    import ParliamentChart from "$components/mandate/parliament/ParliamentChart.svelte";
-    import PartyMandateTable from "$components/mandate/party/PartyMandateTable.svelte";
-    import OevkMap from "$components/mandate/map/OEVKMap.svelte";
     import SectionCard from "$components/section/SectionCard.svelte";
     import SectionTitle from "$components/section/SectionTitle.svelte";
     import GridItem from "$components/grid/GridItem.svelte";
@@ -42,84 +39,49 @@
 </script>
 
 <GridItem variant="aside">
-    <aside id="mandate-projection">
-        <h2>Mandátumbecslés</h2>
-        <p>
-            A Fidesz és a Tisza képviselőinek várható aránya az EP-választás
-            és a friss kutatások átlaga alapján:
-        </p>
-        <div class="mandatesContainer">
-            <article class="visualization">
-                <MiniMandateProjection data={data.simulationData} />
-            </article>
-        </div>
-        <p>
-            Részletes adatok és alakulásuk a <a href="/mandatumbecsles"
-                >mandátumbecslés</a
-            > oldalon.
-        </p>
-        <BottomMenu>
-            <BottomMenuItem>Módszertan</BottomMenuItem>
-        </BottomMenu>
-    </aside>
+    <RecentPollsAside pollData={data.sure_voters} selectedGroup="big_parties" nItems={6} />
 </GridItem>
 <GridItem variant="main">
     <PollsCardFromData {data} chart_id="fidesz-tisza" />
 </GridItem>
 
 <GridItem variant="full">
-    <GridSectionTitle>Mandátumbecslés</GridSectionTitle>
+    <GridSectionTitle>A Vox Populi mandátumbecslése</GridSectionTitle>
 </GridItem>
 
-<GridItem variant="left-half" --grid-row="span 2">
+<GridItem variant="aside">
     <SectionCard>
-        <SectionTitle>Rövid magyarázat</SectionTitle>
+        <SectionTitle variant="medium" centered>Várható eredmény</SectionTitle>
         <Paragraph>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt voluptate expedita similique, eaque magni mollitia dicta aperiam pariatur et accusamus iste quidem eius delectus vitae modi fuga error voluptas nisi. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem sunt, eos, eveniet necessitatibus aut doloremque perspiciatis totam adipisci repellat explicabo iusto, consequuntur ullam pariatur officiis nihil minima id natus enim!
+            A Fidesz és a Tisza képviselőinek várható aránya az EP-választás
+            és a friss kutatások átlaga alapján:
         </Paragraph>
-        <ExplainerCard image="/images/hungary-shape.webp" alt="Választási földrajz">
-            A szimuláció azt feltételezi, hogy az EP-választás óta nem változott a választási
-            földrajz, de az ellenzéki szavazók nagyobb része szavaz majd a Tiszára.
-            <a href="#">Módszertan</a>
-        </ExplainerCard>
+        <MiniMandateProjection data={data.simulationData} />
         <Paragraph>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt voluptate expedita similique, eaque magni mollitia dicta aperiam pariatur et accusamus iste quidem eius delectus vitae modi fuga error voluptas nisi. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem sunt, eos, eveniet necessitatibus aut doloremque perspiciatis totam adipisci repellat explicabo iusto, consequuntur ullam pariatur officiis nihil minima id natus enim!
+            Részletes adatok és alakulásuk a <a href="/mandatumbecsles"
+                >mandátumbecslés</a
+            > oldalon.
         </Paragraph>
-        <Paragraph>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt voluptate expedita similique, eaque magni mollitia dicta aperiam pariatur et accusamus iste quidem eius delectus vitae modi fuga error voluptas nisi. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem sunt, eos, eveniet necessitatibus aut doloremque perspiciatis totam adipisci repellat explicabo iusto, consequuntur ullam pariatur officiis nihil minima id natus enim!
-        </Paragraph>
-
-        <Paragraph>Több szimuláció és ábra, részletesebb adatok, valamint módszertan a <a href="/mandatumbecsles">mandátumbecslés</a> oldalon.</Paragraph>
+        <BottomMenu>
+            <BottomMenuItem>Módszertan</BottomMenuItem>
+        </BottomMenu>
     </SectionCard>
 </GridItem>
-<GridItem variant="right-half">
-    <OevkSectionCard
-        data={data.simulationData["main"]?.oevkDiffs}
-        simulationName={data.simulationData["main"]?.metadata.name}
-    />
-</GridItem>
-<GridItem variant="right-half">
-    <SectionCard id="parliament-chart">
-        <SectionTitle variant="medium">A legvalószínűbb parlament</SectionTitle>
-        <p>
-            Az alábbi ábrán a <SimulationNameSpan>{data.simulationData["main"]?.metadata.name}</SimulationNameSpan>
-            szimuláció országos átlaga és az EP-választás választási földrajza alapján szimulált országgyűlési
-            választás eredménye látható.
-        </p>
-        <ParliamentChart data={data.simulationData} />
-        <PartyMandateTable data={data.simulationData["main"]?.seats} />
-    </SectionCard>
+<GridItem variant="main">
+    <PollsCardFromData {data} chart_id="mandate-projection" />
 </GridItem>
 
 
 <GridItem variant="full">
-    <GridSectionTitle>Közvélemény-kutatások</GridSectionTitle>
+    <GridSectionTitle>A kis pártok támogatottsága</GridSectionTitle>
 </GridItem>
 <GridItem variant="aside">
-    <RecentPollsAside {data} />
+    {#if data.sure_voters.length > 0}
+        <RecentPollsAside pollData={data.sure_voters} selectedGroup="small_parties" />
+    {/if}
 </GridItem>
 <GridItem variant="main">
-    <PollsCardFromData {data} chart_id="all-parties" />
+    <PollsCardFromData {data} chart_id="kis-partok" />
 </GridItem>
 
 <GridItem variant="full">
@@ -147,7 +109,7 @@
 <GridItem variant="main">
     <SectionCard>
         <SectionTitle>Vox Populi</SectionTitle>
-        <p>
+        <Paragraph>
             A Vox Populi oldal közvélemény-kutatásokkal és (többnyire magyarországi)
             választásokkal kapcsolatos adatokat és elemzéseket közöl pártoktól és pénzbevételtől
             függetlenül, a demokratikus politikai eszmék és gyakorlatok terjesztése mellett
@@ -159,45 +121,20 @@
             <a href="https://kozvelemeny.org/2022/01/29/orokzold-posztok-a-vox-populin/">itt</a>,
             illetve a 2021. április 2-án indult <a href="https://voxpopuli.444.hu/">https://voxpopuli.444.hu/</a>
             oldalunkon talál egy-egy válogatást.
-        </p>
+        </Paragraph>
         <SectionTitle variant="small" hasTopMargin>Ki a szerző?</SectionTitle>
-        <p>
+        <Paragraph>
             Munkaidőben a Közép-Európai Egyetem (CEU) kutatóprofesszora vagyok. Szakterületeim a választói magatartás, a kutatás-módszertan, és a választási rendszerek. 1990 óta foglalkozom ezekkel a témákkal, és azóta kb. 40 tudományos célú kérdőíves vizsgálatot vezettem Lengyelországban, Csehországban, Szlovákiában, Magyarországon és Romániában. Idézettségi adataimat <a href="https://scholar.google.com/citations?user=7mLMXH8AAAAJ&amp;hl=en&amp;oi=ao"> itt</a> találja meg. Első olyan cikkeim, amiben mások közvélemény-kutatásait értékeltem, 1998-ban jelentek meg a nyomtatott <a aria-label="Magyar Hirlapban (opens in a new tab)" href="https://web.archive.org/web/20071112095437/http://www.median.hu/object.7293a708-88dd-4f91-b192-d0853aa7f49a.ivy" target="_blank" rel="noreferrer noopener">Magyar Hirlapban</a> és <a aria-label="másutt (opens in a new tab)" href="http://www.personal.ceu.hu/departs/personal/Gabor_Toka/Papers/Toka99Polls.pdf" target="_blank" rel="noreferrer noopener">másutt</a>. Politikai aktivistaként a Közös Ország Mozgalom taktikai szavazást támogató közvélemény-kutatásain és hétpárti támogatottságú választási törvényjavaslatán, illetve választási megfigyelőként, szavazatszámlálóként, utcai és házról-házra kopogtató kampánymunkásként dolgoztam. Egy pártfüggetlen és szakmabeli ellenzéki aktivista perspektívájából írom tehát, ami itt megjelenik, és az olvasók figyelmén kívül semmit nem fogadok el érte.
-        </p>
-        <p>@ Tóka Gábor, 2019-</p>
+        </Paragraph>
+        <Paragraph>@ Tóka Gábor, 2019-</Paragraph>
         <SectionTitle variant="small" hasTopMargin>Ki fejlesztette az oldalt?</SectionTitle>
-        <p>
+        <Paragraph>
             Én.
-        </p>
+        </Paragraph>
     </SectionCard>
 </GridItem>
 
 <style lang="scss">
-    #mandate-projection {
-        display: flex;
-        flex-direction: column;
-        height: fit-content;
-        padding: 0 1rem;
-        padding-bottom: 1rem;
-        background-color: #fcfcfc;
-        border: 1px solid #eee;
-
-        h2 {
-            margin-top: 8px;
-            text-align: center;
-        }
-
-        p {
-            margin-top: 12px;
-        }
-
-        .visualization {
-            width: 100%;
-            margin: 0 auto;
-            padding: 1rem 0;
-        }
-    }
-
     ul {
         list-style-type: none;
         padding: 0;
@@ -210,20 +147,5 @@
                 color: #3396ff;
             }
         }
-    }
-
-    h2 {
-        font-size: 22px;
-        font-weight: 400;
-    }
-
-    h3 {
-        margin-top: 16px;
-        font-size: 22px;
-        font-weight: 400;
-    }
-
-    p {
-        margin-top: 12px;
     }
 </style>

@@ -29,6 +29,29 @@ export const charts: Record<string, ChartData> = {
             },
         ],
         renderOptions: { aspectRatio: 3 / 2 },
+        description: `
+            <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti aliquam, qui sint delectus quod, 
+                culpa temporibus reiciendis, minima eveniet officia cupiditate iusto omnis ea provident quisquam
+                ducimus dicta reprehenderit laudantium!
+            </p>
+        `
+    },
+    'mandate-projection': {
+        title: "Egyes kutatásokon alapuló mandátumbecslések alakulása",
+        dataSelects: ["pollster_group"],
+        selectedParties: ["fidesz", "tisza"],
+        dateRange: { start: new Date(2023, 11, 1), end: new Date(2026, 3, 4) },
+        annotations: [
+            {
+                id: "ep-24",
+                text: "EP-választás",
+                date: new Date(2024, 5, 9),
+                lineType: "dotted",
+            },
+        ],
+        isMandateProjection: true,
+        renderOptions: { aspectRatio: 3 / 2 },
     },
     'all-parties': {
         title: "Parlamentbe jutásra esélyes pártok támogatottsága",
@@ -57,59 +80,17 @@ export const charts: Record<string, ChartData> = {
         ],
         renderOptions: { aspectRatio: 3 / 2, yLims: [0, 0.59] },
     },
-    'all-parties-wide': {
-        title: "Parlamentbe jutásra esélyes pártok támogatottsága",
-        selectedParties: ["tisza", "fidesz", "dk", "mihazank", "mkkp", "momentum"],
-        dataSelects: ["pollster_group", "voter_type"],
-        dateRange: { start: new Date(2018, 0, 1), end: new Date(2026, 3, 4) },
-        annotations: [
-            {
-                id: "ogy-18",
-                text: "OGY. 2018",
-                date: new Date(2018, 3, 8),
-                lineType: "dotted",
-            },
-            {
-                id: "ogy-22",
-                text: "OGY. 2022",
-                date: new Date(2022, 3, 3),
-                lineType: "dotted",
-            },
-            {
-                id: "ogy-26",
-                text: "OGY. 2026",
-                date: new Date(2026, 3, 4),
-                lineType: "dotted",
-            },
-        ],
-        renderOptions: { aspectRatio: 5 / 2, yLims: [0, 0.59] },
-    },
-    'kiabrandult-fideszesek': {
-        title: "Kiábrándult fideszesek?",
+    'kis-partok': {
+        title: "A kis pártok támogatottsága",
         dataSelects: ["pollster_group"],
-        selectedParties: ["fidesz", "unsure"],
-        voterType: "all_voters",
-        dateRange: { start: new Date(2018, 0, 1), end: new Date() },
+        selectedParties: ["momentum", "mkkp", "mihazank", "dk"],
+        dateRange: { start: new Date(2023, 11, 1), end: new Date() },
         annotations: [{
-            id: "ogy-22",
-            text: "OGY. 2022 ",
-            date: new Date(2022, 3, 3),
+            id: "marc-15",
+            text: "Március 15.",
+            date: new Date(2024, 3, 15),
             lineType: "dotted",
         }],
-        renderOptions: { aspectRatio: 3 / 2, yLims: [0, 0.65] },
-
-    },
-    'ellenzek-2022-ota': {
-        title: "Az ellenzéki térfél a választások óta",
-        dataSelects: ["pollster_group"],
-        selectedParties: ["momentum", "mkkp", "mihazank", "dk", "tisza", "unsure"],
-        dateRange: { start: new Date(2022, 0, 1), end: new Date() },
-        annotations: [{
-            id: "ogy-22",
-            text: "OGY. 2022 ",
-            date: new Date(2022, 3, 3),
-            lineType: "dotted",
-        }],
-        renderOptions: { aspectRatio: 3 / 2, yLims: [0, 0.55] },
+        renderOptions: { aspectRatio: 6 / 2, yLims: [0, 0.23] },
     },
 }
