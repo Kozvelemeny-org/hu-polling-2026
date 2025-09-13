@@ -124,13 +124,14 @@ export class ChartDataProcessor {
             movingAvg.push({ date });
     
             for (const party of this.selectedParties) {
-                const pollsWithParty = pollsWithinWindow.filter((d) => (d[party] !== undefined) && (d[party] !== null) && (d[party] > 0.01));
-                const avg = d3.mean(pollsWithParty, (d) => d[party]);
-                if (avg === 0 || pollsWithParty.length < 1) {
+                const pollsWithParty = pollsWithinWindow.filter((d) => (d[party] !== undefined) && (d[party] !== null));
+                const avg = d3.mean(pollsWithParty, (d) => d[party] as number);
+                const nonzeroPollsWithParty = pollsWithParty.filter((d) => (d[party] !== undefined) && (d[party] > 0.01));
+                if (nonzeroPollsWithParty.length < 1) {
                     movingAvg[movingAvg.length - 1][party] = undefined;
                     continue;
                 }
-                movingAvg[movingAvg.length - 1][party] = avg;
+                movingAvg[movingAvg.length - 1][party] = avg as number;
             }
         }
     

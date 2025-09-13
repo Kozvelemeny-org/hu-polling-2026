@@ -1,10 +1,11 @@
 <script lang="ts">
-    import type { PollData, Simulation } from "$lib/types";
+    import type { MandateProjectionData, PollData, Simulation } from "$lib/types";
     import { onMount } from "svelte";
     import {
         pollData,
         simulationData,
         fetchData,
+        mandateProjectionData,
     } from "$stores/dataStore";
     import RecentPollsAside from "$components/poll/RecentPollsAside.svelte";
     import MiniMandateProjection from "$components/mandate/MiniMandateProjection.svelte";
@@ -27,6 +28,7 @@
         sure_voters: [] as PollData,
         all_voters: [] as PollData,
         simulationData: {} as Record<string, Simulation>,
+        mandateProjectionData: [] as MandateProjectionData,
     };
 
     onMount(fetchData);
@@ -35,6 +37,7 @@
         sure_voters: $pollData.sure_voters,
         all_voters: $pollData.all_voters,
         simulationData: $simulationData,
+        mandateProjectionData: $mandateProjectionData,
     }
 </script>
 

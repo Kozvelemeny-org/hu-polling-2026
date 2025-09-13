@@ -135,6 +135,13 @@ export class Chart {
         }
         this.latestSeries = payload;
         this.windowDays = payload.windowDays;
+        // Ensure axis limits reflect current data scale before drawing series
+        if (payload.axisParams) {
+            this.renderer.updateAxisLimits(payload.axisParams);
+        } else {
+            const axisParams = axisFrom(payload.dailyBySeries, this.dateRange, (this.renderOptions as any)?.yLims, !!this.annotations.length);
+            this.renderer.updateAxisLimits(axisParams);
+        }
         this.renderer.updateSeries(payload.pointsBySeries, payload.dailyBySeries, payload.series, payload.data, payload.dates);
     }
     

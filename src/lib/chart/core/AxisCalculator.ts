@@ -1,4 +1,5 @@
 import type { AxisParams, DateRange, SeriesDaily } from "../../types";
+import * as d3 from "d3";
 
 export function axisFrom(
     dailyBySeries: Record<string, SeriesDaily[]>,
@@ -24,14 +25,32 @@ export function axisFrom(
     }
 
     const maxValue = Math.max(...values);
-    const annotationPadding = hasAnnotations ? 0.1 : 0;
 
-    const lowerLimit = yLimsOverride ? yLimsOverride[0] : 0;
-    const upperLimit = yLimsOverride ? yLimsOverride[1] : ((possibleYTicks.find(curr => curr >= maxValue) ?? 0.95) + 0.05 + annotationPadding);
+    // Detect scale mode: fractions (percentages) vs absolute values
+    const inferIsFraction = (yLimsOverride ? yLimsOverride[1] : maxValue) <= 1.5;
 
-    const ticks = possibleYTicks.filter(tick => tick >= lowerLimit && tick <= upperLimit);
-
-    return { xTickLevel, yLims: [+lowerLimit.toFixed(2), +upperLimit.toFixed(2)], ticks, dateRange };
+    if (inferIsFraction) {
+        const annotationPadding = hasAnnotations ? 0.1 : 0;
+        const lowerLimit = yLimsOverride ? yLimsOverride[0] : 0;
+        const upperLimit = yLimsOverride
+            ? yLimsOverride[1]
+            : ((possibleYTicks.find(curr => curr >= maxValue) ?? 0.95) + 0.05 + annotationPadding);
+        const ticks = possibleYTicks.filter(tick => tick >= lowerLimit && tick <= upperLimit);
+        return { xTickLevel, yLims: [+lowerLimit.toFixed(2), +upperLimit.toFixed(2)], ticks, dateRange };
+    } else {
+        const lowerLimit = yLimsOverride ? yLimsOverride[0] : 0;
+        const extra = hasAnnotations ? Math.ceil(maxValue * 0.2) : 0;
+        const prelimUpper = yLimsOverride ? yLimsOverride[1] : (maxValue + extra);
+        console.log(lowerLimit, prelimUpper);
+        
+        const scale = d3.scaleLinear().domain([lowerLimit, prelimUpper]).nice(20);
+        const [niceLow, niceHigh] = scale.domain();
+        const ticks = scale.ticks(5);
+        
+        console.log(niceLow, niceHigh);
+        
+        return { xTickLevel, yLims: [niceLow, niceHigh], ticks, dateRange };
+    }
 }
 
 

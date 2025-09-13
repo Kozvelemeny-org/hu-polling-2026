@@ -352,7 +352,7 @@ export class ChartRenderer {
                     axisLeft
                         .tickValues(axisParams.ticks)
                         .tickSize(-(leftGridWidth as number))
-                        .tickFormat((d: any) => `${Math.round((d as number) * 100)}`)
+                        .tickFormat((d: any) => this.getTooltipText(d as number))
                         .tickPadding(-15)
                 );
                 g.select(".domain").remove();
@@ -367,7 +367,7 @@ export class ChartRenderer {
                     (d3.axisLeft(y) as any)
                         .tickValues(axisParams.ticks)
                         .tickSize(-(leftGridWidth as number))
-                        .tickFormat((d: any) => `${Math.round((d as number) * 100)}`)
+                        .tickFormat((d: any) => this.getTooltipText(d as number))
                         .tickPadding(-15)
                 );
                 update.select(".domain").remove();
@@ -644,7 +644,7 @@ export class ChartRenderer {
             x: p.x,
             y: resolvedYs[i],
             oldY: p.y,
-            text: `${p.label} ${(p.value * 100).toFixed(0)}`,
+            text: `${p.label} ${this.getTooltipText(p.value)}`,
             color: p.color,
         }));
 
@@ -839,7 +839,7 @@ export class ChartRenderer {
             x: tooltip.x,
             y: resolvedYs[i],
             oldY: tooltip.y,
-            text: `${partyData[tooltip.party].name} ${(tooltip.value * 100).toFixed(0)}`,
+            text: `${partyData[tooltip.party].name} ${this.getTooltipText(tooltip.value)}`,
             color: partyData[tooltip.party].color,
         }));
 
@@ -923,5 +923,13 @@ export class ChartRenderer {
             resolved[indices[i]] = ys[i];
         }
         return resolved;
+    }
+
+    private getTooltipText(value: number) {
+        if (this.axisParams.yLims[1] <= 1.5) {
+            return `${(value * 100).toFixed(0)}`;
+        } else {
+            return `${value.toFixed(0)}`;
+        }
     }
 }

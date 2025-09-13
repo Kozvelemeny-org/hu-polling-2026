@@ -7,6 +7,8 @@
         Poll,
         PollData,
         PollsterGroup,
+        MandateProjectionData,
+        MandateProjection,
     } from "$lib/types";
     import { onMount } from "svelte";
     import { pollsterGroups } from "$stores/dataStore";
@@ -17,6 +19,7 @@
     export let data = {
         sure_voters: [] as PollData,
         all_voters: [] as PollData,
+        mandateProjectionData: [] as MandateProjectionData,
     };
     export let chartId = null as string | null;
     export let title: string;
@@ -28,12 +31,13 @@
     export let renderOptions = {} as Record<string, any> | undefined;
     export let voterType = "sure_voters" as "sure_voters" | "all_voters";
     export let pollsterGroup = "összes" as PollsterGroup;
+    export let isMandateProjection = false;
 
     export let featured = false;
     export let showSource = false;
 
     let chartOptions = {
-        data: [] as Poll[],
+        data: [] as Poll[] | MandateProjection[],
         pollsterGroupIndex: (pollsterGroups.findIndex(
             (group) => group === pollsterGroup,
         ) || 0) as 0 | 1 | 2,
@@ -52,7 +56,11 @@
     onMount(() => {
         const loadingInterval = setInterval(() => {
             if (!chartOptions.data.length && data[voterType]?.length) {
-                chartOptions.data = data[voterType];
+                if (isMandateProjection) {
+                    chartOptions.data = data.mandateProjectionData;
+                } else {
+                    chartOptions.data = data[voterType];
+                }
                 clearInterval(loadingInterval);
             }
         }, 10);

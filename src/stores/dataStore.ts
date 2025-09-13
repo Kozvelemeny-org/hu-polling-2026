@@ -1,6 +1,6 @@
 import { writable } from 'svelte/store';
 import { getData } from '../lib/dataUtils';
-import type { PartyData, PollData, PollsterData, PollsterGroup, Simulation } from '../lib/types';
+import type { MandateProjectionData, PartyData, PollData, PollsterData, PollsterGroup, Simulation } from '../lib/types';
 
 export const partyData = {
     'fidesz': {
@@ -139,6 +139,7 @@ export const pollData = writable<Record<'sure_voters' | 'all_voters', PollData>>
     all_voters: [],
 });
 export const simulationData = writable<Record<string, Simulation>>({});
+export const mandateProjectionData = writable<MandateProjectionData>([]);
 
 export async function fetchData() {
     try {
@@ -151,6 +152,7 @@ export async function fetchData() {
 
         pollData.set(data.pollData);
         simulationData.set(data.simulationData);
+        mandateProjectionData.set(data.mandateProjectionData);
     } catch (error) {
         console.error('Error fetching data:', error);
     }

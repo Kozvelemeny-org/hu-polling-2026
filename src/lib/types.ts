@@ -21,6 +21,8 @@ export interface GaugeProps {
 
 export type PollData = Poll[];
 
+export type MandateProjectionData = MandateProjection[];
+
 export type PollDataByPollster = Record<Pollster, Poll[]>;
 
 export type Pollster = 'IDEA' | 'Závecz RI' | 'Medián' | 'Nézőpont' | 'Publicus' |
@@ -39,6 +41,8 @@ export type Poll = {
 } & {
     [party in Party]?: number;
 }
+
+export type MandateProjection = Poll;
 
 export type Simulation = {
     medians: Record<Party, number>;
@@ -67,6 +71,7 @@ export type ChartData = {
     pollsterGroup?: PollsterGroup;
     featured?: boolean;
     showSource?: boolean;
+    isMandateProjection?: boolean;
 }
 
 export type DateRange = { start: Date, end: Date };

@@ -1,11 +1,12 @@
 <script lang="ts">
     import { charts } from "$lib/charts";
-    import type { PollData, PollsterGroup } from "$lib/types";
+    import type { MandateProjectionData, PollData, PollsterGroup } from "$lib/types";
     import PollsChart from "./PollsChart.svelte";
 
     export let data = {
         sure_voters: [] as PollData,
         all_voters: [] as PollData,
+        mandateProjectionData: [] as MandateProjectionData,
     };
     export let chart_id: string;
     export let voterType = undefined as "sure_voters" | "all_voters" | undefined;
@@ -15,12 +16,13 @@
 
     $: effectiveVoterType = voterType || (chartData?.voterType || "sure_voters");
     $: effectivePollsterGroup = pollsterGroup || (chartData?.pollsterGroup || "összes");
+    $: series = chartData?.isMandateProjection ? data.mandateProjectionData : data[effectiveVoterType];
 </script>
 
 {#if chartData}
     <PollsChart
         id={chart_id}
-        pollData={data[effectiveVoterType]}
+        pollData={series}
         selectedParties={chartData.selectedParties}
         dateRange={chartData.dateRange}
         annotations={chartData.annotations}

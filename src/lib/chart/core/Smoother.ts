@@ -17,7 +17,7 @@ function movingAverage(points: SeriesPoint[], dates: Date[], windowDays: number)
     if (!points.length || !dates.length) return [];
 
     const data = points.map(p => ({ date: p.date, value: p.value }))
-        .filter(p => p.value !== undefined && p.value !== null && (p.value as number) > 0.01);
+        .filter(p => p.value !== undefined && p.value !== null);
 
     const result: SeriesDaily[] = [];
 
@@ -49,12 +49,11 @@ function lowess(points: SeriesPoint[], dates: Date[], windowDays: number): Serie
             localValues.push({ date: pt.date, value: pt.value });
         }
 
-        const weightedValues = localValues
-            .map((point, i) => (point.value ? point.value * weights[i] : 0))
-            .filter(v => v > 0);
-
+        const hasAnyValue = localValues.some(v => typeof v.value === 'number');
+        const contributions = localValues.map((point, i) => (typeof point.value === 'number' ? (point.value as number) * weights[i] : 0));
         const weightSum = weights.reduce((a, b) => a + b, 0);
-        const avg = weightedValues.length > 0 ? weightedValues.reduce((a, b) => a + b, 0) / weightSum : undefined;
+        const sum = contributions.reduce((a, b) => a + b, 0);
+        const avg = hasAnyValue ? (sum / weightSum) : undefined;
 
         result.push({ date, value: avg });
     }
