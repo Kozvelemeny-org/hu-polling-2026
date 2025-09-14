@@ -91,6 +91,6 @@ export const charts: Record<string, ChartData> = {
             date: new Date(2024, 3, 15),
             lineType: "dotted",
         }],
-        renderOptions: { aspectRatio: 6 / 2, yLims: [0, 0.23] },
+        renderOptions: { aspectRatio: 2 / 1, yLims: [0, 0.23] },
     },
 }
