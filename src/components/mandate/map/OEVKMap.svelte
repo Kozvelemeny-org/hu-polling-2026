@@ -16,6 +16,7 @@
     const protocol = new pmtiles.Protocol();
     maplibregl.addProtocol("pmtiles", protocol.tile);
 
+    let mapContainer: HTMLElement;
     let map: maplibregl.Map;
     let mapLoaded = false;
     let geoJsonLoaded = false;
@@ -241,7 +242,7 @@
         await import("maplibre-gl/dist/maplibre-gl.css");
 
         map = new maplibregl.Map({
-            container: "map",
+            container: mapContainer,
             attributionControl: false,
             style: {
                 version: 8,
@@ -317,7 +318,7 @@
     });
 </script>
 
-<article id="mapContainer">
+<article class="oevk-map-container">
     <!-- Discrete Colorbar Legend -->
     {#if showInfoBar}
     <div id="colorbar-container">
@@ -357,17 +358,17 @@
         </div>
     </div>
     {/if}
-    <div id="map"></div>
+    <div class="oevk-map" bind:this={mapContainer}></div>
     <!-- <div id="loading-container">
         <button onclick={loadMap}>Load Map</button>
     </div> -->
 </article>
 
 <style lang="scss">
-    #mapContainer {
+    .oevk-map-container {
         position: relative;
     }
-    #map {
+    .oevk-map {
         width: 100%;
         aspect-ratio: 3 / 2;
     }
