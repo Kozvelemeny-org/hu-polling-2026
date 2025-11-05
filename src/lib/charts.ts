@@ -28,7 +28,7 @@ export const charts: Record<string, ChartData> = {
                 lineType: "dotted",
             },
         ],
-        renderOptions: { aspectRatio: 3 / 2 },
+        renderOptions: { aspectRatio: 3 / 2, yLims: [0, 0.69] },
         description: `
             <p>
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti aliquam, qui sint delectus quod, 
@@ -91,6 +91,6 @@ export const charts: Record<string, ChartData> = {
             date: new Date(2024, 3, 15),
             lineType: "dotted",
         }],
-        renderOptions: { aspectRatio: 2 / 1, yLims: [0, 0.23] },
+        renderOptions: { aspectRatio: 3 / 2, yLims: [0, 0.23] },
     },
 }
