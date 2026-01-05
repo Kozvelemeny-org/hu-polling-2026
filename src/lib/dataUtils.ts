@@ -95,6 +95,13 @@ async function getData() {
     retrivedData.mandateProjectionData.forEach((d) => {
         d.date = new Date(d.date);
     });
+    Object.values(retrivedData.simulationData).forEach((s) => {
+        if (s.metadata.updatedAt) {
+            s.metadata.updatedAt = new Date(s.metadata.updatedAt);
+        } else {
+            s.metadata.updatedAt = undefined;
+        }
+    })
     return retrivedData;
 }
 

@@ -116,8 +116,8 @@
     {:else}
         <BottomMenu>
             {#if chartId}
-                <BottomMenuItem link={`/abra/${chartId}`}>Módszertan</BottomMenuItem>
-                <BottomMenuItem link={`/abra/${chartId}`}>Megosztás</BottomMenuItem>
+            <BottomMenuItem link={`/abra/g-${chartId}`}>Megosztás</BottomMenuItem>
+            <BottomMenuItem link={`/abra/g-${chartId}`}>Beágyazás</BottomMenuItem>
             {/if}
         </BottomMenu>
     {/if}

@@ -53,9 +53,10 @@ export type Simulation = {
         name: string;
         polls?: Poll[];
         description?: string;
+        updatedAt?: Date;
     }
 } & {
-    [party in Party]?: number[];
+    [party in Party]?: number[]; // prob of winning i seats, from 0 to 199
 }
 
 export type ChartData = {
@@ -115,3 +116,16 @@ export type SeriesDescriptor = {
 
 export type SeriesPoint = { date: Date; value?: number };
 export type SeriesDaily = { date: Date; value?: number };
+
+export type BeeswarmPoint = {
+    name: string; // party name for title
+    category: string; // not used, kept to mirror example shape
+    value: number; // the actual value (seats for mandates, percentage for polls)
+};
+
+export type BeeswarmData = {
+    party: Party;
+    points: BeeswarmPoint[];
+    median: number;
+    histogram: number[]; // seats -> probability
+};

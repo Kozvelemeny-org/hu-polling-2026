@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { MandateProjectionData, PollData, Simulation } from "$lib/types";
+    import type { MandateProjectionData, Party, PollData, Simulation } from "$lib/types";
     import { onMount } from "svelte";
     import {
         pollData,
@@ -14,12 +14,12 @@
     import SectionTitle from "$components/section/SectionTitle.svelte";
     import GridItem from "$components/grid/GridItem.svelte";
     import GridSectionTitle from "$components/grid/GridSectionTitle.svelte";
-    import SimulationNameSpan from "$components/mandate/SimulationNameSpan.svelte";
-    import ExplainerCard from "$components/section/ExplainerCard.svelte";
     import BottomMenu from "$components/ui/bottom-menu/BottomMenu.svelte";
     import BottomMenuItem from "$components/ui/bottom-menu/BottomMenuItem.svelte";
-    import OevkSectionCard from "$components/mandateProjection/OEVKSectionCard.svelte";
     import Paragraph from "$components/grid/Paragraph.svelte";
+    import ChartCard from "$components/ui/ChartCard.svelte";
+    import MandateBeeswarm from "$components/mandate/beeswarm/MandateBeeswarm.svelte";
+    import InlineChartLabel from "$components/ui/InlineChartLabel.svelte";
 
     let data = {
         sure_voters: [] as PollData,
@@ -68,7 +68,29 @@
     </SectionCard>
 </GridItem>
 <GridItem variant="main">
-    <PollsCardFromData {data} chart_id="mandate-projection" />
+    <!-- <PollsCardFromData {data} chart_id="mandate-projection" /> -->
+    <SectionCard>
+        <SectionTitle variant="medium">A Fidesz és a Tisza várható eredménye</SectionTitle>
+        {#if data.simulationData["main"]}
+            <ChartCard>
+                {#each ['fidesz', 'tisza'] as party}
+                    <MandateBeeswarm
+                        party={party as Party}
+                        simulation={data.simulationData["main"]}
+                        simulationKey="main"
+                        numDots={1000}
+                        height={190}
+                        r={2.5}
+                    />
+                {/each}
+                <InlineChartLabel description>
+                    A 10.000 szimuláció megoszlását 1000 ponttal ábrázoljuk,
+                    a mediánt fekete vonal jelzi. A százalékok mutatják,
+                    hogy mekkora eséllyel ér el egy párt egy adott mandátumszámot.
+                </InlineChartLabel>
+            </ChartCard>
+        {/if}
+    </SectionCard>
 </GridItem>
 
 
@@ -77,7 +99,7 @@
 </GridItem>
 <GridItem variant="aside">
     {#if data.sure_voters.length > 0}
-        <RecentPollsAside pollData={data.sure_voters} selectedGroup="small_parties" />
+        <RecentPollsAside pollData={data.sure_voters} selectedGroup="small_parties" nItems={6} />
     {/if}
 </GridItem>
 <GridItem variant="main">

@@ -1,9 +1,8 @@
 <script lang="ts">
-    import BottomMenu from "$components/ui/bottom-menu/BottomMenu.svelte";
-    import BottomMenuItem from "$components/ui/bottom-menu/BottomMenuItem.svelte";
     import type { Simulation } from "$lib/types";
     import { createEventDispatcher, onMount } from "svelte";
     import SimulationNameSpan from "./SimulationNameSpan.svelte";
+    import SectionTitle from "$components/section/SectionTitle.svelte";
 
     export let data = {} as Record<string, Simulation>;
     export let sticky = false;
@@ -34,28 +33,29 @@
     </div>
 {:else}
     <aside id="mandate-projection">
-        <h2>Mandátumbecslés</h2>
-        <p>
-            Az EP-választás választási földrajzából kiindulva,
-            az alábbi szimuláció alapján:
-        </p>
         <div class="simulations">
+            <article>
+                <h2>Becslések</h2>
+                <!-- <p>
+                    Az alábbi becslések különböző közvélemény-kutatások alapján készültek:
+                </p> -->
+            </article>
             {#each Object.keys(data) as key}
                 <button
                     type="button"
                     on:click={() => selectSimulation(key)}
                     class:selected={selectedSimulation === key}
                 >
-                    <h3>{data[key].metadata.name}</h3>
+                    <SectionTitle variant="tiny">{data[key].metadata.name}</SectionTitle>
                     <p>
                         {data[key].metadata.description}
+                    </p>
+                    <p>
+                        Frissítve: {data[key].metadata.updatedAt ? new Date(data[key].metadata.updatedAt).toLocaleDateString("hu-HU") : ''}
                     </p>
                 </button>
             {/each}
         </div>
-        <BottomMenu>
-        <BottomMenuItem>Módszertan</BottomMenuItem>
-        </BottomMenu>
     </aside>
 {/if}
 
@@ -95,7 +95,6 @@
         h2 {
             font-size: 22px;
             font-weight: 400;
-            margin-top: 8px;
             text-align: center;
         }
 

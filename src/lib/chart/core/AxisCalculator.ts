@@ -41,13 +41,10 @@ export function axisFrom(
         const lowerLimit = yLimsOverride ? yLimsOverride[0] : 0;
         const extra = hasAnnotations ? Math.ceil(maxValue * 0.2) : 0;
         const prelimUpper = yLimsOverride ? yLimsOverride[1] : (maxValue + extra);
-        console.log(lowerLimit, prelimUpper);
         
         const scale = d3.scaleLinear().domain([lowerLimit, prelimUpper]).nice(20);
         const [niceLow, niceHigh] = scale.domain();
         const ticks = scale.ticks(5);
-        
-        console.log(niceLow, niceHigh);
         
         return { xTickLevel, yLims: [niceLow, niceHigh], ticks, dateRange };
     }

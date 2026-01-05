@@ -189,23 +189,8 @@ export class ChartRenderer {
         this.seriesDaily = dailyBySeries;
         if (dates) this.alignedDates = dates;
 
-        // compute right margin based on furthest last x among series
-        const availableWidth = this.context.width - this.margin.right;
-        const lastXs = Object.values(this.seriesDaily)
-            .map(arr => {
-                const a = Array.isArray(arr) ? arr : [];
-                const last = a[a.length - 1];
-                return last ? this.context.x(last.date) : null;
-            })
-            .filter((v): v is number => typeof v === 'number');
-        if (lastXs.length) {
-            const lastX = Math.max(...lastXs);
-            if (lastX + this.margin.right < availableWidth) {
-                this.margin.right = paddingLeftSizes[this.containerSizeCategory];
-            } else {
-                this.margin.right = lastX + this.margin.right - availableWidth;
-            }
-        }
+        // Reset right margin to base to avoid cumulative drift on redraws
+        this.margin.right = paddingSizes[this.containerSizeCategory];
         this.context.x.range([this.margin.left, this.context.width - this.margin.right]);
         this.drawGridlines();
         this.drawGenericSeries();
@@ -313,7 +298,7 @@ export class ChartRenderer {
                 return g;
             },
             update => {
-                update.attr("transform", `translate(${this.margin.top},${height - this.margin.bottom})`)
+                update.attr("transform", `translate(0,${height - this.margin.bottom})`)
                     .call(
                         (d3.axisBottom(x) as any)
                             .ticks(xTicks as any)
@@ -328,10 +313,21 @@ export class ChartRenderer {
                                 }
                             })
                     );
+                // re-center labels for yearly ticks
+                if (axisParams.xTickLevel === "year") {
+                    const tickSpacing = (width - this.margin.left - this.margin.right) / ((this.context.x.ticks(xTicks as any) as any[]).length - 1);
+                    update.selectAll("text")
+                        .attr("transform", `translate(${tickSpacing / 2}, 0)`) 
+                        .attr("dy", "6px")
+                        .attr("text-anchor", "middle");
+                } else {
+                    update.selectAll("text").attr("transform", null).attr("dy", null).attr("text-anchor", null);
+                }
+
                 update.select(".domain").remove();
                 update.selectAll("line")
                     .style("stroke", "#ddd")
-                    .style("stroke-opacity", 1)
+                    .style("stroke-opacity", 1);
                 update.selectAll("text")
                     .style("white-space", "pre-wrap");
                 return update;

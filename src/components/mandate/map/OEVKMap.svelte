@@ -223,11 +223,11 @@
         // Update the source data for both layers to trigger a redraw
         const linesSource = map.getSource("oevk-lines");
         const fillSource = map.getSource(oevkLayerId + oevkLayerIncrement);
-        
+
         if (linesSource && linesSource.type === "geojson") {
             (linesSource as any).setData(geojsonData);
         }
-        
+
         if (fillSource && fillSource.type === "geojson") {
             (fillSource as any).setData(geojsonData);
         }
@@ -250,11 +250,23 @@
                     basemap: {
                         type: "vector",
                         url: "pmtiles://https://tiles.tiborcz.club/basemap.pmtiles",
-                    }
+                    },
                 },
                 layers: [
-                    { id:"water", type:"fill", source:"basemap", "source-layer":"water", paint:{ "fill-color":"#e8f1fb" } },
-                    { id:"land", type:"fill", source:"basemap", "source-layer":"land", paint:{ "fill-color":"#f5f5f5" } },
+                    {
+                        id: "water",
+                        type: "fill",
+                        source: "basemap",
+                        "source-layer": "water",
+                        paint: { "fill-color": "#e8f1fb" },
+                    },
+                    {
+                        id: "land",
+                        type: "fill",
+                        source: "basemap",
+                        "source-layer": "land",
+                        paint: { "fill-color": "#f5f5f5" },
+                    },
                 ],
             },
             center: [
@@ -321,42 +333,42 @@
 <article class="oevk-map-container">
     <!-- Discrete Colorbar Legend -->
     {#if showInfoBar}
-    <div id="colorbar-container">
-        <div id="colorbar">
-            <!-- Five segments, each representing one discrete category -->
-            <div
-                class="legend-segment"
-                style="background: {colors[0]}; opacity: 0.6;"
-                data-label="Fidesz +15%"
-            ></div>
-            <div
-                class="legend-segment"
-                style="background: {colors[1]}; opacity: 0.6;"
-                data-label="Fidesz +5%"
-            ></div>
-            <div
-                class="legend-segment"
-                style="background: {colors[2]}; opacity: 0.6"
-                data-label="Ki esélyes?"
-            ></div>
-            <div
-                class="legend-segment"
-                style="background: {colors[3]}; opacity: 0.6;"
-                data-label="Tisza +5%"
-            ></div>
-            <div
-                class="legend-segment"
-                style="background: {colors[4]}; opacity: 0.6;"
-                data-label="Tisza +15%"
-            ></div>
+        <div id="colorbar-container">
+            <div id="colorbar">
+                <!-- Five segments, each representing one discrete category -->
+                <div
+                    class="legend-segment"
+                    style="background: {colors[0]}; opacity: 0.6;"
+                    data-label="Fidesz +15%"
+                ></div>
+                <div
+                    class="legend-segment"
+                    style="background: {colors[1]}; opacity: 0.6;"
+                    data-label="Fidesz +5%"
+                ></div>
+                <div
+                    class="legend-segment"
+                    style="background: {colors[2]}; opacity: 0.6"
+                    data-label="Ki esélyes?"
+                ></div>
+                <div
+                    class="legend-segment"
+                    style="background: {colors[3]}; opacity: 0.6;"
+                    data-label="Tisza +5%"
+                ></div>
+                <div
+                    class="legend-segment"
+                    style="background: {colors[4]}; opacity: 0.6;"
+                    data-label="Tisza +15%"
+                ></div>
+            </div>
+            <div id="colorbar-arrow"></div>
+            <div id="colorbar-label">
+                <svg>
+                    <text x="50%" y="50%">Ki esélyes?</text>
+                </svg>
+            </div>
         </div>
-        <div id="colorbar-arrow"></div>
-        <div id="colorbar-label">
-            <svg>
-                <text x="50%" y="50%">Ki esélyes?</text>
-            </svg>
-        </div>
-    </div>
     {/if}
     <div class="oevk-map" bind:this={mapContainer}></div>
     <!-- <div id="loading-container">

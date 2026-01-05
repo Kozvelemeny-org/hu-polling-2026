@@ -2,8 +2,8 @@
     // get the chartId from the slug parameter
     import { page } from "$app/state";
     import { onMount } from "svelte";
-    import { pollData, simulationData, fetchData } from "$stores/dataStore";
-    import type { PollData, Simulation } from "$lib/types";
+    import { pollData, simulationData, fetchData, mandateProjectionData } from "$stores/dataStore";
+    import type { MandateProjectionData, PollData, Simulation } from "$lib/types";
     import PollsCardFromData from "$components/poll/PollsCardFromData.svelte";
     import html2canvas from "html2canvas";
     import GridItem from "$components/grid/GridItem.svelte";
@@ -12,12 +12,28 @@
     import OevkSectionCard from "$components/mandateProjection/OEVKSectionCard.svelte";
 
     const chartId = page.params.chartId;
-    const simulationName = chartId?.slice(0, 6) === 'terkep' ? chartId.slice(7) : null;
+
+    let chartType = null as 'poll' | 'projection' | 'map' | null;
+    let chartName = chartId?.slice(2) || null;
+
+    $: {
+        if (chartId?.slice(0, 2) === 't-') {
+            chartType = 'map';
+        } else if (chartId?.slice(0, 2) === 'm-') {
+            chartType = 'projection';
+        } else if (chartId?.slice(0, 2) === 'g-') {
+            chartType = 'poll';
+        } else {
+            chartType = null;
+        }
+        console.log(chartType, chartName);
+    }
 
     let data = {
         sure_voters: [] as PollData,
         all_voters: [] as PollData,
         simulationData: {} as Record<string, Simulation>,
+        mandateProjectionData: [] as MandateProjectionData,
     };
 
     onMount(fetchData);
@@ -26,6 +42,7 @@
         sure_voters: $pollData.sure_voters,
         all_voters: $pollData.all_voters,
         simulationData: $simulationData,
+        mandateProjectionData: $mandateProjectionData,
     }
 
     function saveImage() {
@@ -88,15 +105,18 @@
 </script>
 
 <GridItem variant="left-main" --grid-row="1 / 3">
-    {#if simulationName}
+    {#if chartType === 'map'}
         <OevkSectionCard
-            data={data.simulationData[simulationName || 'main']?.oevkDiffs}
-            simulationName={data.simulationData[simulationName || 'main']?.metadata.name}
+            data={data.simulationData[chartName || 'main']?.oevkDiffs}
+            simulationName={data.simulationData[chartName || 'main']?.metadata.name}
+            simulationKey={chartName || 'main'}
         />
-    {:else}
+    {:else if chartType === 'projection'}
+        <!-- TODO: Add mandate projection chart -->
+    {:else if chartType === 'poll' && chartName}
         <PollsCardFromData
             {data}
-            chart_id={page.params.chartId || ''}
+            chart_id={chartName}
             showSource={true}
             featured={true}
         />
@@ -129,21 +149,9 @@
                     >
                         Grafikon beágyazása
                     </button>
+                </li>
             </ul>
         </div>
-    </SectionCard>
-</GridItem>
-<GridItem variant="right-aside">
-    <SectionCard>
-        <SectionTitle variant="small">A blogunkról</SectionTitle>
-        <ul class="related-posts">
-            <li>
-                <a href="https://kozvelemeny.org/2025/01/30/mikent-ne-becsuljunk-parlamenti-mandatummegoszlast-illusztracio-a-nezopont-becslesei-alapjan/">
-                    <h3>Miként (ne) becsüljünk parlamenti mandátummegoszlást?
-                        Illusztráció a Nézőpont becslései alapján</h3>
-                </a>
-            </li>
-        </ul>
     </SectionCard>
 </GridItem>
 
