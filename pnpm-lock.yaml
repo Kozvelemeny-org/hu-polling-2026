@@ -14,6 +14,9 @@ importers:
       html2canvas:
         specifier: ^1.4.1
         version: 1.4.1
+      layercake:
+        specifier: ^10.0.1
+        version: 10.0.1(svelte@5.38.5)(typescript@5.9.2)
       maplibre-gl:
         specifier: ^5.7.0
         version: 5.7.0
@@ -1161,6 +1164,13 @@ packages:
   kleur@4.1.5:
     resolution: {integrity: sha512-o+NO+8WrRiQEE4/7nwRJhN1HWpVmJm511pBHUxPLtp0BUISzlBplORYSmTclCnJvQq2tKu/sgl3xVpkc7ZWuQQ==}
     engines: {node: '>=6'}
+
+  layercake@10.0.1:
+    resolution: {integrity: sha512-jWSNkVOdCnc/GLjdi7pwigbgs1ItAwbw9WK4a2SWUZdxDG3qUnR5r6+glRVzWMW6M6dPIROfn5FY7X44S14goA==}
+    engines: {node: ^20.17.0 || >=22.9.0, npm: '>=11.0.0'}
+    peerDependencies:
+      svelte: '>=5'
+      typescript: ^5.0.2
 
   locate-character@3.0.0:
     resolution: {integrity: sha512-SW13ws7BjaeJ6p7Q6CO2nchbYEc3X3J6WrmTTDto7yMPqVSZTUyY5Tjbid+Ab8gLnATtygYtiDIJGQRRn2ZOiA==}
@@ -2464,6 +2474,15 @@ snapshots:
   kdbush@4.0.2: {}
 
   kleur@4.1.5: {}
+
+  layercake@10.0.1(svelte@5.38.5)(typescript@5.9.2):
+    dependencies:
+      d3-array: 3.2.4
+      d3-color: 3.1.0
+      d3-scale: 4.0.2
+      d3-shape: 3.2.0
+      svelte: 5.38.5
+      typescript: 5.9.2
 
   locate-character@3.0.0: {}
 
