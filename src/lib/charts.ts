@@ -37,8 +37,8 @@ export const charts: Record<string, ChartData> = {
             </p>
         `
     },
-    'mandate-projection': {
-        title: "Egyes kutatásokon alapuló mandátumbecslések alakulása",
+    'mandate-projection-chart': {
+        title: "Mandátumbecslések alakulása",
         dataSelects: ["pollster_group"],
         selectedParties: ["fidesz", "tisza"],
         dateRange: { start: new Date(2023, 11, 1), end: new Date(2026, 3, 4) },

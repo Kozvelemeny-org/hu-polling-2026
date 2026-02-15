@@ -67,7 +67,7 @@ export type ChartData = {
     selectedParties?: Party[];
     dateRange?: DateRange;
     annotations?: Annotation[];
-    renderOptions?: Record<string, any>;
+    renderOptions?: ChartOptions;
     voterType?: 'all_voters' | 'sure_voters';
     pollsterGroup?: PollsterGroup;
     featured?: boolean;
@@ -103,9 +103,19 @@ export type Annotation = {
 
 export type DataSelect = 'voter_type' | 'pollster_group';
 
+export type SmoothingMethod = 'ma' | 'weighted-ma';
+
+export interface ChartOptions {
+    aspectRatio?: number;
+    yLims?: [number, number];
+    smoothing?: SmoothingMethod;
+    showDots?: boolean;
+    isInteractive?: boolean;
+}
+
 // Generic series abstractions for charts
 export type SeriesId = string;
-export type SeriesKind = 'party' | 'pollster';
+export type SeriesKind = 'party';
 
 export type SeriesDescriptor = {
     id: SeriesId;
@@ -114,7 +124,7 @@ export type SeriesDescriptor = {
     kind: SeriesKind;
 };
 
-export type SeriesPoint = { date: Date; value?: number };
+export type SeriesPoint = { date: Date; value?: number; pollster?: string };
 export type SeriesDaily = { date: Date; value?: number };
 
 export type BeeswarmPoint = {

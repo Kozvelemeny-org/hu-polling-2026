@@ -15,7 +15,7 @@ export function calculateRealSupportProbabilities(params: {
     
     const filteredPollData = filterByPollsterGroup(pollData, pollsterGroup);
 
-    const windowDays = pollsterGroup === 'összes' ? 60 : 90;
+    const windowDays = 60;
     
     // Calculate date windowDays days ago
     const windowDaysAgo = new Date();

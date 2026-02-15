@@ -9,6 +9,7 @@
         PollsterGroup,
         MandateProjectionData,
         MandateProjection,
+        SmoothingMethod,
     } from "$lib/types";
     import { onMount } from "svelte";
     import { pollsterGroups } from "$stores/dataStore";
@@ -30,7 +31,7 @@
     export let annotations = [] as Annotation[];
     export let renderOptions = {} as Record<string, any> | undefined;
     export let voterType = "sure_voters" as "sure_voters" | "all_voters";
-    export let pollsterGroup = "összes" as PollsterGroup;
+    export let pollsterGroup = "kormányfüggetlen" as PollsterGroup;
     export let isMandateProjection = false;
 
     export let featured = false;
@@ -41,7 +42,7 @@
         pollsterGroupIndex: (pollsterGroups.findIndex(
             (group) => group === pollsterGroup,
         ) || 0) as 0 | 1 | 2,
-        smoothing: "movingAverage" as "movingAverage" | "lowess",
+        smoothing: "weighted-ma" as SmoothingMethod,
     };
 
     let articleMap = {
@@ -89,8 +90,8 @@
             {/if}
             {windowDays} napos
             <select bind:value={chartOptions.smoothing}>
-                <option value="movingAverage">mozgóátlag</option>
-                <option value="lowess">LOWESS-regresszió</option>
+                <option value="weighted-ma">súlyozott mozgóátlag</option>
+                <option value="ma">mozgóátlag</option>
             </select>
         </p>
     </div>

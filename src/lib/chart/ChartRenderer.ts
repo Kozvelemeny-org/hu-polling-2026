@@ -1,6 +1,5 @@
 import * as d3 from "d3";
-import type { DayData, AxisParams, Party, PollData, Annotation, SeriesDescriptor, SeriesDaily, SeriesPoint } from "../types";
-import { partyData } from "$stores/dataStore";
+import type { AxisParams, ChartOptions, Party, PollData, Annotation, SeriesDescriptor, SeriesDaily, SeriesPoint } from "../types";
 
 interface ChartContext {
     x: d3.ScaleTime<number, number>;
@@ -73,11 +72,10 @@ export class ChartRenderer {
     private static instanceCounter = 0;
     private clipPathId: string;
 
-    private renderOptions: Record<string, unknown> = {
+    private renderOptions: ChartOptions = {
         showDots: true,
         isInteractive: true,
         aspectRatio: 7 / 4,
-        yLims: undefined,
     };
 
     private margin = { top: 24, right: paddingSizes['small'], bottom: 34, left: paddingSizes['small'] }
@@ -97,7 +95,6 @@ export class ChartRenderer {
 
     private context: ChartContext;
     private pollData: PollData;
-    private dailyData: DayData[];
     private selectedParties: Party[];
     private annotations: Annotation[];
     private axisParams: AxisParams;
@@ -128,7 +125,6 @@ export class ChartRenderer {
         this.svgDefs = this.svg.append("defs");
 
         this.pollData = [];
-        this.dailyData = [];
         this.selectedParties = [];
         this.annotations = [];
         this.axisParams = {
@@ -160,7 +156,7 @@ export class ChartRenderer {
     public render(
         selectedParties: Party[],
         annotations: Annotation[],
-        renderOptions: Record<string, unknown> | undefined,
+        renderOptions: ChartOptions | undefined,
         dateRange?: { start: Date, end: Date },
     ) {
         this.selectedParties = selectedParties;
@@ -224,7 +220,7 @@ export class ChartRenderer {
         const { containerSizeCategory, axisParams } = this;
 
         const width = this.containerElement.getBoundingClientRect().width;
-        const height = width / (this.renderOptions.aspectRatio as number);
+        const height = width / (this.renderOptions.aspectRatio ?? 7 / 4);
 
         this.context = {
             x: d3.scaleTime()
@@ -687,196 +683,6 @@ export class ChartRenderer {
             .attr("x", 0)
             .attr("width", Math.max(0, x(date)))
             .attr("height", height);
-    }
-
-    private setupInteractivity() {
-        const { x, y, width, height } = this.context;
-
-        this.hoverLine
-            .attr("stroke", "#000")
-            .attr("stroke-width", 0.75)
-            .attr("y1", this.margin.top)
-            .attr("y2", height - this.margin.bottom)
-            .attr("opacity", 0);
-
-        this.mouseEventRect
-            .attr("width", width)
-            .attr("height", height)
-            .style("fill", "none")
-            .style("pointer-events", "all")
-            .style("touch-action", "none")
-            .on("pointerdown", (event) => {
-                event.target.setPointerCapture(event.pointerId);
-                this.handleMouseMove(event);
-            })
-            .on("pointermove", (event) => {
-                this.handleMouseMove(event);
-            })
-            .on("pointerup pointercancel", (event) => {
-                event.target.releasePointerCapture(event.pointerId);
-                this.updateTooltips(this.dailyData[this.dailyData.length - 1]);
-            })
-            .on("mouseleave", () => {
-                this.updateTooltips(this.dailyData[this.dailyData.length - 1]);
-            });
-
-        this.mouseEventRect.node()?.addEventListener("touchmove", (event) => event.preventDefault());
-
-        let clipPathSelection = this.svgDefs.selectAll(`#${this.clipPathId}`).data([null]);
-        clipPathSelection.join(
-            enter => {
-                const clipPath = enter.append("clipPath")
-                    .attr("id", this.clipPathId)
-                    .append("rect")
-                    .attr("x", 0)
-                    .attr("y", 0)
-                    .attr("width", x(new Date()))
-                    .attr("height", height);
-                return clipPath;
-            },
-            update => {
-                update.select("rect")
-                    .attr("x", 0)
-                    .attr("y", 0)
-                    .attr("width", x(new Date()))
-                    .attr("height", height);
-                return update;
-            }
-        );
-
-        if (this.dailyData && this.dailyData.length > 0) {
-            this.updateTooltips(this.dailyData[this.dailyData.length - 1]);
-        }
-    }
-
-    private handleMouseMove(event: MouseEvent | TouchEvent) {
-        const { x } = this.context;
-
-        const [mouseX] = d3.pointer(event, event.currentTarget);
-        const hoveredDate = x.invert(mouseX);
-
-        // Find the closest data point for each party
-        const closestData = this.dailyData.map((day) => ({
-            date: day.date,
-            ...this.selectedParties.reduce((acc, party) => {
-                if (day[party] !== undefined && day[party] !== null) {
-                    acc[party] = day[party];
-                }
-                return acc;
-            }, {} as Record<Party, number>),
-        }));
-
-        const nearestData = closestData.reduce((prev, curr) => {
-            const prevDiff = Math.abs(prev.date.getTime() - hoveredDate.getTime());
-            const currDiff = Math.abs(curr.date.getTime() - hoveredDate.getTime());
-            return currDiff < prevDiff ? curr : prev;
-        });
-
-        this.updateTooltips(nearestData ?? this.dailyData[this.dailyData.length - 1]);
-    }
-
-    private updateTooltips(data: DayData) {
-        const { x, height } = this.context;
-        this.tooltipGroup.selectAll("*").remove();
-
-        this.hoverLine
-            .attr("x1", x(data.date))
-            .attr("x2", x(data.date))
-            .attr("opacity", 1);
-
-        const dateInCurrentYear = new Date().getFullYear() === data.date.getFullYear();
-
-        const dateLabel = this.tooltipGroup.append("text")
-            .attr("x", x(data.date))
-            .attr("y", -6 + this.margin.top)
-            .attr("text-anchor", "middle")
-            .attr("fill", "#222")
-            .attr("font-size", `${gridLabelSizes[this.containerSizeCategory]}px`)
-            .style("font-weight", "400")
-            .text(
-                new Date(data.date).toLocaleDateString("hu-HU", {
-                    year: dateInCurrentYear ? undefined : "numeric",
-                    month: dateInCurrentYear ? "long" : "short",
-                    day: "numeric",
-                }),
-            );
-
-        this.handleTooltipOverlaps(data)
-
-        const clipRect = this.svg.select("#" + this.clipPathId + " rect");
-        clipRect
-            .attr("x", 0)
-            .attr("width", Math.max(0, x(data.date)))
-            .attr("height", height);
-    }
-
-    private handleTooltipOverlaps(data: DayData) {
-        const { x, y } = this.context;
-
-        const tooltipPositions: { party: Party; x: number; y: number; value: number }[] = [];
-
-        this.selectedParties.forEach((party) => {
-            if (data[party] !== undefined) {
-                tooltipPositions.push({
-                    party,
-                    x: x(data.date),
-                    y: y(data[party] as number),
-                    value: data[party] as number,
-                });
-            }
-        });
-
-        // robust, bounded collision resolution for legacy party tooltips
-        const minDistance = partyLabelSizes[this.containerSizeCategory] + 1;
-        const sorted = tooltipPositions.slice().sort((a, b) => a.y - b.y);
-        const targetYs = sorted.map(p => p.y);
-        const resolvedYs = this.resolveVerticalOverlaps(targetYs, minDistance);
-        const adjustedPositions: { x: number; y: number; oldY: number; text: string, color: string }[] = sorted.map((tooltip, i) => ({
-            x: tooltip.x,
-            y: resolvedYs[i],
-            oldY: tooltip.y,
-            text: `${partyData[tooltip.party].name} ${this.getTooltipText(tooltip.value)}`,
-            color: partyData[tooltip.party].color,
-        }));
-
-        // Render adjusted tooltips
-        adjustedPositions.forEach((tooltip) => {
-            this.tooltipGroup.append("circle")
-                .attr("cx", tooltip.x + 8)
-                .attr("cy", tooltip.y)
-                .attr("r", Math.max(dotSizes[this.axisParams.xTickLevel][this.containerSizeCategory] * 1.8, 4))
-                .attr("fill", tooltip.color)
-                .attr("stroke", "#f9f9f9")
-                .attr("stroke-width", 1);
-
-            this.tooltipGroup.append("text")
-                .attr("x", tooltip.x + 16)
-                .attr("y", tooltip.y + 1)
-                .attr("text-anchor", "start")
-                .attr("alignment-baseline", "middle")
-                .attr("stroke", "#f9f9f9")
-                .attr("stroke-width", 2)
-                .style("font-size", partyLabelSizes[this.containerSizeCategory])
-                .style("font-weight", 400)
-                .attr("paint-order", "stroke")
-                .attr("fill", tooltip.color)
-                .text(tooltip.text);
-        });
-
-        // connect adjusted positions with lines
-        adjustedPositions.forEach((tooltip) => {
-            if (Math.abs(tooltip.oldY - tooltip.y) > 0) {
-                this.tooltipGroup.append("line")
-                    .attr("x1", tooltip.x)
-                    .attr("x2", tooltip.x + 8)
-                    .attr("y1", tooltip.oldY)
-                    .attr("y2", tooltip.y)
-                    .attr("stroke", tooltip.color)
-                    .attr("stroke-width", 1)
-                    .attr("linecap", "round")
-                    .lower();
-            }
-        });
     }
 
     // Ensure labels are within bounds and separated by at least minDistance.
