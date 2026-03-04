@@ -8,7 +8,7 @@
 
 <style lang="scss">
     p {
-        margin-top: 12px;
+        margin-top: var(--margin, 12px);
 
         &.noMargin {
             margin-top: 0;
