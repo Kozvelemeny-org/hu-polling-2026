@@ -17,13 +17,13 @@ export const charts: Record<string, ChartData> = {
             },
             {
                 id: "ep-24",
-                text: "EP-választás",
+                text: "EP 2024",
                 date: new Date(2024, 5, 9),
                 lineType: "dotted",
             },
             {
                 id: "ogy-26",
-                text: "OGY. Választás",
+                text: "OGY 2026",
                 date: new Date(2026, 3, 12),
                 lineType: "dotted",
             },
@@ -44,11 +44,11 @@ export const charts: Record<string, ChartData> = {
         dateRange: { start: new Date(2023, 11, 1), end: new Date(2026, 3, 4) },
         annotations: [
             {
-                id: "ep-24",
-                text: "EP-választás",
-                date: new Date(2024, 5, 9),
+                id: "ogy-26",
+                text: "OGY 2026",
+                date: new Date(2026, 3, 12),
                 lineType: "dotted",
-            },
+            }
         ],
         isMandateProjection: true,
         renderOptions: { aspectRatio: 3 / 2 },
@@ -85,12 +85,20 @@ export const charts: Record<string, ChartData> = {
         dataSelects: ["pollster_group"],
         selectedParties: ["mkkp", "mihazank", "dk"],
         dateRange: { start: new Date(2023, 11, 1), end: new Date() },
-        annotations: [{
-            id: "marc-15",
-            text: "Március 15.",
-            date: new Date(2024, 3, 15),
-            lineType: "dotted",
-        }],
-        renderOptions: { aspectRatio: 3 / 2, yLims: [0, 0.23] },
+        annotations: [
+            {
+                id: "ep-24",
+                text: "EP 2024",
+                date: new Date(2024, 5, 9),
+                lineType: "dotted",
+            },
+            {
+                id: "ogy-26",
+                text: "OGY 2026",
+                date: new Date(2026, 3, 12),
+                lineType: "dotted",
+            }
+        ],
+        renderOptions: { aspectRatio: 3 / 2, yLims: [0, 0.23], showEntryTreshold: true },
     },
 }

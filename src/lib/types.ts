@@ -111,6 +111,7 @@ export interface ChartOptions {
     smoothing?: SmoothingMethod;
     showDots?: boolean;
     isInteractive?: boolean;
+    showEntryTreshold?: boolean;
 }
 
 // Generic series abstractions for charts

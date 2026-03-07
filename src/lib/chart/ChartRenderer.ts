@@ -400,6 +400,23 @@ export class ChartRenderer {
             .attr("dy", this.containerSizeCategory == "small" ? "-2px" : "-6px")
 
         d3.selectAll(".grid text").style("font-size", gridLabelSizes[this.containerSizeCategory]).attr("fill", "#666");
+
+        if (this.renderOptions.showEntryTreshold && this.axisParams.yLims[1] <= 1.5) {
+            const entryThresholdValue = 0.05;
+            const yThreshold = y(entryThresholdValue);
+            const bottom = height - this.margin.bottom;
+            if (yThreshold > this.margin.top && yThreshold < bottom) {
+                this.gridGroup
+                    .insert("rect", "g")
+                    .attr("class", "entry-threshold-area")
+                    .attr("x", 0)
+                    .attr("y", yThreshold)
+                    .attr("width", width)
+                    .attr("height", bottom - yThreshold)
+                    .attr("fill", "#000")
+                    .attr("opacity", 0.04);
+            }
+        }
     }
 
     private drawAnnotations() {
