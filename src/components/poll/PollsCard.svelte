@@ -41,7 +41,7 @@
         data: [] as Poll[] | MandateProjection[],
         pollsterGroupIndex: (pollsterGroups.findIndex(
             (group) => group === pollsterGroup,
-        ) || 0) as 0 | 1 | 2,
+        ) || 0) as 0 | 1,
         smoothing: "weighted-ma" as SmoothingMethod,
     };
 
@@ -83,7 +83,7 @@
                         <option value={i}>{group}</option>
                     {/each}
                 </select>
-                közvélemény-kutató{!chartOptions.pollsterGroupIndex ? "" : "k"} adatai
+                közvélemény-kutatók adatai
                 alapján,
             {/if}
             {windowDays} napos
