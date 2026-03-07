@@ -49,9 +49,9 @@
             >blogunkon</a
         > megtalálható az összes 2018-óta végzett közvélemény-kutatás eredménye.
     </Paragraph> -->
-    <BottomMenu noMargin>
+    <!-- <BottomMenu noMargin>
         <BottomMenuItem link="/kutatasok">Az összes kutatás</BottomMenuItem>
-    </BottomMenu>
+    </BottomMenu> -->
 </SectionCard>
 
 <style lang="scss">
@@ -60,10 +60,11 @@
         flex-direction: column;
         gap: 1rem;
         margin-top: 6px;
-        margin-bottom: 12px;
+        // margin-bottom: 12px;
         border-top: 2px solid #f5f5f5;
-        border-bottom: 2px solid #f5f5f5;
+        // border-bottom: 2px solid #f5f5f5;
         padding: 1rem 0;
+        padding-bottom: 0;
     }
 
     .legend-container {
