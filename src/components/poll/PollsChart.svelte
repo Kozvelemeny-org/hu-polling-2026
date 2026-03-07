@@ -6,7 +6,7 @@
     export let id: string;
     export let pollData: PollData | MandateProjectionData;
     export let selectedParties = undefined as Party[] | undefined;
-    export let selectedPollsterGroup = 'összes' as PollsterGroup;
+    export let selectedPollsterGroup = 'kormanyfuggetlen' as PollsterGroup;
     export let dateRange = undefined as DateRange | undefined;
     export let partyIntervals = undefined as Record<Party, [Date, Date][]> | undefined;
     export let annotations = [] as Annotation[]

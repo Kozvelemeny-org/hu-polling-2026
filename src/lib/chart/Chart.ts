@@ -37,7 +37,7 @@ export class Chart {
         this.containerElement = containerElement;
         this.pollData = pollData;
         this.selectedParties = options.selectedParties ?? Object.keys(partyData) as Party[];
-        this.selectedPollsterGroup = options.selectedPollsterGroup ?? "összes";
+        this.selectedPollsterGroup = options.selectedPollsterGroup ?? "kormanyfuggetlen" as PollsterGroup;
         this.dateRange = options.dateRange ?? { start: new Date(2018, 0, 0), end: new Date() };
         this.partyIntervals = options.partyIntervals ?? this.getDefaultPartyIntervals();
         this.annotations = options.annotations ?? [];

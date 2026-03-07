@@ -42,9 +42,8 @@ export const partyData = {
 } as PartyData;
 
 export const pollsterGroups = [
-    "összes",
-    "kormányközeli",
     "kormányfüggetlen",
+    "kormányközeli",
 ] as PollsterGroup[];
 
 export const pollsterData = {

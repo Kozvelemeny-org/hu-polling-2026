@@ -46,10 +46,8 @@
     };
 
     let articleMap = {
-        0: "az",
+        0: "a\xa0",
         1: "a\xa0",
-        2: "a\xa0",
-        3: "az",
     };
 
     let windowDays = 0;
