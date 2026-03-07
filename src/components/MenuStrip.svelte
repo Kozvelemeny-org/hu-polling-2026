@@ -19,8 +19,8 @@
         <!-- <a href="/terkepek"><li class:activePage={page.url.pathname === "/terkepek"}>
             <span>Térképek</span>
         </li></a> -->
-        <a href="//kozvelemeny.org" target="_blank"><li class="externalLink">
-            <span>Vox Populi blog</span>
+        <a href="/reszletes"><li class:activePage={page.url.pathname === "/reszletes"}>
+            <span>Részletes becslés</span>
         </li></a>
     </ul>
 </nav>
