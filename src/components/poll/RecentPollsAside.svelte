@@ -50,7 +50,7 @@
         > megtalálható az összes 2018-óta végzett közvélemény-kutatás eredménye.
     </Paragraph> -->
     <BottomMenu noMargin>
-        <BottomMenuItem link="/polls">Az összes kutatás</BottomMenuItem>
+        <BottomMenuItem link="/kutatasok">Az összes kutatás</BottomMenuItem>
     </BottomMenu>
 </SectionCard>
 
