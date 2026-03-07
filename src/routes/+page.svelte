@@ -8,18 +8,13 @@
         mandateProjectionData,
     } from "$stores/dataStore";
     import RecentPollsAside from "$components/poll/RecentPollsAside.svelte";
-    import MiniMandateProjection from "$components/mandate/MiniMandateProjection.svelte";
     import PollsCardFromData from "$components/poll/PollsCardFromData.svelte";
     import SectionCard from "$components/section/SectionCard.svelte";
     import SectionTitle from "$components/section/SectionTitle.svelte";
     import GridItem from "$components/grid/GridItem.svelte";
     import GridSectionTitle from "$components/grid/GridSectionTitle.svelte";
-    import BottomMenu from "$components/ui/bottom-menu/BottomMenu.svelte";
-    import BottomMenuItem from "$components/ui/bottom-menu/BottomMenuItem.svelte";
     import Paragraph from "$components/grid/Paragraph.svelte";
-    import ChartCard from "$components/ui/ChartCard.svelte";
-    import MandateBeeswarm from "$components/mandate/beeswarm/MandateBeeswarm.svelte";
-    import InlineChartLabel from "$components/ui/InlineChartLabel.svelte";
+    import RecentMandateProjectionsAside from "$components/mandate/RecentMandateProjectionsAside.svelte";
 
     let data = {
         sure_voters: [] as PollData,
@@ -46,13 +41,14 @@
 </GridItem>
 
 <GridItem variant="full">
-    <GridSectionTitle>A Vox Populi mandátumbecslése</GridSectionTitle>
+    <GridSectionTitle>Ki fog nyerni?</GridSectionTitle>
 </GridItem>
 
 <GridItem variant="aside">
-    <SectionCard>
-        <SectionTitle variant="medium" centered>Várható eredmény</SectionTitle>
-        <Paragraph>
+    <RecentMandateProjectionsAside mandateProjectionData={data.mandateProjectionData} selectedGroup="big_parties" nItems={6} />
+    <!-- <SectionCard>
+        <SectionTitle variant="tiny" centered>Várható eredmény</SectionTitle>
+        <Paragraph noMargin>
             A Fidesz és a Tisza képviselőinek várható aránya az EP-választás
             és a friss kutatások átlaga alapján:
         </Paragraph>
@@ -65,11 +61,11 @@
         <BottomMenu>
             <BottomMenuItem>Módszertan</BottomMenuItem>
         </BottomMenu>
-    </SectionCard>
+    </SectionCard> -->
 </GridItem>
 <GridItem variant="main">
-    <!-- <PollsCardFromData {data} chart_id="mandate-projection" /> -->
-    <SectionCard>
+    <PollsCardFromData {data} chart_id="mandate-projection-chart" />
+    <!-- <SectionCard>
         <SectionTitle variant="medium">A Fidesz és a Tisza várható eredménye</SectionTitle>
         {#if data.simulationData["main"]}
             <ChartCard>
@@ -90,7 +86,7 @@
                 </InlineChartLabel>
             </ChartCard>
         {/if}
-    </SectionCard>
+    </SectionCard> -->
 </GridItem>
 
 
