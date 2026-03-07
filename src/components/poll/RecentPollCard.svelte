@@ -1,22 +1,38 @@
 <script lang="ts">
-    import type { Poll } from "$lib/types";
-    import { pollsterData } from "$stores/dataStore";
+    import type { Party, Poll } from "$lib/types";
+    import { pollsterData, partyData } from "$stores/dataStore";
     
     export let poll: Poll;
+    export let selectedParties: Party[] = [];
 
     let pollData = {
         date: new Date(),
         dateDisplay: "",
-        fidesz: 0,
-        fideszDisplay: 0,
-        tisza: 0,
-        tiszaDisplay: 0,
+        partyResults: [] as Array<{
+            party: Party;
+            value: number;
+            displayValue: number;
+            color: string;
+            name: string;
+        }>,
         leader: "",
     };
 
     $: {
-        poll.fidesz = poll.fidesz ?? 0;
-        poll.tisza = poll.tisza ?? 0;
+        selectedParties.forEach(party => {
+            poll[party] = poll[party] ?? 0;
+        });
+
+        // Create party results array sorted by value (highest first)
+        const partyResults = selectedParties
+            .map(party => ({
+                party,
+                value: poll[party] ?? 0,
+                displayValue: Number(((poll[party] ?? 0) * 100).toFixed(0)),
+                color: partyData[party].color,
+                name: partyData[party].name,
+            }))
+            .sort((a, b) => b.value - a.value);
 
         pollData = {
             date: poll.date,
@@ -24,11 +40,8 @@
                 month: "short",
                 day: "numeric",
             }),
-            fidesz: poll.fidesz,
-            fideszDisplay: Number((poll.fidesz * 100).toFixed(0)),
-            tisza: poll.tisza,
-            tiszaDisplay: Number((poll.tisza * 100).toFixed(0)),
-            leader: poll.fidesz > poll.tisza ? "fidesz" : "tisza",
+            partyResults,
+            leader: partyResults[0]?.party ?? "",
         }
     }
 </script>
@@ -42,15 +55,24 @@
             {pollData.dateDisplay} 
         </div>
     </header>
-    {#if pollData.fidesz || pollData.tisza}
+    {#if pollData.partyResults.length > 0}
     <section>
-        {#if pollData.leader === "fidesz"}
-            <div class="result fidesz" style="width: {pollData.fideszDisplay * 1.5}%;">{pollData.fideszDisplay}</div>
-            <div class="result tisza" style="width: {pollData.tiszaDisplay * 1.5}%;">{pollData.tiszaDisplay}</div>
-        {:else}
-            <div class="result tisza" style="width: {pollData.tiszaDisplay * 1.5}%;">{pollData.tiszaDisplay}</div>
-            <div class="result fidesz" style="width: {pollData.fideszDisplay * 1.5}%;">{pollData.fideszDisplay}</div>
-        {/if}
+        {#each pollData.partyResults as result}
+            <div
+                class="valueBackground"
+                style="width: {result.displayValue * (result.displayValue > 10 ? 1.5 : 1.5)}%;"
+            >
+                <div 
+                    class="result {result.party}" 
+                    class:small={result.displayValue < 10}
+                    style="background-color: {result.color+'11'}; border: 1px solid {result.color+'22'};"
+                >
+                    <div class="value" class:inside={result.displayValue > 10} style="color: {result.displayValue < 10 ? result.color : result.color};">
+                        {result.displayValue}<span>%</span>
+                    </div>
+                </div>
+            </div>
+        {/each}
     </section>
     {/if}
 </article></a>
@@ -64,9 +86,8 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 6px;
-        border: 1px solid #eee;
-        padding: 6px;
-        border-radius: 4px;
+        //border: 1px solid #eee;
+        //padding: 6px;
     }
 
     header {
@@ -87,24 +108,40 @@
         display: flex;
         flex-direction: column;
         align-items: flex-end;
-        gap: 2px;
+        gap: 3px;
 
+        .valueBackground {
+            background-color: #fff;
+        }
         .result {
-            padding: 2px 4px;
-            text-align: center;
+            position: relative;
+            padding: 2px 0;
+            text-align: right;
             color: white;
             flex-grow: 1;
-            font-size: 12px;
-            font-weight: 400;
-            
-            &.fidesz {
-                background-color: #fd8100;
-                text-align: right;
+            height: 23px;
+
+            &.small {
+                height: 15px;
             }
-            
-            &.tisza {
-                background-color: #00359c;
-                text-align: right;
+
+            .value {
+                font-size: 12px;
+                font-weight: 400;
+                padding: 0 4px;
+                
+                &:not(.inside) {
+                    position: absolute;
+                    left: -25px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    padding: 0;
+                }
+
+                span {
+                    margin-left: 0.3px;
+                    color: inherit;
+                }
             }
         }
     }

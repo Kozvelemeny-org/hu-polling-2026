@@ -1,11 +1,12 @@
 <script lang="ts">
     import { charts } from "$lib/charts";
-    import type { PollData } from "$lib/types";
+    import type { MandateProjectionData, PollData } from "$lib/types";
     import PollsCard from "./PollsCard.svelte";
 
     export let data = {
         sure_voters: [] as PollData,
         all_voters: [] as PollData,
+        mandateProjectionData: [] as MandateProjectionData,
     };
     export let chart_id: string;
     export let showSource: boolean = false;
@@ -29,5 +30,6 @@
         pollsterGroup={chartData.pollsterGroup}
         featured={featured || chartData.featured}
         showSource={showSource}
+        isMandateProjection={chartData.isMandateProjection}
     />
 {/if}

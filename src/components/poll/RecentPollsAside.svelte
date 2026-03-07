@@ -1,78 +1,101 @@
 <script lang="ts">
-    import type { PollData } from "$lib/types";
+    import Paragraph from "$components/grid/Paragraph.svelte";
+    import SectionCard from "$components/section/SectionCard.svelte";
+    import SectionTitle from "$components/section/SectionTitle.svelte";
+    import BottomMenu from "$components/ui/bottom-menu/BottomMenu.svelte";
+    import BottomMenuItem from "$components/ui/bottom-menu/BottomMenuItem.svelte";
+    import type { Party, PollData } from "$lib/types";
+    import { partyData } from "$stores/dataStore";
     import RecentPollCard from "./RecentPollCard.svelte";
 
-    export let data: Record<'sure_voters' | 'all_voters', PollData> = { sure_voters: [], all_voters: [] };
-    let selectedIndex = 'sure_voters' as 'sure_voters' | 'all_voters';
+    export let pollData = [] as PollData;
+    export let selectedGroup = "big_parties" as "big_parties" | "small_parties";
+    export let nItems = 5;
+
+    let selectedPartiesMap = {
+        big_parties: ["fidesz", "tisza"],
+        small_parties: ["dk", "mihazank", "mkkp"],
+    } as Record<"big_parties" | "small_parties", Party[]>;
+
+    $: selectedParties = selectedPartiesMap[selectedGroup];
 </script>
 
-<aside id="recent-polls">
-    <h2>A legfrissebb adatok</h2>
-    <p>
-        Az összes 2018-óta végzett országos közvélemény-kutatás eredménye
-        megtalálható az <a href="//kozvelemeny.org" target="_blank"
-            >oldalunkon</a
-        >.
-    </p>
-    <!-- <div class="categSwitch">
-        <button class:active={selectedIndex == 'sure_voters'} on:click={() => selectedIndex = 'sure_voters'} >Biztos szavazók</button>
-        <button class:active={selectedIndex == 'all_voters'} on:click={() => selectedIndex = 'all_voters'} >Választókorúak</button>
-    </div> -->
+<SectionCard id="recent-polls">
+    <SectionTitle variant="tiny" centered>A legfrissebb adatok</SectionTitle>
+    <div class="legend-container">
+        <div class="color-legend">
+            {#each selectedParties as party}
+                <div class="color-legend-item">
+                    <div
+                        class="dot"
+                        style="border-color: {partyData[party]
+                            .color};background-color: {partyData[party]
+                            .color}11;"
+                    ></div>
+                    <span style="color: {partyData[party].color};"
+                        >{partyData[party].name}</span
+                    >
+                </div>
+            {/each}
+        </div>
+    </div>
     <section class="pollsContainer">
-        {#each data[selectedIndex]?.slice(0, 5) as poll}
-            <RecentPollCard {poll} />
+        {#each pollData.slice(0, nItems) as poll}
+            <RecentPollCard {poll} {selectedParties} />
         {/each}
     </section>
-</aside>
+    <!-- <Paragraph>
+        A <a href="//kozvelemeny.org" target="_blank"
+            >blogunkon</a
+        > megtalálható az összes 2018-óta végzett közvélemény-kutatás eredménye.
+    </Paragraph> -->
+    <BottomMenu noMargin>
+        <BottomMenuItem link="/kutatasok">Az összes kutatás</BottomMenuItem>
+    </BottomMenu>
+</SectionCard>
 
 <style lang="scss">
-#recent-polls {
-    padding: 0 8px;
-    border: 1px solid #eee;
-    background-color: #fcfcfc;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    h2 {
-        text-align: center;
-        margin-top: 12px;
-        font-weight: 400;
-        font-size: 20px;
+    .pollsContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 6px;
+        margin-bottom: 12px;
+        border-top: 2px solid #f5f5f5;
+        border-bottom: 2px solid #f5f5f5;
+        padding: 1rem 0;
     }
 
-    p {
-        margin-top: 12px;
-        text-align: center;
+    .legend-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        border-top: 2px solid #f5f5f5;
+        padding-top: 12px;
     }
 
-    .categSwitch {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(100px, 1fr));
-        gap: 6px;
-        margin-top: 1rem;
-        
-        button {
-            padding: 2px 4px;
-            border: 1px solid #eee;
-            background-color: #fff;
-            border-radius: 4px;
-            color: #666;
+    .color-legend {
+        display: flex;
+        flex-direction: row;
+        margin: 0 auto;
+        gap: 12px;
 
-            &.active {
-                border-color: #ccc;
-                color: #333;
+        .color-legend-item {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 2px;
+
+            .dot {
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                border: 1px solid #eee;
+            }
+
+            span {
+                font-size: 12px;
             }
         }
     }
-
-    .pollsContainer {
-        width: 100%;
-        padding: 12px 0;
-
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-    }
-}
 </style>

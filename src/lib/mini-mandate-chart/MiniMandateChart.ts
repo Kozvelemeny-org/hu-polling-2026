@@ -102,7 +102,7 @@ export class MiniMandateChart {
 
     private render() {
         if (!this.data || !this.mainScale || !this.sideScaleFidesz || !this.sideScaleTisza) return;
-        const { width, height, margin, deviceType } = this.options;
+        const { width, height, margin, deviceType, simplified } = this.options;
         const isHorizontal = this.isHorizontal(deviceType);
 
         this.svg.selectAll("*").remove();
@@ -125,8 +125,10 @@ export class MiniMandateChart {
             .attr("stroke", "#333");
 
         // Draw majority markers
-        this.drawMajorityMarker(100, this.mainScale, isHorizontal ? height : width, "Többség", isHorizontal);
-        this.drawMajorityMarker(133, this.mainScale, isHorizontal ? height : width, "Kétharmad", isHorizontal);
+        if (!simplified) {
+            this.drawMajorityMarker(100, this.mainScale, isHorizontal ? height : width, "Többség", isHorizontal);
+            this.drawMajorityMarker(133, this.mainScale, isHorizontal ? height : width, "Kétharmad", isHorizontal);
+        }
 
         // Draw min and max values
         this.drawMinMaxValues(this.sideScaleFidesz, this.mainScale, isHorizontal);

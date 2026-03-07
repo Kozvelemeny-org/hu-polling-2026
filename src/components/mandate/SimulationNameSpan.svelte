@@ -8,7 +8,7 @@
 
 <style lang="scss">
     span {
-        padding: 3px;
+        padding: 1px 3px;
         border-radius: 4px;
         border: 1px solid #6de635;
         font-family: 'Helvetica Neue', sans-serif;

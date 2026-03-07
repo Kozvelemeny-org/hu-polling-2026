@@ -21,6 +21,8 @@ export interface GaugeProps {
 
 export type PollData = Poll[];
 
+export type MandateProjectionData = MandateProjection[];
+
 export type PollDataByPollster = Record<Pollster, Poll[]>;
 
 export type Pollster = 'IDEA' | 'Závecz RI' | 'Medián' | 'Nézőpont' | 'Publicus' |
@@ -40,6 +42,8 @@ export type Poll = {
     [party in Party]?: number;
 }
 
+export type MandateProjection = Poll;
+
 export type Simulation = {
     medians: Record<Party, number>;
     modes: Record<Party, number>;
@@ -49,9 +53,10 @@ export type Simulation = {
         name: string;
         polls?: Poll[];
         description?: string;
+        updatedAt?: Date;
     }
 } & {
-    [party in Party]?: number[];
+    [party in Party]?: number[]; // prob of winning i seats, from 0 to 199
 }
 
 export type ChartData = {
@@ -62,11 +67,12 @@ export type ChartData = {
     selectedParties?: Party[];
     dateRange?: DateRange;
     annotations?: Annotation[];
-    renderOptions?: Record<string, any>;
+    renderOptions?: ChartOptions;
     voterType?: 'all_voters' | 'sure_voters';
     pollsterGroup?: PollsterGroup;
     featured?: boolean;
     showSource?: boolean;
+    isMandateProjection?: boolean;
 }
 
 export type DateRange = { start: Date, end: Date };
@@ -97,9 +103,19 @@ export type Annotation = {
 
 export type DataSelect = 'voter_type' | 'pollster_group';
 
+export type SmoothingMethod = 'ma' | 'weighted-ma';
+
+export interface ChartOptions {
+    aspectRatio?: number;
+    yLims?: [number, number];
+    smoothing?: SmoothingMethod;
+    showDots?: boolean;
+    isInteractive?: boolean;
+}
+
 // Generic series abstractions for charts
 export type SeriesId = string;
-export type SeriesKind = 'party' | 'pollster';
+export type SeriesKind = 'party';
 
 export type SeriesDescriptor = {
     id: SeriesId;
@@ -108,5 +124,18 @@ export type SeriesDescriptor = {
     kind: SeriesKind;
 };
 
-export type SeriesPoint = { date: Date; value?: number };
+export type SeriesPoint = { date: Date; value?: number; pollster?: string };
 export type SeriesDaily = { date: Date; value?: number };
+
+export type BeeswarmPoint = {
+    name: string; // party name for title
+    category: string; // not used, kept to mirror example shape
+    value: number; // the actual value (seats for mandates, percentage for polls)
+};
+
+export type BeeswarmData = {
+    party: Party;
+    points: BeeswarmPoint[];
+    median: number;
+    histogram: number[]; // seats -> probability
+};

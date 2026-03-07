@@ -29,6 +29,7 @@ export interface MiniMandateChartOptions {
     height: number;
     margin: ChartMargin;
     deviceType: DeviceType;
+    simplified: boolean;
 }
 
 export interface MiniMandateChartData {

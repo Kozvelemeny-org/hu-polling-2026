@@ -1,12 +1,12 @@
 <script lang="ts">
     import { createEventDispatcher, onMount } from "svelte";
     import { Chart } from "$lib/chart/Chart";
-    import type { Annotation, DateRange, Party, PollData, PollsterGroup } from "$lib/types";
+    import type { Annotation, DateRange, MandateProjectionData, Party, PollData, PollsterGroup } from "$lib/types";
 
     export let id: string;
-    export let pollData: PollData;
+    export let pollData: PollData | MandateProjectionData;
     export let selectedParties = undefined as Party[] | undefined;
-    export let selectedPollsterGroup = 'összes' as PollsterGroup;
+    export let selectedPollsterGroup = 'kormanyfuggetlen' as PollsterGroup;
     export let dateRange = undefined as DateRange | undefined;
     export let partyIntervals = undefined as Record<Party, [Date, Date][]> | undefined;
     export let annotations = [] as Annotation[]

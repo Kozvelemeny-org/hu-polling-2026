@@ -1,9 +1,10 @@
 <script lang="ts">
-    import BottomMenu from "$components/ui/bottom-menu/BottomMenu.svelte";
-    import BottomMenuItem from "$components/ui/bottom-menu/BottomMenuItem.svelte";
     import type { Simulation } from "$lib/types";
     import { createEventDispatcher, onMount } from "svelte";
     import SimulationNameSpan from "./SimulationNameSpan.svelte";
+    import SectionTitle from "$components/section/SectionTitle.svelte";
+    import SectionCard from "$components/section/SectionCard.svelte";
+    import Paragraph from "$components/grid/Paragraph.svelte";
 
     export let data = {} as Record<string, Simulation>;
     export let sticky = false;
@@ -33,12 +34,8 @@
         </div>
     </div>
 {:else}
-    <aside id="mandate-projection">
-        <h2>Mandátumbecslés</h2>
-        <p>
-            Az EP-választás választási földrajzából kiindulva,
-            az alábbi szimuláció alapján:
-        </p>
+    <SectionCard id="mandate-projection-aside">
+        <SectionTitle centered variant="tiny">Becslések</SectionTitle>
         <div class="simulations">
             {#each Object.keys(data) as key}
                 <button
@@ -46,17 +43,16 @@
                     on:click={() => selectSimulation(key)}
                     class:selected={selectedSimulation === key}
                 >
+                    <!-- <SectionTitle variant="tiny">{data[key].metadata.name}</SectionTitle> -->
                     <h3>{data[key].metadata.name}</h3>
-                    <p>
-                        {data[key].metadata.description}
-                    </p>
+                    <Paragraph --margin="8px">{data[key].metadata.description}</Paragraph>
+                    <Paragraph>
+                        Frissítve: {data[key].metadata.updatedAt ? new Date(data[key].metadata.updatedAt).toLocaleDateString("hu-HU") : ''}
+                    </Paragraph>
                 </button>
             {/each}
         </div>
-        <BottomMenu>
-        <BottomMenuItem>Módszertan</BottomMenuItem>
-        </BottomMenu>
-    </aside>
+    </SectionCard>
 {/if}
 
 <style lang="scss">
@@ -75,6 +71,7 @@
         .simulations {
             display: flex;
             gap: 1rem;
+            margin-top: 0;
         }
 
         button {
@@ -83,59 +80,38 @@
         }
     }
 
-    #mandate-projection {
-        display: flex;
-        flex-direction: column;
-        height: fit-content;
-        padding: 0 1rem;
-        padding-bottom: 1rem;
-        background-color: #fcfcfc;
-        border: 1px solid #eee;
+    .simulations {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-top: 8px;
 
-        h2 {
-            font-size: 22px;
-            font-weight: 400;
-            margin-top: 8px;
-            text-align: center;
-        }
+        button {
+            text-align: left;
+            padding: 8px 6px;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+            cursor: pointer;
 
-        p {
-            margin-top: 12px;
-        }
-
-        .simulations {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1rem;
-            padding: 1rem 0;
-
-            button {
-                text-align: left;
-                padding: 8px 6px;
-                border: 1px solid #eee;
-                border-radius: 4px;
-                background-color: #f9f9f9;
-                cursor: pointer;
-
-                &.selected {
-                    padding: 7px 5px;
-                    border-width: 2px;
-                    border-color: #6de635;
-                    
-                    h3 {
-                        font-weight: 400;
-                    }
-                }
-
+            &.selected {
+                padding: 7px 5px;
+                border-width: 2px;
+                border-color: #6de635;
+                
                 h3 {
-                    margin: 0;
-                    font-weight: 300;
-                    font-size: 1rem;
+                    font-weight: 400;
                 }
+            }
 
-                p {
-                    margin-top: 3px;
-                }
+            h3 {
+                margin: 0;
+                font-weight: 300;
+                font-size: 1rem;
+            }
+
+            p {
+                margin-top: 3px;
             }
         }
     }

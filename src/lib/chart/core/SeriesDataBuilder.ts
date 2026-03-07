@@ -19,7 +19,7 @@ export function buildSeriesData(
     for (const s of series) {
         const points: SeriesPoint[] = pollData
             .filter(p => filterForSeries(s, p))
-            .map((p) => ({ date: p.date, value: getValueForSeries(s, p) }))
+            .map((p) => ({ date: p.date, value: getValueForSeries(s, p), pollster: p.pollster }))
             .filter(p => p.value !== undefined);
         pointsBySeries[s.id] = points;
     }

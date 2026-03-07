@@ -1,9 +1,10 @@
 <script lang="ts">
-    export let variant = "featured" as "featured" | "big" | "medium" | "small";
+    export let variant = "featured" as "featured" | "big" | "medium" | "small" | "tiny";
     export let hasTopMargin = false;
+    export let centered = false;
 </script>
 
-<h2 class={variant} class:hasTopMargin>
+<h2 class={variant} class:hasTopMargin class:centered={centered}>
     <slot />
 </h2>
 
@@ -14,6 +15,10 @@
 
         &.hasTopMargin {
             margin-top: 12px;
+        }
+
+        &.centered {
+            text-align: center;
         }
 
         &.featured {
@@ -27,6 +32,10 @@
 
         &.medium {
             font-size: 22px;
+        }
+
+        &.tiny {
+            font-size: 18px;
         }
     }
 </style>

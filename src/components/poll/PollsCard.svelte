@@ -7,6 +7,9 @@
         Poll,
         PollData,
         PollsterGroup,
+        MandateProjectionData,
+        MandateProjection,
+        SmoothingMethod,
     } from "$lib/types";
     import { onMount } from "svelte";
     import { pollsterGroups } from "$stores/dataStore";
@@ -17,6 +20,7 @@
     export let data = {
         sure_voters: [] as PollData,
         all_voters: [] as PollData,
+        mandateProjectionData: [] as MandateProjectionData,
     };
     export let chartId = null as string | null;
     export let title: string;
@@ -27,24 +31,23 @@
     export let annotations = [] as Annotation[];
     export let renderOptions = {} as Record<string, any> | undefined;
     export let voterType = "sure_voters" as "sure_voters" | "all_voters";
-    export let pollsterGroup = "összes" as PollsterGroup;
+    export let pollsterGroup = "kormányfüggetlen" as PollsterGroup;
+    export let isMandateProjection = false;
 
     export let featured = false;
     export let showSource = false;
 
     let chartOptions = {
-        data: [] as Poll[],
+        data: [] as Poll[] | MandateProjection[],
         pollsterGroupIndex: (pollsterGroups.findIndex(
             (group) => group === pollsterGroup,
         ) || 0) as 0 | 1 | 2,
-        smoothing: "movingAverage" as "movingAverage" | "lowess",
+        smoothing: "weighted-ma" as SmoothingMethod,
     };
 
     let articleMap = {
-        0: "az",
+        0: "a\xa0",
         1: "a\xa0",
-        2: "a\xa0",
-        3: "az",
     };
 
     let windowDays = 0;
@@ -52,7 +55,11 @@
     onMount(() => {
         const loadingInterval = setInterval(() => {
             if (!chartOptions.data.length && data[voterType]?.length) {
-                chartOptions.data = data[voterType];
+                if (isMandateProjection) {
+                    chartOptions.data = data.mandateProjectionData;
+                } else {
+                    chartOptions.data = data[voterType];
+                }
                 clearInterval(loadingInterval);
             }
         }, 10);
@@ -63,11 +70,6 @@
     <h1>{title}</h1>
     <div class="description">
         <p>
-            a biztos szavazók körében{#if dataSelects.includes("pollster_group")}
-                ,
-            {:else}
-                .
-            {/if}
             <!-- {#if dataSelects.includes("voter_type")}
                 <select bind:value={chartOptions.data}>
                     <option value={data.sure_voters}>biztos szavazók</option>
@@ -82,17 +84,14 @@
                     {/each}
                 </select>
                 közvélemény-kutató{!chartOptions.pollsterGroupIndex ? "" : "k"} adatai
-                alapján.
+                alapján,
             {/if}
-        </p>
-        <p>
             {windowDays} napos
             <select bind:value={chartOptions.smoothing}>
-                <option value="movingAverage">mozgóátlag</option>
-                <option value="lowess">LOWESS-regresszió</option>
+                <option value="weighted-ma">súlyozott mozgóátlag</option>
+                <option value="ma">mozgóátlag</option>
             </select>
         </p>
-        <p>{description}</p>
     </div>
     <PollsChart
         id={"chart" + (Math.random() * 10000).toFixed(0)}
@@ -104,6 +103,9 @@
         renderOptions={{ ...renderOptions, smoothing: chartOptions.smoothing }}
         on:updateWindowDays={(e) => (windowDays = e.detail)}
     />
+    <div class="htmlContent">
+        {@html description}
+    </div>
     {#if showSource}
         <div class="source">
             <p>
@@ -113,8 +115,8 @@
     {:else}
         <BottomMenu>
             {#if chartId}
-                <BottomMenuItem link={`/abra/${chartId}`}>Módszertan</BottomMenuItem>
-                <BottomMenuItem link={`/abra/${chartId}`}>Megosztás</BottomMenuItem>
+            <BottomMenuItem link={`/abra/g-${chartId}`}>Megosztás</BottomMenuItem>
+            <BottomMenuItem link={`/abra/g-${chartId}`}>Beágyazás</BottomMenuItem>
             {/if}
         </BottomMenu>
     {/if}
@@ -146,14 +148,14 @@
             margin-bottom: 1rem;
         }
 
-        p {
-            margin-top: 6px;
+        p select {
+            padding: 2px;
+            width: fit-content;
+            min-width: unset;
+        }
 
-            select {
-                padding: 2px;
-                width: fit-content;
-                min-width: unset;
-            }
+        :global(.htmlContent p) {
+            margin-top: 12px;
         }
     }
 

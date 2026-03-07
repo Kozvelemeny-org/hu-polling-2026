@@ -8,8 +8,8 @@
     export let data: number[] = [];
     export let median: number = 0;
 
-    let width = 600;
-    let height = 150;
+    export let width = 600;
+    export let height = 150;
 
     let margin = { top: 50, right: 30, bottom: 5, left: 30 };
 

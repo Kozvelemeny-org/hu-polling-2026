@@ -2,117 +2,190 @@
     import { onMount } from "svelte";
     import {
         fetchData,
+        mandateProjectionData,
+        partyData,
+        pollData,
         simulationData,
     } from "$stores/dataStore";
-    import type { Party, Simulation } from "$lib/types";
+    import type { MandateProjectionData, Party, PollData, PollsterGroup, Simulation } from "$lib/types";
     import MandateProjectionAside from "../../components/mandate/MandateProjectionAside.svelte";
-    import ParliamentChart from "../../components/mandate/parliament/ParliamentChart.svelte";
-    import PartyMandateTable from "../../components/mandate/party/PartyMandateTable.svelte";
     import SectionCard from "../../components/section/SectionCard.svelte";
     import SectionTitle from "../../components/section/SectionTitle.svelte";
     import StickyAside from "../../components/grid/StickyAside.svelte";
     import GridItem from "../../components/grid/GridItem.svelte";
-    import SimulationNameSpan from "../../components/mandate/SimulationNameSpan.svelte";
-    import PartyProjectionsSection from "$components/mandate/party/PartyProjectionsSection.svelte";
     import OevkSectionCard from "$components/mandateProjection/OEVKSectionCard.svelte";
-    import MiniMandateProjection from "$components/mandate/MiniMandateProjection.svelte";
     import GridSectionTitle from "$components/grid/GridSectionTitle.svelte";
     import Paragraph from "$components/grid/Paragraph.svelte";
+    import { calculateEntryProbability } from "$lib";
+    import PollsViolin from "$components/mandate/violin/PollsViolin.svelte";
+    import SimulationNameSpan from "$components/mandate/SimulationNameSpan.svelte";
+    import PollsChartFromData from "$components/poll/PollsChartFromData.svelte";
+    import InlineChartLabel from "$components/ui/InlineChartLabel.svelte";
+    import BottomMenu from "$components/ui/bottom-menu/BottomMenu.svelte";
+    import BottomMenuItem from "$components/ui/bottom-menu/BottomMenuItem.svelte";
 
-    let data: Record<string, Simulation> = {};
-    let selectedSimulation = "main";
+    let data = {
+        sure_voters: [] as PollData,
+        all_voters: [] as PollData,
+        mandateProjectionData: [] as MandateProjectionData,
+        simulationData: {} as Record<string, Simulation>,
+    };
+    let selectedSimulation: string = "main";
+    let orderedParties = [] as Party[];
 
     function selectSimulation(simulation: string) {
         selectedSimulation = simulation;
     }
 
+    function getSelectedSimulationPollsterGroup(simulation: string): PollsterGroup | undefined {
+        switch (simulation) {
+            case "main":
+                return "összes";
+            case "kormanyfuggetlen":
+                return "kormányfüggetlen";
+            case "kormanykozeli":
+                return "kormányközeli";
+            default:
+                return undefined;
+        }
+    }
+
     onMount(fetchData);
 
-    $: data = $simulationData;
+    $: data = {
+        sure_voters: $pollData.sure_voters,
+        all_voters: $pollData.all_voters,
+        mandateProjectionData: $mandateProjectionData,
+        simulationData: $simulationData,
+    };
+    $: orderedParties = (() => {
+        if (!data.simulationData[selectedSimulation]) return [] as Party[];
+        const orderedParties = ['fidesz', 'tisza', 'dk', 'mihazank', 'mkkp'] as Party[];
+        return orderedParties.sort((a, b) => {
+            return calculateEntryProbability(data.simulationData[selectedSimulation], b) -
+            calculateEntryProbability(data.simulationData[selectedSimulation], a);
+        });
+    })();
+
+    $: selectedSimulationPollsterGroup = getSelectedSimulationPollsterGroup(selectedSimulation);
 </script>
 
 <StickyAside let:sticky>
     <MandateProjectionAside
-        {data}
+        data={data.simulationData}
         {sticky}
         on:selectSimulation={(e) => selectSimulation(e.detail)}
     />
 </StickyAside>
 <GridItem variant="main">
+    <SectionCard>
+        <SectionTitle variant="featured">Mandátumbecslések alakulása</SectionTitle>
+        <Paragraph --margin="2px">
+            a <SimulationNameSpan>{data.simulationData[selectedSimulation]?.metadata.name}</SimulationNameSpan>
+            szimuláció alapján, 60 napos súlyozott mozgóátlag. 
+        </Paragraph>
+        <PollsChartFromData {data} pollsterGroup={selectedSimulationPollsterGroup} chart_id="mandate-projection-chart" />
+        <Paragraph noMargin>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates, perspiciatis cum aliquam alias sapiente, rem hic deleniti laborum veniam rerum maiores doloremque repellendus asperiores iste non, accusamus veritatis tempore!
+        </Paragraph>
+        <BottomMenu>
+            <BottomMenuItem link={`/abra/g-mandate-projection-chart`}>Megosztás</BottomMenuItem>
+            <BottomMenuItem link={`/abra/g-mandate-projection-chart`}>Beágyazás</BottomMenuItem>
+        </BottomMenu>
+    </SectionCard>
+</GridItem>
+
+<!-- <GridItem variant="main">
+    <FideszTiszaBeeswarmCard simulationData={data.simulationData} {selectedSimulation} />
+</GridItem> -->
+
+<!-- <GridItem variant="aside">
+    <SectionCard>
+        <SectionTitle variant="small" centered>Támogatottság</SectionTitle>
+        {#each orderedParties.slice(0, 2) as party}
+            <InlineChartLabel description>{partyData[party].name}</InlineChartLabel>
+            <PollsViolin
+                party={party}
+                pollData={data.sure_voters}
+                pollsterGroup={selectedSimulationPollsterGroup ?? 'összes'}
+                numDots={100}
+                height={100}
+                xDomain={[0.2, 0.6]}
+            />
+        {/each}
+        <Paragraph>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt voluptate expedita similique, eaque magni mollitia dicta aperiam pariatur et accusamus iste quidem eius delectus vitae modi fuga error voluptas nisi. Lorem ipsum dolor sit amet consectetur.
+        </Paragraph>
+    </SectionCard>
+</GridItem> -->
+
+<!-- <GridItem variant="main">
+    <SectionCard>
+        <SectionTitle>Mandátumbecslés</SectionTitle>
+        <Paragraph>
+            A mandátumbecsléseink két adatforrásra építenek: 2024-es EP-választás választási földrajzára és a legfrissebb közvélemény-kutatásokra.
+        </Paragraph>
+        <div class="steps">
+            <div class="step">1.</div>
+            <article>
+                <Paragraph>
+                    Kiszámoljuk az elmúlt 30 napban végzett közvélemény-kutatások súlyozott átlagát és valós hibahatárát, majd ez alapján megbecsüljük a pártok támogatottságát.
+                </Paragraph>
+                <ChartCard>
+                    <InlineChartLabel>A Fidesz becsült támogattsága</InlineChartLabel>
+                    {#if data.simulationData[selectedSimulation]}
+                        <PollsViolin
+                            party={"fidesz"}
+                            pollData={data.sure_voters}
+                            pollsterGroup={selectedSimulationPollsterGroup ?? 'összes'}
+                            numDots={20}
+                            height={100}
+                            xDomain={[0, 1]}
+                        />
+                    {/if}
+                    <InlineChartLabel description>
+                        A becsült támogatottság egy valószínűségi-eloszlás, az átlagát a
+                        fekete vonal jelzi. A becslést {articleMap[selectedSimulationPollsterGroup ?? 'összes']}
+                        {selectedSimulationPollsterGroup ?? 'összes'}
+                        közvélemény-kutató{selectedSimulationPollsterGroup == "összes" ? "" : "k"}
+                        adatai súlyozott átlaga alapján számoljuk.
+                    </InlineChartLabel>
+                </ChartCard>
+            </article>
+            <div class="step">2.</div> 
+            <Paragraph>
+                Megbecsüljük a pártok támogatottságát az egyéni választókerületekben,
+                a 2019-es választás eredményébő és az országos támogatottságból kiindulva.
+            </Paragraph>
+            <div class="step">3.</div>
+            <Paragraph>
+                 A becsült támogatottság megoszlása alapján lefuttatunk
+                10.000 szimulációt, amelyek különböző lehetséges támogatottsági értékeket
+                vesznek figyelembe.
+            </Paragraph>
+        </div>
+        <Paragraph>
+            A mandátumbecslés részletes módszertanát a 
+            <a href="#">blogunkon</a>
+            találod meg.
+        </Paragraph>
+    </SectionCard>    
+</GridItem> -->
+
+<!-- <GridItem variant="main">
     <SectionCard id="parliament-chart">
         <SectionTitle>A legvalószínűbb parlament</SectionTitle>
         <p>
             Az alábbi ábrán a <SimulationNameSpan
-                >{data[selectedSimulation]?.metadata.name}</SimulationNameSpan
+                >{data.simulationData[selectedSimulation]?.metadata.name}</SimulationNameSpan
             >
             országos átlaga és az EP-választás választási földrajza alapján szimulált
             országgyűlési választás eredménye látható.
         </p>
-        <!-- <ExplainerCard
-            image="/images/hungary-shape.webp"
-            alt="Választási földrajz"
-        >
-            A szimuláció azt feltételezi, hogy az EP-választás óta nem változott
-            a választási földrajz, de az ellenzéki szavazók nagyobb része szavaz
-            majd a Tiszára.
-            <a href="#">Módszertan</a>
-        </ExplainerCard> -->
         <ParliamentChart {data} {selectedSimulation} />
-        <PartyMandateTable data={data[selectedSimulation]?.seats} />
-    </SectionCard>
-</GridItem>
-<!-- <GridItem variant="middle">
-    <SectionCard>
-        <SectionTitle>{data[selectedSimulation]?.metadata.name}</SectionTitle>
-        <p>
-            A <SimulationNameSpan>{data[selectedSimulation]?.metadata.name}</SimulationNameSpan> szimuláció az összes kutatóintézet kutatásait
-            figyelembe véve, a közvélemény-kutatások 30 napos mozgóátlagára alapul.
-        </p>
-        <p>
-            Ahogy a többi szimuláció, a {data[selectedSimulation]?.metadata.name} is feltételezi,
-            hogy az Európai Parlamenti választás óta nem változott a választási földrajz, de az ellenzéki szavazók nagyobb része szavaz majd a Tiszára.
-        </p>
-    </SectionCard>
+        <PartyMandateTable data={data.simulationData[selectedSimulation]?.seats} />
+    </SectionCard>    
 </GridItem> -->
-
-<GridItem variant="full">
-    <GridSectionTitle>Rövid magyarázat</GridSectionTitle>
-</GridItem>
-<GridItem variant="left-main" --grid-row="span 2">
-    <SectionCard>
-        <SectionTitle>Rövid magyarázat</SectionTitle>
-        <Paragraph>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt voluptate expedita similique, eaque magni mollitia dicta aperiam pariatur et accusamus iste quidem eius delectus vitae modi fuga error voluptas nisi. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem sunt, eos, eveniet necessitatibus aut doloremque perspiciatis totam adipisci repellat explicabo iusto, consequuntur ullam pariatur officiis nihil minima id natus enim!
-        </Paragraph>
-        <Paragraph>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt voluptate expedita similique, eaque magni mollitia dicta aperiam pariatur et accusamus iste quidem eius delectus vitae modi fuga error voluptas nisi. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem sunt, eos, eveniet necessitatibus aut doloremque perspiciatis totam adipisci repellat explicabo iusto, consequuntur ullam pariatur officiis nihil minima id natus enim!
-        </Paragraph>
-        <Paragraph>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt voluptate expedita similique, eaque magni mollitia dicta aperiam pariatur et accusamus iste quidem eius delectus vitae modi fuga error voluptas nisi. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem sunt, eos, eveniet necessitatibus aut doloremque perspiciatis totam adipisci repellat explicabo iusto, consequuntur ullam pariatur officiis nihil minima id natus enim!
-        </Paragraph>
-
-        <Paragraph>Több szimuláció és ábra, részletesebb adatok, valamint módszertan a <a href="/mandatumbecsles">mandátumbecslés</a> oldalon.</Paragraph>
-    </SectionCard>
-</GridItem>
-<GridItem variant="right-aside">
-    <SectionCard>
-        <SectionTitle variant="small">Várható mandátumok</SectionTitle>
-        <p>
-            A Fidesz és a Tisza képviselőinek várható aránya az EP-választás
-            és a friss kutatások átlaga alapján:
-        </p>
-        <div class="mandatesContainer">
-            <article class="visualization">
-                <MiniMandateProjection data={data} selectedSimulation={selectedSimulation} />
-            </article>
-        </div>
-        <p>
-            Részletes adatok és alakulásuk a <a href="/mandatumbecsles"
-                >mandátumbecslés</a
-            > oldalon.
-        </p>
-    </SectionCard>
-</GridItem>
 
 <GridItem variant="full">
     <GridSectionTitle>Egyéni választókerületek</GridSectionTitle>
@@ -120,19 +193,129 @@
 
 <GridItem variant="left-main">
     <OevkSectionCard
-        data={data[selectedSimulation]?.oevkDiffs}
-        simulationName={data[selectedSimulation]?.metadata.name}
+        data={data.simulationData[selectedSimulation]?.oevkDiffs}
+        simulationName={data.simulationData[selectedSimulation]?.metadata.name}
+        simulationKey={selectedSimulation}
     />
 </GridItem>
 <GridItem variant="right-aside">
     <SectionCard>
-        <SectionTitle variant="small">Hogy jön ez ki?</SectionTitle>
-        <Paragraph>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos facilis omnis, repellendus, est quia doloremque rem consequuntur perferendis blanditiis pariatur iusto deleniti quibusdam vel libero voluptatum. Dicta eos eveniet maxime!</Paragraph>
+        <SectionTitle variant="small">Az egyéni körzetek döntik el a választást</SectionTitle>
+        <Paragraph noMargin>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos facilis omnis, repellendus, est quia doloremque rem consequuntur perferendis blanditiis pariatur iusto deleniti quibusdam vel libero voluptatum. Dicta eos eveniet maxime!</Paragraph>
         <Paragraph>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos facilis omnis, repellendus, est quia doloremque rem consequuntur perferendis blanditiis pariatur iusto deleniti quibusdam vel libero voluptatum. Dicta eos eveniet maxime!</Paragraph>
     </SectionCard>
 </GridItem>
 
-
-<GridItem variant="main">
-    <PartyProjectionsSection {data} {selectedSimulation} />
+<GridItem variant="full">
+    <GridSectionTitle>A kis pártok esélyei</GridSectionTitle>
 </GridItem>
+<GridItem variant="aside">
+    <SectionCard>
+        <SectionTitle variant="small" centered>Bejutás valószínűsége</SectionTitle>
+        <Paragraph>
+            Mandátumszerzés valószínűsége a <SimulationNameSpan>{data.simulationData[selectedSimulation]?.metadata.name}</SimulationNameSpan> szimuláció alapján:
+        </Paragraph>
+        {#each orderedParties.slice(2, 5) as party}
+                <article class="chanceEntry" style="background-color: {partyData[party].color}11;">
+                    <img src="/images/party-logo/{party}.png" alt={partyData[party].name}>
+                    <h3 style="color: black; font-weight: 400;">
+                        {partyData[party].name}
+                    </h3>
+                    <h3 style="color: {partyData[party].color};">
+                        {(calculateEntryProbability(data.simulationData[selectedSimulation], party) * 100).toFixed(0)}%
+                    </h3>
+                </article>
+            {/each}
+    </SectionCard>
+</GridItem>
+<GridItem variant="main">
+    <SectionCard>
+        <SectionTitle variant="small">Érdemes nem a Fideszre vagy a Tiszára szavazni?</SectionTitle>
+        <Paragraph>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat cupiditate fuga vero eius optio voluptatum neque magnam, illum odio molestias voluptate vitae hic nihil perspiciatis, id eveniet accusantium expedita cumque?
+        </Paragraph>
+        {#if data.simulationData[selectedSimulation]}
+            <div class="split">
+                {#each orderedParties.slice(2, 5) as party}
+                    <article>
+                        <InlineChartLabel>{partyData[party].name}</InlineChartLabel>
+                        {#if selectedSimulationPollsterGroup}
+                            <PollsViolin
+                                party={party}
+                                pollData={data.sure_voters}
+                                pollsterGroup={selectedSimulationPollsterGroup}
+                                numDots={100}
+                                height={100}
+                                xDomain={[0, .1]}
+                                bandwidth={0.4}
+                            />
+                        {/if}
+                    </article>
+                {/each}
+            </div>
+        {/if}
+        <Paragraph>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat cupiditate fuga vero eius optio voluptatum neque magnam, illum odio molestias voluptate vitae hic nihil perspiciatis, id eveniet accusantium expedita cumque?
+        </Paragraph>
+        <Paragraph>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos facilis omnis, repellendus, est quia doloremque rem consequuntur perferendis blanditiis pariatur iusto deleniti quibusdam vel libero voluptatum. Dicta eos eveniet maxime!</Paragraph>
+    </SectionCard>
+</GridItem>
+<!-- <GridItem variant="left-main">
+    <SectionCard>
+        <SectionTitle variant="medium">Bejutási esélyek alakulása</SectionTitle>
+        <PollsChartFromData {data} chart_id="kis-partok" />
+    </SectionCard>
+</GridItem>
+<RecentPollsAside pollData={data.sure_voters} selectedGroup="small_parties" nItems={6} /> -->
+
+<!-- <GridItem variant="main">
+    <PartyProjectionsSection data={data.simulationData} {selectedSimulation} />
+</GridItem> -->
+
+<!-- <GridItem variant="main">
+    <SectionCard id="parliament-chart">
+        <SectionTitle>A legvalószínűbb parlament</SectionTitle>
+        <p>
+            Az alábbi ábrán a <SimulationNameSpan
+                >{data.simulationData[selectedSimulation]?.metadata.name}</SimulationNameSpan
+            >
+            országos átlaga és az EP-választás választási földrajza alapján szimulált
+            országgyűlési választás eredménye látható.
+        </p>
+        <ParliamentChart {data} {selectedSimulation} />
+        <PartyMandateTable data={data.simulationData[selectedSimulation]?.seats} />
+    </SectionCard>    
+</GridItem> -->
+
+<style lang="scss">
+    .split {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 12px;
+    }
+
+    .chanceEntry {
+        padding: 8px 6px;
+        display: grid;
+        grid-template-columns: 32px 1fr min-content;
+        gap: 12px;
+        align-items: center;
+
+        img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+            mix-blend-mode: multiply;
+        }
+
+        h3 {
+            margin: 0;
+            color: white;
+            font-size: 20px;
+
+            &:first-of-type {
+                font-size: 16px;
+            }
+        }
+    }
+</style>
