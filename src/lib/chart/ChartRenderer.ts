@@ -410,6 +410,15 @@ export class ChartRenderer {
         this.annotations.forEach(annotation => {
             const lineX = x(annotation.date);
 
+            let lineDasharray = null;
+
+            if (annotation.lineType === "dotted") {
+                lineDasharray = "2 2";
+            }
+            else if (annotation.lineType === "dashed") {
+                lineDasharray = "4 4";
+            }
+
             this.annotationGroup
                 .append("line")
                 .attr("class", "vertical-line")
@@ -419,7 +428,8 @@ export class ChartRenderer {
                 .attr("y2", height - this.margin.bottom)
                 .attr("stroke", '#999')
                 .attr("opacity", 1)
-                .attr("stroke-width", 0.75);
+                .attr("stroke-width", 0.75)
+                .attr("stroke-dasharray", lineDasharray);
 
             this.annotationGroup
                 .append("text")

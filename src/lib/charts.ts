@@ -23,8 +23,8 @@ export const charts: Record<string, ChartData> = {
             },
             {
                 id: "ogy-26",
-                text: "OGY. választások",
-                date: new Date(2026, 3, 1),
+                text: "OGY. Választás",
+                date: new Date(2026, 3, 12),
                 lineType: "dotted",
             },
         ],
