@@ -38,17 +38,33 @@ export function smoothSeries(
 function movingAverage(points: SeriesPoint[], dates: Date[], windowDays: number): SeriesDaily[] {
     if (!points.length || !dates.length) return [];
 
-    const data = points.map(p => ({ date: p.date, value: p.value }))
-        .filter(p => p.value !== undefined && p.value !== null);
+    const data = points
+        .map((p) => ({
+            date: p.date,
+            value: Number(p.value),
+        }))
+        .filter((p) => Number.isFinite(p.value));
 
     const result: SeriesDaily[] = [];
 
     for (const date of dates) {
-        const windowStart = date.getTime() - windowDays * 24 * 60 * 60 * 1000;
-        const windowEnd = date.getTime() + windowDays * 24 * 60 * 60 * 1000;
+        const windowStart = date.getTime() - windowDays * DAY_MS;
+        const windowEnd = date.getTime();
         const within = data.filter(d => d.date.getTime() >= windowStart && d.date.getTime() <= windowEnd);
-        const avg = d3.mean(within, d => d.value as number);
-        result.push({ date, value: (avg === 0 || within.length < 1) ? undefined : (avg as number) });
+        const values = within.map(d => d.value);
+        const avg = d3.mean(values);
+        const hasCenter = avg !== undefined && within.length > 0 && avg !== 0;
+        if (!hasCenter) {
+            result.push({ date, value: undefined, lo: undefined, hi: undefined, sd: undefined });
+            continue;
+        }
+        result.push({
+            date,
+            value: avg,
+            lo: unweightedQuantile(values, 0.025),
+            hi: unweightedQuantile(values, 0.975),
+            sd: d3.deviation(values),
+        });
     }
 
     return result;
@@ -78,7 +94,7 @@ function weightedPollOfPolls(points: SeriesPoint[], dates: Date[], windowDays: n
         const within = data.filter(p => p.date.getTime() > windowStart && p.date.getTime() <= targetTime);
 
         if (!within.length) {
-            result.push({ date, value: undefined });
+            result.push({ date, value: undefined, lo: undefined, hi: undefined, sd: undefined });
             continue;
         }
 
@@ -108,18 +124,97 @@ function weightedPollOfPolls(points: SeriesPoint[], dates: Date[], windowDays: n
 
         const meanRawWeight = d3.mean(rawWeights);
         if (meanRawWeight === undefined || meanRawWeight <= 0) {
-            result.push({ date, value: undefined });
+            result.push({ date, value: undefined, lo: undefined, hi: undefined, sd: undefined });
             continue;
         }
 
         const normalizedWeights = rawWeights.map(w => w / meanRawWeight);
+        const values = within.map(point => point.value);
+
+        if (d3.mean(values) == 0) {
+            result.push({ date, value: undefined, lo: undefined, hi: undefined, sd: undefined });
+            continue;
+        }
+
         const weightedValueSum = d3.sum(within, (point, i) => point.value * normalizedWeights[i]);
         const normalizedWeightSum = d3.sum(normalizedWeights);
+        const weightedMean = normalizedWeightSum > 0 ? weightedValueSum / normalizedWeightSum : undefined;
         result.push({
             date,
-            value: normalizedWeightSum > 0 ? weightedValueSum / normalizedWeightSum : undefined,
+            value: weightedMean,
+            lo: weightedQuantile(values, normalizedWeights, 0.025),
+            hi: weightedQuantile(values, normalizedWeights, 0.975),
+            sd: weightedStandardDeviation(values, normalizedWeights),
         });
     }
 
     return result;
+}
+
+function unweightedQuantile(values: number[], p: number): number | undefined {
+    if (!values.length) return undefined;
+    const sorted = [...values].sort((a, b) => a - b);
+    if (sorted.length === 1) return sorted[0];
+
+    const h = (sorted.length - 1) * p + 1;
+    const j = Math.floor(h);
+    const g = h - j;
+    if (j <= 1) return sorted[0];
+    if (j >= sorted.length) return sorted[sorted.length - 1];
+    const lower = sorted[j - 1];
+    const upper = sorted[j];
+    return (1 - g) * lower + g * upper;
+}
+
+function weightedQuantile(values: number[], weights: number[], p: number): number | undefined {
+    if (!values.length || values.length !== weights.length) return undefined;
+    if (!Number.isFinite(p)) return undefined;
+
+    const entries = values
+        .map((value, i) => ({ value, weight: weights[i] }))
+        .filter(entry => Number.isFinite(entry.value) && Number.isFinite(entry.weight) && entry.weight > 0)
+        .sort((a, b) => a.value - b.value);
+
+    if (!entries.length) return undefined;
+    if (entries.length === 1) return entries[0].value;
+
+    const totalWeight = d3.sum(entries, e => e.weight);
+    if (totalWeight <= 0) return undefined;
+    if (p <= 0) return entries[0].value;
+    if (p >= 1) return entries[entries.length - 1].value;
+
+    const target = p * totalWeight;
+    let cumulativeWeight = 0;
+    let previousValue = entries[0].value;
+    for (const entry of entries) {
+        const nextCumulativeWeight = cumulativeWeight + entry.weight;
+        if (target <= nextCumulativeWeight) {
+            if (nextCumulativeWeight === cumulativeWeight) return entry.value;
+            const fraction = (target - cumulativeWeight) / (nextCumulativeWeight - cumulativeWeight);
+            return previousValue + fraction * (entry.value - previousValue);
+        }
+        cumulativeWeight = nextCumulativeWeight;
+        previousValue = entry.value;
+    }
+    return entries[entries.length - 1].value;
+}
+
+function weightedStandardDeviation(values: number[], weights: number[]): number | undefined {
+    if (!values.length || values.length !== weights.length) return undefined;
+
+    const entries = values
+        .map((value, i) => ({ value, weight: weights[i] }))
+        .filter(entry => Number.isFinite(entry.value) && Number.isFinite(entry.weight) && entry.weight > 0);
+
+    if (!entries.length) return undefined;
+    if (entries.length === 1) return 0;
+    const totalWeight = d3.sum(entries, e => e.weight);
+    if (totalWeight <= 0) return undefined;
+
+    const mean = d3.sum(entries, e => e.value * e.weight) / totalWeight;
+    const squaredDeviationSum = d3.sum(entries, e => e.weight * Math.pow(e.value - mean, 2));
+    const weightSquaresSum = d3.sum(entries, e => e.weight * e.weight);
+    const varianceDenominator = totalWeight - (weightSquaresSum / totalWeight);
+    if (!Number.isFinite(varianceDenominator) || varianceDenominator <= 0) return 0;
+    return Math.sqrt(squaredDeviationSum / varianceDenominator);
 }
