@@ -46,7 +46,7 @@
     }
 </script>
 
-<a href={poll.url} target="_blank"><article>
+<article>
     <header>
         <div class="pollster">
             {pollsterData[poll.pollster]?.name ?? poll.pollster}
@@ -75,7 +75,7 @@
         {/each}
     </section>
     {/if}
-</article></a>
+</article>
 
 <style lang="scss">
     a {
