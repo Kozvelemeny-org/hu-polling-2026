@@ -13,21 +13,16 @@
     import SectionTitle from "../../components/section/SectionTitle.svelte";
     import StickyAside from "../../components/grid/StickyAside.svelte";
     import GridItem from "../../components/grid/GridItem.svelte";
-    import PartyProjectionsSection from "$components/mandate/party/PartyProjectionsSection.svelte";
     import OevkSectionCard from "$components/mandateProjection/OEVKSectionCard.svelte";
     import GridSectionTitle from "$components/grid/GridSectionTitle.svelte";
     import Paragraph from "$components/grid/Paragraph.svelte";
-    import MandateBeeswarm from "$components/mandate/beeswarm/MandateBeeswarm.svelte";
     import { calculateEntryProbability } from "$lib";
     import PollsViolin from "$components/mandate/violin/PollsViolin.svelte";
     import SimulationNameSpan from "$components/mandate/SimulationNameSpan.svelte";
     import PollsChartFromData from "$components/poll/PollsChartFromData.svelte";
-    import ChartCard from "$components/ui/ChartCard.svelte";
     import InlineChartLabel from "$components/ui/InlineChartLabel.svelte";
-    import RecentPollsAside from "$components/poll/RecentPollsAside.svelte";
-    import PollsCardFromData from "$components/poll/PollsCardFromData.svelte";
-    import PartyParliamentChart from "$components/mandate/parliament/PartyParliamentChart.svelte";
-    import FideszTiszaBeeswarmCard from "$components/mandate/beeswarm/FideszTiszaBeeswarmCard.svelte";
+    import BottomMenu from "$components/ui/bottom-menu/BottomMenu.svelte";
+    import BottomMenuItem from "$components/ui/bottom-menu/BottomMenuItem.svelte";
 
     let data = {
         sure_voters: [] as PollData,
@@ -37,12 +32,6 @@
     };
     let selectedSimulation: string = "main";
     let orderedParties = [] as Party[];
-
-    let articleMap = {
-        "összes": "az",
-        "kormányfüggetlen": "a",
-        "kormányközeli": "a",
-    };
 
     function selectSimulation(simulation: string) {
         selectedSimulation = simulation;
@@ -89,8 +78,26 @@
     />
 </StickyAside>
 <GridItem variant="main">
-    <FideszTiszaBeeswarmCard simulationData={data.simulationData} {selectedSimulation} />
+    <SectionCard>
+        <SectionTitle variant="featured">Mandátumbecslések alakulása</SectionTitle>
+        <Paragraph --margin="2px">
+            a <SimulationNameSpan>{data.simulationData[selectedSimulation]?.metadata.name}</SimulationNameSpan>
+            szimuláció alapján, 60 napos súlyozott mozgóátlag. 
+        </Paragraph>
+        <PollsChartFromData {data} pollsterGroup={selectedSimulationPollsterGroup} chart_id="mandate-projection-chart" />
+        <Paragraph noMargin>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates, perspiciatis cum aliquam alias sapiente, rem hic deleniti laborum veniam rerum maiores doloremque repellendus asperiores iste non, accusamus veritatis tempore!
+        </Paragraph>
+        <BottomMenu>
+            <BottomMenuItem link={`/abra/g-mandate-projection-chart`}>Megosztás</BottomMenuItem>
+            <BottomMenuItem link={`/abra/g-mandate-projection-chart`}>Beágyazás</BottomMenuItem>
+        </BottomMenu>
+    </SectionCard>
 </GridItem>
+
+<!-- <GridItem variant="main">
+    <FideszTiszaBeeswarmCard simulationData={data.simulationData} {selectedSimulation} />
+</GridItem> -->
 
 <!-- <GridItem variant="aside">
     <SectionCard>

@@ -1,7 +1,7 @@
 <script lang="ts">
     import { getContext } from "svelte";
 
-    let { medianValue, paddingTop = 0 }: { medianValue: number, paddingTop?: number } = $props();
+    let { medianValue, paddingTop = 0, showMandateLabel = true }: { medianValue: number, paddingTop?: number, showMandateLabel?: boolean } = $props();
 
     let displayedMedianValue = $derived(medianValue < 1 ? (medianValue * 100).toFixed(0)+'%' : medianValue.toFixed(0));
 
@@ -11,7 +11,11 @@
 <!-- Median value -->
 {#if medianValue}
     <rect x={$xScale(medianValue)} y={paddingTop} width={4} height={$height - paddingTop} class="marker median" />
-    <text x={$xScale(medianValue)} y={paddingTop - 3} class="marker-label" text-anchor="middle">{displayedMedianValue}</text>
+    {#if showMandateLabel}
+        <text x={$xScale(medianValue)} y={paddingTop - 3} class="marker-label" text-anchor="middle">{displayedMedianValue} mandátum</text>
+    {:else}
+        <text x={$xScale(medianValue)} y={paddingTop - 3} class="marker-label" text-anchor="middle">{displayedMedianValue}</text>
+    {/if}
 {/if}
 <style lang="scss">
     .marker.median { fill: #000; stroke: #fff; stroke-width: 2; dominant-baseline: text-after-edge; }

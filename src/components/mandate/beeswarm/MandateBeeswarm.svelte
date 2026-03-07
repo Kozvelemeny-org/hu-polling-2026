@@ -43,5 +43,5 @@
     {xDomain}
     {xTicks}
     {showMajorityMarkers}
-    paddingTop={showMajorityMarkers ? 55 : 0}
+    paddingTop={showMajorityMarkers ? 65 : 0}
 />

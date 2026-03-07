@@ -37,7 +37,7 @@
     <!-- Grid lines -->
     {#if showGrid}
         {#each tickVals as t}
-            {#if !showMajorityMarkers || (t !== majority && t !== twoThirds)}
+            {#if true}
                 <line x1={$xScale(t)} y1={0} x2={$xScale(t)} y2={$height} class="grid" />
             {/if}
         {/each}
@@ -89,14 +89,14 @@
 </g>
 
 <style>
-    .axis-x .baseline { stroke: #888; stroke-width: 1; }
-    .axis-x .tick-label { fill: #666; font-size: 10px; }
+    .axis-x .baseline { stroke: #000; stroke-width: 1; }
+    .axis-x .tick-label { fill: #000; font-size: 10px; }
     .axis-x .tick-label:first-child { text-anchor: start; }
     .axis-x .tick-label:last-child { text-anchor: end; }
     .axis-x .grid { stroke: #eee; stroke-width: 1; }
     .axis-x .marker { stroke-width: 1; z-index: 2;}
     .axis-x .marker.median { fill: #000; stroke: #fff; }
-    .axis-x .marker.majority, .axis-x .marker.twothirds { stroke: #aaa; stroke-dasharray: 2 2; }
+    /* .axis-x .marker.majority, .axis-x .marker.twothirds { stroke: #aaa; stroke-dasharray: 2 2; } */
     .axis-x .marker-label { fill: #555; font-size: 11px; dominant-baseline: text-bottom; }
 </style>
 

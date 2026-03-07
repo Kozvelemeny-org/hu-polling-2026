@@ -15,20 +15,20 @@
 </script>
 
 <SectionCard>
-    <SectionTitle variant="featured">Ki nyerne, ha ma lenne a választás?</SectionTitle>
+    <SectionTitle variant="featured">Mi a legvalószínűbb kimenetel?</SectionTitle>
     <Paragraph>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt voluptate expedita similique, eaque magni mollitia dicta aperiam pariatur et accusamus iste quidem eius delectus vitae modi fuga error voluptas nisi.
+        Az alábbi ábrán az látható, hogy a <SimulationNameSpan>{simulationData[selectedSimulation]?.metadata.name}</SimulationNameSpan> kutatásainak valós hibahatárát figyelembe véve milyen különböző mandátummegoszlásokat tekintünk lehetségesnek.
     </Paragraph>
     {#if simulationData[selectedSimulation]}
         <ChartCard>
-            <InlineChartLabel>A pöttyök a <SimulationNameSpan>{simulationData[selectedSimulation]?.metadata.name}</SimulationNameSpan> alapján szimulált 10.000 választás eredményeit mutatják.</InlineChartLabel>
+            <InlineChartLabel>A pöttyök 1000 szimulált választás eredményeit mutatják, a százalékok pedig azt, hogy egy párt milyen eséllyel kap többséget vagy kétharmadot.</InlineChartLabel>
             {#each parties as party}
                 <MandateBeeswarm
                     party={party}
                     simulation={simulationData[selectedSimulation]}
                     simulationKey={selectedSimulation}
                     numDots={1000}
-                    height={190}
+                    height={210}
                     r={2.5}
                 />
             {/each}
