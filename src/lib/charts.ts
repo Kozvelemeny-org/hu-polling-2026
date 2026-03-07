@@ -81,7 +81,7 @@ export const charts: Record<string, ChartData> = {
         renderOptions: { aspectRatio: 3 / 2, yLims: [0, 0.59] },
     },
     'kis-partok': {
-        title: "A kis pártok támogatottsága",
+        title: "A kis pártok és a bejutási küszöb",
         dataSelects: ["pollster_group"],
         selectedParties: ["mkkp", "mihazank", "dk"],
         dateRange: { start: new Date(2023, 11, 1), end: new Date() },
