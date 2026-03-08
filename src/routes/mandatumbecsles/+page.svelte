@@ -18,11 +18,14 @@
     import Paragraph from "$components/grid/Paragraph.svelte";
     import { calculateEntryProbability } from "$lib";
     import PollsViolin from "$components/mandate/violin/PollsViolin.svelte";
+    import MandateHistogram from "$components/mandate/histogram/MandateHistogram.svelte";
     import SimulationNameSpan from "$components/mandate/SimulationNameSpan.svelte";
     import PollsChartFromData from "$components/poll/PollsChartFromData.svelte";
     import InlineChartLabel from "$components/ui/InlineChartLabel.svelte";
     import BottomMenu from "$components/ui/bottom-menu/BottomMenu.svelte";
     import BottomMenuItem from "$components/ui/bottom-menu/BottomMenuItem.svelte";
+    import ChartCard from "$components/ui/ChartCard.svelte";
+    import SmallPartyLabel from "$components/mandate/histogram/SmallPartyLabel.svelte";
 
     let data = {
         sure_voters: [] as PollData,
@@ -230,34 +233,65 @@
 </GridItem>
 <GridItem variant="main">
     <SectionCard>
-        <SectionTitle variant="small">Érdemes nem a Fideszre vagy a Tiszára szavazni?</SectionTitle>
+        <SectionTitle variant="medium">Érdemes nem a Fideszre vagy a Tiszára szavazni?</SectionTitle>
         <Paragraph>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat cupiditate fuga vero eius optio voluptatum neque magnam, illum odio molestias voluptate vitae hic nihil perspiciatis, id eveniet accusantium expedita cumque?
         </Paragraph>
+        <SectionTitle variant="tiny" hasTopMargin>A pártok feltételezett támogatottsága</SectionTitle>
         {#if data.simulationData[selectedSimulation]}
-            <div class="split">
-                {#each orderedParties.slice(2, 5) as party}
-                    <article>
-                        <InlineChartLabel>{partyData[party].name}</InlineChartLabel>
-                        {#if selectedSimulationPollsterGroup}
-                            <PollsViolin
-                                party={party}
-                                pollData={data.sure_voters}
-                                pollsterGroup={selectedSimulationPollsterGroup}
-                                numDots={100}
-                                height={100}
-                                xDomain={[0, .1]}
-                                bandwidth={0.4}
-                            />
-                        {/if}
-                    </article>
-                {/each}
-            </div>
+            <ChartCard>
+                <InlineChartLabel>
+                    A pártok feltételezett támogatottsága (%)
+                </InlineChartLabel>
+                <div class="split">
+                    {#each orderedParties.slice(2, 5) as party}
+                        <article>
+                            {#if selectedSimulationPollsterGroup}
+                                <PollsViolin
+                                    party={party}
+                                    pollData={data.sure_voters}
+                                    pollsterGroup={selectedSimulationPollsterGroup}
+                                    numDots={100}
+                                    height={100}
+                                    xDomain={[0, .1]}
+                                    bandwidth={0.4}
+                                />
+                                <SmallPartyLabel party={partyData[party]} />
+                            {/if}
+                        </article>
+                    {/each}
+                </div>
+            </ChartCard>
+            <Paragraph noMargin>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam dolores vel esse. Temporibus sequi aliquid laudantium officia dolorum voluptate illo laboriosam sed facilis molestiae, adipisci minima aut quia provident architecto.
+            </Paragraph>
+            <SectionTitle variant="tiny" hasTopMargin>A pártok becsült mandátumszáma</SectionTitle>
+            <ChartCard>
+                <InlineChartLabel>
+                    A pártok becsült mandátumszáma
+                </InlineChartLabel>
+                <div class="split">
+                    {#each orderedParties.slice(2, 5) as party}
+                        <article>
+                            <div class="mandateHistogramContainer">
+                                <MandateHistogram
+                                    simulationData={data.simulationData}
+                                    simulationKey={selectedSimulation}
+                                    {party}
+                                    range={[0, 10]}
+                                    height={100}
+                                    xTicks={[0, 5, 6, 7, 8, 9, 10]}
+                                />
+                                <SmallPartyLabel party={partyData[party]} />
+                            </div>
+                        </article>
+                    {/each}
+                </div>
+            </ChartCard>
         {/if}
-        <Paragraph>
+        <Paragraph noMargin>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat cupiditate fuga vero eius optio voluptatum neque magnam, illum odio molestias voluptate vitae hic nihil perspiciatis, id eveniet accusantium expedita cumque?
         </Paragraph>
-        <Paragraph>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos facilis omnis, repellendus, est quia doloremque rem consequuntur perferendis blanditiis pariatur iusto deleniti quibusdam vel libero voluptatum. Dicta eos eveniet maxime!</Paragraph>
     </SectionCard>
 </GridItem>
 <!-- <GridItem variant="left-main">
@@ -292,30 +326,5 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 12px;
-    }
-
-    .chanceEntry {
-        padding: 8px 6px;
-        display: grid;
-        grid-template-columns: 32px 1fr min-content;
-        gap: 12px;
-        align-items: center;
-
-        img {
-            width: 32px;
-            height: 32px;
-            object-fit: contain;
-            mix-blend-mode: multiply;
-        }
-
-        h3 {
-            margin: 0;
-            color: white;
-            font-size: 20px;
-
-            &:first-of-type {
-                font-size: 16px;
-            }
-        }
     }
 </style>
