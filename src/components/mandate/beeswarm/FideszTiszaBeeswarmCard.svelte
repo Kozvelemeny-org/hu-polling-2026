@@ -7,6 +7,8 @@
     import ChartCard from "$components/ui/ChartCard.svelte";
     import InlineChartLabel from "$components/ui/InlineChartLabel.svelte";
     import type { Party, Simulation } from "$lib/types";
+    import BottomMenu from "$components/ui/bottom-menu/BottomMenu.svelte";
+    import BottomMenuItem from "$components/ui/bottom-menu/BottomMenuItem.svelte";
 
     export let selectedSimulation: string;
     export let simulationData: Record<string, Simulation>;
@@ -40,4 +42,8 @@
     <Paragraph>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt voluptate expedita similique, eaque magni mollitia dicta aperiam pariatur et accusamus iste quidem eius delectus vitae modi fuga error voluptas nisi. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem sunt, eos, eveniet necessitatibus aut doloremque perspiciatis totam adipisci repellat explicabo iusto, consequuntur ullam pariatur officiis nihil minima id natus enim!
     </Paragraph>
+    <BottomMenu>
+        <BottomMenuItem link={`/abra/b-${selectedSimulation}`}>Megosztás</BottomMenuItem>
+        <BottomMenuItem link={`/abra/b-${selectedSimulation}`}>Beágyazás</BottomMenuItem>
+    </BottomMenu>
 </SectionCard>

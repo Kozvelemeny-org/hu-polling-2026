@@ -7,10 +7,11 @@
     import GridItem from "$components/grid/GridItem.svelte";
     import PollsChartFromData from "$components/poll/PollsChartFromData.svelte";
     import OevkSectionCard from "$components/mandateProjection/OEVKSectionCard.svelte";
+    import FideszTiszaBeeswarmCard from "$components/mandate/beeswarm/FideszTiszaBeeswarmCard.svelte";
 
     const chartId = page.params.chartId;
 
-    let chartType = null as 'poll' | 'projection' | 'map' | null;
+    let chartType = null as 'poll' | 'beeswarm' | 'map' | null;
     let chartName = chartId?.slice(2) || null;
     let showOnlyChart: boolean;
     let voterType: "sure_voters" | "all_voters" | undefined;
@@ -19,8 +20,8 @@
     $: {
         if (chartId?.slice(0, 2) === 't-') {
             chartType = 'map';
-        } else if (chartId?.slice(0, 2) === 'm-') {
-            chartType = 'projection';
+        } else if (chartId?.slice(0, 2) === 'b-') {
+            chartType = 'beeswarm';
         } else if (chartId?.slice(0, 2) === 'g-') {
             chartType = 'poll';
         } else {
@@ -63,8 +64,8 @@
                 simulationName={data.simulationData[chartName || 'main']?.metadata.name}
                 simulationKey={chartName || 'main'}
             />
-        {:else if chartType === 'projection'}
-            <!-- TODO: Add mandate projection chart -->
+        {:else if chartType === 'beeswarm'}
+            <FideszTiszaBeeswarmCard simulationData={data.simulationData} selectedSimulation={chartName ?? 'main'} />
         {:else if chartType === 'poll' && chartName}
             {#if !showOnlyChart}
                 <PollsCardFromData
