@@ -20,7 +20,7 @@
 </script>
 
 <SectionCard smallPadding id="oevkSectionCard">
-    <SectionTitle>Hol fog eldőlni a választás?</SectionTitle>
+    <SectionTitle variant="medium">Hol fog eldőlni a választás?</SectionTitle>
     <p>
         Az alábbi térkép azt mutatja, hogy a <SimulationNameSpan>{simulationName}</SimulationNameSpan>
         becslés alapján hol nyerhet magabiztosan a Fidesz vagy a Tisza, és melyek lehetnek a
