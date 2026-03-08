@@ -47,7 +47,7 @@
             <AxisX tickCount={4} {unitLabel} {showMajorityMarkers} {xTicks} histogram={data.histogram} party={data.party} />
             <ViolinShape {bandwidth} stroke={color} strokeWidth={1} getTitle={titleAccessor} {hideZeros} {color} />
             {#if data.median !== undefined}
-                <MedianLine medianValue={data.median} />
+                <MedianLine medianValue={data.median} showMandateLabel={unitLabel === 'mandátum'} />
             {/if}
         </Svg>
         <Html pointerEvents={false} />
