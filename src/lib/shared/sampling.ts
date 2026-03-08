@@ -74,7 +74,7 @@ export function calculateEntryProbability(simulation: Simulation, party: Party):
 
     // Probability of getting 0 mandates is distribution[0]
     // Probability of getting >0 mandates is 1 - distribution[0]
-    return 1 - (distribution[0] || 0);
+    return Number((1 - (distribution[0] || 0)).toFixed(2));
 }
 
 export function calculateMajorityProbability(simulation: Simulation, party: Party): number {
