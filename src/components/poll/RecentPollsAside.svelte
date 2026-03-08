@@ -2,10 +2,10 @@
     import Paragraph from "$components/grid/Paragraph.svelte";
     import SectionCard from "$components/section/SectionCard.svelte";
     import SectionTitle from "$components/section/SectionTitle.svelte";
+    import AsidePartyLegend from "$components/ui/AsidePartyLegend.svelte";
     import BottomMenu from "$components/ui/bottom-menu/BottomMenu.svelte";
     import BottomMenuItem from "$components/ui/bottom-menu/BottomMenuItem.svelte";
     import type { Party, PollData } from "$lib/types";
-    import { partyData } from "$stores/dataStore";
     import RecentPollCard from "./RecentPollCard.svelte";
 
     export let pollData = [] as PollData;
@@ -22,23 +22,7 @@
 
 <SectionCard id="recent-polls">
     <SectionTitle variant="tiny" centered>A legfrissebb adatok</SectionTitle>
-    <div class="legend-container">
-        <div class="color-legend">
-            {#each selectedParties as party}
-                <div class="color-legend-item">
-                    <div
-                        class="dot"
-                        style="border-color: {partyData[party]
-                            .color};background-color: {partyData[party]
-                            .color}11;"
-                    ></div>
-                    <span style="color: {partyData[party].color};"
-                        >{partyData[party].name}</span
-                    >
-                </div>
-            {/each}
-        </div>
-    </div>
+    <AsidePartyLegend parties={selectedParties} />
     <section class="pollsContainer">
         {#each pollData.slice(0, nItems) as poll}
             <RecentPollCard {poll} {selectedParties} />
@@ -65,38 +49,5 @@
         // border-bottom: 2px solid #f5f5f5;
         padding: 1rem 0;
         padding-bottom: 0;
-    }
-
-    .legend-container {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        border-top: 2px solid #f5f5f5;
-        padding-top: 12px;
-    }
-
-    .color-legend {
-        display: flex;
-        flex-direction: row;
-        margin: 0 auto;
-        gap: 12px;
-
-        .color-legend-item {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 2px;
-
-            .dot {
-                width: 10px;
-                height: 10px;
-                border-radius: 50%;
-                border: 1px solid #eee;
-            }
-
-            span {
-                font-size: 12px;
-            }
-        }
     }
 </style>
