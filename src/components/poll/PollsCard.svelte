@@ -16,6 +16,7 @@
     import PollsChart from "./PollsChart.svelte";
     import BottomMenu from "$components/ui/bottom-menu/BottomMenu.svelte";
     import BottomMenuItem from "$components/ui/bottom-menu/BottomMenuItem.svelte";
+    import SectionTitle from "$components/section/SectionTitle.svelte";
 
     export let data = {
         sure_voters: [] as PollData,
@@ -67,7 +68,7 @@
 </script>
 
 <article class="pollGraph" class:featured>
-    <h1>{title}</h1>
+    <SectionTitle variant={featured ? "featured" : "medium"}>{title}</SectionTitle>
     <div class="description">
         <p>
             <!-- {#if dataSelects.includes("voter_type")}
@@ -130,18 +131,6 @@
 
         background-color: #fcfcfc;
         border: 1px solid #eee;
-
-        &.featured {
-            h1 {
-                font-size: 26px;
-                font-weight: 500;
-            }
-        }
-
-        h1 {
-            font-size: 22px;
-            font-weight: 400;
-        }
 
         .description {
             margin-top: 8px;
