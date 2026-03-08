@@ -27,7 +27,8 @@
         flex-direction: column;
         width: 100%;
         border-top: 2px solid #f5f5f5;
-        padding-top: 12px;
+        border-bottom: 2px solid #f5f5f5;
+        padding: 12px 0;
     }
 
     .colorLegend {
