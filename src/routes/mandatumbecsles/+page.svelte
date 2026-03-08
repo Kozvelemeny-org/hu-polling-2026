@@ -24,6 +24,7 @@
     import InlineChartLabel from "$components/ui/InlineChartLabel.svelte";
     import BottomMenu from "$components/ui/bottom-menu/BottomMenu.svelte";
     import BottomMenuItem from "$components/ui/bottom-menu/BottomMenuItem.svelte";
+    import EntryProbabilityAside from "$components/mandate/entryProbability/EntryProbabilityAside.svelte";
     import ChartCard from "$components/ui/ChartCard.svelte";
     import SmallPartyLabel from "$components/mandate/histogram/SmallPartyLabel.svelte";
 
@@ -212,24 +213,9 @@
 <GridItem variant="full">
     <GridSectionTitle>A kis pártok esélyei</GridSectionTitle>
 </GridItem>
+
 <GridItem variant="aside">
-    <SectionCard>
-        <SectionTitle variant="small" centered>Bejutás valószínűsége</SectionTitle>
-        <Paragraph>
-            Mandátumszerzés valószínűsége a <SimulationNameSpan>{data.simulationData[selectedSimulation]?.metadata.name}</SimulationNameSpan> szimuláció alapján:
-        </Paragraph>
-        {#each orderedParties.slice(2, 5) as party}
-                <article class="chanceEntry" style="background-color: {partyData[party].color}11;">
-                    <img src="/images/party-logo/{party}.png" alt={partyData[party].name}>
-                    <h3 style="color: black; font-weight: 400;">
-                        {partyData[party].name}
-                    </h3>
-                    <h3 style="color: {partyData[party].color};">
-                        {(calculateEntryProbability(data.simulationData[selectedSimulation], party) * 100).toFixed(0)}%
-                    </h3>
-                </article>
-            {/each}
-    </SectionCard>
+    <EntryProbabilityAside selectedSimulationData={data.simulationData[selectedSimulation]} parties={orderedParties.slice(2, 5)} />
 </GridItem>
 <GridItem variant="main">
     <SectionCard>
