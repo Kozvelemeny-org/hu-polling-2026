@@ -28,7 +28,7 @@
     
     let cumulativePercentages: string[] = $derived.by(() => {
         return histogram?.map((value, index) => {
-            return (100 - d3.sum(histogram.slice(0, index)) * 100).toFixed(0);
+            return Math.abs(100 - d3.sum(histogram.slice(0, index)) * 100).toFixed(0);
         }) ?? [];
     });
 </script>

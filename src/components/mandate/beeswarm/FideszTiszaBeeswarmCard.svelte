@@ -29,8 +29,8 @@
                     party={party}
                     simulation={simulationData[selectedSimulation]}
                     simulationKey={selectedSimulation}
-                    numDots={1000}
-                    height={210}
+                    numDots={500}
+                    height={200}
                     r={2.5}
                 />
             {/each}
