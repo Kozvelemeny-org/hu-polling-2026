@@ -14,16 +14,17 @@ import type { PartySeriesResult } from "./ChartDataProcessor";
 import { axisFrom } from "./core/AxisCalculator";
 import { filterByDateRange, filterByPollsterGroup } from "./core/PollDataFilter";
 import { partyData } from "$stores/dataStore";
-import type { HistoricalSimulationByDate } from "../types";
+import type { HistoricalSimulationScenario } from "../types";
 
 const VALID_PARTIES: Party[] = Object.keys(partyData) as Party[];
 
 /** Throws only on invalid Party keys (e.g. typos in JSON). Parties in the data but not in selectedParties are simply not displayed. */
-function assertValidPartyKeys(historicalSimulation: HistoricalSimulationByDate): void {
+function assertValidPartyKeys(historicalSimulation: HistoricalSimulationScenario): void {
     const validSet = new Set(VALID_PARTIES);
     for (const dateStr of Object.keys(historicalSimulation)) {
-        const byParty = historicalSimulation[dateStr];
-        for (const key of Object.keys(byParty)) {
+        const byDate = historicalSimulation[dateStr];
+        if (!byDate?.mean) continue;
+        for (const key of Object.keys(byDate.mean)) {
             if (!validSet.has(key as Party)) {
                 throw new Error(`MandateChartDataProcessor: invalid party key in simulation data: "${key}"`);
             }
@@ -32,7 +33,7 @@ function assertValidPartyKeys(historicalSimulation: HistoricalSimulationByDate):
 }
 
 export function processMandateProjectionSeries(
-    historicalSimulation: HistoricalSimulationByDate,
+    historicalSimulation: HistoricalSimulationScenario,
     mandateProjectionData: MandateProjectionData,
     dateRange: DateRange,
     selectedParties: Party[],
@@ -60,8 +61,8 @@ export function processMandateProjectionSeries(
     for (const party of selectedParties) {
         dailyBySeries[party] = dates.map((date) => {
             const dateStr = date.toISOString().slice(0, 10);
-            const byParty = historicalSimulation[dateStr];
-            const value = byParty?.[party] ?? undefined;
+            const byDate = historicalSimulation[dateStr];
+            const value = byDate?.mean?.[party] ?? undefined;
             return { date, value };
         });
     }

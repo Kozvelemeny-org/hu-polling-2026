@@ -2,11 +2,11 @@ import { ChartRenderer } from "./ChartRenderer";
 import { processPartySeries } from "./ChartDataProcessor";
 import { processMandateProjectionSeries } from "./MandateChartDataProcessor";
 import { axisFrom } from "./core/AxisCalculator";
-import type { Annotation, ChartOptions, DateRange, HistoricalSimulationByDate, MandateProjectionData, Party, PollData, PollsterGroup, SeriesDaily, SeriesPoint, SeriesDescriptor } from "../types";
+import type { Annotation, ChartOptions, DateRange, HistoricalSimulationScenario, MandateProjectionData, Party, PollData, PollsterGroup, SeriesDaily, SeriesPoint, SeriesDescriptor } from "../types";
 import { partyData } from "$stores/dataStore";
 
 export type MandateChartInput = {
-    historicalSimulation: HistoricalSimulationByDate;
+    historicalSimulation: HistoricalSimulationScenario;
     mandateProjectionData: MandateProjectionData;
 };
 
@@ -18,7 +18,7 @@ export class Chart {
     private containerElement: HTMLElement;
     private mode: "poll" | "mandate";
     private pollData: PollData;
-    private historicalSimulation: HistoricalSimulationByDate | undefined;
+    private historicalSimulation: HistoricalSimulationScenario | undefined;
     private mandateProjectionData: MandateProjectionData | undefined;
     private selectedParties: Party[];
     private selectedPollsterGroup: PollsterGroup;
@@ -94,7 +94,7 @@ export class Chart {
 
     public setOptions(updatedOptions: {
         pollData?: PollData;
-        historicalSimulation?: HistoricalSimulationByDate;
+        historicalSimulation?: HistoricalSimulationScenario;
         mandateProjectionData?: MandateProjectionData;
         selectedParties?: Party[];
         selectedPollsterGroup?: PollsterGroup;
@@ -113,8 +113,10 @@ export class Chart {
             updatedOptions.historicalSimulation !== undefined ||
             updatedOptions.mandateProjectionData !== undefined ||
             updatedOptions.selectedParties !== undefined ||
+            updatedOptions.selectedPollsterGroup !== undefined ||
             updatedOptions.dateRange !== undefined ||
-            updatedOptions.partyIntervals !== undefined
+            updatedOptions.partyIntervals !== undefined ||
+            updatedOptions.renderOptions !== undefined
         ) {
             this.updateChartData();
         }
