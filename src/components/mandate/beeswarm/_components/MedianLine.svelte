@@ -3,7 +3,7 @@
 
     let { medianValue, paddingTop = 0, showMandateLabel = true }: { medianValue: number, paddingTop?: number, showMandateLabel?: boolean } = $props();
 
-    let displayedMedianValue = $derived(medianValue < 1 ? (medianValue * 100).toFixed(0) : medianValue.toFixed(0));
+    let displayedMedianValue = $derived(medianValue < 1 ? (medianValue * 100).toFixed(1) : medianValue.toFixed(0));
 
     const { width, height, xScale, xDomain } = getContext<any>('LayerCake');
 </script>
