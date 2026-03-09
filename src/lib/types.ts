@@ -57,6 +57,7 @@ export type HistoricalSimulationScenario = Record<string, HistoricalSimulationBy
 export type HistoricalSimulationData = Record<string, HistoricalSimulationScenario>;
 
 export type Simulation = {
+    averages: Record<Party, number>;
     medians: Record<Party, number>;
     modes: Record<Party, number>;
     seats: Record<Party, number>;
@@ -149,6 +150,6 @@ export type BeeswarmPoint = {
 export type BeeswarmData = {
     party: Party;
     points: BeeswarmPoint[];
-    median: number;
+    average: number;
     histogram: number[]; // seats -> probability
 };

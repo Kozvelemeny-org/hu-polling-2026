@@ -4,7 +4,7 @@
     import { xKey, zKey } from '$lib/beeswarm/oevk';
     import BeeswarmForce from './_components/BeeswarmForce.svelte';
     import AxisX from './_components/AxisX.svelte';
-    import MedianLine from './_components/MedianLine.svelte';
+    import AverageLine from './_components/AverageLine.svelte';
     import type { BeeswarmData } from '$lib/types';
 
     let { 
@@ -52,8 +52,8 @@
         <Svg>
             <AxisX tickCount={4} {unitLabel} {showMajorityMarkers} {xTicks} histogram={data?.histogram} party={data?.party} />
             <BeeswarmForce {r} stroke='#f7f7f7' strokeWidth={.5} xStrength={3} yStrength={0.2} getTitle={titleAccessor} {hideZeros} {paddingTop} />
-            {#if data?.median !== undefined}
-                <MedianLine medianValue={data.median} paddingTop={paddingTop} />
+            {#if data?.average !== undefined}
+                <AverageLine averageValue={data.average} paddingTop={paddingTop} />
             {/if}
         </Svg>
         <Html pointerEvents={false} />

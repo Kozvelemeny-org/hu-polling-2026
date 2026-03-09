@@ -6,11 +6,10 @@
     
     const { width, height, xScale, xDomain } = getContext<any>('LayerCake');
 
-    let { xTicks = null, tickCount = 5, showGrid = true, medianValue = null, party = null, unitLabel = 'mandátum', showMajorityMarkers = true, histogram = null }: { 
+    let { xTicks = null, tickCount = 5, showGrid = true, party = null, unitLabel = 'mandátum', showMajorityMarkers = true, histogram = null }: { 
         xTicks?: number[] | null;
         tickCount?: number; 
         showGrid?: boolean; 
-        medianValue?: number | null; 
         party?: Party | null;
         unitLabel?: string;
         showMajorityMarkers?: boolean;
@@ -48,7 +47,7 @@
         <line x1={$xScale(entry)} y1={0} x2={$xScale(entry)} y2={$height} class="marker entry" />
         <line x1={$xScale(majority)} y1={0} x2={$xScale(majority)} y2={$height} class="marker majority" />
         <line x1={$xScale(twoThirds)} y1={0} x2={$xScale(twoThirds)} y2={$height} class="marker twothirds" />
-        <text x={$xScale(entry)} y={12} dx={4} class="marker-label" text-anchor="start">{partyData[party]?.name} bejutás esélye</text>
+        <text x={$xScale(entry)} y={12} dx={4} class="marker-label" text-anchor="start">{partyData[party as Party]?.name} bejutás esélye</text>
         <text x={$xScale(majority)} y={12} dx={4} class="marker-label" text-anchor="start">Többség</text>
         <text x={$xScale(twoThirds)} y={12} dx={4} class="marker-label" text-anchor="start">Kétharmad</text>
         {#if histogram && party}
@@ -95,8 +94,6 @@
     .axis-x .tick-label:last-child { text-anchor: end; }
     .axis-x .grid { stroke: #eee; stroke-width: 1; }
     .axis-x .marker { stroke-width: 1; z-index: 2;}
-    .axis-x .marker.median { fill: #000; stroke: #fff; }
-    /* .axis-x .marker.majority, .axis-x .marker.twothirds { stroke: #aaa; stroke-dasharray: 2 2; } */
     .axis-x .marker-label { fill: #555; font-size: 11px; dominant-baseline: text-bottom; }
 </style>
 

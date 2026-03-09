@@ -2,7 +2,7 @@
     import ViolinChart from './ViolinChart.svelte';
     import { calculateRealSupportProbabilities } from '$lib/beeswarm/polls';
     import { partyData } from '$stores/dataStore';
-    import type { Party, PollData, PollsterGroup } from '$lib/types';
+    import type { BeeswarmData, Party, PollData, PollsterGroup } from '$lib/types';
 
     let { 
         party, 
@@ -28,7 +28,7 @@
     const data = $derived(() => {
         // Handle case where calculateRealSupportProbabilities returns empty array
         if (Array.isArray(rawData) && rawData.length === 0) {
-            return { points: [], median: 0, party, histogram: [] };
+            return { points: [], average: 0, party, histogram: [] } as BeeswarmData;
         }
         return rawData;
     });

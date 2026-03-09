@@ -25,7 +25,7 @@ export function buildBeeswarmData(params: {
         }
         points.push({ name: party, category: 'mandate', value: seats });
     }
-    return {party, points, median: simulation.medians[party], histogram: simulation[party] ?? []};
+    return {party, points, average: simulation.averages[party], histogram: simulation[party] ?? []};
 }
 
 /**

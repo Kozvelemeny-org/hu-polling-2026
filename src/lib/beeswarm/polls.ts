@@ -43,7 +43,7 @@ export function calculateRealSupportProbabilities(params: {
     
     if (relevantPolls.length === 0) {
         console.warn('No valid polls found for party:', party);
-        return {party, points: [], median: 0, histogram: []};
+        return {party, points: [], average: 0, histogram: []};
     }
     
     // Calculate average support using only valid numeric values
@@ -59,7 +59,7 @@ export function calculateRealSupportProbabilities(params: {
     // Ensure we have valid values
     if (isNaN(averageSupport) || isNaN(standardDeviation) || !isFinite(averageSupport) || !isFinite(standardDeviation)) {
         console.warn('Invalid polling data for party:', party, 'averageSupport:', averageSupport, 'standardDeviation:', standardDeviation);
-        return {party, points: [], median: 0, histogram: []};
+        return {party, points: [], average: 0, histogram: []};
     }
     
     // Generate realistic distribution using normal distribution approximation
@@ -96,5 +96,5 @@ export function calculateRealSupportProbabilities(params: {
         });
     }
 
-    return {party, points, median: averageSupport, histogram: []};
+    return {party, points, average: averageSupport, histogram: []};
 }
