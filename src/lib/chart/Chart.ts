@@ -57,7 +57,7 @@ export class Chart {
         this.historicalSimulation = this.mode === "mandate" ? (data as MandateChartInput).historicalSimulation : undefined;
         this.mandateProjectionData = this.mode === "mandate" ? (data as MandateChartInput).mandateProjectionData : undefined;
         this.selectedParties = options.selectedParties ?? (Object.keys(partyData) as Party[]);
-        this.selectedPollsterGroup = options.selectedPollsterGroup ?? ("kormanyfuggetlen" as PollsterGroup);
+        this.selectedPollsterGroup = options.selectedPollsterGroup ?? ("voxpopuli" as PollsterGroup);
         this.dateRange = options.dateRange ?? { start: new Date(2018, 0, 0), end: new Date() };
         this.partyIntervals = options.partyIntervals ?? this.getDefaultPartyIntervals();
         this.annotations = options.annotations ?? [];
