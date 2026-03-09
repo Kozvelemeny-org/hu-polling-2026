@@ -16,7 +16,7 @@
 
     $: scenario = historicalSimulationData[selectedSimulation];
     $: selectedDates = (() => {
-        if (!scenario) return [];
+        if (!selectedSimulation || !scenario) return [];
         const now = new Date();
         return [
             {
