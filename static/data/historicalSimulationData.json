@@ -1,0 +1,6758 @@
+{
+    "main": {
+        "2024-03-31": {
+            "mean": {
+                "fidesz": 137.74,
+                "tisza": 28.15,
+                "dk": 19.11,
+                "mihazank": 7.3,
+                "mkkp": 6.7
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 1.0,
+                "mihazank": 0.982,
+                "mkkp": 0.959
+            },
+            "majorityProbability": {
+                "fidesz": 1.0,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.756,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-04-07": {
+            "mean": {
+                "fidesz": 135.54,
+                "tisza": 29.99,
+                "dk": 19.57,
+                "mihazank": 6.88,
+                "mkkp": 7.02
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 1.0,
+                "mihazank": 0.955,
+                "mkkp": 0.961
+            },
+            "majorityProbability": {
+                "fidesz": 1.0,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.658,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-04-14": {
+            "mean": {
+                "fidesz": 134.61,
+                "tisza": 34.41,
+                "dk": 17.41,
+                "mihazank": 6.51,
+                "mkkp": 6.06
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 1.0,
+                "mihazank": 0.934,
+                "mkkp": 0.909
+            },
+            "majorityProbability": {
+                "fidesz": 0.998,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.632,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-04-21": {
+            "mean": {
+                "fidesz": 130.77,
+                "tisza": 38.74,
+                "dk": 17.34,
+                "mihazank": 6.22,
+                "mkkp": 5.94
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 1.0,
+                "mihazank": 0.93,
+                "mkkp": 0.9
+            },
+            "majorityProbability": {
+                "fidesz": 0.994,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.476,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-04-28": {
+            "mean": {
+                "fidesz": 128.46,
+                "tisza": 43.93,
+                "dk": 18.07,
+                "mihazank": 4.72,
+                "mkkp": 3.82
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 1.0,
+                "mihazank": 0.761,
+                "mkkp": 0.647
+            },
+            "majorityProbability": {
+                "fidesz": 0.995,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.378,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-05-05": {
+            "mean": {
+                "fidesz": 128.28,
+                "tisza": 44.31,
+                "dk": 18.03,
+                "mihazank": 4.61,
+                "mkkp": 3.77
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 1.0,
+                "mihazank": 0.737,
+                "mkkp": 0.638
+            },
+            "majorityProbability": {
+                "fidesz": 0.992,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.373,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-05-12": {
+            "mean": {
+                "fidesz": 127.16,
+                "tisza": 47.29,
+                "dk": 17.59,
+                "mihazank": 4.11,
+                "mkkp": 2.85
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 1.0,
+                "mihazank": 0.664,
+                "mkkp": 0.482
+            },
+            "majorityProbability": {
+                "fidesz": 0.991,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.331,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-05-19": {
+            "mean": {
+                "fidesz": 127.91,
+                "tisza": 47.95,
+                "dk": 17.28,
+                "mihazank": 3.52,
+                "mkkp": 2.34
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 1.0,
+                "mihazank": 0.574,
+                "mkkp": 0.405
+            },
+            "majorityProbability": {
+                "fidesz": 0.995,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.354,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-05-26": {
+            "mean": {
+                "fidesz": 129.07,
+                "tisza": 47.55,
+                "dk": 16.92,
+                "mihazank": 3.41,
+                "mkkp": 2.05
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 1.0,
+                "mihazank": 0.554,
+                "mkkp": 0.354
+            },
+            "majorityProbability": {
+                "fidesz": 0.992,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.377,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-06-02": {
+            "mean": {
+                "fidesz": 130.37,
+                "tisza": 48.14,
+                "dk": 16.08,
+                "mihazank": 3.16,
+                "mkkp": 1.24
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 1.0,
+                "mihazank": 0.524,
+                "mkkp": 0.222
+            },
+            "majorityProbability": {
+                "fidesz": 0.996,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.408,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-06-09": {
+            "mean": {
+                "fidesz": 129.58,
+                "tisza": 51.69,
+                "dk": 13.0,
+                "mihazank": 3.57,
+                "mkkp": 1.16
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 1.0,
+                "mihazank": 0.574,
+                "mkkp": 0.206
+            },
+            "majorityProbability": {
+                "fidesz": 0.993,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.399,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-06-23": {
+            "mean": {
+                "fidesz": 130.7,
+                "tisza": 53.78,
+                "dk": 9.31,
+                "mihazank": 4.29,
+                "mkkp": 0.91
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.986,
+                "mihazank": 0.645,
+                "mkkp": 0.155
+            },
+            "majorityProbability": {
+                "fidesz": 0.998,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.415,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-07-07": {
+            "mean": {
+                "fidesz": 128.98,
+                "tisza": 57.51,
+                "dk": 7.25,
+                "mihazank": 4.37,
+                "mkkp": 0.89
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.93,
+                "mihazank": 0.668,
+                "mkkp": 0.158
+            },
+            "majorityProbability": {
+                "fidesz": 0.992,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.363,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-07-21": {
+            "mean": {
+                "fidesz": 128.46,
+                "tisza": 57.79,
+                "dk": 7.39,
+                "mihazank": 4.39,
+                "mkkp": 0.97
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.945,
+                "mihazank": 0.668,
+                "mkkp": 0.17
+            },
+            "majorityProbability": {
+                "fidesz": 0.993,
+                "tisza": 0.001,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.357,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-07-28": {
+            "mean": {
+                "fidesz": 125.79,
+                "tisza": 60.28,
+                "dk": 7.41,
+                "mihazank": 4.46,
+                "mkkp": 1.05
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.942,
+                "mihazank": 0.681,
+                "mkkp": 0.184
+            },
+            "majorityProbability": {
+                "fidesz": 0.989,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.281,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-09-01": {
+            "mean": {
+                "fidesz": 116.49,
+                "tisza": 67.85,
+                "dk": 7.21,
+                "mihazank": 6.2,
+                "mkkp": 1.24
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.935,
+                "mihazank": 0.866,
+                "mkkp": 0.218
+            },
+            "majorityProbability": {
+                "fidesz": 0.934,
+                "tisza": 0.009,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.056,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-09-08": {
+            "mean": {
+                "fidesz": 113.28,
+                "tisza": 76.07,
+                "dk": 4.26,
+                "mihazank": 4.84,
+                "mkkp": 0.54
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.639,
+                "mihazank": 0.713,
+                "mkkp": 0.095
+            },
+            "majorityProbability": {
+                "fidesz": 0.894,
+                "tisza": 0.023,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.045,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-09-15": {
+            "mean": {
+                "fidesz": 113.72,
+                "tisza": 75.32,
+                "dk": 4.39,
+                "mihazank": 5.0,
+                "mkkp": 0.57
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.664,
+                "mihazank": 0.727,
+                "mkkp": 0.1
+            },
+            "majorityProbability": {
+                "fidesz": 0.913,
+                "tisza": 0.012,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.038,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-09-22": {
+            "mean": {
+                "fidesz": 112.96,
+                "tisza": 76.25,
+                "dk": 4.52,
+                "mihazank": 4.78,
+                "mkkp": 0.49
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.686,
+                "mihazank": 0.697,
+                "mkkp": 0.087
+            },
+            "majorityProbability": {
+                "fidesz": 0.898,
+                "tisza": 0.029,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.045,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-10-06": {
+            "mean": {
+                "fidesz": 109.59,
+                "tisza": 79.3,
+                "dk": 4.52,
+                "mihazank": 4.84,
+                "mkkp": 0.75
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.679,
+                "mihazank": 0.71,
+                "mkkp": 0.131
+            },
+            "majorityProbability": {
+                "fidesz": 0.837,
+                "tisza": 0.049,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.029,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-10-13": {
+            "mean": {
+                "fidesz": 107.1,
+                "tisza": 82.95,
+                "dk": 3.24,
+                "mihazank": 4.75,
+                "mkkp": 0.97
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.51,
+                "mihazank": 0.699,
+                "mkkp": 0.17
+            },
+            "majorityProbability": {
+                "fidesz": 0.783,
+                "tisza": 0.081,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.017,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-10-20": {
+            "mean": {
+                "fidesz": 103.73,
+                "tisza": 85.73,
+                "dk": 4.49,
+                "mihazank": 4.17,
+                "mkkp": 0.87
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.685,
+                "mihazank": 0.63,
+                "mkkp": 0.153
+            },
+            "majorityProbability": {
+                "fidesz": 0.68,
+                "tisza": 0.147,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.011,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-10-27": {
+            "mean": {
+                "fidesz": 102.21,
+                "tisza": 86.17,
+                "dk": 5.03,
+                "mihazank": 4.54,
+                "mkkp": 1.05
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.737,
+                "mihazank": 0.685,
+                "mkkp": 0.182
+            },
+            "majorityProbability": {
+                "fidesz": 0.629,
+                "tisza": 0.145,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.005,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-11-03": {
+            "mean": {
+                "fidesz": 99.62,
+                "tisza": 89.45,
+                "dk": 4.34,
+                "mihazank": 4.63,
+                "mkkp": 0.96
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.661,
+                "mihazank": 0.701,
+                "mkkp": 0.168
+            },
+            "majorityProbability": {
+                "fidesz": 0.543,
+                "tisza": 0.198,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.001,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-11-10": {
+            "mean": {
+                "fidesz": 98.99,
+                "tisza": 90.15,
+                "dk": 4.44,
+                "mihazank": 4.68,
+                "mkkp": 0.73
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.686,
+                "mihazank": 0.706,
+                "mkkp": 0.13
+            },
+            "majorityProbability": {
+                "fidesz": 0.54,
+                "tisza": 0.23,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-11-17": {
+            "mean": {
+                "fidesz": 97.07,
+                "tisza": 92.41,
+                "dk": 4.22,
+                "mihazank": 4.75,
+                "mkkp": 0.55
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.652,
+                "mihazank": 0.71,
+                "mkkp": 0.099
+            },
+            "majorityProbability": {
+                "fidesz": 0.488,
+                "tisza": 0.293,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.001,
+                "tisza": 0.002,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-11-24": {
+            "mean": {
+                "fidesz": 93.82,
+                "tisza": 94.93,
+                "dk": 4.59,
+                "mihazank": 5.03,
+                "mkkp": 0.63
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.702,
+                "mihazank": 0.747,
+                "mkkp": 0.116
+            },
+            "majorityProbability": {
+                "fidesz": 0.382,
+                "tisza": 0.365,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.003,
+                "tisza": 0.005,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-12-01": {
+            "mean": {
+                "fidesz": 102.39,
+                "tisza": 87.06,
+                "dk": 3.69,
+                "mihazank": 5.43,
+                "mkkp": 0.43
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.581,
+                "mihazank": 0.786,
+                "mkkp": 0.076
+            },
+            "majorityProbability": {
+                "fidesz": 0.643,
+                "tisza": 0.154,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.004,
+                "tisza": 0.001,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-12-08": {
+            "mean": {
+                "fidesz": 100.12,
+                "tisza": 89.21,
+                "dk": 3.69,
+                "mihazank": 5.52,
+                "mkkp": 0.46
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.581,
+                "mihazank": 0.789,
+                "mkkp": 0.083
+            },
+            "majorityProbability": {
+                "fidesz": 0.574,
+                "tisza": 0.201,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.003,
+                "tisza": 0.002,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-12-15": {
+            "mean": {
+                "fidesz": 97.29,
+                "tisza": 91.06,
+                "dk": 4.64,
+                "mihazank": 5.73,
+                "mkkp": 0.29
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.7,
+                "mihazank": 0.816,
+                "mkkp": 0.051
+            },
+            "majorityProbability": {
+                "fidesz": 0.485,
+                "tisza": 0.251,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.002,
+                "tisza": 0.005,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-12-22": {
+            "mean": {
+                "fidesz": 97.03,
+                "tisza": 91.03,
+                "dk": 4.65,
+                "mihazank": 5.94,
+                "mkkp": 0.35
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.714,
+                "mihazank": 0.845,
+                "mkkp": 0.063
+            },
+            "majorityProbability": {
+                "fidesz": 0.455,
+                "tisza": 0.271,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.002,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-01-05": {
+            "mean": {
+                "fidesz": 92.5,
+                "tisza": 95.59,
+                "dk": 4.55,
+                "mihazank": 6.0,
+                "mkkp": 0.36
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.694,
+                "mihazank": 0.847,
+                "mkkp": 0.066
+            },
+            "majorityProbability": {
+                "fidesz": 0.331,
+                "tisza": 0.39,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.001,
+                "tisza": 0.003,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-01-19": {
+            "mean": {
+                "fidesz": 93.85,
+                "tisza": 95.19,
+                "dk": 3.62,
+                "mihazank": 5.95,
+                "mkkp": 0.38
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.581,
+                "mihazank": 0.847,
+                "mkkp": 0.07
+            },
+            "majorityProbability": {
+                "fidesz": 0.389,
+                "tisza": 0.367,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.005,
+                "tisza": 0.003,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-01-26": {
+            "mean": {
+                "fidesz": 95.75,
+                "tisza": 92.72,
+                "dk": 4.7,
+                "mihazank": 5.55,
+                "mkkp": 0.29
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.719,
+                "mihazank": 0.806,
+                "mkkp": 0.053
+            },
+            "majorityProbability": {
+                "fidesz": 0.412,
+                "tisza": 0.3,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.001,
+                "tisza": 0.001,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-03-02": {
+            "mean": {
+                "fidesz": 95.56,
+                "tisza": 92.59,
+                "dk": 4.75,
+                "mihazank": 5.63,
+                "mkkp": 0.47
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.738,
+                "mihazank": 0.814,
+                "mkkp": 0.087
+            },
+            "majorityProbability": {
+                "fidesz": 0.421,
+                "tisza": 0.283,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.001,
+                "tisza": 0.004,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-03-09": {
+            "mean": {
+                "fidesz": 98.93,
+                "tisza": 91.61,
+                "dk": 2.86,
+                "mihazank": 5.13,
+                "mkkp": 0.46
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.481,
+                "mihazank": 0.774,
+                "mkkp": 0.084
+            },
+            "majorityProbability": {
+                "fidesz": 0.548,
+                "tisza": 0.257,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.002,
+                "tisza": 0.001,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-03-16": {
+            "mean": {
+                "fidesz": 98.63,
+                "tisza": 92.04,
+                "dk": 2.73,
+                "mihazank": 5.05,
+                "mkkp": 0.55
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.456,
+                "mihazank": 0.756,
+                "mkkp": 0.1
+            },
+            "majorityProbability": {
+                "fidesz": 0.546,
+                "tisza": 0.257,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.003,
+                "tisza": 0.001,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-03-23": {
+            "mean": {
+                "fidesz": 96.84,
+                "tisza": 91.94,
+                "dk": 4.74,
+                "mihazank": 5.22,
+                "mkkp": 0.26
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.72,
+                "mihazank": 0.771,
+                "mkkp": 0.045
+            },
+            "majorityProbability": {
+                "fidesz": 0.471,
+                "tisza": 0.259,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.001,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-03-30": {
+            "mean": {
+                "fidesz": 97.02,
+                "tisza": 91.57,
+                "dk": 5.25,
+                "mihazank": 4.91,
+                "mkkp": 0.26
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.771,
+                "mihazank": 0.734,
+                "mkkp": 0.048
+            },
+            "majorityProbability": {
+                "fidesz": 0.496,
+                "tisza": 0.273,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-04-06": {
+            "mean": {
+                "fidesz": 93.02,
+                "tisza": 98.63,
+                "dk": 3.29,
+                "mihazank": 3.8,
+                "mkkp": 0.26
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.534,
+                "mihazank": 0.592,
+                "mkkp": 0.046
+            },
+            "majorityProbability": {
+                "fidesz": 0.383,
+                "tisza": 0.446,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.001,
+                "tisza": 0.009,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-04-13": {
+            "mean": {
+                "fidesz": 93.34,
+                "tisza": 97.91,
+                "dk": 3.25,
+                "mihazank": 4.24,
+                "mkkp": 0.27
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.528,
+                "mihazank": 0.655,
+                "mkkp": 0.047
+            },
+            "majorityProbability": {
+                "fidesz": 0.367,
+                "tisza": 0.419,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.011,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-05-18": {
+            "mean": {
+                "fidesz": 90.97,
+                "tisza": 98.91,
+                "dk": 5.43,
+                "mihazank": 3.57,
+                "mkkp": 0.13
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.802,
+                "mihazank": 0.564,
+                "mkkp": 0.023
+            },
+            "majorityProbability": {
+                "fidesz": 0.317,
+                "tisza": 0.476,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.016,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-05-25": {
+            "mean": {
+                "fidesz": 89.53,
+                "tisza": 100.78,
+                "dk": 5.24,
+                "mihazank": 3.22,
+                "mkkp": 0.24
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.783,
+                "mihazank": 0.524,
+                "mkkp": 0.045
+            },
+            "majorityProbability": {
+                "fidesz": 0.272,
+                "tisza": 0.502,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.017,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-06-01": {
+            "mean": {
+                "fidesz": 86.63,
+                "tisza": 104.23,
+                "dk": 4.65,
+                "mihazank": 2.96,
+                "mkkp": 0.53
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.726,
+                "mihazank": 0.483,
+                "mkkp": 0.096
+            },
+            "majorityProbability": {
+                "fidesz": 0.218,
+                "tisza": 0.606,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.023,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-06-08": {
+            "mean": {
+                "fidesz": 82.7,
+                "tisza": 109.12,
+                "dk": 3.79,
+                "mihazank": 3.12,
+                "mkkp": 0.27
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.621,
+                "mihazank": 0.518,
+                "mkkp": 0.051
+            },
+            "majorityProbability": {
+                "fidesz": 0.157,
+                "tisza": 0.709,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.057,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-06-22": {
+            "mean": {
+                "fidesz": 83.52,
+                "tisza": 107.23,
+                "dk": 3.38,
+                "mihazank": 4.34,
+                "mkkp": 0.53
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.56,
+                "mihazank": 0.678,
+                "mkkp": 0.097
+            },
+            "majorityProbability": {
+                "fidesz": 0.167,
+                "tisza": 0.686,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.033,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-06-29": {
+            "mean": {
+                "fidesz": 82.19,
+                "tisza": 109.36,
+                "dk": 2.61,
+                "mihazank": 4.72,
+                "mkkp": 0.12
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.437,
+                "mihazank": 0.729,
+                "mkkp": 0.023
+            },
+            "majorityProbability": {
+                "fidesz": 0.127,
+                "tisza": 0.748,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.045,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-07-06": {
+            "mean": {
+                "fidesz": 81.28,
+                "tisza": 110.19,
+                "dk": 2.81,
+                "mihazank": 4.56,
+                "mkkp": 0.16
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.474,
+                "mihazank": 0.707,
+                "mkkp": 0.03
+            },
+            "majorityProbability": {
+                "fidesz": 0.126,
+                "tisza": 0.737,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.063,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-07-27": {
+            "mean": {
+                "fidesz": 80.79,
+                "tisza": 110.19,
+                "dk": 2.86,
+                "mihazank": 5.03,
+                "mkkp": 0.13
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.488,
+                "mihazank": 0.76,
+                "mkkp": 0.025
+            },
+            "majorityProbability": {
+                "fidesz": 0.114,
+                "tisza": 0.764,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.059,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-08-03": {
+            "mean": {
+                "fidesz": 83.98,
+                "tisza": 108.24,
+                "dk": 2.5,
+                "mihazank": 4.15,
+                "mkkp": 0.13
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.432,
+                "mihazank": 0.654,
+                "mkkp": 0.025
+            },
+            "majorityProbability": {
+                "fidesz": 0.172,
+                "tisza": 0.711,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.001,
+                "tisza": 0.036,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-08-24": {
+            "mean": {
+                "fidesz": 85.06,
+                "tisza": 105.79,
+                "dk": 3.71,
+                "mihazank": 4.26,
+                "mkkp": 0.18
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.601,
+                "mihazank": 0.681,
+                "mkkp": 0.035
+            },
+            "majorityProbability": {
+                "fidesz": 0.179,
+                "tisza": 0.67,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.024,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-08-31": {
+            "mean": {
+                "fidesz": 86.45,
+                "tisza": 107.64,
+                "dk": 0.71,
+                "mihazank": 3.81,
+                "mkkp": 0.39
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.128,
+                "mihazank": 0.61,
+                "mkkp": 0.072
+            },
+            "majorityProbability": {
+                "fidesz": 0.23,
+                "tisza": 0.686,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.045,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-09-07": {
+            "mean": {
+                "fidesz": 87.22,
+                "tisza": 106.77,
+                "dk": 1.0,
+                "mihazank": 3.64,
+                "mkkp": 0.37
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.179,
+                "mihazank": 0.589,
+                "mkkp": 0.068
+            },
+            "majorityProbability": {
+                "fidesz": 0.234,
+                "tisza": 0.659,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.045,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-09-14": {
+            "mean": {
+                "fidesz": 86.94,
+                "tisza": 107.0,
+                "dk": 0.86,
+                "mihazank": 3.86,
+                "mkkp": 0.35
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.157,
+                "mihazank": 0.619,
+                "mkkp": 0.065
+            },
+            "majorityProbability": {
+                "fidesz": 0.229,
+                "tisza": 0.676,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.031,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-09-28": {
+            "mean": {
+                "fidesz": 87.49,
+                "tisza": 106.51,
+                "dk": 0.77,
+                "mihazank": 3.95,
+                "mkkp": 0.3
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.14,
+                "mihazank": 0.624,
+                "mkkp": 0.055
+            },
+            "majorityProbability": {
+                "fidesz": 0.249,
+                "tisza": 0.668,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.03,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-10-05": {
+            "mean": {
+                "fidesz": 85.54,
+                "tisza": 108.19,
+                "dk": 1.04,
+                "mihazank": 3.96,
+                "mkkp": 0.27
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.187,
+                "mihazank": 0.629,
+                "mkkp": 0.052
+            },
+            "majorityProbability": {
+                "fidesz": 0.227,
+                "tisza": 0.686,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.062,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-10-12": {
+            "mean": {
+                "fidesz": 86.14,
+                "tisza": 107.62,
+                "dk": 1.03,
+                "mihazank": 4.04,
+                "mkkp": 0.17
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.186,
+                "mihazank": 0.644,
+                "mkkp": 0.033
+            },
+            "majorityProbability": {
+                "fidesz": 0.215,
+                "tisza": 0.686,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.061,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-10-19": {
+            "mean": {
+                "fidesz": 84.84,
+                "tisza": 109.07,
+                "dk": 0.75,
+                "mihazank": 4.12,
+                "mkkp": 0.22
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.136,
+                "mihazank": 0.652,
+                "mkkp": 0.042
+            },
+            "majorityProbability": {
+                "fidesz": 0.193,
+                "tisza": 0.706,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.056,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-11-02": {
+            "mean": {
+                "fidesz": 86.42,
+                "tisza": 107.79,
+                "dk": 0.65,
+                "mihazank": 3.91,
+                "mkkp": 0.23
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.12,
+                "mihazank": 0.622,
+                "mkkp": 0.042
+            },
+            "majorityProbability": {
+                "fidesz": 0.213,
+                "tisza": 0.689,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.04,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-11-09": {
+            "mean": {
+                "fidesz": 85.85,
+                "tisza": 107.18,
+                "dk": 1.23,
+                "mihazank": 4.57,
+                "mkkp": 0.18
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.225,
+                "mihazank": 0.718,
+                "mkkp": 0.033
+            },
+            "majorityProbability": {
+                "fidesz": 0.212,
+                "tisza": 0.667,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.049,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-11-16": {
+            "mean": {
+                "fidesz": 85.39,
+                "tisza": 107.75,
+                "dk": 1.36,
+                "mihazank": 4.34,
+                "mkkp": 0.17
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.246,
+                "mihazank": 0.683,
+                "mkkp": 0.032
+            },
+            "majorityProbability": {
+                "fidesz": 0.2,
+                "tisza": 0.695,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.043,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-11-23": {
+            "mean": {
+                "fidesz": 88.28,
+                "tisza": 105.88,
+                "dk": 0.58,
+                "mihazank": 4.21,
+                "mkkp": 0.04
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.107,
+                "mihazank": 0.676,
+                "mkkp": 0.008
+            },
+            "majorityProbability": {
+                "fidesz": 0.272,
+                "tisza": 0.63,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.044,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-11-30": {
+            "mean": {
+                "fidesz": 89.05,
+                "tisza": 105.24,
+                "dk": 0.55,
+                "mihazank": 4.04,
+                "mkkp": 0.12
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.102,
+                "mihazank": 0.651,
+                "mkkp": 0.023
+            },
+            "majorityProbability": {
+                "fidesz": 0.278,
+                "tisza": 0.623,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.03,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-12-07": {
+            "mean": {
+                "fidesz": 88.98,
+                "tisza": 105.13,
+                "dk": 0.63,
+                "mihazank": 4.12,
+                "mkkp": 0.14
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.117,
+                "mihazank": 0.658,
+                "mkkp": 0.027
+            },
+            "majorityProbability": {
+                "fidesz": 0.276,
+                "tisza": 0.626,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.002,
+                "tisza": 0.036,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-12-14": {
+            "mean": {
+                "fidesz": 88.71,
+                "tisza": 106.11,
+                "dk": 0.61,
+                "mihazank": 3.45,
+                "mkkp": 0.12
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.114,
+                "mihazank": 0.563,
+                "mkkp": 0.022
+            },
+            "majorityProbability": {
+                "fidesz": 0.263,
+                "tisza": 0.653,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.027,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-12-21": {
+            "mean": {
+                "fidesz": 89.5,
+                "tisza": 105.1,
+                "dk": 0.56,
+                "mihazank": 3.74,
+                "mkkp": 0.09
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.106,
+                "mihazank": 0.608,
+                "mkkp": 0.018
+            },
+            "majorityProbability": {
+                "fidesz": 0.299,
+                "tisza": 0.611,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.001,
+                "tisza": 0.033,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2026-01-04": {
+            "mean": {
+                "fidesz": 88.98,
+                "tisza": 105.84,
+                "dk": 0.64,
+                "mihazank": 3.41,
+                "mkkp": 0.13
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.118,
+                "mihazank": 0.557,
+                "mkkp": 0.025
+            },
+            "majorityProbability": {
+                "fidesz": 0.287,
+                "tisza": 0.634,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.026,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2026-01-11": {
+            "mean": {
+                "fidesz": 88.15,
+                "tisza": 107.03,
+                "dk": 0.4,
+                "mihazank": 3.3,
+                "mkkp": 0.13
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.075,
+                "mihazank": 0.543,
+                "mkkp": 0.024
+            },
+            "majorityProbability": {
+                "fidesz": 0.259,
+                "tisza": 0.664,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.042,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2026-01-18": {
+            "mean": {
+                "fidesz": 89.64,
+                "tisza": 105.46,
+                "dk": 0.36,
+                "mihazank": 3.45,
+                "mkkp": 0.09
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.067,
+                "mihazank": 0.563,
+                "mkkp": 0.017
+            },
+            "majorityProbability": {
+                "fidesz": 0.301,
+                "tisza": 0.617,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.001,
+                "tisza": 0.047,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2026-01-25": {
+            "mean": {
+                "fidesz": 89.61,
+                "tisza": 105.86,
+                "dk": 0.27,
+                "mihazank": 3.16,
+                "mkkp": 0.09
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.052,
+                "mihazank": 0.531,
+                "mkkp": 0.017
+            },
+            "majorityProbability": {
+                "fidesz": 0.297,
+                "tisza": 0.639,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.001,
+                "tisza": 0.046,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2026-02-01": {
+            "mean": {
+                "fidesz": 88.47,
+                "tisza": 107.22,
+                "dk": 0.21,
+                "mihazank": 3.01,
+                "mkkp": 0.09
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.041,
+                "mihazank": 0.507,
+                "mkkp": 0.016
+            },
+            "majorityProbability": {
+                "fidesz": 0.284,
+                "tisza": 0.664,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.05,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2026-02-08": {
+            "mean": {
+                "fidesz": 87.9,
+                "tisza": 107.31,
+                "dk": 0.11,
+                "mihazank": 3.49,
+                "mkkp": 0.18
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.021,
+                "mihazank": 0.578,
+                "mkkp": 0.035
+            },
+            "majorityProbability": {
+                "fidesz": 0.26,
+                "tisza": 0.661,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.046,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2026-02-15": {
+            "mean": {
+                "fidesz": 87.36,
+                "tisza": 107.67,
+                "dk": 0.1,
+                "mihazank": 3.65,
+                "mkkp": 0.21
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.019,
+                "mihazank": 0.603,
+                "mkkp": 0.041
+            },
+            "majorityProbability": {
+                "fidesz": 0.248,
+                "tisza": 0.678,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.04,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2026-02-22": {
+            "mean": {
+                "fidesz": 86.38,
+                "tisza": 108.55,
+                "dk": 0.08,
+                "mihazank": 3.85,
+                "mkkp": 0.13
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.016,
+                "mihazank": 0.623,
+                "mkkp": 0.026
+            },
+            "majorityProbability": {
+                "fidesz": 0.221,
+                "tisza": 0.716,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.056,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2026-03-01": {
+            "mean": {
+                "fidesz": 86.16,
+                "tisza": 108.46,
+                "dk": 0.08,
+                "mihazank": 4.15,
+                "mkkp": 0.14
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.015,
+                "mihazank": 0.675,
+                "mkkp": 0.028
+            },
+            "majorityProbability": {
+                "fidesz": 0.213,
+                "tisza": 0.706,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.051,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        }
+    },
+    "kormanyfuggetlen": {
+        "2024-03-31": {
+            "mean": {
+                "fidesz": 138.09,
+                "tisza": 27.91,
+                "dk": 19.05,
+                "mihazank": 7.21,
+                "mkkp": 6.74
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 1.0,
+                "mihazank": 0.977,
+                "mkkp": 0.958
+            },
+            "majorityProbability": {
+                "fidesz": 1.0,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.772,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-04-07": {
+            "mean": {
+                "fidesz": 135.57,
+                "tisza": 29.83,
+                "dk": 19.49,
+                "mihazank": 7.06,
+                "mkkp": 7.05
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 1.0,
+                "mihazank": 0.966,
+                "mkkp": 0.967
+            },
+            "majorityProbability": {
+                "fidesz": 1.0,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.673,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-04-14": {
+            "mean": {
+                "fidesz": 134.95,
+                "tisza": 34.01,
+                "dk": 17.36,
+                "mihazank": 6.5,
+                "mkkp": 6.18
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 1.0,
+                "mihazank": 0.949,
+                "mkkp": 0.932
+            },
+            "majorityProbability": {
+                "fidesz": 0.998,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.653,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-04-21": {
+            "mean": {
+                "fidesz": 130.26,
+                "tisza": 39.09,
+                "dk": 17.25,
+                "mihazank": 6.23,
+                "mkkp": 6.16
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 1.0,
+                "mihazank": 0.924,
+                "mkkp": 0.933
+            },
+            "majorityProbability": {
+                "fidesz": 0.998,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.467,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-04-28": {
+            "mean": {
+                "fidesz": 127.59,
+                "tisza": 44.73,
+                "dk": 18.11,
+                "mihazank": 4.71,
+                "mkkp": 3.87
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 1.0,
+                "mihazank": 0.75,
+                "mkkp": 0.656
+            },
+            "majorityProbability": {
+                "fidesz": 0.987,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.369,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-05-05": {
+            "mean": {
+                "fidesz": 128.45,
+                "tisza": 44.04,
+                "dk": 18.04,
+                "mihazank": 4.82,
+                "mkkp": 3.65
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 1.0,
+                "mihazank": 0.771,
+                "mkkp": 0.615
+            },
+            "majorityProbability": {
+                "fidesz": 0.994,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.385,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-05-12": {
+            "mean": {
+                "fidesz": 126.84,
+                "tisza": 47.43,
+                "dk": 17.53,
+                "mihazank": 4.02,
+                "mkkp": 3.17
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 1.0,
+                "mihazank": 0.648,
+                "mkkp": 0.533
+            },
+            "majorityProbability": {
+                "fidesz": 0.986,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.329,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-05-19": {
+            "mean": {
+                "fidesz": 127.66,
+                "tisza": 48.09,
+                "dk": 17.3,
+                "mihazank": 3.55,
+                "mkkp": 2.4
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 1.0,
+                "mihazank": 0.575,
+                "mkkp": 0.407
+            },
+            "majorityProbability": {
+                "fidesz": 0.992,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.345,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-05-26": {
+            "mean": {
+                "fidesz": 128.5,
+                "tisza": 47.78,
+                "dk": 16.95,
+                "mihazank": 3.58,
+                "mkkp": 2.19
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 1.0,
+                "mihazank": 0.58,
+                "mkkp": 0.374
+            },
+            "majorityProbability": {
+                "fidesz": 0.991,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.371,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-06-02": {
+            "mean": {
+                "fidesz": 130.73,
+                "tisza": 47.79,
+                "dk": 16.04,
+                "mihazank": 3.14,
+                "mkkp": 1.3
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 1.0,
+                "mihazank": 0.517,
+                "mkkp": 0.233
+            },
+            "majorityProbability": {
+                "fidesz": 0.997,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.449,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-06-09": {
+            "mean": {
+                "fidesz": 129.77,
+                "tisza": 51.82,
+                "dk": 13.08,
+                "mihazank": 3.41,
+                "mkkp": 0.91
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 1.0,
+                "mihazank": 0.554,
+                "mkkp": 0.164
+            },
+            "majorityProbability": {
+                "fidesz": 0.998,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.384,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-06-23": {
+            "mean": {
+                "fidesz": 130.4,
+                "tisza": 54.34,
+                "dk": 9.22,
+                "mihazank": 4.09,
+                "mkkp": 0.94
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.987,
+                "mihazank": 0.609,
+                "mkkp": 0.161
+            },
+            "majorityProbability": {
+                "fidesz": 0.996,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.406,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-07-07": {
+            "mean": {
+                "fidesz": 128.67,
+                "tisza": 57.6,
+                "dk": 7.3,
+                "mihazank": 4.43,
+                "mkkp": 1.0
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.931,
+                "mihazank": 0.672,
+                "mkkp": 0.177
+            },
+            "majorityProbability": {
+                "fidesz": 0.994,
+                "tisza": 0.001,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.354,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-07-21": {
+            "mean": {
+                "fidesz": 129.57,
+                "tisza": 56.64,
+                "dk": 7.31,
+                "mihazank": 4.39,
+                "mkkp": 1.1
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.932,
+                "mihazank": 0.674,
+                "mkkp": 0.193
+            },
+            "majorityProbability": {
+                "fidesz": 0.998,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.385,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-07-28": {
+            "mean": {
+                "fidesz": 125.66,
+                "tisza": 60.15,
+                "dk": 7.38,
+                "mihazank": 4.64,
+                "mkkp": 1.17
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.945,
+                "mihazank": 0.705,
+                "mkkp": 0.207
+            },
+            "majorityProbability": {
+                "fidesz": 0.987,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.262,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-09-01": {
+            "mean": {
+                "fidesz": 115.61,
+                "tisza": 68.52,
+                "dk": 7.17,
+                "mihazank": 6.42,
+                "mkkp": 1.27
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.93,
+                "mihazank": 0.882,
+                "mkkp": 0.224
+            },
+            "majorityProbability": {
+                "fidesz": 0.932,
+                "tisza": 0.01,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.083,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-09-08": {
+            "mean": {
+                "fidesz": 113.2,
+                "tisza": 75.83,
+                "dk": 4.44,
+                "mihazank": 5.08,
+                "mkkp": 0.46
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.663,
+                "mihazank": 0.734,
+                "mkkp": 0.081
+            },
+            "majorityProbability": {
+                "fidesz": 0.881,
+                "tisza": 0.026,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.053,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-09-15": {
+            "mean": {
+                "fidesz": 113.23,
+                "tisza": 75.94,
+                "dk": 4.5,
+                "mihazank": 4.86,
+                "mkkp": 0.47
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.679,
+                "mihazank": 0.705,
+                "mkkp": 0.084
+            },
+            "majorityProbability": {
+                "fidesz": 0.897,
+                "tisza": 0.032,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.042,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-09-22": {
+            "mean": {
+                "fidesz": 113.0,
+                "tisza": 76.05,
+                "dk": 4.39,
+                "mihazank": 5.09,
+                "mkkp": 0.48
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.661,
+                "mihazank": 0.744,
+                "mkkp": 0.085
+            },
+            "majorityProbability": {
+                "fidesz": 0.886,
+                "tisza": 0.027,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.046,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-10-06": {
+            "mean": {
+                "fidesz": 109.37,
+                "tisza": 79.9,
+                "dk": 4.41,
+                "mihazank": 4.65,
+                "mkkp": 0.67
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.661,
+                "mihazank": 0.691,
+                "mkkp": 0.115
+            },
+            "majorityProbability": {
+                "fidesz": 0.831,
+                "tisza": 0.046,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.03,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-10-13": {
+            "mean": {
+                "fidesz": 106.97,
+                "tisza": 83.05,
+                "dk": 3.13,
+                "mihazank": 4.82,
+                "mkkp": 1.02
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.5,
+                "mihazank": 0.714,
+                "mkkp": 0.177
+            },
+            "majorityProbability": {
+                "fidesz": 0.776,
+                "tisza": 0.086,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.013,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-10-20": {
+            "mean": {
+                "fidesz": 104.86,
+                "tisza": 84.45,
+                "dk": 4.65,
+                "mihazank": 4.22,
+                "mkkp": 0.81
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.695,
+                "mihazank": 0.641,
+                "mkkp": 0.141
+            },
+            "majorityProbability": {
+                "fidesz": 0.721,
+                "tisza": 0.102,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.006,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-10-27": {
+            "mean": {
+                "fidesz": 102.55,
+                "tisza": 86.01,
+                "dk": 5.19,
+                "mihazank": 4.3,
+                "mkkp": 0.95
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.749,
+                "mihazank": 0.648,
+                "mkkp": 0.167
+            },
+            "majorityProbability": {
+                "fidesz": 0.653,
+                "tisza": 0.138,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.002,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-11-03": {
+            "mean": {
+                "fidesz": 99.33,
+                "tisza": 89.61,
+                "dk": 4.52,
+                "mihazank": 4.58,
+                "mkkp": 0.95
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.685,
+                "mihazank": 0.681,
+                "mkkp": 0.166
+            },
+            "majorityProbability": {
+                "fidesz": 0.546,
+                "tisza": 0.211,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.001,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-11-10": {
+            "mean": {
+                "fidesz": 98.91,
+                "tisza": 90.68,
+                "dk": 4.03,
+                "mihazank": 4.63,
+                "mkkp": 0.76
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.608,
+                "mihazank": 0.693,
+                "mkkp": 0.132
+            },
+            "majorityProbability": {
+                "fidesz": 0.541,
+                "tisza": 0.238,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.002,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-11-17": {
+            "mean": {
+                "fidesz": 95.69,
+                "tisza": 93.54,
+                "dk": 4.51,
+                "mihazank": 4.69,
+                "mkkp": 0.57
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.686,
+                "mihazank": 0.702,
+                "mkkp": 0.103
+            },
+            "majorityProbability": {
+                "fidesz": 0.435,
+                "tisza": 0.32,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.004,
+                "tisza": 0.001,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-11-24": {
+            "mean": {
+                "fidesz": 93.27,
+                "tisza": 95.46,
+                "dk": 4.48,
+                "mihazank": 5.03,
+                "mkkp": 0.77
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.686,
+                "mihazank": 0.745,
+                "mkkp": 0.138
+            },
+            "majorityProbability": {
+                "fidesz": 0.387,
+                "tisza": 0.368,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.003,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-12-01": {
+            "mean": {
+                "fidesz": 90.14,
+                "tisza": 98.48,
+                "dk": 4.37,
+                "mihazank": 5.42,
+                "mkkp": 0.6
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.677,
+                "mihazank": 0.777,
+                "mkkp": 0.108
+            },
+            "majorityProbability": {
+                "fidesz": 0.271,
+                "tisza": 0.45,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.008,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-12-08": {
+            "mean": {
+                "fidesz": 87.66,
+                "tisza": 100.91,
+                "dk": 4.15,
+                "mihazank": 5.63,
+                "mkkp": 0.66
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.648,
+                "mihazank": 0.814,
+                "mkkp": 0.118
+            },
+            "majorityProbability": {
+                "fidesz": 0.225,
+                "tisza": 0.525,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.011,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-12-15": {
+            "mean": {
+                "fidesz": 83.79,
+                "tisza": 103.86,
+                "dk": 5.04,
+                "mihazank": 5.82,
+                "mkkp": 0.49
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.755,
+                "mihazank": 0.835,
+                "mkkp": 0.089
+            },
+            "majorityProbability": {
+                "fidesz": 0.156,
+                "tisza": 0.62,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.016,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-12-22": {
+            "mean": {
+                "fidesz": 84.81,
+                "tisza": 102.85,
+                "dk": 5.14,
+                "mihazank": 5.73,
+                "mkkp": 0.47
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.773,
+                "mihazank": 0.815,
+                "mkkp": 0.083
+            },
+            "majorityProbability": {
+                "fidesz": 0.155,
+                "tisza": 0.593,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.021,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-01-05": {
+            "mean": {
+                "fidesz": 79.76,
+                "tisza": 107.5,
+                "dk": 5.31,
+                "mihazank": 5.91,
+                "mkkp": 0.52
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.799,
+                "mihazank": 0.846,
+                "mkkp": 0.095
+            },
+            "majorityProbability": {
+                "fidesz": 0.09,
+                "tisza": 0.704,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.035,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-01-19": {
+            "mean": {
+                "fidesz": 81.53,
+                "tisza": 106.37,
+                "dk": 4.52,
+                "mihazank": 5.89,
+                "mkkp": 0.69
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.707,
+                "mihazank": 0.847,
+                "mkkp": 0.123
+            },
+            "majorityProbability": {
+                "fidesz": 0.125,
+                "tisza": 0.678,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.029,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-01-26": {
+            "mean": {
+                "fidesz": 82.92,
+                "tisza": 104.91,
+                "dk": 5.19,
+                "mihazank": 5.55,
+                "mkkp": 0.43
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.784,
+                "mihazank": 0.808,
+                "mkkp": 0.079
+            },
+            "majorityProbability": {
+                "fidesz": 0.135,
+                "tisza": 0.622,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.021,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-03-02": {
+            "mean": {
+                "fidesz": 84.48,
+                "tisza": 102.96,
+                "dk": 5.2,
+                "mihazank": 5.7,
+                "mkkp": 0.66
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.788,
+                "mihazank": 0.835,
+                "mkkp": 0.123
+            },
+            "majorityProbability": {
+                "fidesz": 0.166,
+                "tisza": 0.577,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.019,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-03-09": {
+            "mean": {
+                "fidesz": 86.89,
+                "tisza": 102.94,
+                "dk": 3.38,
+                "mihazank": 5.1,
+                "mkkp": 0.69
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.558,
+                "mihazank": 0.758,
+                "mkkp": 0.126
+            },
+            "majorityProbability": {
+                "fidesz": 0.219,
+                "tisza": 0.574,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.019,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-03-16": {
+            "mean": {
+                "fidesz": 85.5,
+                "tisza": 104.4,
+                "dk": 3.22,
+                "mihazank": 5.12,
+                "mkkp": 0.76
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.533,
+                "mihazank": 0.757,
+                "mkkp": 0.138
+            },
+            "majorityProbability": {
+                "fidesz": 0.187,
+                "tisza": 0.627,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.026,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-03-23": {
+            "mean": {
+                "fidesz": 84.64,
+                "tisza": 103.29,
+                "dk": 5.25,
+                "mihazank": 5.29,
+                "mkkp": 0.53
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.783,
+                "mihazank": 0.782,
+                "mkkp": 0.097
+            },
+            "majorityProbability": {
+                "fidesz": 0.151,
+                "tisza": 0.598,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.013,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-03-30": {
+            "mean": {
+                "fidesz": 84.29,
+                "tisza": 103.94,
+                "dk": 5.57,
+                "mihazank": 4.78,
+                "mkkp": 0.42
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.803,
+                "mihazank": 0.722,
+                "mkkp": 0.075
+            },
+            "majorityProbability": {
+                "fidesz": 0.145,
+                "tisza": 0.622,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.02,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-04-06": {
+            "mean": {
+                "fidesz": 81.1,
+                "tisza": 109.96,
+                "dk": 3.63,
+                "mihazank": 3.9,
+                "mkkp": 0.42
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.584,
+                "mihazank": 0.615,
+                "mkkp": 0.076
+            },
+            "majorityProbability": {
+                "fidesz": 0.13,
+                "tisza": 0.748,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.058,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-04-13": {
+            "mean": {
+                "fidesz": 81.0,
+                "tisza": 109.9,
+                "dk": 3.87,
+                "mihazank": 3.9,
+                "mkkp": 0.32
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.613,
+                "mihazank": 0.613,
+                "mkkp": 0.059
+            },
+            "majorityProbability": {
+                "fidesz": 0.129,
+                "tisza": 0.739,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.062,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-05-18": {
+            "mean": {
+                "fidesz": 78.63,
+                "tisza": 110.43,
+                "dk": 6.01,
+                "mihazank": 3.7,
+                "mkkp": 0.23
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.852,
+                "mihazank": 0.588,
+                "mkkp": 0.043
+            },
+            "majorityProbability": {
+                "fidesz": 0.08,
+                "tisza": 0.773,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.055,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-05-25": {
+            "mean": {
+                "fidesz": 76.49,
+                "tisza": 113.34,
+                "dk": 5.48,
+                "mihazank": 3.35,
+                "mkkp": 0.35
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.798,
+                "mihazank": 0.543,
+                "mkkp": 0.063
+            },
+            "majorityProbability": {
+                "fidesz": 0.069,
+                "tisza": 0.821,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.066,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-06-01": {
+            "mean": {
+                "fidesz": 74.68,
+                "tisza": 115.87,
+                "dk": 4.86,
+                "mihazank": 2.96,
+                "mkkp": 0.63
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.74,
+                "mihazank": 0.494,
+                "mkkp": 0.116
+            },
+            "majorityProbability": {
+                "fidesz": 0.058,
+                "tisza": 0.851,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.114,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-06-08": {
+            "mean": {
+                "fidesz": 69.44,
+                "tisza": 121.68,
+                "dk": 4.14,
+                "mihazank": 3.23,
+                "mkkp": 0.51
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.67,
+                "mihazank": 0.529,
+                "mkkp": 0.095
+            },
+            "majorityProbability": {
+                "fidesz": 0.019,
+                "tisza": 0.939,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.198,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-06-22": {
+            "mean": {
+                "fidesz": 70.5,
+                "tisza": 119.36,
+                "dk": 3.89,
+                "mihazank": 4.38,
+                "mkkp": 0.87
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.63,
+                "mihazank": 0.7,
+                "mkkp": 0.158
+            },
+            "majorityProbability": {
+                "fidesz": 0.021,
+                "tisza": 0.914,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.164,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-06-29": {
+            "mean": {
+                "fidesz": 68.69,
+                "tisza": 122.05,
+                "dk": 3.38,
+                "mihazank": 4.51,
+                "mkkp": 0.37
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.572,
+                "mihazank": 0.702,
+                "mkkp": 0.069
+            },
+            "majorityProbability": {
+                "fidesz": 0.018,
+                "tisza": 0.941,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.228,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-07-06": {
+            "mean": {
+                "fidesz": 69.04,
+                "tisza": 121.72,
+                "dk": 3.3,
+                "mihazank": 4.64,
+                "mkkp": 0.31
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.552,
+                "mihazank": 0.718,
+                "mkkp": 0.058
+            },
+            "majorityProbability": {
+                "fidesz": 0.016,
+                "tisza": 0.936,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.224,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-07-27": {
+            "mean": {
+                "fidesz": 68.14,
+                "tisza": 122.39,
+                "dk": 3.21,
+                "mihazank": 5.04,
+                "mkkp": 0.22
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.541,
+                "mihazank": 0.773,
+                "mkkp": 0.042
+            },
+            "majorityProbability": {
+                "fidesz": 0.019,
+                "tisza": 0.957,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.222,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-08-03": {
+            "mean": {
+                "fidesz": 72.11,
+                "tisza": 119.62,
+                "dk": 2.86,
+                "mihazank": 4.1,
+                "mkkp": 0.3
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.485,
+                "mihazank": 0.656,
+                "mkkp": 0.057
+            },
+            "majorityProbability": {
+                "fidesz": 0.036,
+                "tisza": 0.909,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.182,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-08-24": {
+            "mean": {
+                "fidesz": 72.11,
+                "tisza": 118.33,
+                "dk": 4.11,
+                "mihazank": 4.22,
+                "mkkp": 0.24
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.661,
+                "mihazank": 0.674,
+                "mkkp": 0.044
+            },
+            "majorityProbability": {
+                "fidesz": 0.036,
+                "tisza": 0.896,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.157,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-08-31": {
+            "mean": {
+                "fidesz": 73.88,
+                "tisza": 119.83,
+                "dk": 1.18,
+                "mihazank": 3.56,
+                "mkkp": 0.55
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.211,
+                "mihazank": 0.579,
+                "mkkp": 0.1
+            },
+            "majorityProbability": {
+                "fidesz": 0.045,
+                "tisza": 0.915,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.182,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-09-07": {
+            "mean": {
+                "fidesz": 73.11,
+                "tisza": 120.28,
+                "dk": 1.17,
+                "mihazank": 3.92,
+                "mkkp": 0.52
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.208,
+                "mihazank": 0.63,
+                "mkkp": 0.096
+            },
+            "majorityProbability": {
+                "fidesz": 0.051,
+                "tisza": 0.904,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.19,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-09-14": {
+            "mean": {
+                "fidesz": 74.31,
+                "tisza": 119.05,
+                "dk": 1.39,
+                "mihazank": 3.8,
+                "mkkp": 0.45
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.245,
+                "mihazank": 0.604,
+                "mkkp": 0.084
+            },
+            "majorityProbability": {
+                "fidesz": 0.053,
+                "tisza": 0.906,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.173,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-09-28": {
+            "mean": {
+                "fidesz": 73.43,
+                "tisza": 119.6,
+                "dk": 1.33,
+                "mihazank": 4.11,
+                "mkkp": 0.53
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.241,
+                "mihazank": 0.661,
+                "mkkp": 0.097
+            },
+            "majorityProbability": {
+                "fidesz": 0.048,
+                "tisza": 0.9,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.182,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-10-05": {
+            "mean": {
+                "fidesz": 73.28,
+                "tisza": 119.76,
+                "dk": 1.5,
+                "mihazank": 3.85,
+                "mkkp": 0.61
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.269,
+                "mihazank": 0.621,
+                "mkkp": 0.113
+            },
+            "majorityProbability": {
+                "fidesz": 0.048,
+                "tisza": 0.904,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.182,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-10-12": {
+            "mean": {
+                "fidesz": 74.13,
+                "tisza": 119.12,
+                "dk": 1.32,
+                "mihazank": 4.2,
+                "mkkp": 0.22
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.241,
+                "mihazank": 0.662,
+                "mkkp": 0.041
+            },
+            "majorityProbability": {
+                "fidesz": 0.038,
+                "tisza": 0.916,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.176,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-10-19": {
+            "mean": {
+                "fidesz": 74.41,
+                "tisza": 119.02,
+                "dk": 1.01,
+                "mihazank": 4.24,
+                "mkkp": 0.32
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.184,
+                "mihazank": 0.674,
+                "mkkp": 0.06
+            },
+            "majorityProbability": {
+                "fidesz": 0.061,
+                "tisza": 0.897,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.173,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-11-02": {
+            "mean": {
+                "fidesz": 73.65,
+                "tisza": 119.97,
+                "dk": 1.07,
+                "mihazank": 3.97,
+                "mkkp": 0.33
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.195,
+                "mihazank": 0.642,
+                "mkkp": 0.063
+            },
+            "majorityProbability": {
+                "fidesz": 0.048,
+                "tisza": 0.91,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.187,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-11-09": {
+            "mean": {
+                "fidesz": 72.33,
+                "tisza": 120.23,
+                "dk": 1.69,
+                "mihazank": 4.47,
+                "mkkp": 0.28
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.305,
+                "mihazank": 0.712,
+                "mkkp": 0.053
+            },
+            "majorityProbability": {
+                "fidesz": 0.039,
+                "tisza": 0.917,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.193,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-11-16": {
+            "mean": {
+                "fidesz": 72.84,
+                "tisza": 120.05,
+                "dk": 1.68,
+                "mihazank": 4.14,
+                "mkkp": 0.3
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.298,
+                "mihazank": 0.664,
+                "mkkp": 0.055
+            },
+            "majorityProbability": {
+                "fidesz": 0.041,
+                "tisza": 0.916,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.187,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-11-23": {
+            "mean": {
+                "fidesz": 75.2,
+                "tisza": 118.66,
+                "dk": 0.82,
+                "mihazank": 4.22,
+                "mkkp": 0.11
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.151,
+                "mihazank": 0.675,
+                "mkkp": 0.021
+            },
+            "majorityProbability": {
+                "fidesz": 0.07,
+                "tisza": 0.9,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.152,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-11-30": {
+            "mean": {
+                "fidesz": 76.14,
+                "tisza": 117.85,
+                "dk": 0.95,
+                "mihazank": 3.82,
+                "mkkp": 0.24
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.173,
+                "mihazank": 0.625,
+                "mkkp": 0.046
+            },
+            "majorityProbability": {
+                "fidesz": 0.065,
+                "tisza": 0.883,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.162,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-12-07": {
+            "mean": {
+                "fidesz": 76.77,
+                "tisza": 117.16,
+                "dk": 0.84,
+                "mihazank": 3.99,
+                "mkkp": 0.25
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.156,
+                "mihazank": 0.641,
+                "mkkp": 0.047
+            },
+            "majorityProbability": {
+                "fidesz": 0.076,
+                "tisza": 0.865,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.156,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-12-14": {
+            "mean": {
+                "fidesz": 75.82,
+                "tisza": 118.45,
+                "dk": 0.9,
+                "mihazank": 3.6,
+                "mkkp": 0.23
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.166,
+                "mihazank": 0.597,
+                "mkkp": 0.044
+            },
+            "majorityProbability": {
+                "fidesz": 0.062,
+                "tisza": 0.899,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.172,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-12-21": {
+            "mean": {
+                "fidesz": 77.19,
+                "tisza": 117.11,
+                "dk": 0.88,
+                "mihazank": 3.62,
+                "mkkp": 0.2
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.164,
+                "mihazank": 0.591,
+                "mkkp": 0.038
+            },
+            "majorityProbability": {
+                "fidesz": 0.072,
+                "tisza": 0.871,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.145,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2026-01-04": {
+            "mean": {
+                "fidesz": 77.03,
+                "tisza": 117.42,
+                "dk": 0.91,
+                "mihazank": 3.44,
+                "mkkp": 0.19
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.168,
+                "mihazank": 0.569,
+                "mkkp": 0.037
+            },
+            "majorityProbability": {
+                "fidesz": 0.08,
+                "tisza": 0.873,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.151,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2026-01-11": {
+            "mean": {
+                "fidesz": 76.45,
+                "tisza": 118.27,
+                "dk": 0.7,
+                "mihazank": 3.37,
+                "mkkp": 0.21
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.13,
+                "mihazank": 0.557,
+                "mkkp": 0.04
+            },
+            "majorityProbability": {
+                "fidesz": 0.075,
+                "tisza": 0.893,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.154,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2026-01-18": {
+            "mean": {
+                "fidesz": 76.58,
+                "tisza": 118.05,
+                "dk": 0.64,
+                "mihazank": 3.5,
+                "mkkp": 0.23
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.119,
+                "mihazank": 0.572,
+                "mkkp": 0.044
+            },
+            "majorityProbability": {
+                "fidesz": 0.074,
+                "tisza": 0.891,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.17,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2026-01-25": {
+            "mean": {
+                "fidesz": 75.34,
+                "tisza": 119.96,
+                "dk": 0.41,
+                "mihazank": 3.01,
+                "mkkp": 0.27
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.077,
+                "mihazank": 0.502,
+                "mkkp": 0.052
+            },
+            "majorityProbability": {
+                "fidesz": 0.055,
+                "tisza": 0.914,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.21,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2026-02-01": {
+            "mean": {
+                "fidesz": 75.68,
+                "tisza": 119.69,
+                "dk": 0.29,
+                "mihazank": 3.13,
+                "mkkp": 0.2
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.055,
+                "mihazank": 0.531,
+                "mkkp": 0.038
+            },
+            "majorityProbability": {
+                "fidesz": 0.059,
+                "tisza": 0.908,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.203,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2026-02-08": {
+            "mean": {
+                "fidesz": 75.11,
+                "tisza": 119.9,
+                "dk": 0.21,
+                "mihazank": 3.49,
+                "mkkp": 0.29
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.041,
+                "mihazank": 0.582,
+                "mkkp": 0.054
+            },
+            "majorityProbability": {
+                "fidesz": 0.064,
+                "tisza": 0.906,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.194,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2026-02-15": {
+            "mean": {
+                "fidesz": 75.8,
+                "tisza": 119.13,
+                "dk": 0.18,
+                "mihazank": 3.52,
+                "mkkp": 0.37
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.034,
+                "mihazank": 0.585,
+                "mkkp": 0.07
+            },
+            "majorityProbability": {
+                "fidesz": 0.069,
+                "tisza": 0.9,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.183,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2026-02-22": {
+            "mean": {
+                "fidesz": 74.39,
+                "tisza": 120.23,
+                "dk": 0.17,
+                "mihazank": 3.9,
+                "mkkp": 0.3
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.032,
+                "mihazank": 0.641,
+                "mkkp": 0.058
+            },
+            "majorityProbability": {
+                "fidesz": 0.056,
+                "tisza": 0.914,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.19,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2026-03-01": {
+            "mean": {
+                "fidesz": 74.23,
+                "tisza": 120.32,
+                "dk": 0.14,
+                "mihazank": 4.03,
+                "mkkp": 0.28
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.027,
+                "mihazank": 0.654,
+                "mkkp": 0.053
+            },
+            "majorityProbability": {
+                "fidesz": 0.046,
+                "tisza": 0.916,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.19,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        }
+    },
+    "kormanykozeli": {
+        "2024-03-31": {
+            "mean": {
+                "fidesz": 138.09,
+                "tisza": 27.91,
+                "dk": 19.05,
+                "mihazank": 7.21,
+                "mkkp": 6.74
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 1.0,
+                "mihazank": 0.977,
+                "mkkp": 0.958
+            },
+            "majorityProbability": {
+                "fidesz": 1.0,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.772,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-04-07": {
+            "mean": {
+                "fidesz": 135.57,
+                "tisza": 29.83,
+                "dk": 19.49,
+                "mihazank": 7.06,
+                "mkkp": 7.05
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 1.0,
+                "mihazank": 0.966,
+                "mkkp": 0.967
+            },
+            "majorityProbability": {
+                "fidesz": 1.0,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.673,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-04-14": {
+            "mean": {
+                "fidesz": 134.95,
+                "tisza": 34.01,
+                "dk": 17.36,
+                "mihazank": 6.5,
+                "mkkp": 6.18
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 1.0,
+                "mihazank": 0.949,
+                "mkkp": 0.932
+            },
+            "majorityProbability": {
+                "fidesz": 0.998,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.653,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-04-21": {
+            "mean": {
+                "fidesz": 130.26,
+                "tisza": 39.09,
+                "dk": 17.25,
+                "mihazank": 6.23,
+                "mkkp": 6.16
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 1.0,
+                "mihazank": 0.924,
+                "mkkp": 0.933
+            },
+            "majorityProbability": {
+                "fidesz": 0.998,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.467,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-04-28": {
+            "mean": {
+                "fidesz": 127.59,
+                "tisza": 44.73,
+                "dk": 18.11,
+                "mihazank": 4.71,
+                "mkkp": 3.87
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 1.0,
+                "mihazank": 0.75,
+                "mkkp": 0.656
+            },
+            "majorityProbability": {
+                "fidesz": 0.987,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.369,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-05-05": {
+            "mean": {
+                "fidesz": 128.45,
+                "tisza": 44.04,
+                "dk": 18.04,
+                "mihazank": 4.82,
+                "mkkp": 3.65
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 1.0,
+                "mihazank": 0.771,
+                "mkkp": 0.615
+            },
+            "majorityProbability": {
+                "fidesz": 0.994,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.385,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-05-12": {
+            "mean": {
+                "fidesz": 126.84,
+                "tisza": 47.43,
+                "dk": 17.53,
+                "mihazank": 4.02,
+                "mkkp": 3.17
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 1.0,
+                "mihazank": 0.648,
+                "mkkp": 0.533
+            },
+            "majorityProbability": {
+                "fidesz": 0.986,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.329,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-05-19": {
+            "mean": {
+                "fidesz": 127.66,
+                "tisza": 48.09,
+                "dk": 17.3,
+                "mihazank": 3.55,
+                "mkkp": 2.4
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 1.0,
+                "mihazank": 0.575,
+                "mkkp": 0.407
+            },
+            "majorityProbability": {
+                "fidesz": 0.992,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.345,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-05-26": {
+            "mean": {
+                "fidesz": 128.5,
+                "tisza": 47.78,
+                "dk": 16.95,
+                "mihazank": 3.58,
+                "mkkp": 2.19
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 1.0,
+                "mihazank": 0.58,
+                "mkkp": 0.374
+            },
+            "majorityProbability": {
+                "fidesz": 0.991,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.371,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-06-02": {
+            "mean": {
+                "fidesz": 130.73,
+                "tisza": 47.79,
+                "dk": 16.04,
+                "mihazank": 3.14,
+                "mkkp": 1.3
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 1.0,
+                "mihazank": 0.517,
+                "mkkp": 0.233
+            },
+            "majorityProbability": {
+                "fidesz": 0.997,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.449,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-06-09": {
+            "mean": {
+                "fidesz": 129.77,
+                "tisza": 51.82,
+                "dk": 13.08,
+                "mihazank": 3.41,
+                "mkkp": 0.91
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 1.0,
+                "mihazank": 0.554,
+                "mkkp": 0.164
+            },
+            "majorityProbability": {
+                "fidesz": 0.998,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.384,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-06-23": {
+            "mean": {
+                "fidesz": 130.4,
+                "tisza": 54.34,
+                "dk": 9.22,
+                "mihazank": 4.09,
+                "mkkp": 0.94
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.987,
+                "mihazank": 0.609,
+                "mkkp": 0.161
+            },
+            "majorityProbability": {
+                "fidesz": 0.996,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.406,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-07-07": {
+            "mean": {
+                "fidesz": 128.67,
+                "tisza": 57.6,
+                "dk": 7.3,
+                "mihazank": 4.43,
+                "mkkp": 1.0
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.931,
+                "mihazank": 0.672,
+                "mkkp": 0.177
+            },
+            "majorityProbability": {
+                "fidesz": 0.994,
+                "tisza": 0.001,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.354,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-07-21": {
+            "mean": {
+                "fidesz": 129.57,
+                "tisza": 56.64,
+                "dk": 7.31,
+                "mihazank": 4.39,
+                "mkkp": 1.1
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.932,
+                "mihazank": 0.674,
+                "mkkp": 0.193
+            },
+            "majorityProbability": {
+                "fidesz": 0.998,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.385,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-07-28": {
+            "mean": {
+                "fidesz": 125.66,
+                "tisza": 60.15,
+                "dk": 7.38,
+                "mihazank": 4.64,
+                "mkkp": 1.17
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.945,
+                "mihazank": 0.705,
+                "mkkp": 0.207
+            },
+            "majorityProbability": {
+                "fidesz": 0.987,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.262,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-09-01": {
+            "mean": {
+                "fidesz": 115.61,
+                "tisza": 68.52,
+                "dk": 7.17,
+                "mihazank": 6.42,
+                "mkkp": 1.27
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.93,
+                "mihazank": 0.882,
+                "mkkp": 0.224
+            },
+            "majorityProbability": {
+                "fidesz": 0.932,
+                "tisza": 0.01,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.083,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-09-08": {
+            "mean": {
+                "fidesz": 113.2,
+                "tisza": 75.83,
+                "dk": 4.44,
+                "mihazank": 5.08,
+                "mkkp": 0.46
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.663,
+                "mihazank": 0.734,
+                "mkkp": 0.081
+            },
+            "majorityProbability": {
+                "fidesz": 0.881,
+                "tisza": 0.026,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.053,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-09-15": {
+            "mean": {
+                "fidesz": 113.23,
+                "tisza": 75.94,
+                "dk": 4.5,
+                "mihazank": 4.86,
+                "mkkp": 0.47
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.679,
+                "mihazank": 0.705,
+                "mkkp": 0.084
+            },
+            "majorityProbability": {
+                "fidesz": 0.897,
+                "tisza": 0.032,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.042,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-09-22": {
+            "mean": {
+                "fidesz": 113.0,
+                "tisza": 76.05,
+                "dk": 4.39,
+                "mihazank": 5.09,
+                "mkkp": 0.48
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.661,
+                "mihazank": 0.744,
+                "mkkp": 0.085
+            },
+            "majorityProbability": {
+                "fidesz": 0.886,
+                "tisza": 0.027,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.046,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-10-06": {
+            "mean": {
+                "fidesz": 109.37,
+                "tisza": 79.9,
+                "dk": 4.41,
+                "mihazank": 4.65,
+                "mkkp": 0.67
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.661,
+                "mihazank": 0.691,
+                "mkkp": 0.115
+            },
+            "majorityProbability": {
+                "fidesz": 0.831,
+                "tisza": 0.046,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.03,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-10-13": {
+            "mean": {
+                "fidesz": 106.97,
+                "tisza": 83.05,
+                "dk": 3.13,
+                "mihazank": 4.82,
+                "mkkp": 1.02
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.5,
+                "mihazank": 0.714,
+                "mkkp": 0.177
+            },
+            "majorityProbability": {
+                "fidesz": 0.776,
+                "tisza": 0.086,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.013,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-10-20": {
+            "mean": {
+                "fidesz": 104.86,
+                "tisza": 84.45,
+                "dk": 4.65,
+                "mihazank": 4.22,
+                "mkkp": 0.81
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.695,
+                "mihazank": 0.641,
+                "mkkp": 0.141
+            },
+            "majorityProbability": {
+                "fidesz": 0.721,
+                "tisza": 0.102,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.006,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-10-27": {
+            "mean": {
+                "fidesz": 102.55,
+                "tisza": 86.01,
+                "dk": 5.19,
+                "mihazank": 4.3,
+                "mkkp": 0.95
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.749,
+                "mihazank": 0.648,
+                "mkkp": 0.167
+            },
+            "majorityProbability": {
+                "fidesz": 0.653,
+                "tisza": 0.138,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.002,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-11-03": {
+            "mean": {
+                "fidesz": 99.33,
+                "tisza": 89.61,
+                "dk": 4.52,
+                "mihazank": 4.58,
+                "mkkp": 0.95
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.685,
+                "mihazank": 0.681,
+                "mkkp": 0.166
+            },
+            "majorityProbability": {
+                "fidesz": 0.546,
+                "tisza": 0.211,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.001,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-11-10": {
+            "mean": {
+                "fidesz": 98.91,
+                "tisza": 90.68,
+                "dk": 4.03,
+                "mihazank": 4.63,
+                "mkkp": 0.76
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.608,
+                "mihazank": 0.693,
+                "mkkp": 0.132
+            },
+            "majorityProbability": {
+                "fidesz": 0.541,
+                "tisza": 0.238,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.002,
+                "tisza": 0.0,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-11-17": {
+            "mean": {
+                "fidesz": 95.69,
+                "tisza": 93.54,
+                "dk": 4.51,
+                "mihazank": 4.69,
+                "mkkp": 0.57
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.686,
+                "mihazank": 0.702,
+                "mkkp": 0.103
+            },
+            "majorityProbability": {
+                "fidesz": 0.435,
+                "tisza": 0.32,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.004,
+                "tisza": 0.001,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-11-24": {
+            "mean": {
+                "fidesz": 93.27,
+                "tisza": 95.46,
+                "dk": 4.48,
+                "mihazank": 5.03,
+                "mkkp": 0.77
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.686,
+                "mihazank": 0.745,
+                "mkkp": 0.138
+            },
+            "majorityProbability": {
+                "fidesz": 0.387,
+                "tisza": 0.368,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.003,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-12-01": {
+            "mean": {
+                "fidesz": 90.14,
+                "tisza": 98.48,
+                "dk": 4.37,
+                "mihazank": 5.42,
+                "mkkp": 0.6
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.677,
+                "mihazank": 0.777,
+                "mkkp": 0.108
+            },
+            "majorityProbability": {
+                "fidesz": 0.271,
+                "tisza": 0.45,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.008,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-12-08": {
+            "mean": {
+                "fidesz": 87.66,
+                "tisza": 100.91,
+                "dk": 4.15,
+                "mihazank": 5.63,
+                "mkkp": 0.66
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.648,
+                "mihazank": 0.814,
+                "mkkp": 0.118
+            },
+            "majorityProbability": {
+                "fidesz": 0.225,
+                "tisza": 0.525,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.011,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-12-15": {
+            "mean": {
+                "fidesz": 83.79,
+                "tisza": 103.86,
+                "dk": 5.04,
+                "mihazank": 5.82,
+                "mkkp": 0.49
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.755,
+                "mihazank": 0.835,
+                "mkkp": 0.089
+            },
+            "majorityProbability": {
+                "fidesz": 0.156,
+                "tisza": 0.62,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.016,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2024-12-22": {
+            "mean": {
+                "fidesz": 84.81,
+                "tisza": 102.85,
+                "dk": 5.14,
+                "mihazank": 5.73,
+                "mkkp": 0.47
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.773,
+                "mihazank": 0.815,
+                "mkkp": 0.083
+            },
+            "majorityProbability": {
+                "fidesz": 0.155,
+                "tisza": 0.593,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.021,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-01-05": {
+            "mean": {
+                "fidesz": 79.76,
+                "tisza": 107.5,
+                "dk": 5.31,
+                "mihazank": 5.91,
+                "mkkp": 0.52
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.799,
+                "mihazank": 0.846,
+                "mkkp": 0.095
+            },
+            "majorityProbability": {
+                "fidesz": 0.09,
+                "tisza": 0.704,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.035,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-01-19": {
+            "mean": {
+                "fidesz": 81.53,
+                "tisza": 106.37,
+                "dk": 4.52,
+                "mihazank": 5.89,
+                "mkkp": 0.69
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.707,
+                "mihazank": 0.847,
+                "mkkp": 0.123
+            },
+            "majorityProbability": {
+                "fidesz": 0.125,
+                "tisza": 0.678,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.029,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-01-26": {
+            "mean": {
+                "fidesz": 82.92,
+                "tisza": 104.91,
+                "dk": 5.19,
+                "mihazank": 5.55,
+                "mkkp": 0.43
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.784,
+                "mihazank": 0.808,
+                "mkkp": 0.079
+            },
+            "majorityProbability": {
+                "fidesz": 0.135,
+                "tisza": 0.622,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.021,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-03-02": {
+            "mean": {
+                "fidesz": 84.48,
+                "tisza": 102.96,
+                "dk": 5.2,
+                "mihazank": 5.7,
+                "mkkp": 0.66
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.788,
+                "mihazank": 0.835,
+                "mkkp": 0.123
+            },
+            "majorityProbability": {
+                "fidesz": 0.166,
+                "tisza": 0.577,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.019,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-03-09": {
+            "mean": {
+                "fidesz": 86.89,
+                "tisza": 102.94,
+                "dk": 3.38,
+                "mihazank": 5.1,
+                "mkkp": 0.69
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.558,
+                "mihazank": 0.758,
+                "mkkp": 0.126
+            },
+            "majorityProbability": {
+                "fidesz": 0.219,
+                "tisza": 0.574,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.019,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-03-16": {
+            "mean": {
+                "fidesz": 85.5,
+                "tisza": 104.4,
+                "dk": 3.22,
+                "mihazank": 5.12,
+                "mkkp": 0.76
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.533,
+                "mihazank": 0.757,
+                "mkkp": 0.138
+            },
+            "majorityProbability": {
+                "fidesz": 0.187,
+                "tisza": 0.627,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.026,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-03-23": {
+            "mean": {
+                "fidesz": 84.64,
+                "tisza": 103.29,
+                "dk": 5.25,
+                "mihazank": 5.29,
+                "mkkp": 0.53
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.783,
+                "mihazank": 0.782,
+                "mkkp": 0.097
+            },
+            "majorityProbability": {
+                "fidesz": 0.151,
+                "tisza": 0.598,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.013,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-03-30": {
+            "mean": {
+                "fidesz": 84.29,
+                "tisza": 103.94,
+                "dk": 5.57,
+                "mihazank": 4.78,
+                "mkkp": 0.42
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.803,
+                "mihazank": 0.722,
+                "mkkp": 0.075
+            },
+            "majorityProbability": {
+                "fidesz": 0.145,
+                "tisza": 0.622,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.02,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-04-06": {
+            "mean": {
+                "fidesz": 81.1,
+                "tisza": 109.96,
+                "dk": 3.63,
+                "mihazank": 3.9,
+                "mkkp": 0.42
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.584,
+                "mihazank": 0.615,
+                "mkkp": 0.076
+            },
+            "majorityProbability": {
+                "fidesz": 0.13,
+                "tisza": 0.748,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.058,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-04-13": {
+            "mean": {
+                "fidesz": 81.0,
+                "tisza": 109.9,
+                "dk": 3.87,
+                "mihazank": 3.9,
+                "mkkp": 0.32
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.613,
+                "mihazank": 0.613,
+                "mkkp": 0.059
+            },
+            "majorityProbability": {
+                "fidesz": 0.129,
+                "tisza": 0.739,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.062,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-05-18": {
+            "mean": {
+                "fidesz": 78.63,
+                "tisza": 110.43,
+                "dk": 6.01,
+                "mihazank": 3.7,
+                "mkkp": 0.23
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.852,
+                "mihazank": 0.588,
+                "mkkp": 0.043
+            },
+            "majorityProbability": {
+                "fidesz": 0.08,
+                "tisza": 0.773,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.055,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-05-25": {
+            "mean": {
+                "fidesz": 76.49,
+                "tisza": 113.34,
+                "dk": 5.48,
+                "mihazank": 3.35,
+                "mkkp": 0.35
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.798,
+                "mihazank": 0.543,
+                "mkkp": 0.063
+            },
+            "majorityProbability": {
+                "fidesz": 0.069,
+                "tisza": 0.821,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.066,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-06-01": {
+            "mean": {
+                "fidesz": 74.68,
+                "tisza": 115.87,
+                "dk": 4.86,
+                "mihazank": 2.96,
+                "mkkp": 0.63
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.74,
+                "mihazank": 0.494,
+                "mkkp": 0.116
+            },
+            "majorityProbability": {
+                "fidesz": 0.058,
+                "tisza": 0.851,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.114,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-06-08": {
+            "mean": {
+                "fidesz": 69.44,
+                "tisza": 121.68,
+                "dk": 4.14,
+                "mihazank": 3.23,
+                "mkkp": 0.51
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.67,
+                "mihazank": 0.529,
+                "mkkp": 0.095
+            },
+            "majorityProbability": {
+                "fidesz": 0.019,
+                "tisza": 0.939,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.198,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-06-22": {
+            "mean": {
+                "fidesz": 70.5,
+                "tisza": 119.36,
+                "dk": 3.89,
+                "mihazank": 4.38,
+                "mkkp": 0.87
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.63,
+                "mihazank": 0.7,
+                "mkkp": 0.158
+            },
+            "majorityProbability": {
+                "fidesz": 0.021,
+                "tisza": 0.914,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.164,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-06-29": {
+            "mean": {
+                "fidesz": 68.69,
+                "tisza": 122.05,
+                "dk": 3.38,
+                "mihazank": 4.51,
+                "mkkp": 0.37
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.572,
+                "mihazank": 0.702,
+                "mkkp": 0.069
+            },
+            "majorityProbability": {
+                "fidesz": 0.018,
+                "tisza": 0.941,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.228,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-07-06": {
+            "mean": {
+                "fidesz": 69.04,
+                "tisza": 121.72,
+                "dk": 3.3,
+                "mihazank": 4.64,
+                "mkkp": 0.31
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.552,
+                "mihazank": 0.718,
+                "mkkp": 0.058
+            },
+            "majorityProbability": {
+                "fidesz": 0.016,
+                "tisza": 0.936,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.224,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-07-27": {
+            "mean": {
+                "fidesz": 68.14,
+                "tisza": 122.39,
+                "dk": 3.21,
+                "mihazank": 5.04,
+                "mkkp": 0.22
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.541,
+                "mihazank": 0.773,
+                "mkkp": 0.042
+            },
+            "majorityProbability": {
+                "fidesz": 0.019,
+                "tisza": 0.957,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.222,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-08-03": {
+            "mean": {
+                "fidesz": 72.11,
+                "tisza": 119.62,
+                "dk": 2.86,
+                "mihazank": 4.1,
+                "mkkp": 0.3
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.485,
+                "mihazank": 0.656,
+                "mkkp": 0.057
+            },
+            "majorityProbability": {
+                "fidesz": 0.036,
+                "tisza": 0.909,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.182,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-08-24": {
+            "mean": {
+                "fidesz": 72.11,
+                "tisza": 118.33,
+                "dk": 4.11,
+                "mihazank": 4.22,
+                "mkkp": 0.24
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.661,
+                "mihazank": 0.674,
+                "mkkp": 0.044
+            },
+            "majorityProbability": {
+                "fidesz": 0.036,
+                "tisza": 0.896,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.157,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-08-31": {
+            "mean": {
+                "fidesz": 73.88,
+                "tisza": 119.83,
+                "dk": 1.18,
+                "mihazank": 3.56,
+                "mkkp": 0.55
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.211,
+                "mihazank": 0.579,
+                "mkkp": 0.1
+            },
+            "majorityProbability": {
+                "fidesz": 0.045,
+                "tisza": 0.915,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.182,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-09-07": {
+            "mean": {
+                "fidesz": 73.11,
+                "tisza": 120.28,
+                "dk": 1.17,
+                "mihazank": 3.92,
+                "mkkp": 0.52
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.208,
+                "mihazank": 0.63,
+                "mkkp": 0.096
+            },
+            "majorityProbability": {
+                "fidesz": 0.051,
+                "tisza": 0.904,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.19,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-09-14": {
+            "mean": {
+                "fidesz": 74.31,
+                "tisza": 119.05,
+                "dk": 1.39,
+                "mihazank": 3.8,
+                "mkkp": 0.45
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.245,
+                "mihazank": 0.604,
+                "mkkp": 0.084
+            },
+            "majorityProbability": {
+                "fidesz": 0.053,
+                "tisza": 0.906,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.173,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-09-28": {
+            "mean": {
+                "fidesz": 73.43,
+                "tisza": 119.6,
+                "dk": 1.33,
+                "mihazank": 4.11,
+                "mkkp": 0.53
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.241,
+                "mihazank": 0.661,
+                "mkkp": 0.097
+            },
+            "majorityProbability": {
+                "fidesz": 0.048,
+                "tisza": 0.9,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.182,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-10-05": {
+            "mean": {
+                "fidesz": 73.28,
+                "tisza": 119.76,
+                "dk": 1.5,
+                "mihazank": 3.85,
+                "mkkp": 0.61
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.269,
+                "mihazank": 0.621,
+                "mkkp": 0.113
+            },
+            "majorityProbability": {
+                "fidesz": 0.048,
+                "tisza": 0.904,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.182,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-10-12": {
+            "mean": {
+                "fidesz": 74.13,
+                "tisza": 119.12,
+                "dk": 1.32,
+                "mihazank": 4.2,
+                "mkkp": 0.22
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.241,
+                "mihazank": 0.662,
+                "mkkp": 0.041
+            },
+            "majorityProbability": {
+                "fidesz": 0.038,
+                "tisza": 0.916,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.176,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-10-19": {
+            "mean": {
+                "fidesz": 74.41,
+                "tisza": 119.02,
+                "dk": 1.01,
+                "mihazank": 4.24,
+                "mkkp": 0.32
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.184,
+                "mihazank": 0.674,
+                "mkkp": 0.06
+            },
+            "majorityProbability": {
+                "fidesz": 0.061,
+                "tisza": 0.897,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.173,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-11-02": {
+            "mean": {
+                "fidesz": 73.65,
+                "tisza": 119.97,
+                "dk": 1.07,
+                "mihazank": 3.97,
+                "mkkp": 0.33
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.195,
+                "mihazank": 0.642,
+                "mkkp": 0.063
+            },
+            "majorityProbability": {
+                "fidesz": 0.048,
+                "tisza": 0.91,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.187,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-11-09": {
+            "mean": {
+                "fidesz": 72.33,
+                "tisza": 120.23,
+                "dk": 1.69,
+                "mihazank": 4.47,
+                "mkkp": 0.28
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.305,
+                "mihazank": 0.712,
+                "mkkp": 0.053
+            },
+            "majorityProbability": {
+                "fidesz": 0.039,
+                "tisza": 0.917,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.193,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-11-16": {
+            "mean": {
+                "fidesz": 72.84,
+                "tisza": 120.05,
+                "dk": 1.68,
+                "mihazank": 4.14,
+                "mkkp": 0.3
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.298,
+                "mihazank": 0.664,
+                "mkkp": 0.055
+            },
+            "majorityProbability": {
+                "fidesz": 0.041,
+                "tisza": 0.916,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.187,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-11-23": {
+            "mean": {
+                "fidesz": 75.2,
+                "tisza": 118.66,
+                "dk": 0.82,
+                "mihazank": 4.22,
+                "mkkp": 0.11
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.151,
+                "mihazank": 0.675,
+                "mkkp": 0.021
+            },
+            "majorityProbability": {
+                "fidesz": 0.07,
+                "tisza": 0.9,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.152,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-11-30": {
+            "mean": {
+                "fidesz": 76.14,
+                "tisza": 117.85,
+                "dk": 0.95,
+                "mihazank": 3.82,
+                "mkkp": 0.24
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.173,
+                "mihazank": 0.625,
+                "mkkp": 0.046
+            },
+            "majorityProbability": {
+                "fidesz": 0.065,
+                "tisza": 0.883,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.162,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-12-07": {
+            "mean": {
+                "fidesz": 76.77,
+                "tisza": 117.16,
+                "dk": 0.84,
+                "mihazank": 3.99,
+                "mkkp": 0.25
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.156,
+                "mihazank": 0.641,
+                "mkkp": 0.047
+            },
+            "majorityProbability": {
+                "fidesz": 0.076,
+                "tisza": 0.865,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.156,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-12-14": {
+            "mean": {
+                "fidesz": 75.82,
+                "tisza": 118.45,
+                "dk": 0.9,
+                "mihazank": 3.6,
+                "mkkp": 0.23
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.166,
+                "mihazank": 0.597,
+                "mkkp": 0.044
+            },
+            "majorityProbability": {
+                "fidesz": 0.062,
+                "tisza": 0.899,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.172,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2025-12-21": {
+            "mean": {
+                "fidesz": 77.19,
+                "tisza": 117.11,
+                "dk": 0.88,
+                "mihazank": 3.62,
+                "mkkp": 0.2
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.164,
+                "mihazank": 0.591,
+                "mkkp": 0.038
+            },
+            "majorityProbability": {
+                "fidesz": 0.072,
+                "tisza": 0.871,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.145,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2026-01-04": {
+            "mean": {
+                "fidesz": 77.03,
+                "tisza": 117.42,
+                "dk": 0.91,
+                "mihazank": 3.44,
+                "mkkp": 0.19
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.168,
+                "mihazank": 0.569,
+                "mkkp": 0.037
+            },
+            "majorityProbability": {
+                "fidesz": 0.08,
+                "tisza": 0.873,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.151,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2026-01-11": {
+            "mean": {
+                "fidesz": 76.45,
+                "tisza": 118.27,
+                "dk": 0.7,
+                "mihazank": 3.37,
+                "mkkp": 0.21
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.13,
+                "mihazank": 0.557,
+                "mkkp": 0.04
+            },
+            "majorityProbability": {
+                "fidesz": 0.075,
+                "tisza": 0.893,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.154,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2026-01-18": {
+            "mean": {
+                "fidesz": 76.58,
+                "tisza": 118.05,
+                "dk": 0.64,
+                "mihazank": 3.5,
+                "mkkp": 0.23
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.119,
+                "mihazank": 0.572,
+                "mkkp": 0.044
+            },
+            "majorityProbability": {
+                "fidesz": 0.074,
+                "tisza": 0.891,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.17,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2026-01-25": {
+            "mean": {
+                "fidesz": 75.34,
+                "tisza": 119.96,
+                "dk": 0.41,
+                "mihazank": 3.01,
+                "mkkp": 0.27
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.077,
+                "mihazank": 0.502,
+                "mkkp": 0.052
+            },
+            "majorityProbability": {
+                "fidesz": 0.055,
+                "tisza": 0.914,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.21,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2026-02-01": {
+            "mean": {
+                "fidesz": 75.68,
+                "tisza": 119.69,
+                "dk": 0.29,
+                "mihazank": 3.13,
+                "mkkp": 0.2
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.055,
+                "mihazank": 0.531,
+                "mkkp": 0.038
+            },
+            "majorityProbability": {
+                "fidesz": 0.059,
+                "tisza": 0.908,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.203,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2026-02-08": {
+            "mean": {
+                "fidesz": 75.11,
+                "tisza": 119.9,
+                "dk": 0.21,
+                "mihazank": 3.49,
+                "mkkp": 0.29
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.041,
+                "mihazank": 0.582,
+                "mkkp": 0.054
+            },
+            "majorityProbability": {
+                "fidesz": 0.064,
+                "tisza": 0.906,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.194,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2026-02-15": {
+            "mean": {
+                "fidesz": 75.8,
+                "tisza": 119.13,
+                "dk": 0.18,
+                "mihazank": 3.52,
+                "mkkp": 0.37
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.034,
+                "mihazank": 0.585,
+                "mkkp": 0.07
+            },
+            "majorityProbability": {
+                "fidesz": 0.069,
+                "tisza": 0.9,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.183,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2026-02-22": {
+            "mean": {
+                "fidesz": 74.39,
+                "tisza": 120.23,
+                "dk": 0.17,
+                "mihazank": 3.9,
+                "mkkp": 0.3
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.032,
+                "mihazank": 0.641,
+                "mkkp": 0.058
+            },
+            "majorityProbability": {
+                "fidesz": 0.056,
+                "tisza": 0.914,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.19,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        },
+        "2026-03-01": {
+            "mean": {
+                "fidesz": 74.23,
+                "tisza": 120.32,
+                "dk": 0.14,
+                "mihazank": 4.03,
+                "mkkp": 0.28
+            },
+            "entryProbability": {
+                "fidesz": 1.0,
+                "tisza": 1.0,
+                "dk": 0.027,
+                "mihazank": 0.654,
+                "mkkp": 0.053
+            },
+            "majorityProbability": {
+                "fidesz": 0.046,
+                "tisza": 0.916,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            },
+            "absoluteMajorityProbability": {
+                "fidesz": 0.0,
+                "tisza": 0.19,
+                "dk": 0.0,
+                "mihazank": 0.0,
+                "mkkp": 0.0
+            }
+        }
+    }
+}
