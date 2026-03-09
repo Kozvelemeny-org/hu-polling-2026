@@ -3,6 +3,7 @@
         Annotation,
         DataSelect,
         DateRange,
+        HistoricalSimulationData,
         Party,
         Poll,
         PollData,
@@ -14,6 +15,7 @@
     import { onMount } from "svelte";
     import { pollsterGroups } from "$stores/dataStore";
     import PollsChart from "./PollsChart.svelte";
+    import MandateProjectionChart from "$components/mandate/MandateProjectionChart.svelte";
     import BottomMenu from "$components/ui/bottom-menu/BottomMenu.svelte";
     import BottomMenuItem from "$components/ui/bottom-menu/BottomMenuItem.svelte";
     import SectionTitle from "$components/section/SectionTitle.svelte";
@@ -22,6 +24,7 @@
         sure_voters: [] as PollData,
         all_voters: [] as PollData,
         mandateProjectionData: [] as MandateProjectionData,
+        historicalSimulationData: {} as HistoricalSimulationData,
     };
     export let chartId = null as string | null;
     export let title: string;
@@ -55,12 +58,13 @@
 
     onMount(() => {
         const loadingInterval = setInterval(() => {
-            if (!chartOptions.data.length && data[voterType]?.length) {
-                if (isMandateProjection) {
+            if (isMandateProjection) {
+                if (data.mandateProjectionData?.length && data.historicalSimulationData?.main) {
                     chartOptions.data = data.mandateProjectionData;
-                } else {
-                    chartOptions.data = data[voterType];
+                    clearInterval(loadingInterval);
                 }
+            } else if (!chartOptions.data.length && data[voterType]?.length) {
+                chartOptions.data = data[voterType];
                 clearInterval(loadingInterval);
             }
         }, 10);
@@ -94,16 +98,30 @@
             </select>
         </p>
     </div>
-    <PollsChart
-        id={"chart" + (Math.random() * 10000).toFixed(0)}
-        pollData={chartOptions.data}
-        {selectedParties}
-        selectedPollsterGroup={pollsterGroups[chartOptions.pollsterGroupIndex]}
-        {dateRange}
-        {annotations}
-        renderOptions={{ ...renderOptions, smoothing: chartOptions.smoothing }}
-        on:updateWindowDays={(e) => (windowDays = e.detail)}
-    />
+    {#if isMandateProjection}
+        <MandateProjectionChart
+            id={"chart" + (Math.random() * 10000).toFixed(0)}
+            historicalSimulationData={data.historicalSimulationData}
+            mandateProjectionData={data.mandateProjectionData}
+            {selectedParties}
+            selectedPollsterGroup={pollsterGroups[chartOptions.pollsterGroupIndex]}
+            {dateRange}
+            {annotations}
+            renderOptions={renderOptions}
+            on:updateWindowDays={(e) => (windowDays = e.detail)}
+        />
+    {:else}
+        <PollsChart
+            id={"chart" + (Math.random() * 10000).toFixed(0)}
+            pollData={chartOptions.data}
+            {selectedParties}
+            selectedPollsterGroup={pollsterGroups[chartOptions.pollsterGroupIndex]}
+            {dateRange}
+            {annotations}
+            renderOptions={{ ...renderOptions, smoothing: chartOptions.smoothing }}
+            on:updateWindowDays={(e) => (windowDays = e.detail)}
+        />
+    {/if}
     <div class="htmlContent">
         {@html description}
     </div>

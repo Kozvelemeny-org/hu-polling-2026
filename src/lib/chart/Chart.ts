@@ -1,12 +1,25 @@
 import { ChartRenderer } from "./ChartRenderer";
 import { processPartySeries } from "./ChartDataProcessor";
+import { processMandateProjectionSeries } from "./MandateChartDataProcessor";
 import { axisFrom } from "./core/AxisCalculator";
-import type { Annotation, ChartOptions, DateRange, Party, PollData, PollsterGroup, SeriesDaily, SeriesPoint, SeriesDescriptor } from "../types";
+import type { Annotation, ChartOptions, DateRange, HistoricalSimulationByDate, MandateProjectionData, Party, PollData, PollsterGroup, SeriesDaily, SeriesPoint, SeriesDescriptor } from "../types";
 import { partyData } from "$stores/dataStore";
+
+export type MandateChartInput = {
+    historicalSimulation: HistoricalSimulationByDate;
+    mandateProjectionData: MandateProjectionData;
+};
+
+function isMandateInput(data: PollData | MandateChartInput): data is MandateChartInput {
+    return typeof data === "object" && data !== null && "historicalSimulation" in data && "mandateProjectionData" in data;
+}
 
 export class Chart {
     private containerElement: HTMLElement;
+    private mode: "poll" | "mandate";
     private pollData: PollData;
+    private historicalSimulation: HistoricalSimulationByDate | undefined;
+    private mandateProjectionData: MandateProjectionData | undefined;
     private selectedParties: Party[];
     private selectedPollsterGroup: PollsterGroup;
     private dateRange: DateRange;
@@ -26,18 +39,25 @@ export class Chart {
 
     public windowDays = 0;
 
-    constructor(containerElement: HTMLElement, pollData: PollData, options: {
-        selectedParties?: Party[],
-        selectedPollsterGroup?: PollsterGroup,
-        dateRange?: DateRange,
-        partyIntervals?: Record<Party, [Date, Date][]>,
-        annotations?: Annotation[],
-        renderOptions?: ChartOptions,
-    } = {}) {
+    constructor(
+        containerElement: HTMLElement,
+        data: PollData | MandateChartInput,
+        options: {
+            selectedParties?: Party[];
+            selectedPollsterGroup?: PollsterGroup;
+            dateRange?: DateRange;
+            partyIntervals?: Record<Party, [Date, Date][]>;
+            annotations?: Annotation[];
+            renderOptions?: ChartOptions;
+        } = {}
+    ) {
         this.containerElement = containerElement;
-        this.pollData = pollData;
-        this.selectedParties = options.selectedParties ?? Object.keys(partyData) as Party[];
-        this.selectedPollsterGroup = options.selectedPollsterGroup ?? "kormanyfuggetlen" as PollsterGroup;
+        this.mode = isMandateInput(data) ? "mandate" : "poll";
+        this.pollData = this.mode === "poll" ? (data as PollData) : [];
+        this.historicalSimulation = this.mode === "mandate" ? (data as MandateChartInput).historicalSimulation : undefined;
+        this.mandateProjectionData = this.mode === "mandate" ? (data as MandateChartInput).mandateProjectionData : undefined;
+        this.selectedParties = options.selectedParties ?? (Object.keys(partyData) as Party[]);
+        this.selectedPollsterGroup = options.selectedPollsterGroup ?? ("kormanyfuggetlen" as PollsterGroup);
         this.dateRange = options.dateRange ?? { start: new Date(2018, 0, 0), end: new Date() };
         this.partyIntervals = options.partyIntervals ?? this.getDefaultPartyIntervals();
         this.annotations = options.annotations ?? [];
@@ -74,6 +94,8 @@ export class Chart {
 
     public setOptions(updatedOptions: {
         pollData?: PollData;
+        historicalSimulation?: HistoricalSimulationByDate;
+        mandateProjectionData?: MandateProjectionData;
         selectedParties?: Party[];
         selectedPollsterGroup?: PollsterGroup;
         dateRange?: DateRange;
@@ -85,16 +107,18 @@ export class Chart {
             if (updatedOptions[key] === undefined) continue;
             (this as any)[key] = updatedOptions[key];
         }
-    
+
         if (
             updatedOptions.pollData !== undefined ||
+            updatedOptions.historicalSimulation !== undefined ||
+            updatedOptions.mandateProjectionData !== undefined ||
             updatedOptions.selectedParties !== undefined ||
             updatedOptions.dateRange !== undefined ||
             updatedOptions.partyIntervals !== undefined
         ) {
             this.updateChartData();
         }
-    
+
         if (updatedOptions.annotations !== undefined) {
             this.renderer.updateAnnotations(this.annotations);
         }
@@ -103,16 +127,31 @@ export class Chart {
             this.updateAxis();
         }
     }
-    
+
     private updateChartData() {
-        const payload = processPartySeries(
-            this.pollData,
-            this.dateRange,
-            this.partyIntervals,
-            this.selectedParties,
-            this.selectedPollsterGroup,
-            this.renderOptions
-        );
+        let payload;
+        if (this.mode === "mandate" && this.historicalSimulation != null && this.mandateProjectionData != null) {
+            payload = processMandateProjectionSeries(
+                this.historicalSimulation,
+                this.mandateProjectionData,
+                this.dateRange,
+                this.selectedParties,
+                this.selectedPollsterGroup,
+                this.renderOptions,
+                this.annotations
+            );
+        } else if (this.mode === "poll") {
+            payload = processPartySeries(
+                this.pollData,
+                this.dateRange,
+                this.partyIntervals,
+                this.selectedParties,
+                this.selectedPollsterGroup,
+                this.renderOptions
+            );
+        } else {
+            return;
+        }
 
         this.latestSeries = payload;
         this.windowDays = payload.windowDays;

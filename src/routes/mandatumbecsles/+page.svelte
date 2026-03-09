@@ -6,8 +6,9 @@
         partyData,
         pollData,
         simulationData,
+        historicalSimulationData,
     } from "$stores/dataStore";
-    import type { MandateProjectionData, Party, PollData, PollsterGroup, Simulation } from "$lib/types";
+    import type { HistoricalSimulationData, MandateProjectionData, Party, PollData, PollsterGroup, Simulation } from "$lib/types";
     import MandateProjectionAside from "../../components/mandate/MandateProjectionAside.svelte";
     import SectionCard from "../../components/section/SectionCard.svelte";
     import SectionTitle from "../../components/section/SectionTitle.svelte";
@@ -33,6 +34,7 @@
         all_voters: [] as PollData,
         mandateProjectionData: [] as MandateProjectionData,
         simulationData: {} as Record<string, Simulation>,
+        historicalSimulationData: {} as HistoricalSimulationData,
     };
     let selectedSimulation: string = "main";
     let orderedParties = [] as Party[];
@@ -61,6 +63,7 @@
         all_voters: $pollData.all_voters,
         mandateProjectionData: $mandateProjectionData,
         simulationData: $simulationData,
+        historicalSimulationData: $historicalSimulationData,
     };
     $: orderedParties = (() => {
         if (!data.simulationData[selectedSimulation]) return [] as Party[];
@@ -88,7 +91,7 @@
             a <SimulationNameSpan>{data.simulationData[selectedSimulation]?.metadata.name}</SimulationNameSpan>
             szimuláció alapján, 60 napos súlyozott mozgóátlag. 
         </Paragraph>
-        <PollsChartFromData {data} pollsterGroup={selectedSimulationPollsterGroup} chart_id="mandate-projection-chart" />
+        <PollsChartFromData {data} pollsterGroup={selectedSimulationPollsterGroup} scenarioKey={selectedSimulation} chart_id="mandate-projection-chart" />
         <Paragraph noMargin>
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates, perspiciatis cum aliquam alias sapiente, rem hic deleniti laborum veniam rerum maiores doloremque repellendus asperiores iste non, accusamus veritatis tempore!
         </Paragraph>

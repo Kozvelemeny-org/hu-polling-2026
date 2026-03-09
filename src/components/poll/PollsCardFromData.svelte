@@ -1,12 +1,13 @@
 <script lang="ts">
     import { charts } from "$lib/charts";
-    import type { MandateProjectionData, PollData } from "$lib/types";
+    import type { HistoricalSimulationData, MandateProjectionData, PollData } from "$lib/types";
     import PollsCard from "./PollsCard.svelte";
 
     export let data = {
         sure_voters: [] as PollData,
         all_voters: [] as PollData,
         mandateProjectionData: [] as MandateProjectionData,
+        historicalSimulationData: {} as HistoricalSimulationData,
     };
     export let chart_id: string;
     export let showSource: boolean = false;

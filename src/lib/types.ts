@@ -44,6 +44,11 @@ export type Poll = {
 
 export type MandateProjection = Poll;
 
+/** Date string (YYYY-MM-DD) → party → seat count. One entry per weekend. */
+export type HistoricalSimulationByDate = Record<string, Record<Party, number>>;
+/** Scenario key (e.g. "main") → HistoricalSimulationByDate */
+export type HistoricalSimulationData = Record<string, HistoricalSimulationByDate>;
+
 export type Simulation = {
     medians: Record<Party, number>;
     modes: Record<Party, number>;
@@ -77,7 +82,7 @@ export type ChartData = {
 
 export type DateRange = { start: Date, end: Date };
 
-export type Party = 'fidesz' | 'tisza' | 'dk' | 'dk_mszp_p' | 'mihazank' | 'mkkp' | 'momentum' | 'minority' | 'unsure';
+export type Party = 'fidesz' | 'tisza' | 'dk' | 'mihazank' | 'mkkp' | 'momentum' | 'minority' | 'unsure';
 
 export type PartyData = Record<Party, { name: string; color: string; }>;
 

@@ -1,11 +1,12 @@
 <script lang="ts">
-    import type { MandateProjectionData, Party, PollData, Simulation } from "$lib/types";
+    import type { HistoricalSimulationData, MandateProjectionData, Party, PollData, Simulation } from "$lib/types";
     import { onMount } from "svelte";
     import {
         pollData,
         simulationData,
         fetchData,
         mandateProjectionData,
+        historicalSimulationData,
     } from "$stores/dataStore";
     import RecentPollsAside from "$components/poll/RecentPollsAside.svelte";
     import PollsCardFromData from "$components/poll/PollsCardFromData.svelte";
@@ -15,12 +16,17 @@
     import GridSectionTitle from "$components/grid/GridSectionTitle.svelte";
     import Paragraph from "$components/grid/Paragraph.svelte";
     import RecentMandateProjectionsAside from "$components/mandate/RecentMandateProjectionsAside.svelte";
+    import SimulationNameSpan from "$components/mandate/SimulationNameSpan.svelte";
+    import PollsChartFromData from "$components/poll/PollsChartFromData.svelte";
+    import BottomMenu from "$components/ui/bottom-menu/BottomMenu.svelte";
+    import BottomMenuItem from "$components/ui/bottom-menu/BottomMenuItem.svelte";
 
     let data = {
         sure_voters: [] as PollData,
         all_voters: [] as PollData,
         simulationData: {} as Record<string, Simulation>,
         mandateProjectionData: [] as MandateProjectionData,
+        historicalSimulationData: {} as HistoricalSimulationData,
     };
 
     onMount(fetchData);
@@ -30,6 +36,7 @@
         all_voters: $pollData.all_voters,
         simulationData: $simulationData,
         mandateProjectionData: $mandateProjectionData,
+        historicalSimulationData: $historicalSimulationData,
     }
 </script>
 
@@ -64,29 +71,21 @@
     </SectionCard> -->
 </GridItem>
 <GridItem variant="main">
-    <PollsCardFromData {data} chart_id="mandate-projection-chart" />
-    <!-- <SectionCard>
-        <SectionTitle variant="medium">A Fidesz és a Tisza várható eredménye</SectionTitle>
-        {#if data.simulationData["main"]}
-            <ChartCard>
-                {#each ['fidesz', 'tisza'] as party}
-                    <MandateBeeswarm
-                        party={party as Party}
-                        simulation={data.simulationData["main"]}
-                        simulationKey="main"
-                        numDots={1000}
-                        height={190}
-                        r={2.5}
-                    />
-                {/each}
-                <InlineChartLabel description>
-                    A 10.000 szimuláció megoszlását 1000 ponttal ábrázoljuk,
-                    a mediánt fekete vonal jelzi. A százalékok mutatják,
-                    hogy mekkora eséllyel ér el egy párt egy adott mandátumszámot.
-                </InlineChartLabel>
-            </ChartCard>
-        {/if}
-    </SectionCard> -->
+    <SectionCard>
+        <SectionTitle variant="featured">Mandátumbecslések alakulása</SectionTitle>
+        <Paragraph --margin="2px">
+            a <SimulationNameSpan>{data.simulationData["main"]?.metadata.name}</SimulationNameSpan>
+            szimuláció alapján, 60 napos súlyozott mozgóátlag. 
+        </Paragraph>
+        <PollsChartFromData {data} pollsterGroup={"kormányfüggetlen"} scenarioKey={"main"} chart_id="mandate-projection-chart" />
+        <Paragraph noMargin>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates, perspiciatis cum aliquam alias sapiente, rem hic deleniti laborum veniam rerum maiores doloremque repellendus asperiores iste non, accusamus veritatis tempore!
+        </Paragraph>
+        <BottomMenu>
+            <BottomMenuItem link={`/abra/g-mandate-projection-chart`}>Megosztás</BottomMenuItem>
+            <BottomMenuItem link={`/abra/g-mandate-projection-chart`}>Beágyazás</BottomMenuItem>
+        </BottomMenu>
+    </SectionCard>
 </GridItem>
 
 

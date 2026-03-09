@@ -1,8 +1,8 @@
 <script lang="ts">
     import { page } from "$app/state";
     import { onMount } from "svelte";
-    import { pollData, simulationData, fetchData, mandateProjectionData } from "$stores/dataStore";
-    import type { MandateProjectionData, PollData, PollsterGroup, Simulation } from "$lib/types";
+    import { pollData, simulationData, fetchData, mandateProjectionData, historicalSimulationData } from "$stores/dataStore";
+    import type { HistoricalSimulationData, MandateProjectionData, PollData, PollsterGroup, Simulation } from "$lib/types";
     import PollsCardFromData from "$components/poll/PollsCardFromData.svelte";
     import GridItem from "$components/grid/GridItem.svelte";
     import PollsChartFromData from "$components/poll/PollsChartFromData.svelte";
@@ -34,6 +34,7 @@
         all_voters: [] as PollData,
         simulationData: {} as Record<string, Simulation>,
         mandateProjectionData: [] as MandateProjectionData,
+        historicalSimulationData: {} as HistoricalSimulationData,
     };
 
     onMount(() => {
@@ -53,6 +54,7 @@
         all_voters: $pollData.all_voters,
         simulationData: $simulationData,
         mandateProjectionData: $mandateProjectionData,
+        historicalSimulationData: $historicalSimulationData,
     }
 </script>
 

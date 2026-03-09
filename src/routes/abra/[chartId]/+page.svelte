@@ -2,8 +2,8 @@
     // get the chartId from the slug parameter
     import { page } from "$app/state";
     import { onMount } from "svelte";
-    import { pollData, simulationData, fetchData, mandateProjectionData } from "$stores/dataStore";
-    import type { MandateProjectionData, PollData, Simulation } from "$lib/types";
+    import { pollData, simulationData, fetchData, mandateProjectionData, historicalSimulationData } from "$stores/dataStore";
+    import type { HistoricalSimulationData, MandateProjectionData, PollData, Simulation } from "$lib/types";
     import PollsCardFromData from "$components/poll/PollsCardFromData.svelte";
     import html2canvas from "html2canvas";
     import GridItem from "$components/grid/GridItem.svelte";
@@ -35,6 +35,7 @@
         all_voters: [] as PollData,
         simulationData: {} as Record<string, Simulation>,
         mandateProjectionData: [] as MandateProjectionData,
+        historicalSimulationData: {} as HistoricalSimulationData,
     };
 
     onMount(fetchData);
@@ -44,6 +45,7 @@
         all_voters: $pollData.all_voters,
         simulationData: $simulationData,
         mandateProjectionData: $mandateProjectionData,
+        historicalSimulationData: $historicalSimulationData,
     }
 
     function saveImage() {

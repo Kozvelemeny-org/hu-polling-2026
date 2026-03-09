@@ -1,5 +1,5 @@
 import * as d3 from "d3";
-import type { MandateProjectionData, PollData, Simulation } from "./types";
+import type { HistoricalSimulationData, MandateProjectionData, PollData, Simulation } from "./types";
 
 /* const aggregatorNameMap: { [key in keyof Omit<CandidateData, 'candidate' | 'date' | 'avg'>]: {abv: string, full: string, link: string} } = {
     fivethirtyeight: {abv: "538", full: "538 (ABC News)", link: "https://projects.fivethirtyeight.com/polls/president-general/2024/national/"},
@@ -36,6 +36,12 @@ async function fetchSimulationData(): Promise<Record<string, Simulation> | false
     return await response.json();
 }
 
+async function fetchHistoricalSimulationData(): Promise<HistoricalSimulationData | false> {
+    const response = await fetch("/data/historicalSimulationData.json");
+    if (!response.ok) return false;
+    return await response.json();
+}
+
 function isDataStale() {
     const oneHour = 1000 * 60 * 60;
     const now = new Date();
@@ -47,6 +53,7 @@ function isDataStale() {
         sessionStorage.getItem("pollsData") == null ||
         sessionStorage.getItem("simulationData") == null ||
         sessionStorage.getItem("mandateProjectionData") == null ||
+        sessionStorage.getItem("historicalSimulationData") == null ||
         diff >= oneHour
     );
 }
@@ -64,24 +71,30 @@ async function getData() {
         const mandateProjectionData = await fetchMandateProjectionData();
         if (!mandateProjectionData) return false;
 
+        const historicalSimulationData = await fetchHistoricalSimulationData();
+        if (!historicalSimulationData) return false;
+
         const now = new Date();
         sessionStorage.setItem("dataUpdated", now.toString());
         sessionStorage.setItem("pollsData", JSON.stringify(pollData));
         sessionStorage.setItem("simulationData", JSON.stringify(simulationData));
         sessionStorage.setItem("mandateProjectionData", JSON.stringify(mandateProjectionData));
-        retrivedData = { pollData, simulationData, mandateProjectionData };
+        sessionStorage.setItem("historicalSimulationData", JSON.stringify(historicalSimulationData));
+        retrivedData = { pollData, simulationData, mandateProjectionData, historicalSimulationData };
     } else {
         const storedData = {
             pollData: sessionStorage.getItem("pollsData"),
             simulationData: sessionStorage.getItem("simulationData"),
             mandateProjectionData: sessionStorage.getItem("mandateProjectionData"),
-        }
-        if (storedData.pollData === null || storedData.simulationData === null || storedData.mandateProjectionData === null) return false;
-        
+            historicalSimulationData: sessionStorage.getItem("historicalSimulationData"),
+        };
+        if (storedData.pollData === null || storedData.simulationData === null || storedData.mandateProjectionData === null || storedData.historicalSimulationData === null) return false;
+
         retrivedData = {
             pollData: JSON.parse(storedData.pollData) as Record<string, PollData>,
             simulationData: JSON.parse(storedData.simulationData) as Record<string, Simulation>,
             mandateProjectionData: JSON.parse(storedData.mandateProjectionData) as MandateProjectionData,
+            historicalSimulationData: JSON.parse(storedData.historicalSimulationData) as HistoricalSimulationData,
         };
         if (retrivedData.mandateProjectionData === null) return false;
     }
