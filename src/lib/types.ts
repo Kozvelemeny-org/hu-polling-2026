@@ -30,7 +30,7 @@ export type Pollster = 'IDEA' | 'Závecz RI' | 'Medián' | 'Nézőpont' | 'Publi
                         'Társadalomkutató' | '21 Kutató' | 'Civitas' | 'Alapjogokért Központ' |
                         'Psyma' | 'Ipsos' | 'e-benchmark' | 'Tárki';
 
-export type PollsterGroup = 'összes' | 'kormányfüggetlen' | 'kormányközeli';
+export type PollsterGroup = 'összes' | 'voxpopuli' | 'kormányfüggetlen' | 'kormányközeli';
 
 export type PollsterData = Record<Pollster, { name: string, group: PollsterGroup, color: string }>;
 

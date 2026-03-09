@@ -77,7 +77,7 @@
             a <SimulationNameSpan>{data.simulationData["main"]?.metadata.name}</SimulationNameSpan>
             szimuláció alapján, 60 napos súlyozott mozgóátlag. 
         </Paragraph>
-        <PollsChartFromData {data} pollsterGroup={"kormányfüggetlen"} scenarioKey={"main"} chart_id="mandate-projection-chart" />
+        <PollsChartFromData {data} pollsterGroup={"voxpopuli"} scenarioKey={"main"} chart_id="mandate-projection-chart" />
         <Paragraph noMargin>
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates, perspiciatis cum aliquam alias sapiente, rem hic deleniti laborum veniam rerum maiores doloremque repellendus asperiores iste non, accusamus veritatis tempore!
         </Paragraph>

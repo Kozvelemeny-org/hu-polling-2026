@@ -35,7 +35,7 @@
     export let annotations = [] as Annotation[];
     export let renderOptions = {} as Record<string, any> | undefined;
     export let voterType = "sure_voters" as "sure_voters" | "all_voters";
-    export let pollsterGroup = "kormányfüggetlen" as PollsterGroup;
+    export let pollsterGroup = "voxpopuli" as PollsterGroup;
     export let isMandateProjection = false;
 
     export let featured = false;
@@ -43,15 +43,14 @@
 
     let chartOptions = {
         data: [] as Poll[] | MandateProjection[],
-        pollsterGroupIndex: (pollsterGroups.findIndex(
-            (group) => group === pollsterGroup,
-        ) || 0) as 0 | 1,
+        pollsterGroupIndex: Math.max(0, pollsterGroups.findIndex((group) => group === pollsterGroup)) as 0 | 1 | 2,
         smoothing: "weighted-ma" as SmoothingMethod,
     };
 
     let articleMap = {
         0: "a\xa0",
         1: "a\xa0",
+        2: "a\xa0",
     };
 
     let windowDays = 0;
@@ -85,10 +84,10 @@
                 {articleMap[chartOptions.pollsterGroupIndex]}
                 <select bind:value={chartOptions.pollsterGroupIndex}>
                     {#each pollsterGroups as group, i}
-                        <option value={i}>{group}</option>
+                        <option value={i}>{group === "voxpopuli" ? "Vox Populi" : group}</option>
                     {/each}
                 </select>
-                közvélemény-kutatók adatai
+                {pollsterGroups[chartOptions.pollsterGroupIndex] === "voxpopuli" ? "módszertana" : "közvélemény-kutatók adatai"}
                 alapján,
             {/if}
             {windowDays} napos

@@ -19,7 +19,7 @@
     const chartData = charts.hasOwnProperty(chart_id) ? charts[chart_id] : null;
 
     $: effectiveVoterType = voterType || (chartData?.voterType || "sure_voters");
-    $: effectivePollsterGroup = pollsterGroup || (chartData?.pollsterGroup || "kormányfüggetlen");
+    $: effectivePollsterGroup = pollsterGroup || (chartData?.pollsterGroup || "voxpopuli");
     $: series = chartData?.isMandateProjection ? data.mandateProjectionData : data[effectiveVoterType];
 </script>
 

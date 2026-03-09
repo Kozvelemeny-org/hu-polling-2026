@@ -4,6 +4,7 @@ import { buildSeriesData } from "./core/SeriesDataBuilder";
 import { axisFrom } from "./core/AxisCalculator";
 import { partyData } from "$stores/dataStore";
 import { filterByDateRange, filterByPollsterGroup, applyPartyIntervalsFilter } from "./core/PollDataFilter";
+import { needsVoxPopuliAdjustment, applyVoxPopuliAdjustment } from "../pollDataAdjustments";
 
 export interface PartySeriesResult {
     data: PollData;
@@ -26,6 +27,9 @@ export function processPartySeries(
     const method: SmoothingMethod = options?.smoothing ?? 'weighted-ma';
 
     let data = filterByPollsterGroup(pollData, selectedPollsterGroup);
+    if (needsVoxPopuliAdjustment(selectedPollsterGroup)) {
+        data = applyVoxPopuliAdjustment(data);
+    }
     data = filterByDateRange(data, dateRange);
     data = applyPartyIntervalsFilter(data, partyIntervals);
 

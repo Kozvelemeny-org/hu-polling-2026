@@ -38,6 +38,7 @@ export const partyData = {
 } as PartyData;
 
 export const pollsterGroups = [
+    "voxpopuli",
     "kormányfüggetlen",
     "kormányközeli",
 ] as PollsterGroup[];

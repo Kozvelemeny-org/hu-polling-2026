@@ -1,4 +1,5 @@
 import { filterByPollsterGroup } from '$lib/chart/core/PollDataFilter';
+import { needsVoxPopuliAdjustment, applyVoxPopuliAdjustment } from '$lib/pollDataAdjustments';
 import type { PollData, Party, PollsterGroup, BeeswarmData, BeeswarmPoint } from '$lib/types';
 
 /**
@@ -13,7 +14,10 @@ export function calculateRealSupportProbabilities(params: {
 }): BeeswarmData {
     const { pollData, pollsterGroup, party, numDots } = params;
     
-    const filteredPollData = filterByPollsterGroup(pollData, pollsterGroup);
+    let filteredPollData = filterByPollsterGroup(pollData, pollsterGroup);
+    if (needsVoxPopuliAdjustment(pollsterGroup)) {
+        filteredPollData = applyVoxPopuliAdjustment(filteredPollData);
+    }
 
     const windowDays = 60;
     

@@ -5,6 +5,9 @@ export function filterByPollsterGroup(pollData: PollData, selectedPollsterGroup:
     if (selectedPollsterGroup === "összes") {
         return pollData;
     }
+    if (selectedPollsterGroup === "voxpopuli") {
+        return filterByPollsterGroup(pollData, "kormányfüggetlen");
+    }
 
     const pollsters = Object.values(pollsterData)
         .filter((d) => d.group === selectedPollsterGroup)
