@@ -1,25 +1,26 @@
 <script lang="ts">
-    import { calculateEntryProbability } from "$lib";
-    import type { Party, Simulation } from "$lib/types";
+    import type { HistoricalSimulationScenario, Party } from "$lib/types";
+    import { dateToKey } from "$lib/historicalSimulationUtils";
     import { partyData } from "$stores/dataStore";
 
-    export let parties: Party[];
-    export let selectedSimulationData: Simulation;
-    export let weekend: { name: string, date: Date };
+    export let parties: Party[] = [];
+    export let historicalSimulationData: HistoricalSimulationScenario = {};
+    export let date: { name: string; date: Date };
 
-    $: entryProbabilities = parties.reduce((acc, party) => {
-        acc[party] = calculateEntryProbability(selectedSimulationData, party) * 100;
-        return acc;
-    }, {} as Record<Party, number>);
+    function entryPct(party: Party): number {
+        const key = dateToKey(date.date);
+        const p = historicalSimulationData[key]?.entryProbability[party] ?? 0;
+        return Math.round(p * 100);
+    }
 </script>
 
 <article>
     <header>
         <div class="name">
-            {weekend.name}
+            {date.name}
         </div>
         <div class="date">
-            {weekend.date.toLocaleDateString("hu-HU", {
+            {date.date.toLocaleDateString("hu-HU", {
                 month: "short",
                 day: "numeric",
             })}
@@ -30,14 +31,14 @@
         {#each parties as party}
             <div
                 class="valueBackground"
-                style="width: {entryProbabilities[party]}%;"
+                style="width: {entryPct(party)}%;"
             >
                 <div 
                     class="result {party} small"
                     style="background-color: {partyData[party].color+'11'}; border: 1px solid {partyData[party].color+'22'};"
                 >
                     <div class="value" style="color: {partyData[party].color};">
-                        {entryProbabilities[party].toFixed(0)}%
+                        {entryPct(party)}%
                     </div>
                 </div>
             </div>

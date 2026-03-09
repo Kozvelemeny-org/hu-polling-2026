@@ -218,7 +218,7 @@
 </GridItem>
 
 <GridItem variant="aside">
-    <EntryProbabilityAside selectedSimulationData={data.simulationData[selectedSimulation]} parties={orderedParties.slice(2, 5)} />
+    <EntryProbabilityAside selectedSimulation={selectedSimulation} historicalSimulationData={data.historicalSimulationData} parties={orderedParties.slice(2, 5)} />
 </GridItem>
 <GridItem variant="main">
     <SectionCard>

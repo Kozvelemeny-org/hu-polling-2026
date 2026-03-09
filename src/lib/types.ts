@@ -44,10 +44,17 @@ export type Poll = {
 
 export type MandateProjection = Poll;
 
-/** Date string (YYYY-MM-DD) → party → seat count. One entry per weekend. */
-export type HistoricalSimulationByDate = Record<string, Record<Party, number>>;
-/** Scenario key (e.g. "main") → HistoricalSimulationByDate */
-export type HistoricalSimulationData = Record<string, HistoricalSimulationByDate>;
+/** Per-date stats: mean seats, entry/majority/absolute-majority probabilities per party. */
+export type HistoricalSimulationByDate = {
+    mean: Record<Party, number>;
+    entryProbability: Record<Party, number>;
+    majorityProbability: Record<Party, number>;
+    absoluteMajorityProbability: Record<Party, number>;
+};
+/** One scenario: date string (YYYY-MM-DD) → per-date stats. */
+export type HistoricalSimulationScenario = Record<string, HistoricalSimulationByDate>;
+/** Scenario key (e.g. "main") → HistoricalSimulationScenario */
+export type HistoricalSimulationData = Record<string, HistoricalSimulationScenario>;
 
 export type Simulation = {
     medians: Record<Party, number>;
