@@ -27,7 +27,7 @@ export type PollDataByPollster = Record<Pollster, Poll[]>;
 
 export type Pollster = 'IDEA' | 'Závecz RI' | 'Medián' | 'Nézőpont' | 'Publicus' |
                         'Republikon' | 'Századvég' | 'Iránytű' | 'Real-PR 93' |
-                        'Társadalomkutató' | '21 Kutató' | 'Civitas' | 'Alapjogokért Központ' |
+                        'Társadalomkutató' | '21 Kutató' | 'Civitas' | 'Alapjogokért K' |
                         'Psyma' | 'Ipsos' | 'e-benchmark' | 'Tárki';
 
 export type PollsterGroup = 'összes' | 'voxpopuli' | 'kormányfüggetlen' | 'kormányközeli';

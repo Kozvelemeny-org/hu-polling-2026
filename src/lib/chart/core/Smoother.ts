@@ -20,7 +20,7 @@ const POLLSTER_ERROR_OFFSET: Record<string, number> = {
     'e-benchmark': KPM_ERROR_OFFSET,
     'Századvég': KPM_ERROR_OFFSET,
     'Nézőpont': KPM_ERROR_OFFSET,
-    'Alapjogokért Központ': KPM_ERROR_OFFSET,
+    'Alapjogokért K': KPM_ERROR_OFFSET,
     'Real-PR 93': KPM_ERROR_OFFSET,
     'Társadalomkutató': KPM_ERROR_OFFSET,
 };
