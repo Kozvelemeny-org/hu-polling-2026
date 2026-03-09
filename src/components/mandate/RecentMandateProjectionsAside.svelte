@@ -2,10 +2,12 @@
     import SectionCard from "$components/section/SectionCard.svelte";
     import SectionTitle from "$components/section/SectionTitle.svelte";
     import AsidePartyLegend from "$components/ui/AsidePartyLegend.svelte";
-    import type { MandateProjectionData, Party } from "$lib/types";
+    import type { MandateProjectionData, Party, PollsterGroup } from "$lib/types";
+    import { pollsterData } from "$stores/dataStore";
     import RecentMandateProjectionCard from "./RecentMandateProjectionCard.svelte";
 
     export let mandateProjectionData = [] as MandateProjectionData;
+    export let pollsterGroup = "kormányfüggetlen" as PollsterGroup;
     export let selectedGroup = "big_parties" as "big_parties" | "small_parties";
     export let nItems = 5;
 
@@ -14,6 +16,12 @@
         small_parties: ["dk", "mihazank", "mkkp"],
     } as Record<"big_parties" | "small_parties", Party[]>;
 
+
+    function getFilteredMandateProjectionData(mandateProjectionData: MandateProjectionData, pollsterGroup: PollsterGroup): MandateProjectionData {
+        return mandateProjectionData.filter((mandateProjection) => pollsterData[mandateProjection.pollster]?.group === pollsterGroup);
+    }
+    $: filteredMandateProjectionData = getFilteredMandateProjectionData(mandateProjectionData, pollsterGroup);
+
     $: selectedParties = selectedPartiesMap[selectedGroup];
 </script>
 
@@ -21,7 +29,7 @@
     <SectionTitle variant="tiny" centered>A legfrissebb becslések</SectionTitle>
     <AsidePartyLegend parties={selectedParties} />
     <section class="pollsContainer">
-        {#each mandateProjectionData.slice(0, nItems) as mandateProjection}
+        {#each filteredMandateProjectionData.slice(0, nItems) as mandateProjection}
             <RecentMandateProjectionCard poll={mandateProjection} {selectedParties} />
         {/each}
     </section>

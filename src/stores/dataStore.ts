@@ -64,6 +64,11 @@ export const pollsterData = {
         group: 'kormányközeli',
         color: '#ffa500',
     },
+    'Alapjogokért K': {
+        name: 'Alapjogokért K',
+        group: 'kormányközeli',
+        color: '#000000',
+    },
     'IDEA': {
         name: 'IDEA',
         group: 'kormányfüggetlen',

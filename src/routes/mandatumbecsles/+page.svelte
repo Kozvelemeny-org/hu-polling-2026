@@ -46,7 +46,7 @@
     function getSelectedSimulationPollsterGroup(simulation: string): PollsterGroup | undefined {
         switch (simulation) {
             case "main":
-                return "összes";
+                return "kormányfüggetlen";
             case "kormanyfuggetlen":
                 return "kormányfüggetlen";
             case "kormanykozeli":
