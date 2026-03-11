@@ -237,18 +237,14 @@
                 <div class="split">
                     {#each orderedParties.slice(2, 5) as party}
                         <article>
-                            {#if selectedSimulationPollsterGroup}
-                                <PollsViolin
-                                    party={party}
-                                    pollData={data.sure_voters}
-                                    pollsterGroup={selectedSimulationPollsterGroup}
-                                    numDots={100}
-                                    height={100}
-                                    xDomain={[0, .1]}
-                                    bandwidth={0.4}
-                                />
-                                <SmallPartyLabel party={partyData[party]} />
-                            {/if}
+                            <PollsViolin
+                                party={party}
+                                simulation={data.simulationData[selectedSimulation]}
+                                height={100}
+                                xDomain={[0, 0.15]}
+                                bandwidth={1}
+                            />
+                            <SmallPartyLabel party={partyData[party]} />
                         </article>
                     {/each}
                 </div>

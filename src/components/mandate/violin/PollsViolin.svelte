@@ -1,46 +1,39 @@
 <script lang="ts">
     import ViolinChart from './ViolinChart.svelte';
-    import { calculateRealSupportProbabilities } from '$lib/beeswarm/polls';
+    import { buildBeeswarmDataFromPolls } from '$lib/beeswarm/oevk';
     import { partyData } from '$stores/dataStore';
-    import type { BeeswarmData, Party, PollData, PollsterGroup } from '$lib/types';
+    import type { BeeswarmData, Party, Simulation } from '$lib/types';
 
-    let { 
-        party, 
-        pollData, 
-        pollsterGroup,
-        numDots = 100, 
-        height = 260, 
+    let {
+        party,
+        simulation,
+        height = 260,
         bandwidth = 1.0,
         xDomain = [0, 1],
         xTicks = null,
     }: {
         party: Party;
-        pollData: PollData;
-        pollsterGroup: PollsterGroup;
-        numDots?: number;
+        simulation: Simulation | null | undefined;
         height?: number;
         bandwidth?: number;
         xDomain?: [number, number];
         xTicks?: number[] | null;
     } = $props();
 
-    const rawData = $derived(calculateRealSupportProbabilities({ pollData, pollsterGroup, party, numDots }));
-    const data = $derived(() => {
-        // Handle case where calculateRealSupportProbabilities returns empty array
-        if (Array.isArray(rawData) && rawData.length === 0) {
-            return { points: [], average: 0, party, histogram: [] } as BeeswarmData;
-        }
-        return rawData;
+    const pollsData = $derived(simulation ? buildBeeswarmDataFromPolls(simulation, party) : null);
+    const data = $derived((): BeeswarmData => {
+        if (pollsData) return pollsData;
+        return { party, points: [], average: 0, histogram: [] };
     });
     const color = $derived(partyData[party]?.color || '#000');
     const titleAccessor = $derived((d: any) => `${partyData[party]?.name}: ${(d["value"] * 100).toFixed(1)}% támogatottság`);
 </script>
 
-<ViolinChart 
-    data={data()} 
-    color={color} 
-    {height} 
-    {bandwidth} 
+<ViolinChart
+    data={data()}
+    color={color}
+    {height}
+    {bandwidth}
     titleAccessor={titleAccessor}
     xDomain={xDomain}
     unitLabel="%"

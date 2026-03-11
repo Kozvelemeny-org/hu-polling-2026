@@ -29,6 +29,31 @@ export function buildBeeswarmData(params: {
 }
 
 /**
+ * Build BeeswarmData from simulation.polls[party] (1k support values in [0, 1]).
+ * Returns null when polls data is missing or empty so caller can fall back to mandate path.
+ */
+export function buildBeeswarmDataFromPolls(simulation: Simulation, party: Party): BeeswarmData | null {
+    const values = simulation.polls?.[party];
+    if (!values?.length) return null;
+
+    const points: BeeswarmPoint[] = values.map((value) => ({
+        name: party,
+        category: 'poll',
+        value,
+    }));
+
+    const sum = values.reduce((a, b) => a + b, 0);
+    const average = sum / values.length;
+
+    return {
+        party,
+        points,
+        average,
+        histogram: [],
+    };
+}
+
+/**
  * Utility to get X key used in the LayerCake example-compatible shape
  */
 export const xKey = 'value';

@@ -62,6 +62,7 @@ export type Simulation = {
     modes: Record<Party, number>;
     seats: Record<Party, number>;
     oevkDiffs: Record<string, number>;
+    polls: Record<Party, number[]>;
     metadata: {
         name: string;
         polls?: Poll[];
