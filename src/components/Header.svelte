@@ -1,9 +1,11 @@
 <header id="mainHeader">
-    <img class="headerImage" src="/images/bg.png" alt="header" />
-    <a href="/"><h1>
-        <span style="color: #f93f44;">Vox Populi:</span>
-        <span style="color: #4f9929;">Választás 2026</span>
-    </h1></a>
+    <a href="/">
+        <img class="headerImage" src="/images/bg.png" alt="header" />
+        <h1>
+            <span style="color: #f93f44;">Vox Populi:</span>
+            <span style="color: #4f9929;">Választás 2026</span>
+        </h1>
+    </a>
 </header>
 
 <style lang="scss">
@@ -48,12 +50,13 @@ header h1 span {
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
     header {
+        height: 95px;
         padding: 8px;
 
         h1 {
-            font-size: 1rem;
+            font-size: 22px;
         }
     }
 }
