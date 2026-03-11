@@ -40,7 +40,7 @@
     }
 </script>
 
-<GridItem variant="aside">
+<GridItem variant="aside" hideOnMobile>
     <RecentPollsAside pollData={data.sure_voters} selectedGroup="big_parties" nItems={6} />
 </GridItem>
 <GridItem variant="main">
@@ -51,24 +51,8 @@
     <GridSectionTitle>Ki fog nyerni?</GridSectionTitle>
 </GridItem>
 
-<GridItem variant="aside">
+<GridItem variant="aside" hideOnMobile>
     <RecentMandateProjectionsAside mandateProjectionData={data.mandateProjectionData} selectedGroup="big_parties" nItems={6} />
-    <!-- <SectionCard>
-        <SectionTitle variant="tiny" centered>Várható eredmény</SectionTitle>
-        <Paragraph noMargin>
-            A Fidesz és a Tisza képviselőinek várható aránya az EP-választás
-            és a friss kutatások átlaga alapján:
-        </Paragraph>
-        <MiniMandateProjection data={data.simulationData} />
-        <Paragraph>
-            Részletes adatok és alakulásuk a <a href="/mandatumbecsles"
-                >mandátumbecslés</a
-            > oldalon.
-        </Paragraph>
-        <BottomMenu>
-            <BottomMenuItem>Módszertan</BottomMenuItem>
-        </BottomMenu>
-    </SectionCard> -->
 </GridItem>
 <GridItem variant="main">
     <SectionCard>
@@ -92,7 +76,7 @@
 <GridItem variant="full">
     <GridSectionTitle>A kis pártok támogatottsága</GridSectionTitle>
 </GridItem>
-<GridItem variant="aside">
+<GridItem variant="aside" hideOnMobile>
     {#if data.sure_voters.length > 0}
         <RecentPollsAside pollData={data.sure_voters} selectedGroup="small_parties" nItems={6} />
     {/if}
