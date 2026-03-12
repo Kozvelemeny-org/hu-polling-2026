@@ -20,8 +20,8 @@
 
 {#if sticky}
     <div id="sticky-mandate-projection-header">
-        <h2>Mandátumbecslés választása</h2>
-        <div class="simulations">
+        <h2>Mandátumbecslés</h2>
+        <div class="simulations simulations--compact">
             {#each Object.keys(data) as key}
                 <button
                     type="button"
@@ -43,7 +43,6 @@
                     on:click={() => selectSimulation(key)}
                     class:selected={selectedSimulation === key}
                 >
-                    <!-- <SectionTitle variant="tiny">{data[key].metadata.name}</SectionTitle> -->
                     <h3>{data[key].metadata.name}</h3>
                     <Paragraph --margin="8px">{data[key].metadata.description}</Paragraph>
                     <Paragraph>
@@ -87,34 +86,43 @@
         grid-template-columns: 1fr;
         gap: 1rem;
         margin-top: 8px;
+    }
+
+    .simulations button {
+        text-align: left;
+        padding: 8px 6px;
+        border: 1px solid #eee;
+        border-radius: 4px;
+        background-color: #f9f9f9;
+        cursor: pointer;
+    }
+
+    .simulations button.selected {
+        padding: 7px 5px;
+        border-width: 2px;
+        border-color: #6de635;
+    }
+
+    .simulations button.selected h3 {
+        font-weight: 400;
+    }
+
+    .simulations h3 {
+        margin: 0;
+        font-weight: 300;
+        font-size: 1rem;
+    }
+
+    .simulations--compact {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 4px;
 
         button {
-            text-align: left;
-            padding: 8px 6px;
-            border: 1px solid #eee;
-            border-radius: 4px;
-            background-color: #f9f9f9;
-            cursor: pointer;
-
-            &.selected {
-                padding: 7px 5px;
-                border-width: 2px;
-                border-color: #6de635;
-                
-                h3 {
-                    font-weight: 400;
-                }
-            }
-
-            h3 {
-                margin: 0;
-                font-weight: 300;
-                font-size: 1rem;
-            }
-
-            p {
-                margin-top: 3px;
-            }
+            border: none;
+            background: transparent;
+            padding: 0;
         }
     }
 </style>

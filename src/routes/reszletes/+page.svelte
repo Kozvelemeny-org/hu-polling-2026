@@ -7,8 +7,7 @@
         simulationData,
     } from "$stores/dataStore";
     import type { MandateProjectionData, Party, PollData, PollsterGroup, Simulation } from "$lib/types";
-    import MandateProjectionAside from "../../components/mandate/MandateProjectionAside.svelte";
-    import StickyAside from "../../components/grid/StickyAside.svelte";
+    import SimulationSelectorBlock from "../../components/mandate/SimulationSelectorBlock.svelte";
     import GridItem from "../../components/grid/GridItem.svelte";
     import FideszTiszaBeeswarmCard from "$components/mandate/beeswarm/FideszTiszaBeeswarmCard.svelte";
 
@@ -20,10 +19,6 @@
     };
     let selectedSimulation: string = "main";
 
-    function selectSimulation(simulation: string) {
-        selectedSimulation = simulation;
-    }
-
     onMount(fetchData);
 
     $: data = {
@@ -34,13 +29,7 @@
     };
 </script>
 
-<StickyAside let:sticky>
-    <MandateProjectionAside
-        data={data.simulationData}
-        {sticky}
-        on:selectSimulation={(e) => selectSimulation(e.detail)}
-    />
-</StickyAside>
+<SimulationSelectorBlock data={data.simulationData} bind:selectedSimulation />
 <GridItem variant="main">
     <FideszTiszaBeeswarmCard simulationData={data.simulationData} {selectedSimulation} />
 </GridItem>

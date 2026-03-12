@@ -96,12 +96,13 @@
     });
 </script>
 
-<aside bind:this={aside} class="grid-item aside" class:sticky>
-    <slot {sticky} />
-</aside>
-
-<!-- Placeholder to prevent layout shift when aside becomes sticky -->
-<div bind:this={placeholder} class="placeholder" style="display: none;"></div>
+{#if globalThis?.window?.innerWidth > 600}
+    <aside bind:this={aside} class="grid-item aside" class:sticky>
+        <slot {sticky} />
+    </aside>
+    <!-- Placeholder to prevent layout shift when aside becomes sticky -->
+    <div bind:this={placeholder} class="placeholder" style="display: none;"></div>
+{/if}
 
 <style lang="scss">
     .grid-item.aside {

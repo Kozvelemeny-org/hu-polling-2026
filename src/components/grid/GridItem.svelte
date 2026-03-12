@@ -2,9 +2,10 @@
     type Variant = "aside" | "right-aside" | "main" | "left-main" | "full";
 
     export let variant: Variant = "main";
+    export let hideOnMobile: boolean = false;
 </script>
 
-<div class="grid-item {variant}">
+<div class="grid-item {variant}" class:hide-on-mobile={hideOnMobile}>
     <slot />
 </div>
 
@@ -13,6 +14,11 @@
         grid-column: 1 / -1;
         grid-row: var(--grid-row);
         height: fit-content;
+    }
+    @media (max-width: 600px) {
+        .grid-item.hide-on-mobile {
+            display: none;
+        }
     }
 
     @media (min-width: 600px) {

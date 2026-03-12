@@ -9,10 +9,9 @@
         historicalSimulationData,
     } from "$stores/dataStore";
     import type { HistoricalSimulationData, MandateProjectionData, Party, PollData, PollsterGroup, Simulation } from "$lib/types";
-    import MandateProjectionAside from "../../components/mandate/MandateProjectionAside.svelte";
+    import SimulationSelectorBlock from "../../components/mandate/SimulationSelectorBlock.svelte";
     import SectionCard from "../../components/section/SectionCard.svelte";
     import SectionTitle from "../../components/section/SectionTitle.svelte";
-    import StickyAside from "../../components/grid/StickyAside.svelte";
     import GridItem from "../../components/grid/GridItem.svelte";
     import OevkSectionCard from "$components/mandateProjection/OEVKSectionCard.svelte";
     import GridSectionTitle from "$components/grid/GridSectionTitle.svelte";
@@ -27,7 +26,7 @@
     import BottomMenuItem from "$components/ui/bottom-menu/BottomMenuItem.svelte";
     import EntryProbabilityAside from "$components/mandate/entryProbability/EntryProbabilityAside.svelte";
     import ChartCard from "$components/ui/ChartCard.svelte";
-    import SmallPartyLabel from "$components/mandate/histogram/SmallPartyLabel.svelte";
+import SmallPartyLabel from "$components/mandate/histogram/SmallPartyLabel.svelte";
 
     let data = {
         sure_voters: [] as PollData,
@@ -38,10 +37,6 @@
     };
     let selectedSimulation: string = "main";
     let orderedParties = [] as Party[];
-
-    function selectSimulation(simulation: string) {
-        selectedSimulation = simulation;
-    }
 
     function getSelectedSimulationPollsterGroup(simulation: string): PollsterGroup | undefined {
         switch (simulation) {
@@ -77,13 +72,10 @@
     $: selectedSimulationPollsterGroup = getSelectedSimulationPollsterGroup(selectedSimulation);
 </script>
 
-<StickyAside let:sticky>
-    <MandateProjectionAside
-        data={data.simulationData}
-        {sticky}
-        on:selectSimulation={(e) => selectSimulation(e.detail)}
-    />
-</StickyAside>
+<SimulationSelectorBlock
+    data={data.simulationData}
+    bind:selectedSimulation
+/>
 <GridItem variant="main">
     <SectionCard>
         <SectionTitle variant="featured">Mandátumbecslések alakulása</SectionTitle>
