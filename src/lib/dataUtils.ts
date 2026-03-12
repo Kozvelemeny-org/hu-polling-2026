@@ -1,49 +1,47 @@
 import * as d3 from "d3";
+import { PUBLIC_DATA_BASE_URL } from "$env/static/public";
 import type { HistoricalSimulationData, MandateProjectionData, PollData, Simulation } from "./types";
 
-/* const aggregatorNameMap: { [key in keyof Omit<CandidateData, 'candidate' | 'date' | 'avg'>]: {abv: string, full: string, link: string} } = {
-    fivethirtyeight: {abv: "538", full: "538 (ABC News)", link: "https://projects.fivethirtyeight.com/polls/president-general/2024/national/"},
-    natesilver: {abv: "Nate Silver", full: "Silver Bulletin", link: "https://www.natesilver.net/p/we-removed-rfk-jr-from-our-model"},
-    nyt: {abv: "NYT", full: "New York Times", link: "https://www.nytimes.com/interactive/2024/us/elections/polls-president.html"},
-    realclearpolling: {abv: "RCP", full: "RealClear Politics", link: "https://www.realclearpolling.com/polls/president/general/2024/trump-vs-harris"},
-    economist: {abv: "Economist", full: "The Economist", link: "https://www.economist.com/interactive/us-2024-election/trump-harris-polls"},
-}; */
+const dataBaseUrl = (PUBLIC_DATA_BASE_URL ?? "").replace(/\/$/, "");
 
 async function fetchPollData(): Promise<Record<string, PollData>> {
-    const basePath = '/data/';
     let fetchedData: Record<string, PollData> = {};
     for (const tableName of ["sure_voters", "all_voters"]) {
-        const response = await fetch(basePath + tableName + ".csv");
-        const csvText = await response.text();
-        fetchedData[tableName] = d3.csvParse(csvText) as unknown as PollData;
+        try {
+        const response = await fetch(`${dataBaseUrl}/${tableName}.csv`);
+            const csvText = await response.text();
+            fetchedData[tableName] = d3.csvParse(csvText) as unknown as PollData;
+        } catch (error) {
+            fetchedData[tableName] = [] as PollData;
+            console.error(`Error fetching ${tableName} data:`, error);
+            continue;
+        }
     }
     return fetchedData;
 }
 
 async function fetchMandateProjectionData(): Promise<MandateProjectionData | false> {
-    const basePath = '/data/';
-    const fileName = 'mandate_projections.csv';
     let fetchedData: MandateProjectionData = [];
-    const response = await fetch(basePath + fileName);
+    const response = await fetch(`${dataBaseUrl}/mandate_projections.csv`);
     const csvText = await response.text();
     fetchedData = d3.csvParse(csvText) as unknown as MandateProjectionData;
     return fetchedData;
 }
 
 async function fetchSimulationData(): Promise<Record<string, Simulation> | false> {
-    const response = await fetch("/data/simulationData.json");
+    const response = await fetch(`${dataBaseUrl}/simulation_data.json`);
     if (!response.ok) return false;
     return await response.json();
 }
 
 async function fetchHistoricalSimulationData(): Promise<HistoricalSimulationData | false> {
-    const response = await fetch("/data/historicalSimulationData.json");
+    const response = await fetch(`${dataBaseUrl}/historical_simulation_data.json`);
     if (!response.ok) return false;
     return await response.json();
 }
 
 function isDataStale() {
-    const oneHour = 1000 * 60 * 60;
+    const tenMinutes = 1000 * 60 * 10;
     const now = new Date();
     const lastUpdated = new Date(sessionStorage.getItem("dataUpdated") || 0);
     const diff = now.getTime() - lastUpdated.getTime();
@@ -54,7 +52,7 @@ function isDataStale() {
         sessionStorage.getItem("simulationData") == null ||
         sessionStorage.getItem("mandateProjectionData") == null ||
         sessionStorage.getItem("historicalSimulationData") == null ||
-        diff >= oneHour
+        diff >= tenMinutes
     );
 }
 
