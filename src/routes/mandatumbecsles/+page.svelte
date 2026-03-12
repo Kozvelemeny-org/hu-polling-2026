@@ -216,8 +216,23 @@
 <GridItem variant="right-aside">
     <SectionCard>
         <SectionTitle variant="small">Az egyéni körzetek döntik el a választást</SectionTitle>
-        <Paragraph noMargin>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos facilis omnis, repellendus, est quia doloremque rem consequuntur perferendis blanditiis pariatur iusto deleniti quibusdam vel libero voluptatum. Dicta eos eveniet maxime!</Paragraph>
-        <Paragraph>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos facilis omnis, repellendus, est quia doloremque rem consequuntur perferendis blanditiis pariatur iusto deleniti quibusdam vel libero voluptatum. Dicta eos eveniet maxime!</Paragraph>
+        <Paragraph noMargin>
+            A jelenlegi magyar választási rendszerben az egyéni kerületi szavazatoknak sokkal
+            nagyobb hatása van a mandátumok megoszlására, és ezáltal arra, hogy ki kormányozhat,
+            mint a listás szavazatoknak.
+        </Paragraph>
+        <Paragraph>
+            Akik csak az utóbbival rendelkeznek - tehát a levélben
+            szavazó kisebbségi magyarok, akik nem rendelkeznek magyarországi lakcímmel -, azoknak
+            a szava minimális mértékben változtatja meg a parlament összetételét, míg az egyéni
+            kerületi szavazattal is rendelkező összes többi szavazók közül akár pár tucat vagy
+            pár száz is átbillenthet majd egy-egy egyéni kerületet fideszesről tiszapártivá, vagy
+            fordítva. A választókerületek határai azonban úgy vannak meghatározva, hogy a Fidesz
+            kevesebb szavazatttal is megszerezheti ezek többéségét, mint a TISZA. Ha a Mi Hazánk is
+            bejut a parlamentbe, akkor a TISZA Pártnak kb. 4-5-6 százalékkal több egyéni kerületi
+            szavazatot kell szereznie az ország egészében ahhoz, mint a Fidesznek, hogy a
+            kormányváltást pártoló többség alakulhasson ki a parlamentben.
+        </Paragraph>
     </SectionCard>
 </GridItem>
 
@@ -234,7 +249,20 @@
     <SectionCard>
         <SectionTitle variant="medium">Érdemes nem a Fideszre vagy a Tiszára szavazni?</SectionTitle>
         <Paragraph>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat cupiditate fuga vero eius optio voluptatum neque magnam, illum odio molestias voluptate vitae hic nihil perspiciatis, id eveniet accusantium expedita cumque?
+            Ha Fidesz és a TISZA egymáshoz nagyjából hasonló számú mandátumot nyernének - tehát ha a TISZA
+            Párt csak pár százalékponntal kap több szaazatot, mint a Fidesz -, akkor befolyásolhatja a
+            parlamenti többség összetételét és a kormányalakulást az, hogy hány és melyik kisebb párt jut
+            az országgyűlésbe. A baloldalon megjelenő “Bejutás esélye” oszlopban láthatók a Vox Populi
+            számításai arról, hogy a közvélemény-kutatások alapján mi a százalékos esélye egyes kisebb
+            pártok mandátum-szerzésének. A kisebb pártoknak kb. 5,25%-nyi listás szavazatot kell szereznie
+            ahhoz (a levélszavazatok nélküli szavazatok között) ahhoz, hogy átlépjék a mandátumszerzéshez
+            szükséges 5%-os küszöböt, mivel levélszavazatokra csak elhanyagolható mértékben számíthatnak.
+            Ha viszont olyan állampolgárok is szavaznak az ő egyéni kerületi jelöltjeikre, akik a TISZA
+            Pártra szavaznának máskülönben, akkor a kis pártokra adott egyéni kerületi szavazatok sokkal
+            több mandátumtól foszthatják meg a TISZA-t, mint ahány plusz listás mandátummal támogathatná
+            a kormányalakítását a kis párt akkor, ha esetleg szerez pár listás mandátumot. Ugyanez igaz
+            egyébként a Fideszre is, hiszen a Mi Hazánk jelöltjeikre adott egyéni kerületi szavazatok
+            nagyban csökkenthetik a Fidesz kormányalakításai esélyeit.
         </Paragraph>
         <SectionTitle variant="tiny" hasTopMargin>A pártok feltételezett támogatottsága</SectionTitle>
         {#if data.simulationData[selectedSimulation]}
