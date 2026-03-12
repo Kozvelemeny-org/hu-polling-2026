@@ -91,10 +91,6 @@ export const charts: Record<string, ChartData> = {
                     target="_blank"
                 >itt</a>.
             </p>
-            <p>
-                Kiszámoljuk az elmúlt 30 napban végzett közvélemény-kutatások súlyozott átlagát
-                és valós hibahatárát, majd ez alapján megbecsüljük a pártok támogatottságát.
-            </p>
         `
     },
     'all-parties': {
