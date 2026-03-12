@@ -26,7 +26,8 @@
     import BottomMenuItem from "$components/ui/bottom-menu/BottomMenuItem.svelte";
     import EntryProbabilityAside from "$components/mandate/entryProbability/EntryProbabilityAside.svelte";
     import ChartCard from "$components/ui/ChartCard.svelte";
-import SmallPartyLabel from "$components/mandate/histogram/SmallPartyLabel.svelte";
+    import SmallPartyLabel from "$components/mandate/histogram/SmallPartyLabel.svelte";
+    import { EXPLAINER_ARTICLE_LINK } from "$lib/charts";
 
     let data = {
         sure_voters: [] as PollData,
@@ -85,14 +86,13 @@ import SmallPartyLabel from "$components/mandate/histogram/SmallPartyLabel.svelt
         </Paragraph>
         <PollsChartFromData {data} pollsterGroup={selectedSimulationPollsterGroup} scenarioKey={selectedSimulation} chart_id="mandate-projection-chart" />
         <Paragraph noMargin>
-            Ez az ábra a megelőzőben látható szavazatarány-becsléseket fordítja át mandátumbecslésekké
-            az
-            <a href="https://kozvelemeny.org/2024/12/25/a-valasztasi-kozvelemeny-kutatasok-allasa-a-2026-ra-vart-orszaggyulesi-valasztasok-elott/" target="_blank">itt</a>
+            Ez az ábra az áttekintés oldalon látható szavazatarány-becsléseket fordítja át
+            mandátumbecslésekké az <a href="${EXPLAINER_ARTICLE_LINK}" target="_blank">itt</a>
             részletesen leírt adatok és feltevések felhasználásával. További részletek a
             mandátumszámításaink eredményeiről (egyéni és listás mandátumok száma pártonként,
-            győzteskompenzáció hatása, különböző parlamenti többségek valószínűsége, illetve minden
-            szám statisztikai hibahatára) érhetők el
-            <a href="https://kozvelemeny.org/2024/12/25/a-valasztasi-kozvelemeny-kutatasok-allasa-a-2026-ra-vart-orszaggyulesi-valasztasok-elott/" target="_blank">itt</a>,
+            győzteskompenzáció hatása, különböző parlamenti többségek valószínűsége, illetve
+            minden szám statisztikai hibahatára) érhetők el
+            <a href="${EXPLAINER_ARTICLE_LINK}" target="_blank">itt</a>,
             valamint a fenti menüben a “Részletes becslés” pontra ráklikkelve.
         </Paragraph>
         <BottomMenu>
@@ -208,21 +208,23 @@ import SmallPartyLabel from "$components/mandate/histogram/SmallPartyLabel.svelt
 <GridItem variant="right-aside">
     <SectionCard>
         <SectionTitle variant="small">Az egyéni körzetek döntik el a választást</SectionTitle>
-        <Paragraph noMargin>
+        <!-- <Paragraph noMargin>
             A jelenlegi magyar választási rendszerben az egyéni kerületi szavazatoknak sokkal
             nagyobb hatása van a mandátumok megoszlására, és ezáltal arra, hogy ki kormányozhat,
             mint a listás szavazatoknak.
-        </Paragraph>
-        <Paragraph>
-            Akik csak az utóbbival rendelkeznek - tehát a levélben
-            szavazó kisebbségi magyarok, akik nem rendelkeznek magyarországi lakcímmel -, azoknak
-            a szava minimális mértékben változtatja meg a parlament összetételét, míg az egyéni
-            kerületi szavazattal is rendelkező összes többi szavazók közül akár pár tucat vagy
-            pár száz is átbillenthet majd egy-egy egyéni kerületet fideszesről tiszapártivá, vagy
-            fordítva. A választókerületek határai azonban úgy vannak meghatározva, hogy a Fidesz
-            kevesebb szavazatttal is megszerezheti ezek többéségét, mint a TISZA. Ha a Mi Hazánk is
-            bejut a parlamentbe, akkor a TISZA Pártnak kb. 4-5-6 százalékkal több egyéni kerületi
-            szavazatot kell szereznie az ország egészében ahhoz, mint a Fidesznek, hogy a
+        </Paragraph> -->
+        <Paragraph noMargin>
+            A jelenlegi magyar választási rendszerben az egyéni kerületi szavazatoknak sokkal
+            nagyobb hatása van a mandátumok megoszlására, és ezáltal arra, hogy ki kormányozhat,
+            mint a listás szavazatoknak. Akik csak az utóbbival rendelkeznek - tehát a levélben
+            szavazó kisebbségi magyarok, akik nem rendelkeznek magyarországi lakcímmel -,
+            azoknak a szava minimális mértékben változtatja meg a parlament összetételét, míg az
+            egyéni kerületi szavazattal is rendelkező összes többi szavazók közül akár pár tucat
+            vagy pár száz is átbillenthet majd egy-egy egyéni kerületet fideszesről tiszapártivá,
+            vagy fordítva. A választókerületek határai azonban úgy vannak meghatározva, hogy a
+            Fidesz kevesebb szavazatttal is megszerezheti ezek többéségét, mint a TISZA. Ha a Mi
+            Hazánk is bejut a parlamentbe, akkor a TISZA Pártnak kb. 4-5-6 százalékkal több egyéni
+            kerületi szavazatot kell szereznie az ország egészében, mint a Fidesznek, hogy a
             kormányváltást pártoló többség alakulhasson ki a parlamentben.
         </Paragraph>
     </SectionCard>
@@ -253,14 +255,14 @@ import SmallPartyLabel from "$components/mandate/histogram/SmallPartyLabel.svelt
             Pártra szavaznának máskülönben, akkor a kis pártokra adott egyéni kerületi szavazatok sokkal
             több mandátumtól foszthatják meg a TISZA-t, mint ahány plusz listás mandátummal támogathatná
             a kormányalakítását a kis párt akkor, ha esetleg szerez pár listás mandátumot. Ugyanez igaz
-            egyébként a Fideszre is, hiszen a Mi Hazánk jelöltjeikre adott egyéni kerületi szavazatok
+            egyébként a Fideszre is, hiszen a Mi Hazánk jelöltjeire adott egyéni kerületi szavazatok
             nagyban csökkenthetik a Fidesz kormányalakításai esélyeit.
         </Paragraph>
-        <SectionTitle variant="tiny" hasTopMargin>A pártok feltételezett támogatottsága</SectionTitle>
+        <!-- <SectionTitle variant="tiny" hasTopMargin>A kisebb pártok pillanatnyilag várható szavazataránya</SectionTitle> -->
         {#if data.simulationData[selectedSimulation]}
             <ChartCard>
                 <InlineChartLabel>
-                    A pártok feltételezett támogatottsága (%)
+                    A kisebb pártok pillanatnyilag várható szavazataránya (%)
                 </InlineChartLabel>
                 <div class="split">
                     {#each orderedParties.slice(2, 5) as party}
@@ -278,12 +280,15 @@ import SmallPartyLabel from "$components/mandate/histogram/SmallPartyLabel.svelt
                 </div>
             </ChartCard>
             <Paragraph noMargin>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam dolores vel esse. Temporibus sequi aliquid laudantium officia dolorum voluptate illo laboriosam sed facilis molestiae, adipisci minima aut quia provident architecto.
+                A három “hegedű-ábra” a kisebb pártok aktuálisan várható szavazatarányának a Vox Populi
+                által számította 60 napos súlyozott mozgóátlagát mutatja számmal is. A színes hegedűk
+                azoknál a százalékos értékeknél válnak vastagabbá, amelyek a legvalószínűbbek a
+                közvélemény-kutatások alapján, amelyek eredményeit a megelőző “hegedű-ábrák” mutatják.
             </Paragraph>
-            <SectionTitle variant="tiny" hasTopMargin>A pártok becsült mandátumszáma</SectionTitle>
+            <!-- <SectionTitle variant="tiny" hasTopMargin>A kisebb pártok pártok becsült mandátumszáma</SectionTitle> -->
             <ChartCard>
                 <InlineChartLabel>
-                    A pártok becsült mandátumszáma
+                    A kisebb pártok pártok becsült mandátumszáma
                 </InlineChartLabel>
                 <div class="split">
                     {#each orderedParties.slice(2, 5) as party}

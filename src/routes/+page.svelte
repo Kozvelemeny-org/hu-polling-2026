@@ -21,6 +21,7 @@
     import BottomMenu from "$components/ui/bottom-menu/BottomMenu.svelte";
     import BottomMenuItem from "$components/ui/bottom-menu/BottomMenuItem.svelte";
     import VoxPopuliLinksAside from "$components/VoxPopuliLinksAside.svelte";
+    import { EXPLAINER_ARTICLE_LINK } from "$lib/charts";
 
     let data = {
         sure_voters: [] as PollData,
@@ -64,15 +65,14 @@
         </Paragraph>
         <PollsChartFromData {data} pollsterGroup={"voxpopuli"} scenarioKey={"main"} chart_id="mandate-projection-chart" />
         <Paragraph noMargin>
-            Ez az ábra a megelőzőben látható szavazatarány-becsléseket fordítja át mandátumbecslésekké
-            az
-            <a href="https://kozvelemeny.org/2024/12/25/a-valasztasi-kozvelemeny-kutatasok-allasa-a-2026-ra-vart-orszaggyulesi-valasztasok-elott/" target="_blank">itt</a>
+            Ez az ábra a megelőzőben látható szavazatarány-becsléseket fordítja át
+            mandátumbecslésekké az <a href="${EXPLAINER_ARTICLE_LINK}" target="_blank">itt</a>
             részletesen leírt adatok és feltevések felhasználásával. A bal oldalt látható “A
-            legfrissebb becslések táblázat a legutóbb megjelent kutatásokra nézve mutat be ugyanilyen
-            számításokat. További részletek a mandátumszámításaink eredményeiről (egyéni és listás
-            mandátumok száma pártonként, győzteskompenzáció hatása, különböző parlamenti többségek
-            valószínűsége, illetve minden szám statisztikai hibahatára) érhetők el
-            <a href="https://kozvelemeny.org/2024/12/25/a-valasztasi-kozvelemeny-kutatasok-allasa-a-2026-ra-vart-orszaggyulesi-valasztasok-elott/" target="_blank">itt</a>,
+            legfrissebb adatok” táblázat a legutóbb megjelent kutatásokra nézve mutat be
+            ugyanilyen számításokat.További részletek a mandátumszámításaink eredményeiről
+            (egyéni és listás mandátumok száma pártonként, győzteskompenzáció hatása,
+            különböző parlamenti többségek valószínűsége, illetve minden szám statisztikai
+            hibahatára) érhetők el <a href="${EXPLAINER_ARTICLE_LINK}" target="_blank">itt</a>,
             valamint a fenti menüben a “Mandátumbecslés” illetve a “Részletes becslés” pontra ráklikkelve.
         </Paragraph>
         <BottomMenu>
@@ -84,7 +84,7 @@
 
 
 <GridItem variant="full">
-    <GridSectionTitle>A kis pártok támogatottsága</GridSectionTitle>
+    <GridSectionTitle>A többi párt</GridSectionTitle>
 </GridItem>
 <GridItem variant="aside" hideOnMobile>
     {#if data.sure_voters.length > 0}

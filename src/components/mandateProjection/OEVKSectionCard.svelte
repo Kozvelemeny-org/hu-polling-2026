@@ -23,8 +23,8 @@
     <SectionTitle variant="medium">Hol fog eldőlni a választás?</SectionTitle>
     <p>
         Az alábbi térkép azt mutatja, hogy a <SimulationNameSpan>{simulationName}</SimulationNameSpan>
-        becslés alapján hol nyerhet magabiztosan a Fidesz vagy a Tisza, és melyek lehetnek a
-        választást eldöntő csatatér körzetek.
+        becslés alapján hol nyerhet magabiztosan (5%+ előnnyel) a Fidesz vagy a Tisza, és melyek lehetnek
+        a választást eldöntő csatatér körzetek (utóbbiak fehér színnel jelennek meg a térképen).
 
     </p>
     <div class="mapContainer">
