@@ -42,7 +42,7 @@
 </script>
 
 <GridItem variant="aside" hideOnMobile>
-    <RecentPollsAside pollData={data.sure_voters} selectedGroup="big_parties" nItems={6} />
+    <RecentPollsAside pollData={data.sure_voters} selectedGroup="big_parties" nItems={9} />
 </GridItem>
 <GridItem variant="main">
     <PollsCardFromData {data} chart_id="fidesz-tisza" />
@@ -53,7 +53,7 @@
 </GridItem>
 
 <GridItem variant="aside" hideOnMobile>
-    <RecentMandateProjectionsAside mandateProjectionData={data.mandateProjectionData} selectedGroup="big_parties" nItems={6} />
+    <RecentMandateProjectionsAside mandateProjectionData={data.mandateProjectionData} selectedGroup="big_parties" nItems={9} />
 </GridItem>
 <GridItem variant="main">
     <SectionCard>
@@ -64,7 +64,16 @@
         </Paragraph>
         <PollsChartFromData {data} pollsterGroup={"voxpopuli"} scenarioKey={"main"} chart_id="mandate-projection-chart" />
         <Paragraph noMargin>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates, perspiciatis cum aliquam alias sapiente, rem hic deleniti laborum veniam rerum maiores doloremque repellendus asperiores iste non, accusamus veritatis tempore!
+            Ez az ábra a megelőzőben látható szavazatarány-becsléseket fordítja át mandátumbecslésekké
+            az
+            <a href="https://kozvelemeny.org/2024/12/25/a-valasztasi-kozvelemeny-kutatasok-allasa-a-2026-ra-vart-orszaggyulesi-valasztasok-elott/" target="_blank">itt</a>
+            részletesen leírt adatok és feltevések felhasználásával. A bal oldalt látható “A
+            legfrissebb becslések táblázat a legutóbb megjelent kutatásokra nézve mutat be ugyanilyen
+            számításokat. További részletek a mandátumszámításaink eredményeiről (egyéni és listás
+            mandátumok száma pártonként, győzteskompenzáció hatása, különböző parlamenti többségek
+            valószínűsége, illetve minden szám statisztikai hibahatára) érhetők el
+            <a href="https://kozvelemeny.org/2024/12/25/a-valasztasi-kozvelemeny-kutatasok-allasa-a-2026-ra-vart-orszaggyulesi-valasztasok-elott/" target="_blank">itt</a>,
+            valamint a fenti menüben a “Mandátumbecslés” illetve a “Részletes becslés” pontra ráklikkelve.
         </Paragraph>
         <BottomMenu>
             <BottomMenuItem link={`/abra/g-mandate-projection-chart`}>Megosztás</BottomMenuItem>
@@ -79,7 +88,7 @@
 </GridItem>
 <GridItem variant="aside" hideOnMobile>
     {#if data.sure_voters.length > 0}
-        <RecentPollsAside pollData={data.sure_voters} selectedGroup="small_parties" nItems={6} />
+        <RecentPollsAside pollData={data.sure_voters} selectedGroup="small_parties" nItems={9} />
     {/if}
 </GridItem>
 <GridItem variant="main">
