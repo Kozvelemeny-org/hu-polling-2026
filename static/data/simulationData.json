@@ -151,7 +151,7 @@
         "metadata": {
             "name": "Vox Populi becslése",
             "description": "A független kutatók előző 60 napos súlyozott mozgóátlaga alapján.",
-            "updatedAt": "2026-03-11"
+            "updatedAt": "2026-03-12"
         }
     },
     "kormanyfuggetlen": {
@@ -306,7 +306,7 @@
         "metadata": {
             "name": "Kormányfüggetlen kutatók",
             "description": "A független kutatók előző 60 napos súlyozott mozgóátlaga alapján.",
-            "updatedAt": "2026-03-11"
+            "updatedAt": "2026-03-12"
         }
     },
     "kormanykozeli": {
@@ -461,7 +461,7 @@
         "metadata": {
             "name": "Kormányközeli kutatók",
             "description": "A kormányközeli kutatók előző 60 napos súlyozott mozgóátlaga alapján.",
-            "updatedAt": "2026-03-11"
+            "updatedAt": "2026-03-12"
         }
     }
 }
