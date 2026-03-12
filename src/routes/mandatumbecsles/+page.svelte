@@ -93,7 +93,15 @@
         </Paragraph>
         <PollsChartFromData {data} pollsterGroup={selectedSimulationPollsterGroup} scenarioKey={selectedSimulation} chart_id="mandate-projection-chart" />
         <Paragraph noMargin>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates, perspiciatis cum aliquam alias sapiente, rem hic deleniti laborum veniam rerum maiores doloremque repellendus asperiores iste non, accusamus veritatis tempore!
+            Ez az ábra a megelőzőben látható szavazatarány-becsléseket fordítja át mandátumbecslésekké
+            az
+            <a href="https://kozvelemeny.org/2024/12/25/a-valasztasi-kozvelemeny-kutatasok-allasa-a-2026-ra-vart-orszaggyulesi-valasztasok-elott/" target="_blank">itt</a>
+            részletesen leírt adatok és feltevések felhasználásával. További részletek a
+            mandátumszámításaink eredményeiről (egyéni és listás mandátumok száma pártonként,
+            győzteskompenzáció hatása, különböző parlamenti többségek valószínűsége, illetve minden
+            szám statisztikai hibahatára) érhetők el
+            <a href="https://kozvelemeny.org/2024/12/25/a-valasztasi-kozvelemeny-kutatasok-allasa-a-2026-ra-vart-orszaggyulesi-valasztasok-elott/" target="_blank">itt</a>,
+            valamint a fenti menüben a “Részletes becslés” pontra ráklikkelve.
         </Paragraph>
         <BottomMenu>
             <BottomMenuItem link={`/abra/g-mandate-projection-chart`}>Megosztás</BottomMenuItem>
