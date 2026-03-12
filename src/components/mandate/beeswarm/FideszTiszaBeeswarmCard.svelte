@@ -23,7 +23,7 @@
     </Paragraph>
     {#if simulationData[selectedSimulation]}
         <ChartCard>
-            <InlineChartLabel>A pöttyök 1000 szimulált választás eredményeit mutatják, a százalékok pedig azt, hogy egy párt milyen eséllyel kap többséget vagy kétharmadot.</InlineChartLabel>
+            <InlineChartLabel>A pöttyök az adott párt 1000 szimulált választáson elért eredményeit mutatják, a százalékok pedig azt, hogy egy párt milyen eséllyel kap többséget vagy kétharmadot.</InlineChartLabel>
             {#each parties as party}
                 <MandateBeeswarm
                     party={party}
@@ -35,7 +35,7 @@
                 />
             {/each}
             <InlineChartLabel description>
-                A 10.000 szimuláció megoszlását 1000 ponttal ábrázoljuk, a mediánt fekete vonal jelzi. A százalékok mutatják, hogy mekkora eséllyel ér el egy párt egy adott mandátumszámot.
+                Az 1000 szimuláció megoszlását 1000 ponttal ábrázoljuk, a mediánt fekete vonal jelzi. A százalékok mutatják, hogy mekkora eséllyel ér el egy párt egy adott mandátumszámot.
             </InlineChartLabel>
         </ChartCard>
     {/if}
