@@ -19,6 +19,7 @@
     import BottomMenu from "$components/ui/bottom-menu/BottomMenu.svelte";
     import BottomMenuItem from "$components/ui/bottom-menu/BottomMenuItem.svelte";
     import SectionTitle from "$components/section/SectionTitle.svelte";
+    import Paragraph from "$components/grid/Paragraph.svelte";
 
     export let data = {
         sure_voters: [] as PollData,
@@ -126,9 +127,9 @@
     </div>
     {#if showSource}
         <div class="source">
-            <p>
+            <Paragraph>
                 Választás 2026 – Vox Populi, https://valasztas-2026.kozvelemeny.org
-            </p>
+            </Paragraph>
         </div>
     {:else}
         <BottomMenu>
