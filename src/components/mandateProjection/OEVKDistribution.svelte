@@ -47,13 +47,31 @@
         partyData["tisza"].color,
     ];
 
+    let resizeObserver: ResizeObserver | null = null;
+
     onMount(() => {
         mounted = true;
-
-        window.addEventListener("resize", () => {
-            sectionSize = calculateSectionSize(data) || 0;
-            updateCursorFromProp(highlightedOevk, sectionSize);
+        tick().then(() => {
+            if (!container) return;
+            const updateSize = (w: number) => {
+                const oevkCount = Object.keys(data).length;
+                sectionSize = oevkCount > 0 ? w / oevkCount : 0;
+                updateCursorFromProp(highlightedOevk, sectionSize);
+            };
+            resizeObserver = new ResizeObserver((entries) => {
+                if (entries.length === 0) return;
+                updateSize(entries[0].contentRect.width);
+            });
+            resizeObserver.observe(container);
+            updateSize(container.getBoundingClientRect().width); /* initial size in case observer doesn't fire immediately */
         });
+        return () => {
+            if (resizeObserver) {
+                resizeObserver.disconnect();
+                resizeObserver = null;
+            }
+            mounted = false;
+        };
     });
 
     $: if (mounted) {
@@ -219,6 +237,7 @@
         height: 100px;
         align-items: center;
         margin-bottom: 50px; /* extra space for the arrow and label */
+        min-width: 0; /* allow middle column (and article) to shrink */
 
         & > img {
             width: 100%;
@@ -240,6 +259,7 @@
         flex-wrap: nowrap;
         align-items: center;
         height: 100px;
+        min-width: 0; /* allow shrinking so ResizeObserver gets correct width and bar scales down */
         overflow: visible;
     }
     .oevkSection {
