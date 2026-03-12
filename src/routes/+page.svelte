@@ -124,8 +124,16 @@
         <Paragraph>@ Tóka Gábor, 2019-</Paragraph>
         <SectionTitle variant="small" hasTopMargin>Ki fejlesztette az oldalt?</SectionTitle>
         <Paragraph>
-            Én.
+            Adat- és társadalomtudomány alapszakos hallgató vagyok a CEU-n, emellett fogalkozom webfejlesztéssel
+            és kifejezetten érdekel az adatvizualizáció. Korábbi választásokkal kapcsolatos munkáim a Vox Populi
+            2024-es amerikai <a href="https://hidegmisi.github.io/us2024_tracker/">közvélemény-kutatás aggregátora</a>
+            és egy <a href="https://www.testvot.eu/">vote advice application</a> a 2025-ös román választásokhoz. A
+            szakdologzatom a 2026-os választások szavazatszámlálás alatti, alacsony feldolgozottságnál készített
+            eredménybecslésről fog szólni, erről majd talán a Vox Populi blogon is be fogok számolni. Szívesen
+            részt veszek ehhez hasonló projektekben, <a href="mailto:hidegmisi@gmail.com">ezen</a> az email címen
+            vagyok elérhető.
         </Paragraph>
+        <Paragraph>Hideg Mihály</Paragraph>
     </SectionCard>
 </GridItem>
 
