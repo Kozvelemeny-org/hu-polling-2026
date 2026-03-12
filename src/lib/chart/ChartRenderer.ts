@@ -142,11 +142,10 @@ export class ChartRenderer {
         };
     }
 
-    private getContainerSizeCategory() {
-        const width = this.containerElement.offsetWidth;
-
+    private getContainerSizeCategory(width?: number): keyof typeof containerSizes {
+        const w = width ?? this.containerElement.offsetWidth;
         for (const [category, size] of Object.entries(containerSizes)) {
-            if (width <= size) {
+            if (w <= size) {
                 return category as keyof typeof containerSizes;
             }
         }
@@ -168,14 +167,15 @@ export class ChartRenderer {
 
         if (renderOptions) this.renderOptions = { ...this.renderOptions, ...renderOptions };
 
-        this.containerSizeCategory = this.getContainerSizeCategory();
-
-        this.margin.left = paddingLeftSizes[this.containerSizeCategory]
-        this.margin.right = paddingSizes[this.containerSizeCategory]
-
-        this.setupChart();
+        if (!this.setupChart()) return;
         this.drawGridlines();
         this.drawAnnotations();
+        if (this.seriesDescriptors?.length > 0) {
+            this.drawGenericSeries();
+            if (this.renderOptions.isInteractive) {
+                this.setupInteractivityForSeries(this.alignedDates);
+            }
+        }
     }
 
     public updateSeries(pointsBySeries: Record<string, SeriesPoint[]>, dailyBySeries: Record<string, SeriesDaily[]>, series: SeriesDescriptor[], pollData?: PollData, dates?: Date[]) {
@@ -216,11 +216,15 @@ export class ChartRenderer {
         this.updateAnnotations(this.annotations);
     }
 
-    private setupChart() {
-        const { containerSizeCategory, axisParams } = this;
-
+    private setupChart(): boolean {
+        const { axisParams } = this;
         const width = this.containerElement.getBoundingClientRect().width;
+        if (!width || width <= 0 || Number.isNaN(width)) return false;
+
         const height = width / (this.renderOptions.aspectRatio ?? 7 / 4);
+        this.containerSizeCategory = this.getContainerSizeCategory(width);
+        this.margin.left = paddingLeftSizes[this.containerSizeCategory];
+        this.margin.right = paddingSizes[this.containerSizeCategory];
 
         this.context = {
             x: d3.scaleTime()
@@ -234,8 +238,9 @@ export class ChartRenderer {
         };
 
         this.svg
-            .attr("viewBox", `0 0 ${this.containerElement.getBoundingClientRect().width} ${height}`)
+            .attr("viewBox", `0 0 ${width} ${height}`)
             .attr("preserveAspectRatio", "xMidYMid meet");
+        return true;
     }
 
     private drawGridlines() {

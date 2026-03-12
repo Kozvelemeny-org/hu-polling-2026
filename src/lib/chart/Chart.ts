@@ -35,7 +35,9 @@ export class Chart {
         dates: Date[];
         windowDays: number;
     } | null = null;
-    private resizeDebounce: number | null = null;
+    private resizeObserver: ResizeObserver | null = null;
+    private rafScheduled = false;
+    private destroyed = false;
 
     public windowDays = 0;
 
@@ -68,8 +70,27 @@ export class Chart {
     }
 
     private init() {
-        window.addEventListener("resize", () => this.onResize());
         this.render();
+        if (typeof ResizeObserver !== "undefined") {
+            this.resizeObserver = new ResizeObserver(() => {
+                if (this.destroyed) return;
+                if (this.rafScheduled) return;
+                this.rafScheduled = true;
+                requestAnimationFrame(() => {
+                    this.rafScheduled = false;
+                    if (!this.destroyed) this.render();
+                });
+            });
+            this.resizeObserver.observe(this.containerElement);
+        }
+    }
+
+    public destroy() {
+        this.destroyed = true;
+        if (this.resizeObserver) {
+            this.resizeObserver.disconnect();
+            this.resizeObserver = null;
+        }
     }
 
     private getDefaultPartyIntervals(): Record<Party, [Date, Date][]> {
@@ -77,15 +98,6 @@ export class Chart {
             party,
             [[new Date(2018, 0, 0), new Date()]],
         ])) as Record<Party, [Date, Date][]>;
-    }
-
-    private onResize() {
-        if (this.resizeDebounce) {
-            clearTimeout(this.resizeDebounce);
-        }
-        this.resizeDebounce = window.setTimeout(() => {
-            this.render();
-        }, 100);
     }
 
     public render() {

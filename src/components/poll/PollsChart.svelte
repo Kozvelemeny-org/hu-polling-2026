@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { createEventDispatcher, onMount } from "svelte";
+    import { createEventDispatcher, onDestroy, onMount } from "svelte";
     import { Chart } from "$lib/chart/Chart";
     import type { Annotation, DateRange, MandateProjectionData, Party, PollData, PollsterGroup } from "$lib/types";
 
@@ -30,6 +30,10 @@
             }
         );
         dispatch("updateWindowDays", chart.windowDays);
+    });
+
+    onDestroy(() => {
+        chart?.destroy();
     });
 
     $: if (chart && pollData.length > 0) {
