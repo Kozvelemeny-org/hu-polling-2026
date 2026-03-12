@@ -90,11 +90,11 @@
                 {pollsterGroups[chartOptions.pollsterGroupIndex] === "voxpopuli" ? "módszertana" : "közvélemény-kutatók adatai"}
                 alapján,
             {/if}
-            {windowDays} napos
-            <select bind:value={chartOptions.smoothing}>
+            {windowDays} napos súlyozott mozgóátlag.
+            <!-- <select bind:value={chartOptions.smoothing}>
                 <option value="weighted-ma">súlyozott mozgóátlag</option>
                 <option value="ma">mozgóátlag</option>
-            </select>
+            </select> -->
         </p>
     </div>
     {#if isMandateProjection}
