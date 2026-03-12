@@ -20,7 +20,7 @@
 
 {#if sticky}
     <div id="sticky-mandate-projection-header">
-        <h2>Mandátumbecslés</h2>
+        <h2>Mandátumbecslés választása</h2>
         <div class="simulations">
             {#each Object.keys(data) as key}
                 <button
@@ -35,7 +35,7 @@
     </div>
 {:else}
     <SectionCard id="mandate-projection-aside">
-        <SectionTitle centered variant="tiny">Becslések</SectionTitle>
+        <SectionTitle centered variant="tiny">Válassz becslést</SectionTitle>
         <div class="simulations">
             {#each Object.keys(data) as key}
                 <button
@@ -59,7 +59,8 @@
     #sticky-mandate-projection-header {
         display: flex;
         padding: 8px 12px;
-        background-color: #f2f2f2;
+        background-color: #fcfcfc;
+        border-bottom: 2px solid #6de635;
         gap: 1rem;
 
         h2 {
@@ -72,6 +73,7 @@
             display: flex;
             gap: 1rem;
             margin-top: 0;
+            padding: 1px 0;
         }
 
         button {
