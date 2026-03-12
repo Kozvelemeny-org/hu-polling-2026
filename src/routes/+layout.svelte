@@ -48,7 +48,7 @@
 
 @media (min-width: 600px) {
     #mainGrid {
-        grid-template-columns: 250px minmax(150px, 1fr);
+        grid-template-columns: 250px minmax(100px, 1fr) 250px;
     }
 }
 
