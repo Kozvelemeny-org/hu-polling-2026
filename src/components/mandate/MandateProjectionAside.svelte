@@ -1,6 +1,7 @@
 <script lang="ts">
     import type { Simulation } from "$lib/types";
     import { createEventDispatcher, onMount } from "svelte";
+    import { fly } from "svelte/transition";
     import SimulationNameSpan from "./SimulationNameSpan.svelte";
     import SectionTitle from "$components/section/SectionTitle.svelte";
     import SectionCard from "$components/section/SectionCard.svelte";
@@ -19,7 +20,11 @@
 </script>
 
 {#if sticky}
-    <div id="sticky-mandate-projection-header">
+    <div
+        id="sticky-mandate-projection-header"
+        in:fly={{ y: -40, duration: 220 }}
+        out:fly={{ y: -40, duration: 220 }}
+    >
         <h2>Mandátumbecslés</h2>
         <div class="simulations simulations--compact">
             {#each Object.keys(data) as key}
