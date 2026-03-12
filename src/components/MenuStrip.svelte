@@ -59,7 +59,7 @@
 
         &.activePage {
             font-weight: 400;
-            background-color: #fcfcfc;
+            background-color: #f5f5f5;
 
             span {
                 color: #333;
