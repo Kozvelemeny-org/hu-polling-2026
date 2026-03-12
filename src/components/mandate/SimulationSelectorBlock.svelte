@@ -70,7 +70,7 @@
         gap: 8px;
         padding: 10px 16px max(env(safe-area-inset-bottom, 0px) + 6px, 12px);
         border: none;
-        border-radius: 12px 12px 0 0;
+        border-top: 2px solid #6de635;
         background-color: #ffffff;
         box-shadow: 0 -2px 18px rgba(0, 0, 0, 0.18);
         font-size: 0.95rem;
