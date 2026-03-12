@@ -271,6 +271,7 @@
             transform: scale(1.5);
             border: 1px solid #333;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 5;
         }
     }
     /* Cursor container positioned absolutely relative to the article */
