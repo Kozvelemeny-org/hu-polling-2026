@@ -129,11 +129,9 @@
             2024-es amerikai <a target="_blank" href="https://hidegmisi.github.io/us2024_tracker/">közvélemény-kutatás aggregátora</a>
             és egy <a target="_blank" href="https://www.testvot.eu/">vote advice application</a> a 2025-ös román választásokhoz. A
             szakdolgozatom a 2026-os választások szavazatszámlálás alatti, alacsony feldolgozottságnál készített
-            eredménybecsléséről fog szólni, erről majd talán a Vox Populi blogon is be fogok számolni. Szívesen
-            részt veszek ehhez hasonló projektekben, <a href="mailto:hidegmisi@gmail.com">ezen</a> az email címen
-            vagyok elérhető.
+            eredménybecsléséről fog szólni, erről majd talán a Vox Populi blogon is be fogok számolni.
         </Paragraph>
-        <Paragraph>Hideg Mihály</Paragraph>
+        <Paragraph>Hideg Mihály, <a href="mailto:hidegmisi@gmail.com">hidegmisi@gmail.com</a> </Paragraph>
     </SectionCard>
 </GridItem>
 
