@@ -121,15 +121,15 @@
         <Paragraph>
             Munkaidőben a Közép-Európai Egyetem (CEU) kutatóprofesszora vagyok. Szakterületeim a választói magatartás, a kutatás-módszertan, és a választási rendszerek. 1990 óta foglalkozom ezekkel a témákkal, és azóta kb. 40 tudományos célú kérdőíves vizsgálatot vezettem Lengyelországban, Csehországban, Szlovákiában, Magyarországon és Romániában. Idézettségi adataimat <a href="https://scholar.google.com/citations?user=7mLMXH8AAAAJ&amp;hl=en&amp;oi=ao"> itt</a> találja meg. Első olyan cikkeim, amiben mások közvélemény-kutatásait értékeltem, 1998-ban jelentek meg a nyomtatott <a aria-label="Magyar Hirlapban (opens in a new tab)" href="https://web.archive.org/web/20071112095437/http://www.median.hu/object.7293a708-88dd-4f91-b192-d0853aa7f49a.ivy" target="_blank" rel="noreferrer noopener">Magyar Hirlapban</a> és <a aria-label="másutt (opens in a new tab)" href="http://www.personal.ceu.hu/departs/personal/Gabor_Toka/Papers/Toka99Polls.pdf" target="_blank" rel="noreferrer noopener">másutt</a>. Politikai aktivistaként a Közös Ország Mozgalom taktikai szavazást támogató közvélemény-kutatásain és hétpárti támogatottságú választási törvényjavaslatán, illetve választási megfigyelőként, szavazatszámlálóként, utcai és házról-házra kopogtató kampánymunkásként dolgoztam. Egy pártfüggetlen és szakmabeli ellenzéki aktivista perspektívájából írom tehát, ami itt megjelenik, és az olvasók figyelmén kívül semmit nem fogadok el érte.
         </Paragraph>
-        <Paragraph>@ Tóka Gábor, 2019-</Paragraph>
+        <Paragraph>Tóka Gábor</Paragraph>
         <SectionTitle variant="small" hasTopMargin>Ki fejlesztette az oldalt?</SectionTitle>
         <Paragraph>
             Adat- és társadalomtudomány alapszakos hallgató vagyok a CEU-n, emellett fogalkozom webfejlesztéssel
             és kifejezetten érdekel az adatvizualizáció. Korábbi választásokkal kapcsolatos munkáim a Vox Populi
-            2024-es amerikai <a href="https://hidegmisi.github.io/us2024_tracker/">közvélemény-kutatás aggregátora</a>
-            és egy <a href="https://www.testvot.eu/">vote advice application</a> a 2025-ös román választásokhoz. A
-            szakdologzatom a 2026-os választások szavazatszámlálás alatti, alacsony feldolgozottságnál készített
-            eredménybecslésről fog szólni, erről majd talán a Vox Populi blogon is be fogok számolni. Szívesen
+            2024-es amerikai <a target="_blank" href="https://hidegmisi.github.io/us2024_tracker/">közvélemény-kutatás aggregátora</a>
+            és egy <a target="_blank" href="https://www.testvot.eu/">vote advice application</a> a 2025-ös román választásokhoz. A
+            szakdolgozatom a 2026-os választások szavazatszámlálás alatti, alacsony feldolgozottságnál készített
+            eredménybecsléséről fog szólni, erről majd talán a Vox Populi blogon is be fogok számolni. Szívesen
             részt veszek ehhez hasonló projektekben, <a href="mailto:hidegmisi@gmail.com">ezen</a> az email címen
             vagyok elérhető.
         </Paragraph>
