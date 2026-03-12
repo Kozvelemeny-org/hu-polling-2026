@@ -20,6 +20,7 @@
     import PollsChartFromData from "$components/poll/PollsChartFromData.svelte";
     import BottomMenu from "$components/ui/bottom-menu/BottomMenu.svelte";
     import BottomMenuItem from "$components/ui/bottom-menu/BottomMenuItem.svelte";
+    import VoxPopuliLinksAside from "$components/VoxPopuliLinksAside.svelte";
 
     let data = {
         sure_voters: [] as PollData,
@@ -89,23 +90,7 @@
     <GridSectionTitle>Rólunk</GridSectionTitle>
 </GridItem>
 <GridItem variant="aside">
-    <SectionCard>
-        <SectionTitle variant="small">Linkek</SectionTitle>
-        <ul>
-            <li>
-                <a href="https://www.facebook.com/valasztasi.kalauz">Választási Kalauz Facebook</a><br>
-                A legfrissebb rövidebb posztok a Facebookon.
-            </li>
-            <li>
-                <a href="https://kozvelemeny.org">Közvélemény.org</a><br>
-                Hosszabb elemzések a weboldalukon.
-            </li>
-            <li>
-                <a href="https://voxpopuli.444.hu">Vox Populi a 444-en</a><br>
-                Válogatott posztok a 444-es blogunkon.
-            </li>
-        </ul>
-    </SectionCard>
+    <VoxPopuliLinksAside />
 </GridItem>
 <GridItem variant="main">
     <SectionCard>
