@@ -38,9 +38,12 @@ export const charts: Record<string, ChartData> = {
                 és a Fidesz aktuális szavazatarányáról (a levélszavazatok nélkül). Az itt
                 megjelenő százalékok átlagolják az „összes pártot választókra”, illetve a „biztos
                 szavazó pártot választókra” vonatkozóan megjelent számokat, mert a korábbi országos
-                választások tapasztalatai szerint a kettő átlaga legjobb tipp. A bal oldalt látható
-                “A legfrissebb adatok” táblázat a legutóbb megjelent megjelent kutatásokra nézve
-                mutatja ezeket az átlagokat. Az összes 2018 óta megjelent kutatások nyers adatait
+                választások tapasztalatai szerint a kettő átlaga legjobb tipp.
+            </p>
+            <p>
+                A bal oldalt látható “A legfrissebb adatok” táblázat a legutóbb megjelent megjelent
+                kutatásokra nézve mutatja ezeket az átlagokat. Az összes 2018 óta megjelent kutatások
+                nyers adatait
                 <a
                     href="https://drive.google.com/drive/folders/1IVTl_cXGcOfDf8vt03MrwDsNa41Xb8a0"
                     target="_blank"
@@ -53,8 +56,10 @@ export const charts: Record<string, ChartData> = {
                 Az index.hu-n havonta publikáló  McLaughlin & Associates adatait minden jel
                 szerint a Századvég, a XXI. Század Intézetét pedig a Nézőpont gyűjti és dolgozza
                 fel, ezért azokat Századvég, illetve Nézőpont vizsgálatoknak könyveljük el.
-                Minden más kutatót a kormányfüggetlen (narancsmentes) csoportba sorolunk. A Vox
-                Populi saját becslése a kormányfüggetlen intézetek adataiból indul ki, de az
+                Minden más kutatót a kormányfüggetlen (narancsmentes) csoportba sorolunk.
+            </p>
+            <p>
+                A Vox Populi saját becslése a kormányfüggetlen intézetek adataiból indul ki, de az
                 időközi választások eredményei, az ELTE Társadalomtudományi Kutatóközpont őszi
                 vizsgálata, és egyéb megfigyelések alapján korrigálja (a részleteket lásd
                 <a href="${EXPLAINER_ARTICLE_LINK}" target="_blank">itt</a>)
@@ -82,7 +87,7 @@ export const charts: Record<string, ChartData> = {
                 mandátumbecslésekké az <a href="${EXPLAINER_ARTICLE_LINK}" target="_blank">itt</a>
                 részletesen leírt adatok és feltevések felhasználásával. A bal oldalt látható “A
                 legfrissebb adatok” táblázat a legutóbb megjelent kutatásokra nézve mutat be
-                ugyanilyen számításokat.További részletek a mandátumszámításaink eredményeiről
+                ugyanilyen számításokat. További részletek a mandátumszámításaink eredményeiről
                 (egyéni és listás mandátumok száma pártonként, győzteskompenzáció hatása,
                 különböző parlamenti többségek valószínűsége, illetve minden szám statisztikai
                 hibahatára) érhetők el <a href="${EXPLAINER_ARTICLE_LINK}" target="_blank">itt</a>,

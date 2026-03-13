@@ -69,7 +69,10 @@
             mandátumbecslésekké az <a href="${EXPLAINER_ARTICLE_LINK}" target="_blank">itt</a>
             részletesen leírt adatok és feltevések felhasználásával. A bal oldalt látható “A
             legfrissebb adatok” táblázat a legutóbb megjelent kutatásokra nézve mutat be
-            ugyanilyen számításokat.További részletek a mandátumszámításaink eredményeiről
+            ugyanilyen számításokat. 
+        </Paragraph>
+        <Paragraph>
+            További részletek a mandátumszámításaink eredményeiről
             (egyéni és listás mandátumok száma pártonként, győzteskompenzáció hatása,
             különböző parlamenti többségek valószínűsége, illetve minden szám statisztikai
             hibahatára) érhetők el <a href="${EXPLAINER_ARTICLE_LINK}" target="_blank">itt</a>,

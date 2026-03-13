@@ -213,19 +213,18 @@
             nagyobb hatása van a mandátumok megoszlására, és ezáltal arra, hogy ki kormányozhat,
             mint a listás szavazatoknak.
         </Paragraph> -->
-        <Paragraph noMargin>
+        <Paragraph>
             A jelenlegi magyar választási rendszerben az egyéni kerületi szavazatoknak sokkal
             nagyobb hatása van a mandátumok megoszlására, és ezáltal arra, hogy ki kormányozhat,
-            mint a listás szavazatoknak. Akik csak az utóbbival rendelkeznek - tehát a levélben
-            szavazó kisebbségi magyarok, akik nem rendelkeznek magyarországi lakcímmel -,
-            azoknak a szava minimális mértékben változtatja meg a parlament összetételét, míg az
-            egyéni kerületi szavazattal is rendelkező összes többi szavazók közül akár pár tucat
-            vagy pár száz is átbillenthet majd egy-egy egyéni kerületet fideszesről tiszapártivá,
-            vagy fordítva. A választókerületek határai azonban úgy vannak meghatározva, hogy a
-            Fidesz kevesebb szavazatttal is megszerezheti ezek többéségét, mint a TISZA. Ha a Mi
-            Hazánk is bejut a parlamentbe, akkor a TISZA Pártnak kb. 4-5-6 százalékkal több egyéni
-            kerületi szavazatot kell szereznie az ország egészében, mint a Fidesznek, hogy a
-            kormányváltást pártoló többség alakulhasson ki a parlamentben.
+            mint a listás szavazatoknak. Akár pár tucat vagy pár száz egyéni kerületi szavazat
+            is átbillenthet egy-egy egyéni kerületet fideszesről tiszapártira, vagy fordítva.
+        </Paragraph>
+        <Paragraph>
+            Fontos tudni, hogy a választókerületek határai egy szorosabb választási eredmény
+            esetén a Fidesznek kedveznek. Ha a Mi Hazánk is bejut a parlamentbe, akkor a TISZA
+            Pártnak kb. 4-5-6 százalékkal több egyéni kerületi szavazatot kell szereznie az
+            ország egészében, mint a Fidesznek, hogy a kormányváltást pártoló többség alakulhasson
+            ki a parlamentben.
         </Paragraph>
     </SectionCard>
 </GridItem>
@@ -246,11 +245,16 @@
             Ha Fidesz és a TISZA egymáshoz nagyjából hasonló számú mandátumot nyernének - tehát ha a TISZA
             Párt csak pár százalékponntal kap több szaazatot, mint a Fidesz -, akkor befolyásolhatja a
             parlamenti többség összetételét és a kormányalakulást az, hogy hány és melyik kisebb párt jut
-            az országgyűlésbe. A baloldalon megjelenő “Bejutás esélye” oszlopban láthatók a Vox Populi
+            az országgyűlésbe.
+        </Paragraph>
+        <Paragraph>
+            A baloldalon megjelenő “Bejutás esélye” oszlopban láthatók a Vox Populi
             számításai arról, hogy a közvélemény-kutatások alapján mi a százalékos esélye egyes kisebb
             pártok mandátum-szerzésének. A kisebb pártoknak kb. 5,25%-nyi listás szavazatot kell szereznie
             ahhoz (a levélszavazatok nélküli szavazatok között) ahhoz, hogy átlépjék a mandátumszerzéshez
             szükséges 5%-os küszöböt, mivel levélszavazatokra csak elhanyagolható mértékben számíthatnak.
+        </Paragraph>
+        <Paragraph>
             Ha viszont olyan állampolgárok is szavaznak az ő egyéni kerületi jelöltjeikre, akik a TISZA
             Pártra szavaznának máskülönben, akkor a kis pártokra adott egyéni kerületi szavazatok sokkal
             több mandátumtól foszthatják meg a TISZA-t, mint ahány plusz listás mandátummal támogathatná
