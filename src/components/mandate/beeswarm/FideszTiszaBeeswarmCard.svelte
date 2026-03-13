@@ -19,11 +19,11 @@
 <SectionCard>
     <SectionTitle variant="featured">Mi a legvalószínűbb kimenetel?</SectionTitle>
     <Paragraph>
-        Az alábbi ábrán az látható, hogy a <SimulationNameSpan>{simulationData[selectedSimulation]?.metadata.name}</SimulationNameSpan> kutatásainak valós hibahatárát figyelembe véve milyen különböző mandátummegoszlásokat tekintünk lehetségesnek.
+        Az alábbi ábrán az látható, hogy a <SimulationNameSpan>{simulationData[selectedSimulation]?.metadata.name}</SimulationNameSpan> kutatásainak valós hibahatárát figyelembe véve milyen mandátummegoszlások lehetségesek.
     </Paragraph>
     {#if simulationData[selectedSimulation]}
         <ChartCard>
-            <InlineChartLabel>A pöttyök az adott párt 1000 szimulált választáson elért eredményeit mutatják, a százalékok pedig azt, hogy egy párt milyen eséllyel kap többséget vagy kétharmadot.</InlineChartLabel>
+            <InlineChartLabel>Tízezer választási eredményt szimuláltunk. A pöttyök az adott pártnak a szimulált választásokon elért eredményeit mandátumszámban mutatják. Az ábra felett százalékban mutatjuk három fejlemény valószínűségét, tehát hogy milyen gyakran állt elő a szimulációk során az, hogy a párt bejut a parlamentbe, hogy ott abszolút többséget (tehát legalább 100 mandátumot) szerez, és hogy kétharmados többséget (legalább 133 mandátumot) szerez.</InlineChartLabel>
             {#each parties as party}
                 <MandateBeeswarm
                     party={party}
@@ -35,13 +35,11 @@
                 />
             {/each}
             <InlineChartLabel description>
-                Az 1000 szimuláció megoszlását 1000 ponttal ábrázoljuk, a mediánt fekete vonal jelzi. A százalékok mutatják, hogy mekkora eséllyel ér el egy párt egy adott mandátumszámot.
+                Az 10.000 szimuláció megoszlását 500 ponttal ábrázoljuk, az átlagos eredményt fekete vonal jelzi. A százalékok mutatják, hogy mekkora eséllyel ér el egy párt egy adott mandátumszámot.
             </InlineChartLabel>
         </ChartCard>
     {/if}
-    <Paragraph>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt voluptate expedita similique, eaque magni mollitia dicta aperiam pariatur et accusamus iste quidem eius delectus vitae modi fuga error voluptas nisi. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem sunt, eos, eveniet necessitatibus aut doloremque perspiciatis totam adipisci repellat explicabo iusto, consequuntur ullam pariatur officiis nihil minima id natus enim!
-    </Paragraph>
+    
     <BottomMenu>
         <BottomMenuItem link={`/abra/b-${selectedSimulation}`}>Megosztás</BottomMenuItem>
         <BottomMenuItem link={`/abra/b-${selectedSimulation}`}>Beágyazás</BottomMenuItem>

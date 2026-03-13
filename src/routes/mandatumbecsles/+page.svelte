@@ -283,7 +283,7 @@
                 A három “hegedű-ábra” a kisebb pártok aktuálisan várható szavazatarányának a Vox Populi
                 által számította 60 napos súlyozott mozgóátlagát mutatja számmal is. A színes hegedűk
                 azoknál a százalékos értékeknél válnak vastagabbá, amelyek a legvalószínűbbek a
-                közvélemény-kutatások alapján, amelyek eredményeit a megelőző “hegedű-ábrák” mutatják.
+                közvélemény-kutatások alapján.
             </Paragraph>
             <!-- <SectionTitle variant="tiny" hasTopMargin>A kisebb pártok pártok becsült mandátumszáma</SectionTitle> -->
             <ChartCard>
@@ -310,7 +310,12 @@
             </ChartCard>
         {/if}
         <Paragraph noMargin>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat cupiditate fuga vero eius optio voluptatum neque magnam, illum odio molestias voluptate vitae hic nihil perspiciatis, id eveniet accusantium expedita cumque?
+            Ezek az ábrák azt mutatják, hogy hány listás mandátumra számíthatnak a kisebb pártok a
+            számításaink szerint, amelyek azt feltételezik, hogy az ilyen méretű pártok egyéni kerületi
+            jelöltje nagyjából kétharmadannyi szavazatot kapnak, mint maga a pártlista. Ha a
+            kétharmadnál kisebb lesz az arány, akkor persze előfordulhat, hogy csak 4 mandátumot szerez
+            egy mondjuk 5,5%-os támogatottságú párt. Minél valószínűbb, hogy 5% alatt marad egy párt
+            listás eredménye, annál valószínűbb, hogy nulla mandátumot fog szerezni.
         </Paragraph>
     </SectionCard>
 </GridItem>
