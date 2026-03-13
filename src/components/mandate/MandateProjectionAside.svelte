@@ -1,7 +1,6 @@
 <script lang="ts">
     import type { Simulation } from "$lib/types";
     import { createEventDispatcher, onMount } from "svelte";
-    import { fly } from "svelte/transition";
     import SimulationNameSpan from "./SimulationNameSpan.svelte";
     import SectionTitle from "$components/section/SectionTitle.svelte";
     import SectionCard from "$components/section/SectionCard.svelte";
@@ -19,12 +18,7 @@
     }
 </script>
 
-{#if sticky}
-    <div
-        id="sticky-mandate-projection-header"
-        in:fly={{ y: -40, duration: 220 }}
-        out:fly={{ y: -40, duration: 220 }}
-    >
+<div id="sticky-mandate-projection-header" class:visible={sticky}>
         <h2>Mandátumbecslés</h2>
         <div class="simulations simulations--compact">
             {#each Object.keys(data) as key}
@@ -38,26 +32,29 @@
             {/each}
         </div>
     </div>
-{:else}
-    <SectionCard id="mandate-projection-aside">
-        <SectionTitle centered variant="tiny">Válassz becslést</SectionTitle>
-        <div class="simulations">
-            {#each Object.keys(data) as key}
-                <button
-                    type="button"
-                    on:click={() => selectSimulation(key)}
-                    class:selected={selectedSimulation === key}
-                >
-                    <h3>{data[key].metadata.name}</h3>
-                    <Paragraph --margin="8px">{data[key].metadata.description}</Paragraph>
-                    <Paragraph>
-                        Frissítve: {data[key].metadata.updatedAt ? new Date(data[key].metadata.updatedAt).toLocaleDateString("hu-HU") : ''}
-                    </Paragraph>
-                </button>
-            {/each}
-        </div>
+
+<div id="mandate-projection-aside" class:collapsed={sticky}>
+    <SectionCard>
+    <SectionTitle centered variant="tiny">Válassz becslést</SectionTitle>
+    <div class="simulations">
+        {#each Object.keys(data) as key}
+            <button
+                type="button"
+                on:click={() => selectSimulation(key)}
+                class:selected={selectedSimulation === key}
+            >
+                <h3>{data[key].metadata.name}</h3>
+                <Paragraph --margin="8px">{data[key].metadata.description}</Paragraph>
+                <Paragraph>
+                    Frissítve: {data[key].metadata.updatedAt
+                        ? new Date(data[key].metadata.updatedAt).toLocaleDateString("hu-HU")
+                        : ""}
+                </Paragraph>
+            </button>
+        {/each}
+    </div>
     </SectionCard>
-{/if}
+</div>
 
 <style lang="scss">
     #sticky-mandate-projection-header {
@@ -66,6 +63,22 @@
         background-color: #fcfcfc;
         border-bottom: 2px solid #6de635;
         gap: 1rem;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        transform: translateY(-80%);
+        opacity: 0;
+        pointer-events: none;
+        transition:
+            transform 220ms ease-out,
+            opacity 220ms ease-out;
+
+        &.visible {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
 
         h2 {
             font-size: 16px;
@@ -128,6 +141,34 @@
             border: none;
             background: transparent;
             padding: 0;
+        }
+    }
+
+    #mandate-projection-aside {
+        position: relative;
+        overflow: hidden;
+        max-height: 1200px;
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+        transition:
+            max-height 220ms ease-out,
+            opacity 180ms ease-out,
+            transform 220ms ease-out;
+
+        &.collapsed {
+            max-height: 0;
+            opacity: 0;
+            transform: translateY(-12px);
+            pointer-events: none;
+            transition: none;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        #sticky-mandate-projection-header,
+        #mandate-projection-aside {
+            transition: none;
         }
     }
 </style>

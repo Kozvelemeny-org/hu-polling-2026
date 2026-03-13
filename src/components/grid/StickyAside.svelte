@@ -43,8 +43,10 @@
     function keepAsidePosition() {
         if (!aside || typeof window == 'undefined') return;
 
-        const asideHeight = aside.offsetHeight;
-        const shouldBeSticky = window.scrollY > headerHeight + 16 + asideHeight && window.innerWidth > 600;
+        // Use the initial (non-sticky) aside height for the sticky threshold, otherwise the
+        // threshold changes when the aside collapses to a compact sticky header.
+        const shouldBeSticky =
+            window.scrollY > headerHeight + 16 + initialAsideHeight && window.innerWidth > 600;
                 
         if (shouldBeSticky) {
             aside.style.position = "fixed";
