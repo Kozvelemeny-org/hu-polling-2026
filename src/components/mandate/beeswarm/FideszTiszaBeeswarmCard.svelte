@@ -35,7 +35,7 @@
                 />
             {/each}
             <InlineChartLabel description>
-                Az 10.000 szimuláció megoszlását 500 ponttal ábrázoljuk, az átlagos eredményt fekete vonal jelzi. A százalékok mutatják, hogy mekkora eséllyel ér el egy párt egy adott mandátumszámot.
+                A szimulációk megoszlását 500 ponttal ábrázoljuk, az átlagos eredményt fekete vonal jelzi. A százalékok mutatják, hogy mekkora eséllyel ér el egy párt egy adott mandátumszámot.
             </InlineChartLabel>
         </ChartCard>
     {/if}

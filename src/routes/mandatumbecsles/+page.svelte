@@ -241,7 +241,7 @@
 </GridItem>
 <GridItem variant="main">
     <SectionCard>
-        <SectionTitle variant="medium">Érdemes nem a Fideszre vagy a Tiszára szavazni?</SectionTitle>
+        <SectionTitle variant="medium">Érdemes egy kisebb pártra szavazni?</SectionTitle>
         <Paragraph>
             Ha Fidesz és a TISZA egymáshoz nagyjából hasonló számú mandátumot nyernének - tehát ha a TISZA
             Párt csak pár százalékponntal kap több szaazatot, mint a Fidesz -, akkor befolyásolhatja a
