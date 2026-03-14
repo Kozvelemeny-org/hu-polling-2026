@@ -93,7 +93,7 @@
                 id="vox-populi-embed-iframe"
                 src="${link}"
                 width="100%"
-                height="600"
+                height="750"
                 style="border: none;"
             ></iframe>
         <script>
