@@ -8,8 +8,9 @@ VOXPOPULI_EFFECTIVE_DATE.setHours(0, 0, 0, 0);
 const VOXPOPULI_DELTAS = {
     fidesz: 0.025,
     tisza: -0.02,
-    dk: -0.0025,
-    mkkp: -0.0025,
+    mihazank: 0.01,
+    dk: -0.0075,
+    mkkp: -0.0075,
 } as const;
 
 export function needsVoxPopuliAdjustment(group: PollsterGroup): boolean {
