@@ -8,7 +8,8 @@ async function fetchPollData(): Promise<Record<string, PollData>> {
     let fetchedData: Record<string, PollData> = {};
     for (const tableName of ["sure_voters", "all_voters"]) {
         try {
-        const response = await fetch(`${dataBaseUrl}/${tableName}.csv`);
+            if (tableName === "all_voters") throw new Error("All voters data is not available");
+            const response = await fetch(`${dataBaseUrl}/${tableName}.csv`);
             const csvText = await response.text();
             fetchedData[tableName] = d3.csvParse(csvText) as unknown as PollData;
         } catch (error) {
