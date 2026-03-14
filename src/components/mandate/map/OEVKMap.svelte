@@ -5,6 +5,7 @@
 
     import { partyData } from "$stores/dataStore";
     import type { Simulation } from "$lib/types";
+    import { staticBase } from "$lib/staticAssets";
 
     export let data = {} as Simulation["oevkDiffs"];
     export let highlightedOevk = null as string | null;
@@ -249,7 +250,7 @@
                 sources: {
                     basemap: {
                         type: "vector",
-                        url: "pmtiles://https://tiles.tiborcz.club/basemap.pmtiles",
+                        url: `pmtiles://${staticBase}/basemap.pmtiles`,
                     },
                 },
                 layers: [
