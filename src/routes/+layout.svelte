@@ -1,12 +1,13 @@
 <script lang="ts">
     import { onMount } from "svelte";
+    import { PUBLIC_CF_BEACON_TOKEN } from "$env/static/public";
     import Footer from "../components/Footer.svelte";
     import Header from "../components/Header.svelte";
     import MenuStrip from "../components/MenuStrip.svelte";
     import "../global.scss";
 
     onMount(() => {
-        const token = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
+        const token = PUBLIC_CF_BEACON_TOKEN;
         if (!token || typeof document === "undefined") return;
         const script = document.createElement("script");
         script.defer = true;
