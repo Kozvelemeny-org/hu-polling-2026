@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { staticBase } from '$lib/staticAssets';
     import SectionCard from "$components/section/SectionCard.svelte";
     import SectionTitle from "$components/section/SectionTitle.svelte";
     import Paragraph from "./grid/Paragraph.svelte";
@@ -10,7 +11,7 @@
         <a href="https://www.facebook.com/valasztasi.kalauz" target="_blank">
             <article>
                 <div class="iconContainer">
-                    <img src="/images/vox-populi/facebook.webp" alt="Facebook">
+                    <img src="{staticBase}/images/vox-populi/facebook.webp" alt="Facebook">
                 </div>
                 <Paragraph noMargin>A legfrissebb rövidebb posztok a Facebookon.</Paragraph>
             </article>
@@ -18,7 +19,7 @@
         <a href="https://kozvelemeny.org" target="_blank">
             <article>
                 <div class="iconContainer">
-                    <img src="/images/vox-populi/vox-populi.webp" alt="Website">
+                    <img src="{staticBase}/images/vox-populi/vox-populi.webp" alt="Website">
                 </div>
                 <Paragraph noMargin>Hosszabb elemzések a weboldalukon.</Paragraph>
             </article>
@@ -26,7 +27,7 @@
         <a href="https://voxpopuli.444.hu" target="_blank">
             <article>
                 <div class="iconContainer">
-                    <img src="/images/vox-populi/444.svg" alt="444.hu">
+                    <img src="{staticBase}/images/vox-populi/444.svg" alt="444.hu">
                 </div>
                 <Paragraph noMargin>Válogatott posztok a 444-es blogunkon.</Paragraph>
             </article>

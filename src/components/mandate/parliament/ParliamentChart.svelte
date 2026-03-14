@@ -1,6 +1,7 @@
 <script lang="ts">
     import ParliamentChart from "$lib/parliament-chart/ParliamentChart";
     import { onMount } from "svelte";
+    import { staticBase } from '$lib/staticAssets';
     import { partyData } from "$stores/dataStore";
     import type { Party, Simulation } from "$lib/types";
 
@@ -96,7 +97,7 @@
     {#if orderedChartData.length}
         <div class="chartInfos">
             <img
-                src="/images/candidate/{orderedChartData[0].id}.png"
+                src="{staticBase}/images/candidate/{orderedChartData[0].id}.png"
                 alt={orderedChartData[0].name}
                 style={`background-color: ${orderedChartData[0].color}66`}
             />
@@ -121,7 +122,7 @@
                 <h3>{Math.round((orderedChartData[1].seats / 199) * 100)}%</h3>
             </div>
             <img
-                src="/images/candidate/{orderedChartData[1].id}.png"
+                src="{staticBase}/images/candidate/{orderedChartData[1].id}.png"
                 alt={orderedChartData[1].name}
                 style={`background-color: ${orderedChartData[1].color}66`}
             />

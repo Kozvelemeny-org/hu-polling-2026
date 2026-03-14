@@ -1,5 +1,6 @@
 <script lang="ts">
     import type { Party } from "$lib/types";
+    import { staticBase } from '$lib/staticAssets';
     import { partyData } from "$stores/dataStore";
 
     export let party: Party;
@@ -7,7 +8,7 @@
 
 <header>
     <img
-        src={`/images/party-logo/${party}.png`}
+        src={`${staticBase}/images/party-logo/${party}.png`}
         alt={party}
     />
     <h3>{partyData[party].name}</h3>

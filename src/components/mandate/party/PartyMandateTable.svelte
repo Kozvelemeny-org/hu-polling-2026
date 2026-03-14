@@ -1,5 +1,6 @@
 <script lang="ts">
     import type { Party } from "$lib/types";
+    import { staticBase } from '$lib/staticAssets';
     import { partyData } from "$stores/dataStore";
 
     export let data = {} as Record<Party, number>;
@@ -19,7 +20,7 @@
                 ></div>
                 <h3>{partyData[party as Party].name}</h3>
                 <!-- <div class="imgContainer">
-                    <img src={`/images/party-logo/${party}.png`} alt={partyData[party as Party].name} />
+                    <img src={`${staticBase}/images/party-logo/${party}.png`} alt={partyData[party as Party].name} />
                 </div> -->
                 <div class="percentage">
                     {(data[party as Party] / 199 * 100).toFixed(0)}%

@@ -1,6 +1,7 @@
 <script lang="ts">
     import type { Simulation } from "$lib/types";
     import { createEventDispatcher, onMount, tick } from "svelte";
+    import { staticBase } from '$lib/staticAssets';
     import { oevkNameMap, partyData } from "../../stores/dataStore";
 
     export let data = {} as Simulation["oevkDiffs"];
@@ -192,7 +193,7 @@
 </script>
 
 <section>
-    <img src="/images/party-logo/fidesz.png" alt="Fidesz" class="fidesz" />
+    <img src="{staticBase}/images/party-logo/fidesz.png" alt="Fidesz" class="fidesz" />
     <article bind:this={container} on:mouseleave={resetCursor}>
         {#if orderedData && sectionSize}
             {#if segments && segments.length}
@@ -226,7 +227,7 @@
             </div>
         </div>
     </article>
-    <img src="/images/party-logo/tisza.png" alt="Tisza" class="tisza" />
+    <img src="{staticBase}/images/party-logo/tisza.png" alt="Tisza" class="tisza" />
 </section>
 
 <style lang="scss">

@@ -1,9 +1,10 @@
 <script lang="ts">
     import ExplainerCard from "../section/ExplainerCard.svelte";
+    import { staticBase } from '$lib/staticAssets';
 </script>
 
 <ExplainerCard --margin="12px 0 0 0"
-    image="/images/hungary-shape.webp"
+    image="{staticBase}/images/hungary-shape.webp"
     alt="Választási földrajz"
 >
     A szimuláció azt feltételezi, hogy az EP-választás óta nem
@@ -12,7 +13,7 @@
     <a href="#">Módszertan</a>
 </ExplainerCard>
 <ExplainerCard --margin="none"
-    image="/images/median-example.webp"
+    image="{staticBase}/images/median-example.webp"
     alt="Medián jelzés példa"
 >
     A függőleges vonal a középérteket jelzi, vagyis ugyanannyi
@@ -20,7 +21,7 @@
     adott párt.
 </ExplainerCard>
 <ExplainerCard --margin="0 0 12px 0"
-    image="/images/PDF-example.webp"
+    image="{staticBase}/images/PDF-example.webp"
     alt="Valószínűség eloszlás példa"
 >
     A színezett terület a lehetséges eredményeket és azok
