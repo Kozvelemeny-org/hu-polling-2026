@@ -104,6 +104,7 @@
                     data={data.simulationData[chartName || 'main']?.oevkDiffs}
                     simulationName={data.simulationData[chartName || 'main']?.metadata.name}
                     simulationKey={chartName || 'main'}
+                    hideBottomMenu={true}
                 />
             {:else}
                 <div class="embed-chart">
@@ -127,7 +128,7 @@
             {/if}
         {:else if chartType === 'beeswarm'}
             {#if !showOnlyChart}
-                <FideszTiszaBeeswarmCard simulationData={data.simulationData} selectedSimulation={chartName ?? 'main'} />
+                <FideszTiszaBeeswarmCard simulationData={data.simulationData} selectedSimulation={chartName ?? 'main'} hideBottomMenu={true} />
             {:else}
                 <div class="embed-chart">
                     {#if data.simulationData[chartName ?? 'main']}
@@ -163,6 +164,7 @@
                     chart_id={chartName}
                     showSource={!showOnlyChart}
                     featured={false}
+                    hideBottomMenu={true}
                 />
             {:else}
                 <div class="embed-chart">

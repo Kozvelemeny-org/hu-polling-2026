@@ -13,6 +13,7 @@
     export let selectedSimulation: string;
     export let simulationData: Record<string, Simulation>;
     export let parties = ['fidesz', 'tisza'] as Party[];
+    export let hideBottomMenu = false;
 
 </script>
 
@@ -40,8 +41,10 @@
         </ChartCard>
     {/if}
     
-    <BottomMenu>
-        <BottomMenuItem link={`/abra/b-${selectedSimulation}`}>Megosztás</BottomMenuItem>
-        <BottomMenuItem link={`/abra/b-${selectedSimulation}`}>Beágyazás</BottomMenuItem>
-    </BottomMenu>
+    {#if !hideBottomMenu}
+        <BottomMenu>
+            <BottomMenuItem link={`/abra/b-${selectedSimulation}`}>Megosztás</BottomMenuItem>
+            <BottomMenuItem link={`/abra/b-${selectedSimulation}`}>Beágyazás</BottomMenuItem>
+        </BottomMenu>
+    {/if}
 </SectionCard>

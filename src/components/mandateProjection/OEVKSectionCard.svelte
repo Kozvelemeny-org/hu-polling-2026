@@ -11,6 +11,7 @@
     export let data = {} as Simulation["oevkDiffs"];
     export let simulationName: string;
     export let simulationKey: string;
+    export let hideBottomMenu = false;
 
     let highlightedOevk = null as string | null;
 
@@ -31,10 +32,12 @@
         <OevkMap {data} {highlightedOevk} on:oevkHover={handleOevkHover} showInfoBar={false} disableZoomPan={true} />
     </div>
     <OevkDistribution {data} {highlightedOevk} on:oevkHover={handleOevkHover} />
-    <BottomMenu>
-        <BottomMenuItem link="/abra/t-{simulationKey}">Megosztás</BottomMenuItem>
-        <BottomMenuItem link="/abra/t-{simulationKey}">Beágyazás</BottomMenuItem>
-    </BottomMenu>
+    {#if !hideBottomMenu}
+        <BottomMenu>
+            <BottomMenuItem link="/abra/t-{simulationKey}">Megosztás</BottomMenuItem>
+            <BottomMenuItem link="/abra/t-{simulationKey}">Beágyazás</BottomMenuItem>
+        </BottomMenu>
+    {/if}
 </SectionCard>
 
 <style lang="scss">

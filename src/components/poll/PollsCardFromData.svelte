@@ -12,6 +12,7 @@
     export let chart_id: string;
     export let showSource: boolean = false;
     export let featured: boolean = false;
+    export let hideBottomMenu: boolean = false;
 
     const chartData = charts.hasOwnProperty(chart_id) ? charts[chart_id] : null;
 </script>
@@ -31,6 +32,7 @@
         pollsterGroup={chartData.pollsterGroup}
         featured={featured || chartData.featured}
         showSource={showSource}
+        hideBottomMenu={hideBottomMenu}
         isMandateProjection={chartData.isMandateProjection}
     />
 {/if}

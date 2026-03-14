@@ -41,6 +41,7 @@
 
     export let featured = false;
     export let showSource = false;
+    export let hideBottomMenu = false;
 
     let chartOptions = {
         data: [] as Poll[] | MandateProjection[],
@@ -128,10 +129,10 @@
     {#if showSource}
         <div class="source">
             <Paragraph>
-                Választás 2026 – Vox Populi, https://2026.kozvelemeny.org
+                Forrás: <a href="https://2026.kozvelemeny.org">Választás 2026 – Vox Populi</a>
             </Paragraph>
         </div>
-    {:else}
+    {:else if !hideBottomMenu}
         <BottomMenu>
             {#if chartId}
             <BottomMenuItem link={`/abra/g-${chartId}`}>Megosztás</BottomMenuItem>
