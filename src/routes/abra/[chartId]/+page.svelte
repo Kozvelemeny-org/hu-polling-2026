@@ -107,7 +107,8 @@
                 }
             });
         })();
-        <\/script>`;
+        <\/script>
+        </div>`;
 
         try {
             await navigator.clipboard.writeText(embedCode);
