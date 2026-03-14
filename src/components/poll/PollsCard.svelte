@@ -128,7 +128,7 @@
     {#if showSource}
         <div class="source">
             <Paragraph>
-                Választás 2026 – Vox Populi, https://valasztas-2026.kozvelemeny.org
+                Választás 2026 – Vox Populi, https://2026.kozvelemeny.org
             </Paragraph>
         </div>
     {:else}

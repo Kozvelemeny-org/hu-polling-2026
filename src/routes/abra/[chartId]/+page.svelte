@@ -27,7 +27,6 @@
         } else {
             chartType = null;
         }
-        console.log(chartType, chartName);
     }
 
     let data = {
@@ -87,16 +86,28 @@
         if (!link.includes("http")) {
             link = window.location.origin + link;
         }
+        const origin = window.location.origin;
 
-        const embedCode = `
+        const embedCode = `<div id="vox-populi-embed-wrapper">
             <iframe
+                id="vox-populi-embed-iframe"
                 src="${link}"
                 width="100%"
-                style="
-                    aspect-ratio: 30 / 22;
-                    border: none;
-                "
-            ></iframe>`;
+                style="border: none; min-height: 300px;"
+            ></iframe>
+        <script>
+        (function() {
+            var iframe = document.getElementById("vox-populi-embed-iframe");
+            if (!iframe) return;
+            var allowedOrigin = "${origin}";
+            window.addEventListener("message", function(e) {
+                if (e.origin !== allowedOrigin) return;
+                if (e.data && e.data.type === "vox-populi-embed-resize" && e.source === iframe.contentWindow) {
+                    iframe.style.height = e.data.height + "px";
+                }
+            });
+        })();
+        <\/script>`;
 
         try {
             await navigator.clipboard.writeText(embedCode);
@@ -178,24 +189,6 @@
                     font-weight: 400;
                     text-align: left;
                 }
-            }
-        }
-    }
-
-    ul.related-posts {
-        list-style-type: disc;
-        padding-left: 16px;
-
-        li {
-            a {
-                text-decoration: none;
-                &:hover {
-                    text-decoration: underline;
-                }
-            }
-            h3 {
-                font-size: 1rem;
-                font-weight: 400;
             }
         }
     }
