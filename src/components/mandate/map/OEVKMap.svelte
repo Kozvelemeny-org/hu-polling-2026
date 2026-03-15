@@ -104,7 +104,7 @@
         }
 
         if (!geojsonData) {
-            const response = await fetch("/geo/oevks.geojson");
+            const response = await fetch(`${staticBase}/geo/oevks.geojson`);
             geojsonData = await response.json();
         }
 
