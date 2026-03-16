@@ -6,6 +6,8 @@
     import MenuStrip from "./MenuStrip.svelte";
     import "../global.scss";
 
+    export let embed = false;
+
     onMount(() => {
         const token = PUBLIC_CF_BEACON_TOKEN;
         if (!token || typeof document === "undefined") return;
@@ -18,12 +20,16 @@
 </script>
 
 <article id="appContainer">
-    <Header />
-    <MenuStrip />
+    {#if !embed}
+        <Header />
+        <MenuStrip />
+    {/if}
     <div id="mainGrid">
         <slot />
     </div>
-    <Footer />
+    {#if !embed}
+        <Footer />
+    {/if}
 </article>
 
 <style lang="scss">
