@@ -1,6 +1,7 @@
 <script lang="ts">
     // get the chartId from the slug parameter
     import { page } from "$app/state";
+    import { PUBLIC_EMBED_BASE_URL } from "$env/static/public";
     import { onMount } from "svelte";
     import { pollData, simulationData, fetchData, mandateProjectionData, historicalSimulationData } from "$stores/dataStore";
     import type { HistoricalSimulationData, MandateProjectionData, PollData, Simulation } from "$lib/types";
@@ -83,10 +84,15 @@
     }
 
     async function copyEmbedCode(link: string) {
+        const base =
+            PUBLIC_EMBED_BASE_URL && PUBLIC_EMBED_BASE_URL.length > 0
+                ? PUBLIC_EMBED_BASE_URL
+                : window.location.origin;
+
         if (!link.includes("http")) {
-            link = window.location.origin + link;
+            link = base + link;
         }
-        const origin = window.location.origin;
+        const origin = base;
 
         const embedCode = `<div id="vox-populi-embed-wrapper">
             <iframe
