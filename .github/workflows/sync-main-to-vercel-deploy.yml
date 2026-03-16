@@ -9,6 +9,7 @@ on:
 
 jobs:
   sync:
+    if: github.repository == 'hidegmisi/hu-polling-copy-vercel'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
