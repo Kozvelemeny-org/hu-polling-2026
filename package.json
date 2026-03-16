@@ -11,26 +11,24 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-auto": "^3.0.0",
 		"@sveltejs/adapter-static": "^3.0.10",
-		"@sveltejs/adapter-vercel": "^5.6.3",
-		"@sveltejs/kit": "^2.0.0",
-		"@sveltejs/vite-plugin-svelte": "^4.0.0",
+		"@sveltejs/kit": "^2.55.0",
+		"@sveltejs/vite-plugin-svelte": "^4.0.4",
 		"@types/d3": "^7.4.3",
-		"@types/node": "^22.18.0",
-		"sass": "^1.83.0",
-		"svelte": "^5.0.0",
-		"svelte-check": "^4.0.0",
+		"@types/node": "^22.19.15",
+		"sass": "^1.98.0",
+		"svelte": "^5.53.12",
+		"svelte-check": "^4.4.5",
 		"svelte-simples": "^1.0.3",
-		"typescript": "^5.0.0",
-		"vite": "^5.4.11"
+		"typescript": "^5.9.3",
+		"vite": "^5.4.21"
 	},
 	"dependencies": {
 		"d3": "^7.9.0",
 		"html2canvas": "^1.4.1",
-		"layercake": "^10.0.1",
-		"maplibre-gl": "^5.7.0",
-		"pmtiles": "^4.3.0"
+		"layercake": "^10.0.2",
+		"maplibre-gl": "^5.20.1",
+		"pmtiles": "^4.4.0"
 	},
 	"packageManager": "pnpm@10.32.1+sha512.a706938f0e89ac1456b6563eab4edf1d1faf3368d1191fc5c59790e96dc918e4456ab2e67d613de1043d2e8c81f87303e6b40d4ffeca9df15ef1ad567348f2be"
 }
