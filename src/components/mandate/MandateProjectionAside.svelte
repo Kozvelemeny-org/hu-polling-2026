@@ -10,6 +10,13 @@
     export let sticky = false;
     export let selectedSimulation = "main";
 
+    export let stickyHeaderStyle: { left: number; width: number; top: number; opacity: number } = {
+        left: 0,
+        width: 0,
+        top: 0,
+        opacity: 0
+    };
+
     const dispatch = createEventDispatcher();
 
     function selectSimulation(simulation: string) {
@@ -18,7 +25,11 @@
     }
 </script>
 
-<div id="sticky-mandate-projection-header" class:visible={sticky}>
+<div
+    id="sticky-mandate-projection-header"
+    class:visible={sticky}
+    style="position: fixed; left: {stickyHeaderStyle.left}px; width: {stickyHeaderStyle.width}px; top: {stickyHeaderStyle.top}px; opacity: {stickyHeaderStyle.opacity};"
+>
         <h2>Mandátumbecslés</h2>
         <div class="simulations simulations--compact">
             {#each Object.keys(data) as key}
@@ -58,25 +69,20 @@
 
 <style lang="scss">
     #sticky-mandate-projection-header {
+        z-index: 3;
         display: flex;
         padding: 8px 12px;
         background-color: #fcfcfc;
         border-bottom: 2px solid #6de635;
         gap: 1rem;
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        transform: translateY(-80%);
-        opacity: 0;
         pointer-events: none;
+        transform: translateY(-100%);
         transition:
             transform 220ms ease-out,
             opacity 220ms ease-out;
 
         &.visible {
             transform: translateY(0);
-            opacity: 1;
             pointer-events: auto;
         }
 
@@ -152,9 +158,9 @@
         transform: translateY(0);
         pointer-events: auto;
         transition:
-            max-height 220ms ease-out,
-            opacity 180ms ease-out,
-            transform 220ms ease-out;
+            max-height 440ms ease-out,
+            opacity 440ms ease-out,
+            transform 440ms ease-out;
 
         &.collapsed {
             max-height: 0;
