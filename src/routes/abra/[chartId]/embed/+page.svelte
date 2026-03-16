@@ -122,6 +122,10 @@
 </GridItem>
 
 <style lang="scss">
+    :global(#appContainer) {
+        padding: 0 !important;
+    }
+    
     .embed-container {
         width: 100%;
         height: 100%;
