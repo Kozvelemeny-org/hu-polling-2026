@@ -84,10 +84,12 @@
     }
 
     async function copyEmbedCode(link: string) {
-        const base =
+        const rawBase =
             PUBLIC_EMBED_BASE_URL && PUBLIC_EMBED_BASE_URL.length > 0
                 ? PUBLIC_EMBED_BASE_URL
                 : window.location.origin;
+
+        const base = rawBase.replace(/\/+$/, "");
 
         if (!link.includes("http")) {
             link = base + link;
