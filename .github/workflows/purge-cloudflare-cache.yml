@@ -5,6 +5,7 @@ on:
     workflows: ["Cloudflare Pages"]
     types:
       - completed
+  workflow_dispatch:
 
 jobs:
   purge-cache:
