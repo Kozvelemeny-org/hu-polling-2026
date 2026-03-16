@@ -101,7 +101,7 @@
                 id="vox-populi-embed-iframe"
                 src="${link}"
                 width="100%"
-                height="750"
+                height="700"
                 style="border: none;"
             ></iframe>
         <script>
