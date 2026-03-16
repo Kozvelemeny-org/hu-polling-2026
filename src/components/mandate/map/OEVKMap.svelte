@@ -1,11 +1,28 @@
 <script lang="ts">
     import { createEventDispatcher, onMount } from "svelte";
     import maplibregl from "maplibre-gl";
-    import * as pmtiles from "pmtiles";
 
     import { partyData } from "$stores/dataStore";
     import type { Simulation } from "$lib/types";
     import { staticBase } from "$lib/staticAssets";
+
+    import {
+        HUNGARY_BOUNDS,
+        DEFAULT_LEGEND_STATE,
+        diffToLegendState,
+        getOevkColors,
+        loadOevkGeojson,
+    } from "$lib/map/oevkMapConfig";
+    import { getHungaryBasemapStyle, getHungaryMapOptions } from "$lib/map/hungaryBasemapStyle";
+    import { registerPmtilesProtocol } from "$lib/map/pmtilesProtocol";
+    import {
+        getFirstSymbolLayerId,
+        addOevkLayers,
+        updateOevkData,
+        setOevkHighlight,
+        OEVK_FILL_LAYER_ID,
+    } from "$lib/map/oevkLayers";
+    import OEVKMapLegend from "./OEVKMapLegend.svelte";
 
     export let data = {} as Simulation["oevkDiffs"];
     export let highlightedOevk = null as string | null;
@@ -14,308 +31,82 @@
 
     const dispatch = createEventDispatcher();
 
-    const protocol = new pmtiles.Protocol();
-    maplibregl.addProtocol("pmtiles", protocol.tile);
-
     let mapContainer: HTMLElement;
     let map: maplibregl.Map;
     let mapLoaded = false;
     let geoJsonLoaded = false;
+    let geoJsonLoading = false;
     let geojsonData: GeoJSON.FeatureCollection;
-    let oevkLayerId = "oevks";
-    let oevkLayerIncrement = 0;
-    let showHighlight = false;
+    let legendState = DEFAULT_LEGEND_STATE;
 
-    const hungaryBounds: [[number, number], [number, number]] = [
-        [15.113, 45.737 - 0.1],
-        [23.896, 48.585 + 0.3],
-    ];
+    const colors = getOevkColors(partyData);
 
-    const colors = [
-        partyData["fidesz"].color,
-        "#ffb985",
-        "#f1f1f1",
-        "#908dc7",
-        partyData["tisza"].color,
-    ];
-
-    // Updates the arrow on the legend based on diff value,
-    // snapping to the center of the corresponding discrete category.
-    function updateLegendArrow(diff: any) {
-        const diffValue = parseFloat(diff);
-        let position: number;
-        let category: string;
-
-        if (diffValue < -0.15) {
-            position = 10;
-            category = "Fidesz +15%";
-        } else if (diffValue < -0.05) {
-            position = 30;
-            category = "Fidesz +5%";
-        } else if (diffValue < 0.05) {
-            position = 50;
-            category = "Szoros";
-        } else if (diffValue < 0.15) {
-            position = 70;
-            category = "Tisza +5%";
-        } else {
-            position = 90;
-            category = "Tisza +15%";
-        }
-        const arrow = document.getElementById("colorbar-arrow");
-        const label = document.getElementById("colorbar-label");
-        const text = label?.querySelector("text");
-
-        if (arrow) {
-            arrow.style.left = position + "%";
-            arrow.style.display = "block";
-        }
-        if (label && text) {
-            label.style.left = position + "%";
-            label.style.display = "block";
-            text.innerHTML = category;
-            text.style.fill = "#333";
-        }
-    }
-
-    $: if (!mapLoaded && map && data) {
-        const loadingInterval = setInterval(() => {
-            if (mapLoaded) {
-                clearInterval(loadingInterval);
-                loadGeoJSON();
-            }
-        }, 1000);
+    $: if (mapLoaded && map && data && !geoJsonLoaded && !geoJsonLoading) {
+        loadGeoJSON();
     }
 
     async function loadGeoJSON() {
         if (!data || !map || !mapLoaded) return;
-
-        const layers = map.getStyle()?.layers;
-        let firstSymbolId;
-        if (layers) {
-            for (const layer of layers) {
-                if (layer.type === "symbol") {
-                    firstSymbolId = layer.id;
-                    break;
-                }
+        if (geoJsonLoading) return;
+        geoJsonLoading = true;
+        try {
+            if (!geojsonData) {
+                geojsonData = await loadOevkGeojson(staticBase);
             }
-        } else {
-            firstSymbolId = "country-label";
-        }
-
-        if (!geojsonData) {
-            const response = await fetch(`${staticBase}/geo/oevks.geojson`);
-            geojsonData = await response.json();
-        }
-
-        // Add the diff property to each feature
-        for (let feature of geojsonData.features) {
-            if (!feature.properties) continue;
-            feature.properties.diff = data[feature.properties?.OEVK] ?? 0;
-        }
-
-        // Add the OEVK lines layer
-        map.addLayer(
-            {
-                id: "oevk-lines",
-                type: "line",
-                source: {
-                    type: "geojson",
-                    data: geojsonData,
-                },
-                paint: {
-                    "line-width": 0.5,
-                    "line-opacity": 0.2,
-                },
-            },
-            firstSymbolId,
-        );
-
-        // Set the line color based on the diff value
-        map.setPaintProperty("oevk-lines", "line-color", [
-            "case",
-            [">=", ["get", "diff"], 0.05],
-            partyData["tisza"].color,
-            ["<=", ["get", "diff"], -0.05],
-            partyData["fidesz"].color,
-            "#000",
-        ]);
-
-        // Add a highlight layer with no filter initially.
-        map.addLayer({
-            id: "oevk-highlight",
-            type: "line",
-            source: {
-                type: "geojson",
-                data: geojsonData,
-            },
-            filter: ["==", "OEVK", ""],
-            paint: {
-                "line-color": "#000",
-            },
-        });
-
-        // Remove previous OEVK layer if it exists
-        if (map.getLayer(oevkLayerId + oevkLayerIncrement)) {
-            map.removeLayer(oevkLayerId + oevkLayerIncrement);
-        }
-        oevkLayerIncrement++;
-
-        // Use a discrete (step) expression for the fill-color:
-        // - diff < -0.15: "15+ fidesz"
-        // - -0.15 <= diff < -0.05: "5+ fidesz"
-        // - -0.05 <= diff < 0.05: "tossup"
-        // - 0.05 <= diff < 0.15: "5+ tisza"
-        // - diff >= 0.15: "15+ tisza"
-        map.addLayer(
-            {
-                id: oevkLayerId + oevkLayerIncrement,
-                type: "fill",
-                source: {
-                    type: "geojson",
-                    data: geojsonData,
-                },
-                paint: {
-                    "fill-color": [
-                        "step",
-                        ["get", "diff"],
-                        colors[0],
-                        -0.15,
-                        colors[1],
-                        -0.05,
-                        colors[2],
-                        0.05,
-                        colors[3],
-                        0.15,
-                        colors[4],
-                    ],
-                    /* "fill-opacity": [
-                        "step",
-                        ["get", "diff"],
-                        0.3,
-                        -0.15,
-                        0.1,
-                        -0.05,
-                        0,
-                        0.05,
-                        0.1,
-                        0.15,
-                        0.3,
-                    ] */
-                    "fill-opacity": 0.6,
-                },
-            },
-            firstSymbolId,
-        );
-
-        geoJsonLoaded = true;
-    }
-
-    // Function to update map data when data prop changes
-    function updateMapData() {
-        if (!data || !map || !geojsonData) return;
-
-        // Update the diff property for each feature
-        for (let feature of geojsonData.features) {
-            if (!feature.properties) continue;
-            feature.properties.diff = data[feature.properties?.OEVK] ?? 0;
-        }
-
-        // Update the source data for both layers to trigger a redraw
-        const linesSource = map.getSource("oevk-lines");
-        const fillSource = map.getSource(oevkLayerId + oevkLayerIncrement);
-
-        if (linesSource && linesSource.type === "geojson") {
-            (linesSource as any).setData(geojsonData);
-        }
-
-        if (fillSource && fillSource.type === "geojson") {
-            (fillSource as any).setData(geojsonData);
+            for (const feature of geojsonData.features) {
+                if (!feature.properties) continue;
+                feature.properties.diff = data[feature.properties?.OEVK as string] ?? 0;
+            }
+            const firstSymbolId = getFirstSymbolLayerId(map);
+            addOevkLayers(map, geojsonData, colors, firstSymbolId, partyData);
+            geoJsonLoaded = true;
+        } finally {
+            geoJsonLoading = false;
         }
     }
 
-    // Reactive statement to update map data when data prop changes
     $: if (mapLoaded && geoJsonLoaded && data) {
-        updateMapData();
+        updateOevkData(map, geojsonData, data);
+    }
+
+    $: if (mapLoaded && geoJsonLoaded && map) {
+        setOevkHighlight(map, highlightedOevk);
     }
 
     async function loadMap() {
+        registerPmtilesProtocol();
         await import("maplibre-gl/dist/maplibre-gl.css");
 
         map = new maplibregl.Map({
             container: mapContainer,
             attributionControl: false,
-            style: {
-                version: 8,
-                sources: {
-                    basemap: {
-                        type: "vector",
-                        url: `pmtiles://${staticBase}/basemap.pmtiles`,
-                    },
-                },
-                layers: [
-                    {
-                        id: "water",
-                        type: "fill",
-                        source: "basemap",
-                        "source-layer": "water",
-                        paint: { "fill-color": "#e8f1fb" },
-                    },
-                    {
-                        id: "land",
-                        type: "fill",
-                        source: "basemap",
-                        "source-layer": "land",
-                        paint: { "fill-color": "#f5f5f5" },
-                    },
-                ],
-            },
-            center: [
-                (hungaryBounds[0][0] + hungaryBounds[1][0]) / 2,
-                (hungaryBounds[0][1] + hungaryBounds[1][1]) / 2,
-            ],
-            zoom: 5,
-            minZoom: 4.5,
-            maxZoom: 10,
-            maxBounds: hungaryBounds,
-            //bounds: hungaryBounds,
-            ...(disableZoomPan ? { scrollZoom: false, dragPan: false } : {}),
+            style: getHungaryBasemapStyle(staticBase),
+            ...getHungaryMapOptions(HUNGARY_BOUNDS, disableZoomPan),
         });
 
         map.on("load", () => {
             mapLoaded = true;
-            if (!disableZoomPan) {
+            if (disableZoomPan) {
+                map.touchZoomRotate.disable();
+            } else {
                 map.addControl(new maplibregl.NavigationControl(), "top-right");
             }
-
-            // When hovering over a feature, update the colorbar arrow
             map.on("mousemove", (event) => {
                 const features = map.queryRenderedFeatures(event.point, {
-                    layers: [oevkLayerId + oevkLayerIncrement],
+                    layers: [OEVK_FILL_LAYER_ID],
                 });
                 if (features.length > 0 && features[0].properties) {
                     const diff = features[0].properties.diff;
-                    updateLegendArrow(diff);
-                    const oevkId = features[0].properties.OEVK;
-                    dispatch("oevkHover", oevkId);
-                    showHighlight = false;
+                    legendState = diffToLegendState(Number(diff));
+                    dispatch("oevkHover", features[0].properties.OEVK);
                 } else {
-                    const arrow = document.getElementById("colorbar-arrow");
-                    const label = document.getElementById("colorbar-label");
-                    const text = label?.querySelector("text");
-                    if (arrow) arrow.style.left = "50%";
-                    if (label && text) {
-                        label.style.left = "50%";
-                        text.innerHTML = "Ki esélyes?";
-                        text.style.fill = "#333";
-                    }
+                    legendState = DEFAULT_LEGEND_STATE;
                     dispatch("oevkHover", null);
-                    showHighlight = false;
                 }
             });
             map.on("mouseleave", () => {
+                legendState = DEFAULT_LEGEND_STATE;
                 dispatch("oevkHover", null);
-                showHighlight = false;
             });
         });
 
@@ -326,123 +117,31 @@
         }
     }
 
-    onMount(async () => {
+    onMount(() => {
         loadMap();
     });
 </script>
 
-<article class="oevk-map-container">
-    <!-- Discrete Colorbar Legend -->
+<article class="oevk-map-container" class:no-zoom-pan={disableZoomPan}>
     {#if showInfoBar}
-        <div id="colorbar-container">
-            <div id="colorbar">
-                <!-- Five segments, each representing one discrete category -->
-                <div
-                    class="legend-segment"
-                    style="background: {colors[0]}; opacity: 0.6;"
-                    data-label="Fidesz +15%"
-                ></div>
-                <div
-                    class="legend-segment"
-                    style="background: {colors[1]}; opacity: 0.6;"
-                    data-label="Fidesz +5%"
-                ></div>
-                <div
-                    class="legend-segment"
-                    style="background: {colors[2]}; opacity: 0.6"
-                    data-label="Ki esélyes?"
-                ></div>
-                <div
-                    class="legend-segment"
-                    style="background: {colors[3]}; opacity: 0.6;"
-                    data-label="Tisza +5%"
-                ></div>
-                <div
-                    class="legend-segment"
-                    style="background: {colors[4]}; opacity: 0.6;"
-                    data-label="Tisza +15%"
-                ></div>
-            </div>
-            <div id="colorbar-arrow"></div>
-            <div id="colorbar-label">
-                <svg>
-                    <text x="50%" y="50%">Ki esélyes?</text>
-                </svg>
-            </div>
-        </div>
+        <OEVKMapLegend
+            segmentColors={colors}
+            position={legendState.position}
+            label={legendState.category}
+        />
     {/if}
     <div class="oevk-map" bind:this={mapContainer}></div>
-    <!-- <div id="loading-container">
-        <button onclick={loadMap}>Load Map</button>
-    </div> -->
 </article>
 
 <style lang="scss">
     .oevk-map-container {
         position: relative;
     }
+    .oevk-map-container.no-zoom-pan .oevk-map {
+        touch-action: pan-x pan-y;
+    }
     .oevk-map {
         width: 100%;
         aspect-ratio: 3 / 2;
-    }
-    /* Container for the colorbar legend */
-    #colorbar-container {
-        position: absolute;
-        top: 20px;
-        left: 40px;
-        //transform: translateX(-50%);
-        width: min(200px, 80%);
-        z-index: 2;
-        pointer-events: none; /* so the legend doesn't block map interactions */
-        background-color: #fff;
-        /* border: 1px solid #eee; */
-        outline: 1px solid #fff;
-        pointer-events: all;
-    }
-    #colorbar {
-        display: flex;
-        width: 100%;
-        height: 8px;
-    }
-    .legend-segment {
-        flex: 1;
-    }
-    /* Arrow that moves along the colorbar */
-    #colorbar-arrow {
-        position: absolute;
-        top: 10px;
-        left: 50%;
-        width: 0;
-        height: 0;
-        border-left: 4px solid transparent;
-        border-right: 4px solid transparent;
-        border-bottom: 7px solid #333;
-        transform: translateX(-50%);
-    }
-    /* Label showing the category */
-    #colorbar-label {
-        position: absolute;
-        top: 10px;
-        left: 50%;
-        width: 80px;
-        height: 24px;
-        transform: translateX(-50%) translateY(+50%);
-        text-align: center;
-        overflow: visible;
-
-        svg {
-            width: 100%;
-            height: 100%;
-            overflow: visible;
-
-            text {
-                font-size: 14px;
-                fill: #333;
-                text-anchor: middle;
-                stroke: #fff;
-                stroke-width: 4;
-                paint-order: stroke;
-            }
-        }
     }
 </style>
