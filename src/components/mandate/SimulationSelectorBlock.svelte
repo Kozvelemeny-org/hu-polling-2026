@@ -28,11 +28,12 @@
     </button>
 </div>
 
-<StickyAside let:sticky>
+<StickyAside let:sticky let:stickyHeaderStyle>
     <div class="desktopAside">
         <MandateProjectionAside
             {data}
             {sticky}
+            {stickyHeaderStyle}
             {selectedSimulation}
             on:selectSimulation={(e) => selectSimulation(e.detail)}
         />

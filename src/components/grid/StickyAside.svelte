@@ -6,7 +6,16 @@
     let sticky = false;
     let headerHeight = 0;
     let asideWidth = 0;
-    let initialAsideHeight = 0;
+    let headerHeightPadding = 200;
+    let lastStickyLeft = 0;
+    let lastStickyWidth = 0;
+
+    let stickyHeaderStyle: { left: number; width: number; top: number; opacity: number } = {
+        left: 0,
+        width: 0,
+        top: 0,
+        opacity: 0
+    };
 
     function detectHeaderHeight() {
         if (typeof window === 'undefined') return;
@@ -46,22 +55,34 @@
         // Use the initial (non-sticky) aside height for the sticky threshold, otherwise the
         // threshold changes when the aside collapses to a compact sticky header.
         const shouldBeSticky =
-            window.scrollY > headerHeight + 16 + initialAsideHeight && window.innerWidth > 600;
+            window.scrollY > headerHeight + headerHeightPadding && window.innerWidth > 600;
                 
         if (shouldBeSticky) {
+            const rect = aside.getBoundingClientRect();
             aside.style.position = "fixed";
             aside.style.top = "0";
+            aside.style.left = `${rect.left}px`;
             aside.style.width = `${asideWidth}px`;
-            
+            lastStickyLeft = rect.left;
+            lastStickyWidth = asideWidth;
+            stickyHeaderStyle = { left: lastStickyLeft, width: lastStickyWidth, top: 0, opacity: 1 };
+
             // Show placeholder to maintain layout
             if (placeholder) {
                 placeholder.style.display = "block";
-                placeholder.style.height = `${initialAsideHeight}px`;
+                placeholder.style.height = `${headerHeightPadding}px`;
             }
         } else {
-            aside.style.position = "static";
+            aside.style.position = "relative";
             aside.style.width = "auto";
-            
+            aside.style.left = "";
+            if (lastStickyWidth === 0) {
+                const rect = aside.getBoundingClientRect();
+                lastStickyLeft = rect.left;
+                lastStickyWidth = rect.width;
+            }
+            stickyHeaderStyle = { left: lastStickyLeft, width: lastStickyWidth, top: 0, opacity: 0 };
+
             // Hide placeholder when not sticky
             if (placeholder) {
                 placeholder.style.display = "none";
@@ -81,11 +102,6 @@
         detectHeaderHeight();
         detectAsideWidth();
         
-        // Store initial height before any sticky behavior
-        if (aside) {
-            initialAsideHeight = aside.offsetHeight;
-        }
-        
         keepAsidePosition();
         
         window.addEventListener("scroll", keepAsidePosition);
@@ -100,7 +116,7 @@
 
 {#if globalThis?.window?.innerWidth > 600}
     <aside bind:this={aside} class="grid-item aside" class:sticky>
-        <slot {sticky} />
+        <slot {sticky} {stickyHeaderStyle} />
     </aside>
     <!-- Placeholder to prevent layout shift when aside becomes sticky -->
     <div bind:this={placeholder} class="placeholder" style="display: none;"></div>
@@ -108,6 +124,7 @@
 
 <style lang="scss">
     .grid-item.aside {
+        position: relative;
         grid-column: 1 / -1;
         height: min-content;
 
