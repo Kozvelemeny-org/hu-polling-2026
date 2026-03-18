@@ -9,6 +9,7 @@
     import type { Party, Simulation } from "$lib/types";
     import BottomMenu from "$components/ui/bottom-menu/BottomMenu.svelte";
     import BottomMenuItem from "$components/ui/bottom-menu/BottomMenuItem.svelte";
+    import { EXPLAINER_ARTICLE_LINK } from "$lib/charts";
 
     export let selectedSimulation: string;
     export let simulationData: Record<string, Simulation>;
@@ -39,6 +40,9 @@
                 A szimulációk megoszlását 500 ponttal ábrázoljuk, az átlagos eredményt fekete vonal jelzi. A százalékok mutatják, hogy mekkora eséllyel ér el egy párt egy adott mandátumszámot.
             </InlineChartLabel>
         </ChartCard>
+        <Paragraph>
+            További részletek a pillanatnyilag várható szavazatarányok kiszámításáról és a mandátumbecslésünk módszertanáról ebben az <a href="{EXPLAINER_ARTICLE_LINK}" target="_blank">összefoglaló blogposztban</a> érhetőek el.
+        </Paragraph>
     {/if}
     
     {#if !hideBottomMenu}

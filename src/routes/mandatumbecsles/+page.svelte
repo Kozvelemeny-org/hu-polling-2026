@@ -27,7 +27,7 @@
     import EntryProbabilityAside from "$components/mandate/entryProbability/EntryProbabilityAside.svelte";
     import ChartCard from "$components/ui/ChartCard.svelte";
     import SmallPartyLabel from "$components/mandate/histogram/SmallPartyLabel.svelte";
-    import { EXPLAINER_ARTICLE_LINK } from "$lib/charts";
+    import { DOCS_WITH_LINKS_LINK, EXPLAINER_ARTICLE_LINK } from "$lib/charts";
 
     let data = {
         sure_voters: [] as PollData,
@@ -87,12 +87,12 @@
         <PollsChartFromData {data} pollsterGroup={selectedSimulationPollsterGroup} scenarioKey={selectedSimulation} chart_id="mandate-projection-chart" />
         <Paragraph noMargin>
             Ez az ábra az áttekintés oldalon látható szavazatarány-becsléseket fordítja át
-            mandátumbecslésekké az <a href="${EXPLAINER_ARTICLE_LINK}" target="_blank">itt</a>
+            mandátumbecslésekké az <a href="{EXPLAINER_ARTICLE_LINK}" target="_blank">itt</a>
             részletesen leírt adatok és feltevések felhasználásával. További részletek a
             mandátumszámításaink eredményeiről (egyéni és listás mandátumok száma pártonként,
             győzteskompenzáció hatása, különböző parlamenti többségek valószínűsége, illetve
             minden szám statisztikai hibahatára) érhetők el
-            <a href="${EXPLAINER_ARTICLE_LINK}" target="_blank">itt</a>,
+            <a href="{DOCS_WITH_LINKS_LINK}" target="_blank">itt</a>,
             valamint a fenti menüben a “Részletes becslés” pontra ráklikkelve.
         </Paragraph>
         <BottomMenu>

@@ -1,6 +1,7 @@
 import type { ChartData } from "./types";
 
 export const EXPLAINER_ARTICLE_LINK = "https://kozvelemeny.org/2024/12/25/a-valasztasi-kozvelemeny-kutatasok-allasa-a-2026-ra-vart-orszaggyulesi-valasztasok-elott/";
+export const DOCS_WITH_LINKS_LINK = "https://docs.google.com/document/d/1_Oay2Jg4W16CY_ySoUAJHDchWAYdq7vSgqYmv4YI0G0/edit?tab=t.0"
 
 export const charts: Record<string, ChartData> = {
     // Homepage
@@ -90,7 +91,7 @@ export const charts: Record<string, ChartData> = {
                 ugyanilyen számításokat. További részletek a mandátumszámításaink eredményeiről
                 (egyéni és listás mandátumok száma pártonként, győzteskompenzáció hatása,
                 különböző parlamenti többségek valószínűsége, illetve minden szám statisztikai
-                hibahatára) érhetők el <a href="${EXPLAINER_ARTICLE_LINK}" target="_blank">itt</a>,
+                hibahatára) érhetők el <a href="${DOCS_WITH_LINKS_LINK}" target="_blank">itt</a>,
                 valamint a fenti menüben a “Mandátumbecslés” illetve a “Részletes becslés” pontra
                 ráklikkelve.
             </p>
