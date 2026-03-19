@@ -1,13 +1,5 @@
 <script lang="ts">
-    import type { HistoricalSimulationData, MandateProjectionData, Party, PollData, Simulation } from "$lib/types";
-    import { onMount } from "svelte";
-    import {
-        pollData,
-        simulationData,
-        fetchData,
-        mandateProjectionData,
-        historicalSimulationData,
-    } from "$stores/dataStore";
+    import type { SiteDataBundle } from "$lib/server/siteData";
     import RecentPollsAside from "$components/poll/RecentPollsAside.svelte";
     import PollsCardFromData from "$components/poll/PollsCardFromData.svelte";
     import SectionCard from "$components/section/SectionCard.svelte";
@@ -22,31 +14,23 @@
     import BottomMenuItem from "$components/ui/bottom-menu/BottomMenuItem.svelte";
     import VoxPopuliLinksAside from "$components/VoxPopuliLinksAside.svelte";
     import { EXPLAINER_ARTICLE_LINK } from "$lib/charts";
+    import type { PageData } from "./$types";
 
-    let data = {
-        sure_voters: [] as PollData,
-        all_voters: [] as PollData,
-        simulationData: {} as Record<string, Simulation>,
-        mandateProjectionData: [] as MandateProjectionData,
-        historicalSimulationData: {} as HistoricalSimulationData,
+    export let data: PageData;
+    const siteData = data.siteData as SiteDataBundle;
+    const chartData = {
+        sure_voters: siteData.pollData.sure_voters,
+        all_voters: siteData.pollData.all_voters,
+        mandateProjectionData: siteData.mandateProjectionData,
+        historicalSimulationData: siteData.historicalSimulationData,
     };
-
-    onMount(fetchData);
-
-    $: data = {
-        sure_voters: $pollData.sure_voters,
-        all_voters: $pollData.all_voters,
-        simulationData: $simulationData,
-        mandateProjectionData: $mandateProjectionData,
-        historicalSimulationData: $historicalSimulationData,
-    }
 </script>
 
 <GridItem variant="aside" hideOnMobile>
-    <RecentPollsAside pollData={data.sure_voters} selectedGroup="big_parties" nItems={9} />
+    <RecentPollsAside pollData={siteData.pollData.sure_voters} selectedGroup="big_parties" nItems={9} />
 </GridItem>
 <GridItem variant="main">
-    <PollsCardFromData {data} chart_id="fidesz-tisza" />
+    <PollsCardFromData data={chartData} chart_id="fidesz-tisza" />
 </GridItem>
 
 <GridItem variant="full">
@@ -54,16 +38,16 @@
 </GridItem>
 
 <GridItem variant="aside" hideOnMobile>
-    <RecentMandateProjectionsAside mandateProjectionData={data.mandateProjectionData} selectedGroup="big_parties" nItems={9} />
+    <RecentMandateProjectionsAside mandateProjectionData={siteData.mandateProjectionData} selectedGroup="big_parties" nItems={9} />
 </GridItem>
 <GridItem variant="main">
     <SectionCard>
         <SectionTitle variant="featured">Mandátumbecslések alakulása</SectionTitle>
         <Paragraph --margin="2px">
-            a <SimulationNameSpan>{data.simulationData["main"]?.metadata.name}</SimulationNameSpan>
+            a <SimulationNameSpan>{siteData.simulationData["main"]?.metadata.name}</SimulationNameSpan>
             szimuláció alapján, 60 napos súlyozott mozgóátlag. 
         </Paragraph>
-        <PollsChartFromData {data} pollsterGroup={"voxpopuli"} scenarioKey={"main"} chart_id="mandate-projection-chart" />
+        <PollsChartFromData data={chartData} pollsterGroup={"voxpopuli"} scenarioKey={"main"} chart_id="mandate-projection-chart" />
         <Paragraph noMargin>
             Ez az ábra a megelőzőben látható szavazatarány-becsléseket fordítja át
             mandátumbecslésekké az <a href="{EXPLAINER_ARTICLE_LINK}" target="_blank">itt</a>
@@ -90,12 +74,12 @@
     <GridSectionTitle>A többi párt</GridSectionTitle>
 </GridItem>
 <GridItem variant="aside" hideOnMobile>
-    {#if data.sure_voters.length > 0}
-        <RecentPollsAside pollData={data.sure_voters} selectedGroup="small_parties" nItems={9} />
+    {#if siteData.pollData.sure_voters.length > 0}
+        <RecentPollsAside pollData={siteData.pollData.sure_voters} selectedGroup="small_parties" nItems={9} />
     {/if}
 </GridItem>
 <GridItem variant="main">
-    <PollsCardFromData {data} chart_id="kis-partok" />
+    <PollsCardFromData data={chartData} chart_id="kis-partok" />
 </GridItem>
 
 <GridItem variant="full">

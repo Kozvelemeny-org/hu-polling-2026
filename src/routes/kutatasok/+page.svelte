@@ -1,6 +1,6 @@
 <script lang="ts">
-    import { onMount } from "svelte";
-    import { fetchData, pollData } from "$stores/dataStore";
+    import type { PageData } from "./$types";
+    import type { SiteDataBundle } from "$lib/server/siteData";
     import PollsterHeatmap from "$components/poll/PollsterHeatmap.svelte";
     import IndividualPollsList from "$components/poll/IndividualPollsList.svelte";
     import SectionTitle from "$components/section/SectionTitle.svelte";
@@ -8,12 +8,12 @@
     import GridSectionTitle from "$components/grid/GridSectionTitle.svelte";
     import RecentPollsAside from "$components/poll/RecentPollsAside.svelte";
     import SectionCard from "$components/section/SectionCard.svelte";
-
-    onMount(fetchData);
+    export let data: PageData;
+    const siteData = data.siteData as SiteDataBundle;
 </script>
 
 <GridItem variant="aside">
-    <RecentPollsAside pollData={$pollData.sure_voters} selectedGroup="big_parties" nItems={6} />
+    <RecentPollsAside pollData={siteData.pollData.sure_voters} selectedGroup="big_parties" nItems={6} />
 </GridItem>
 <GridItem variant="main">
     <SectionCard>
@@ -26,10 +26,10 @@
 </GridItem>
 
 <GridItem variant="full">
-    <PollsterHeatmap pollData={$pollData.sure_voters} />
+    <PollsterHeatmap pollData={siteData.pollData.sure_voters} />
 </GridItem>
 
 <GridItem variant="full">
     <SectionTitle variant="medium" hasTopMargin>Egyéni kutatások</SectionTitle>
-    <IndividualPollsList pollData={$pollData.sure_voters} />
+    <IndividualPollsList pollData={siteData.pollData.sure_voters} />
 </GridItem>

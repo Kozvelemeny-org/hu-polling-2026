@@ -1,14 +1,6 @@
 <script lang="ts">
-    import { onMount } from "svelte";
-    import {
-        fetchData,
-        mandateProjectionData,
-        partyData,
-        pollData,
-        simulationData,
-        historicalSimulationData,
-    } from "$stores/dataStore";
-    import type { HistoricalSimulationData, MandateProjectionData, Party, PollData, PollsterGroup, Simulation } from "$lib/types";
+    import { partyData } from "$stores/dataStore";
+    import type { Party, PollsterGroup } from "$lib/types";
     import SimulationSelectorBlock from "../../components/mandate/SimulationSelectorBlock.svelte";
     import SectionCard from "../../components/section/SectionCard.svelte";
     import SectionTitle from "../../components/section/SectionTitle.svelte";
@@ -28,13 +20,16 @@
     import ChartCard from "$components/ui/ChartCard.svelte";
     import SmallPartyLabel from "$components/mandate/histogram/SmallPartyLabel.svelte";
     import { DOCS_WITH_LINKS_LINK, EXPLAINER_ARTICLE_LINK } from "$lib/charts";
+    import type { PageData } from "./$types";
+    import type { SiteDataBundle } from "$lib/server/siteData";
 
-    let data = {
-        sure_voters: [] as PollData,
-        all_voters: [] as PollData,
-        mandateProjectionData: [] as MandateProjectionData,
-        simulationData: {} as Record<string, Simulation>,
-        historicalSimulationData: {} as HistoricalSimulationData,
+    export let data: PageData;
+    const siteData = data.siteData as SiteDataBundle;
+    const chartData = {
+        sure_voters: siteData.pollData.sure_voters,
+        all_voters: siteData.pollData.all_voters,
+        mandateProjectionData: siteData.mandateProjectionData,
+        historicalSimulationData: siteData.historicalSimulationData,
     };
     let selectedSimulation: string = "main";
     let orderedParties = [] as Party[];
@@ -52,21 +47,12 @@
         }
     }
 
-    onMount(fetchData);
-
-    $: data = {
-        sure_voters: $pollData.sure_voters,
-        all_voters: $pollData.all_voters,
-        mandateProjectionData: $mandateProjectionData,
-        simulationData: $simulationData,
-        historicalSimulationData: $historicalSimulationData,
-    };
     $: orderedParties = (() => {
-        if (!data.simulationData[selectedSimulation]) return [] as Party[];
+        if (!siteData.simulationData[selectedSimulation]) return [] as Party[];
         const orderedParties = ['fidesz', 'tisza', 'dk', 'mihazank', 'mkkp'] as Party[];
         return orderedParties.sort((a, b) => {
-            return calculateEntryProbability(data.simulationData[selectedSimulation], b) -
-            calculateEntryProbability(data.simulationData[selectedSimulation], a);
+            return calculateEntryProbability(siteData.simulationData[selectedSimulation], b) -
+            calculateEntryProbability(siteData.simulationData[selectedSimulation], a);
         });
     })();
 
@@ -74,17 +60,17 @@
 </script>
 
 <SimulationSelectorBlock
-    data={data.simulationData}
+    data={siteData.simulationData}
     bind:selectedSimulation
 />
 <GridItem variant="main">
     <SectionCard>
         <SectionTitle variant="featured">Mandátumbecslések alakulása</SectionTitle>
         <Paragraph --margin="2px">
-            a <SimulationNameSpan>{data.simulationData[selectedSimulation]?.metadata.name}</SimulationNameSpan>
+            a <SimulationNameSpan>{siteData.simulationData[selectedSimulation]?.metadata.name}</SimulationNameSpan>
             szimuláció alapján, 60 napos súlyozott mozgóátlag. 
         </Paragraph>
-        <PollsChartFromData {data} pollsterGroup={selectedSimulationPollsterGroup} scenarioKey={selectedSimulation} chart_id="mandate-projection-chart" />
+        <PollsChartFromData data={chartData} pollsterGroup={selectedSimulationPollsterGroup} scenarioKey={selectedSimulation} chart_id="mandate-projection-chart" />
         <Paragraph noMargin>
             Ez az ábra az áttekintés oldalon látható szavazatarány-becsléseket fordítja át
             mandátumbecslésekké az <a href="{EXPLAINER_ARTICLE_LINK}" target="_blank">itt</a>
@@ -200,8 +186,8 @@
 
 <GridItem variant="left-main">
     <OevkSectionCard
-        data={data.simulationData[selectedSimulation]?.oevkDiffs}
-        simulationName={data.simulationData[selectedSimulation]?.metadata.name}
+        data={siteData.simulationData[selectedSimulation]?.oevkDiffs}
+        simulationName={siteData.simulationData[selectedSimulation]?.metadata.name}
         simulationKey={selectedSimulation}
     />
 </GridItem>
@@ -235,7 +221,7 @@
 
 <GridItem variant="aside">
     {#key selectedSimulation}
-        <EntryProbabilityAside selectedSimulation={selectedSimulation} historicalSimulationData={data.historicalSimulationData} parties={orderedParties.slice(2, 5)} />
+        <EntryProbabilityAside selectedSimulation={selectedSimulation} historicalSimulationData={siteData.historicalSimulationData} parties={orderedParties.slice(2, 5)} />
     {/key}
 </GridItem>
 <GridItem variant="main">
@@ -263,7 +249,7 @@
             nagyban csökkenthetik a Fidesz kormányalakításai esélyeit.
         </Paragraph>
         <!-- <SectionTitle variant="tiny" hasTopMargin>A kisebb pártok pillanatnyilag várható szavazataránya</SectionTitle> -->
-        {#if data.simulationData[selectedSimulation]}
+        {#if siteData.simulationData[selectedSimulation]}
             <ChartCard>
                 <InlineChartLabel>
                     A kisebb pártok pillanatnyilag várható szavazataránya (%)
@@ -273,7 +259,7 @@
                         <article>
                             <PollsViolin
                                 party={party}
-                                simulation={data.simulationData[selectedSimulation]}
+                                simulation={siteData.simulationData[selectedSimulation]}
                                 height={100}
                                 xDomain={[0, 0.15]}
                                 bandwidth={1}
@@ -299,7 +285,7 @@
                         <article>
                             <div class="mandateHistogramContainer">
                                 <MandateHistogram
-                                    simulationData={data.simulationData}
+                                    simulationData={siteData.simulationData}
                                     simulationKey={selectedSimulation}
                                     {party}
                                     range={[0, 10]}
