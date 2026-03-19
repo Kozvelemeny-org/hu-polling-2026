@@ -2,9 +2,8 @@
     // get the chartId from the slug parameter
     import { page } from "$app/state";
     import { PUBLIC_EMBED_BASE_URL } from "$env/static/public";
-    import { onMount } from "svelte";
-    import { pollData, simulationData, fetchData, mandateProjectionData, historicalSimulationData } from "$stores/dataStore";
-    import type { HistoricalSimulationData, MandateProjectionData, PollData, Simulation } from "$lib/types";
+    import type { PageData } from "./$types";
+    import type { SiteDataBundle } from "$lib/server/siteData";
     import PollsCardFromData from "$components/poll/PollsCardFromData.svelte";
     import html2canvas from "html2canvas";
     import GridItem from "$components/grid/GridItem.svelte";
@@ -17,6 +16,18 @@
 
     let chartType = null as 'poll' | 'beeswarm' | 'map' | null;
     let chartName = chartId?.slice(2) || null;
+    export let data: PageData;
+    const siteData = data.siteData as SiteDataBundle;
+    const chartData = {
+        sure_voters: siteData.pollData.sure_voters,
+        all_voters: siteData.pollData.all_voters,
+        mandateProjectionData: siteData.mandateProjectionData,
+        historicalSimulationData: siteData.historicalSimulationData,
+    };
+    const pageTitle = "Ábra | Vox Pop";
+    const pageDescription = "Megosztható és beágyazható Vox Populi ábra a 2026-os választási közvélemény-kutatások és mandátumbecslések adataiból.";
+    const canonicalUrl = `https://2026.kozvelemeny.org/abra/${chartId}`;
+    const ogImage = "https://2026.kozvelemeny.org/images/bg.webp";
 
     $: {
         if (chartId?.slice(0, 2) === 't-') {
@@ -28,24 +39,6 @@
         } else {
             chartType = null;
         }
-    }
-
-    let data = {
-        sure_voters: [] as PollData,
-        all_voters: [] as PollData,
-        simulationData: {} as Record<string, Simulation>,
-        mandateProjectionData: [] as MandateProjectionData,
-        historicalSimulationData: {} as HistoricalSimulationData,
-    };
-
-    onMount(fetchData);
-
-    $: data = {
-        sure_voters: $pollData.sure_voters,
-        all_voters: $pollData.all_voters,
-        simulationData: $simulationData,
-        mandateProjectionData: $mandateProjectionData,
-        historicalSimulationData: $historicalSimulationData,
     }
 
     function saveImage() {
@@ -128,18 +121,37 @@
     }
 </script>
 
+<svelte:head>
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Vox Populi: 2026 - Közvélemény-kutatások és mandátumbecslés" />
+    <meta property="og:locale" content="hu_HU" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImage} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={ogImage} />
+</svelte:head>
+
 <GridItem variant="left-main" --grid-row="1 / 3">
     {#if chartType === 'map'}
         <OevkSectionCard
-            data={data.simulationData[chartName || 'main']?.oevkDiffs}
-            simulationName={data.simulationData[chartName || 'main']?.metadata.name}
+            data={siteData.simulationData[chartName || 'main']?.oevkDiffs}
+            simulationName={siteData.simulationData[chartName || 'main']?.metadata.name}
             simulationKey={chartName || 'main'}
         />
     {:else if chartType === 'beeswarm'}
-        <FideszTiszaBeeswarmCard simulationData={data.simulationData} selectedSimulation={chartName ?? 'main'} />
+        <FideszTiszaBeeswarmCard simulationData={siteData.simulationData} selectedSimulation={chartName ?? 'main'} />
     {:else if chartType === 'poll' && chartName}
         <PollsCardFromData
-            {data}
+            data={chartData}
             chart_id={chartName}
             showSource={true}
             featured={true}
