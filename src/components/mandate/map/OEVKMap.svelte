@@ -37,6 +37,7 @@
     let geoJsonLoaded = false;
     let geoJsonLoading = false;
     let geojsonData: GeoJSON.FeatureCollection;
+    let geoJsonPromise: Promise<GeoJSON.FeatureCollection> | null = null;
     let legendState = DEFAULT_LEGEND_STATE;
 
     const colors = getOevkColors(partyData);
@@ -45,13 +46,20 @@
         loadGeoJSON();
     }
 
+    function getGeoJsonPromise() {
+        if (!geoJsonPromise) {
+            geoJsonPromise = loadOevkGeojson(staticBase);
+        }
+        return geoJsonPromise;
+    }
+
     async function loadGeoJSON() {
         if (!data || !map || !mapLoaded) return;
         if (geoJsonLoading) return;
         geoJsonLoading = true;
         try {
             if (!geojsonData) {
-                geojsonData = await loadOevkGeojson(staticBase);
+                geojsonData = await getGeoJsonPromise();
             }
             for (const feature of geojsonData.features) {
                 if (!feature.properties) continue;
@@ -118,6 +126,7 @@
     }
 
     onMount(() => {
+        getGeoJsonPromise();
         loadMap();
     });
 </script>
