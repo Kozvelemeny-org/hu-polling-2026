@@ -13,6 +13,8 @@
     export let renderOptions = undefined as Record<string, any> | undefined;
     /** Scenario key for the line (e.g. "main", "kormanyfuggetlen", "kormanykozeli"). Default "main". */
     export let scenarioKey = "main";
+    const defaultAspectRatio = 3 / 2;
+    $: resolvedAspectRatio = renderOptions?.aspectRatio ?? defaultAspectRatio;
 
     let chart = undefined as Chart | undefined;
     let containerElement: HTMLElement | null = null;
@@ -51,7 +53,7 @@
     });
 </script>
 
-<article class="polls" id={id}></article>
+<article class="polls" id={id} style:aspect-ratio={resolvedAspectRatio}></article>
 
 <style lang="scss">
     .polls {

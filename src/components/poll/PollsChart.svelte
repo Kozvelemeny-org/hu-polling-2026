@@ -11,6 +11,8 @@
     export let partyIntervals = undefined as Record<Party, [Date, Date][]> | undefined;
     export let annotations = [] as Annotation[]
     export let renderOptions = undefined as Record<string, any> | undefined;
+    const defaultAspectRatio = 7 / 4;
+    $: resolvedAspectRatio = renderOptions?.aspectRatio ?? defaultAspectRatio;
 
     let chart = undefined as Chart | undefined;
     const dispatch = createEventDispatcher();
@@ -51,7 +53,7 @@
 
 </script>
 
-<article class="polls" id={id} ></article>
+<article class="polls" id={id} style:aspect-ratio={resolvedAspectRatio}></article>
 
 <style lang="scss">
     .polls {
