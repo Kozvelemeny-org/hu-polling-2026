@@ -24,7 +24,49 @@
         mandateProjectionData: siteData.mandateProjectionData,
         historicalSimulationData: siteData.historicalSimulationData,
     };
+    const pageTitle = "Vox Populi: Választás 2026";
+    const pageDescription = "Folyamatosan frissülő 2026-os választási közvélemény-kutatások és mandátumbecslések. Fidesz–TISZA trendek, kis pártok esélyei, részletes ábrák és módszertani háttér.";
+    const canonicalUrl = "https://2026.kozvelemeny.org/";
+    const ogImage = "https://2026.kozvelemeny.org/images/bg.webp";
+
+    const datasetJsonLd = (() => {
+        const dataset: Record<string, unknown> = {
+            "@context": "https://schema.org",
+            "@type": "Dataset",
+            name: "Vox Populi: Választás 2026",
+            description: pageDescription,
+            url: canonicalUrl,
+            inLanguage: "hu-HU"
+        };
+        const updatedAt = siteData.simulationData.main?.metadata.updatedAt;
+        if (updatedAt instanceof Date) {
+            dataset.dateModified = updatedAt.toISOString();
+        }
+        return dataset;
+    })();
+    $: datasetJsonLdScript = `<script type="application/ld+json">${JSON.stringify(datasetJsonLd).replace(/</g, "\\u003c")}<\/script>`;
 </script>
+
+<svelte:head>
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Vox Populi: 2026 - Közvélemény-kutatások és mandátumbecslés" />
+    <meta property="og:locale" content="hu_HU" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImage} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={ogImage} />
+
+    {@html datasetJsonLdScript}
+</svelte:head>
 
 <GridItem variant="aside" hideOnMobile>
     <RecentPollsAside pollData={siteData.pollData.sure_voters} selectedGroup="big_parties" nItems={9} />

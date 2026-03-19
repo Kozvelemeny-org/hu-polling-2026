@@ -24,6 +24,10 @@
         mandateProjectionData: siteData.mandateProjectionData,
         historicalSimulationData: siteData.historicalSimulationData,
     };
+    const pageTitle = "Ábra | Vox Pop";
+    const pageDescription = "Megosztható és beágyazható Vox Populi ábra a 2026-os választási közvélemény-kutatások és mandátumbecslések adataiból.";
+    const canonicalUrl = `https://2026.kozvelemeny.org/abra/${chartId}`;
+    const ogImage = "https://2026.kozvelemeny.org/images/bg.webp";
 
     $: {
         if (chartId?.slice(0, 2) === 't-') {
@@ -116,6 +120,25 @@
         }
     }
 </script>
+
+<svelte:head>
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Vox Populi: 2026 - Közvélemény-kutatások és mandátumbecslés" />
+    <meta property="og:locale" content="hu_HU" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImage} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={ogImage} />
+</svelte:head>
 
 <GridItem variant="left-main" --grid-row="1 / 3">
     {#if chartType === 'map'}

@@ -6,6 +6,7 @@
     import GridItem from "$components/grid/GridItem.svelte";
 
     const chartId = page.params.chartId;
+    const canonicalUrl = `https://2026.kozvelemeny.org/abra/${chartId}`;
 
     let chartType = null as 'poll' | 'beeswarm' | 'map' | null;
     let chartName = chartId?.slice(2) || null;
@@ -82,6 +83,11 @@
         return () => teardown?.();
     });
 </script>
+
+<svelte:head>
+    <meta name="robots" content="noindex,follow" />
+    <link rel="canonical" href={canonicalUrl} />
+</svelte:head>
 
 <GridItem variant="full">
     <div class="embed-container" bind:this={embedContainer}>
