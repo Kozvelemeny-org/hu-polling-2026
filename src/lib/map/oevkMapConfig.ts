@@ -47,7 +47,23 @@ export function getOevkColors(partyData: PartyDataColors): string[] {
     ];
 }
 
+let oevkGeojsonPromise: Promise<GeoJSON.FeatureCollection> | null = null;
+
+function cloneGeojson(data: GeoJSON.FeatureCollection): GeoJSON.FeatureCollection {
+    if (typeof structuredClone === "function") {
+        return structuredClone(data);
+    }
+    return JSON.parse(JSON.stringify(data)) as GeoJSON.FeatureCollection;
+}
+
 export async function loadOevkGeojson(staticBase: string): Promise<GeoJSON.FeatureCollection> {
-    const response = await fetch(`${staticBase}/geo/oevks.geojson`);
-    return response.json();
+    if (!oevkGeojsonPromise) {
+        oevkGeojsonPromise = fetch(`${staticBase}/geo/simplified_oevks.geojson`).then((response) =>
+            response.json()
+        );
+        oevkGeojsonPromise.catch(() => {
+            oevkGeojsonPromise = null;
+        });
+    }
+    return cloneGeojson(await oevkGeojsonPromise);
 }
