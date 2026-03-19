@@ -15,6 +15,8 @@
     export let simulationData: Record<string, Simulation>;
     export let parties = ['fidesz', 'tisza'] as Party[];
     export let hideBottomMenu = false;
+    export let numDots = 500;
+    export let r = 2.5;
 
 </script>
 
@@ -31,13 +33,13 @@
                     party={party}
                     simulation={simulationData[selectedSimulation]}
                     simulationKey={selectedSimulation}
-                    numDots={500}
+                    {numDots}
                     height={200}
-                    r={2.5}
+                    r={r}
                 />
             {/each}
             <InlineChartLabel description>
-                A szimulációk megoszlását 500 ponttal ábrázoljuk, az átlagos eredményt fekete vonal jelzi. A százalékok mutatják, hogy mekkora eséllyel ér el egy párt egy adott mandátumszámot.
+                A szimulációk megoszlását {numDots} ponttal ábrázoljuk, az átlagos eredményt fekete vonal jelzi. A százalékok mutatják, hogy mekkora eséllyel ér el egy párt egy adott mandátumszámot.
             </InlineChartLabel>
         </ChartCard>
         <Paragraph>
