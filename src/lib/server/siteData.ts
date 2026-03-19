@@ -25,13 +25,33 @@ export type SiteDataProfile = {
 const dataBaseUrl = (PUBLIC_DATA_BASE_URL ?? "").replace(/\/$/, "");
 const cacheTtlMs = 60_000;
 
+function parseCsvText<T>(csvText: string): T {
+	const rows = d3.csvParseRows(csvText);
+	if (rows.length === 0) {
+		return [] as T;
+	}
+
+	const [headers, ...bodyRows] = rows;
+	const records = bodyRows
+		.filter((row: string[]) => row.some((cell: string) => cell.trim().length > 0))
+		.map((row: string[]) => {
+			const record: Record<string, string> = {};
+			headers.forEach((header: string, index: number) => {
+				record[header] = row[index] ?? "";
+			});
+			return record;
+		});
+
+	return records as T;
+}
+
 async function fetchCsv<T>(fetchFn: typeof fetch, path: string): Promise<T> {
 	const response = await fetchFn(`${dataBaseUrl}/${path}`);
 	if (!response.ok) {
 		throw new Error(`Failed to fetch ${path}: ${response.status}`);
 	}
 	const csvText = await response.text();
-	return d3.csvParse(csvText) as unknown as T;
+	return parseCsvText<T>(csvText);
 }
 
 type ResourceCache<T> = {
