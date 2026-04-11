@@ -6,11 +6,11 @@ VOXPOPULI_EFFECTIVE_DATE.setHours(0, 0, 0, 0);
 
 /** Deltas in decimal share (e.g. 0.025 = 2.5pp). Fidesz +2.5pp, Tisza -2pp, DK -0.25pp, MKKP -0.25pp. */
 const VOXPOPULI_DELTAS = {
-    fidesz: 0.025,
-    tisza: -0.02,
-    mihazank: 0.01,
-    dk: -0.0075,
-    mkkp: -0.0075,
+    fidesz: 0.015,
+    tisza: 0.01,
+    mihazank: 0,
+    dk: -0.0125,
+    mkkp: -0.0125,
 } as const;
 
 export function needsVoxPopuliAdjustment(group: PollsterGroup): boolean {
