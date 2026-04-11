@@ -10,7 +10,7 @@ export const charts: Record<string, ChartData> = {
         title: "A Fidesz és a Tisza versenyfutása",
         selectedParties: ["tisza", "fidesz", "unsure"],
         dataSelects: ["pollster_group", "voter_type"],
-        dateRange: { start: new Date(2023, 11, 1), end: new Date(2026, 3, 12) },
+        dateRange: { start: new Date(2023, 11, 1), end: new Date(2026, 3, 13) },
         annotations: [
             {
                 id: "marc-15",
@@ -71,7 +71,7 @@ export const charts: Record<string, ChartData> = {
         title: "Mandátumbecslések alakulása",
         dataSelects: ["pollster_group"],
         selectedParties: ["fidesz", "tisza"],
-        dateRange: { start: new Date(2023, 11, 1), end: new Date(2026, 3, 12) },
+        dateRange: { start: new Date(2023, 11, 1), end: new Date(2026, 3, 13) },
         annotations: [
             {
                 id: "ogy-26",
@@ -101,7 +101,7 @@ export const charts: Record<string, ChartData> = {
         title: "Parlamentbe jutásra esélyes pártok támogatottsága",
         selectedParties: ["tisza", "fidesz", "dk", "mihazank", "mkkp", "momentum"],
         dataSelects: ["pollster_group", "voter_type"],
-        dateRange: { start: new Date(2018, 0, 1), end: new Date(2026, 3, 12) },
+        dateRange: { start: new Date(2018, 0, 1), end: new Date(2026, 3, 13) },
         annotations: [
             {
                 id: "ogy-18",
