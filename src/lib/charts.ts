@@ -2,6 +2,7 @@ import type { ChartData } from "./types";
 
 export const EXPLAINER_ARTICLE_LINK = "https://kozvelemeny.org/2024/12/25/a-valasztasi-kozvelemeny-kutatasok-allasa-a-2026-ra-vart-orszaggyulesi-valasztasok-elott/";
 export const DOCS_WITH_LINKS_LINK = "https://docs.google.com/document/d/1_Oay2Jg4W16CY_ySoUAJHDchWAYdq7vSgqYmv4YI0G0/edit?tab=t.0"
+export const VOXPOPULI_LAST_PREDICTION_LINK = "https://www.facebook.com/valasztasi.kalauz/posts/pfbid0ajGXHEu65k7PnezJXwAhoSoBQCjCdhY2CqdvBef5P9FgGPXWySAGwouVAmGQsSBvl"
 
 export const charts: Record<string, ChartData> = {
     // Homepage
@@ -53,11 +54,14 @@ export const charts: Record<string, ChartData> = {
             </p>
             <p>
                 Kormányközelinek (narancsgazdagnak) a következő intézetek kutatásait tekintjük:
-                Alapjogokért Központ, Nézőpont, Reál-PR 93, Századvég, Társadalomkutató.
-                Az index.hu-n havonta publikáló  McLaughlin & Associates adatait minden jel
-                szerint a Századvég, a XXI. Század Intézetét pedig a Nézőpont gyűjti és dolgozza
-                fel, ezért azokat Századvég, illetve Nézőpont vizsgálatoknak könyveljük el.
-                Minden más kutatót a kormányfüggetlen (narancsmentes) csoportba sorolunk.
+                Alapjogokért Központ, McLaughlin & Associates, Nézőpont, Reál-PR 93, Századvég,
+                Társadalomkutató és XXI. Század Intézet. A XXI. Század Intézet adatait minden jel
+                szerint a Nézőpont gyűjtötte és dolgozta fel, ezért azokat a Nézőpont vizsgálatának
+                könyveltük el. Minden más kutatót a kormányfüggetlen (narancsmentes) csoportba
+                sorolunk. A Vox Populi utolsó előrejelzését a 2026. április 12-i választásokra
+                <a href="${VOXPOPULI_LAST_PREDICTION_LINK}" target="_blank">itt</a>
+                és a Wayback Machine internet archivum oldalán találja meg. Ez az oldal azóta
+                frissült már a választás estéjén megjelent közvélemény-kutatások adataival.
             </p>
             <p>
                 A Vox Populi saját becslése a kormányfüggetlen intézetek adataiból indul ki, de az
